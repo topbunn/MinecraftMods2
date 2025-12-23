@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import com.hamit.android.BuildConfig
 import com.hamit.android.utils.AppLocation
-import com.hamit.domain.entity.ConfigEntity
+import com.hamit.domain.entity.PropertyEntity
 
 object InterstitialAdCoordinator {
 
@@ -15,7 +15,7 @@ object InterstitialAdCoordinator {
         NONE, APPLOVIN, YANDEX
     }
 
-    fun init(context: Context, location: AppLocation, config: ConfigEntity) {
+    fun init(context: Context, location: AppLocation, config: PropertyEntity) {
         if (isInitialized) return
         if (!config.isAdEnabled) return
 

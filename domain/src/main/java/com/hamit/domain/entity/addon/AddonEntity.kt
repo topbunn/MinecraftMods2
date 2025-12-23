@@ -1,15 +1,15 @@
-package com.hamit.domain.entity.mod
+package com.hamit.domain.entity.addon
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ModEntity(
+data class AddonEntity(
     val id: Int,
     val title: String,
     val description: String,
     val image: String,
-    val category: ModType,
+    val category: AddonType,
     val isFavorite: Boolean,
     val rating: Double,
     val commentCounts: Int,

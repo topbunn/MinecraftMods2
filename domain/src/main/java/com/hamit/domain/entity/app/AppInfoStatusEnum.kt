@@ -1,6 +1,6 @@
 package com.hamit.domain.entity.app
 
-enum class AppInfoStatusType{
+enum class AppInfoStatusEnum{
     PLANNED,
     IN_PROGRESS,
     IN_MODERATION,

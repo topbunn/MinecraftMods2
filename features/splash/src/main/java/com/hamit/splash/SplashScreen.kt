@@ -36,7 +36,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.koinInject
 import com.hamit.android.ad.inter.InterAdInitializer
-import com.hamit.domain.entity.LogoAppRes
+import com.hamit.domain.entity.AppLogoRes
 import com.hamit.navigation.Destination
 import com.hamit.ui.theme.AppColors
 import com.hamit.ui.theme.AppFonts
@@ -57,7 +57,7 @@ object SplashScreen : Screen {
         ) {
             val context = LocalContext.current
             val applicationName = context.applicationInfo.labelRes
-            val logoAppRes = koinInject<LogoAppRes>()
+            val appLogoRes = koinInject<AppLogoRes>()
 
             Text(
                 text = stringResource(applicationName),
@@ -71,7 +71,7 @@ object SplashScreen : Screen {
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(8.dp)),
-                painter = painterResource(logoAppRes.logoRes),
+                painter = painterResource(appLogoRes.res),
                 contentDescription = "Image preview",
                 contentScale = ContentScale.FillWidth
             )

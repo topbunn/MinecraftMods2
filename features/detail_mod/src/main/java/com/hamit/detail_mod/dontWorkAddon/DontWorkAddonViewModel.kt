@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import com.hamit.android.utils.validEmail
 import com.hamit.data.repository.ModRepository
 import com.hamit.detail_mod.dontWorkAddon.DontWorkAddonState.DontWorkScreenState
-import com.hamit.domain.entity.IssueEntity
+import com.hamit.domain.entity.ProblemEntity
 
 class DontWorkAddonViewModel(
     private val repository: ModRepository
@@ -26,7 +26,7 @@ class DontWorkAddonViewModel(
 
     fun sendIssue() = screenModelScope.launch {
         _state.update { it.copy(feedbackState = DontWorkScreenState.Loading) }
-        val issue = IssueEntity(email = state.value.email, text = state.value.message)
+        val issue = ProblemEntity(email = state.value.email, text = state.value.message)
         val result = repository.sendIssue(issue)
         result.onSuccess {
             _state.update { it.copy(feedbackState = DontWorkScreenState.Success, email = "", message = "") }

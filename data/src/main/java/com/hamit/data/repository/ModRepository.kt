@@ -7,20 +7,20 @@ import com.hamit.data.database.entity.FavoriteEntity
 import com.hamit.data.mappers.ModMapper
 import com.hamit.data.saveFile
 import com.hamit.data.storage.DataStoreStorage
-import com.hamit.domain.entity.ConfigEntity
-import com.hamit.domain.entity.IssueEntity
-import com.hamit.domain.entity.mod.ModEntity
-import com.hamit.domain.entity.mod.ModSortType
-import com.hamit.domain.entity.mod.ModType
+import com.hamit.domain.entity.PropertyEntity
+import com.hamit.domain.entity.ProblemEntity
+import com.hamit.domain.entity.addon.AddonEntity
+import com.hamit.domain.entity.addon.AddonSortType
+import com.hamit.domain.entity.addon.AddonType
 import com.hamit.domain.entity.StorageKeys
-import com.hamit.domain.entity.modConfig.ModConfigProvider
+import com.hamit.domain.entity.addonConfig.AddonConfigProvider
 
 class ModRepository(
     private val favoriteDao: FavoriteDao,
     private val api: ModsApi,
     private val modMapper: ModMapper,
     private val dataStore: DataStoreStorage,
-    private val configProvider: ModConfigProvider
+    private val configProvider: AddonConfigProvider
 ) {
 
     suspend fun getApps() = runCatching {
@@ -35,8 +35,8 @@ class ModRepository(
     suspend fun getMods(
         q: String,
         offset: Int,
-        type: ModType?,
-        sortType: ModSortType,
+        type: AddonType?,
+        sortType: AddonSortType,
         limit: Int = 6,
     ) = runCatching {
         val response = api.getMods(
@@ -64,7 +64,7 @@ class ModRepository(
             .drop(offset)
             .take(limit)
             .map { it.modId }
-        val mods = mutableListOf<ModEntity>()
+        val mods = mutableListOf<AddonEntity>()
         favoriteIds.forEach {
             try {
                 val mod = api.getMod(it)
@@ -80,7 +80,7 @@ class ModRepository(
        favoriteDao.addFavorite(favorite.copy(id = oldFavorite?.id ?: 0))
     }
 
-    suspend fun sendIssue(issue: IssueEntity) = runCatching{
+    suspend fun sendIssue(issue: ProblemEntity) = runCatching{
         api.createIssue(
             issue = issue,
             id = configProvider.getConfig().appId
@@ -100,7 +100,7 @@ class ModRepository(
         }
     }
 
-    suspend fun getConfig(): ConfigEntity {
+    suspend fun getConfig(): PropertyEntity {
         loadConfig()
 
         val isAdEnabled = dataStore.get(StorageKeys.AD_IS_ENABLED, null)?.toBoolean() ?: true
@@ -110,7 +110,7 @@ class ModRepository(
         val yandexOpen = dataStore.get(StorageKeys.YANDEX_OPEN, null)
         val yandexInter = dataStore.get(StorageKeys.YANDEX_INTER, null)
         val yandexNative = dataStore.get(StorageKeys.YANDEX_NATIVE, null)
-        return ConfigEntity(isAdEnabled, applovinOpen, applovinInter, applovinNative, yandexOpen, yandexInter, yandexNative)
+        return PropertyEntity(isAdEnabled, applovinOpen, applovinInter, applovinNative, yandexOpen, yandexInter, yandexNative)
     }
 
 }

@@ -1,10 +1,10 @@
 package com.hamit.data.api.dto.mods
 
-import com.hamit.domain.entity.mod.ModType
+import com.hamit.domain.entity.addon.AddonType
 
 data class ModDto(
     val id: Int,
-    val category: ModType,
+    val category: AddonType,
     val rating: Double,
     val commentCounts: Int,
     val descriptionImages: List<String>,

@@ -3,13 +3,13 @@ package com.hamit.data.mappers
 import android.content.Context
 import com.hamit.data.api.dto.mods.ModDto
 import com.hamit.data.database.AppDatabase
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 
 class ModMapper(context: Context){
 
     private val dao = AppDatabase.getInstance(context).favoriteDao()
 
-    suspend fun toEntity(dto: ModDto) = ModEntity(
+    suspend fun toEntity(dto: ModDto) = AddonEntity(
         id = dto.id,
         category = dto.category,
         rating = dto.rating,

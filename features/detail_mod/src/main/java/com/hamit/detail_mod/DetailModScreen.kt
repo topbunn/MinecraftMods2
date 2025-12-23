@@ -65,7 +65,7 @@ import com.hamit.android.ad.natives.NativeApplovinView
 import com.hamit.android.utils.getModNameFromUrl
 import com.hamit.detail_mod.dontWorkAddon.DontWorkAddonDialog
 import com.hamit.detail_mod.setupMod.SetupModDialog
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.navigation.Destination
 import com.hamit.ui.R
 import com.hamit.ui.components.CustomButton
@@ -209,7 +209,7 @@ data class DetailModScreen(private val modId: Int) : Screen, Parcelable {
 
 @Composable
 private fun FileButtons(
-    mod: ModEntity?,
+    mod: AddonEntity?,
     onClickMod: (path: String) -> Unit,
     onClickAddonNotWork: () -> Unit,
 ) {
@@ -246,7 +246,7 @@ private fun FileButtons(
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun SupportVersions(
-    mod: ModEntity?
+    mod: AddonEntity?
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -290,7 +290,7 @@ private fun SupportVersionItem(value: String, actualVersion: Boolean = false) {
 
 @Composable
 private fun TitleWithDescr(
-    mod: ModEntity?,
+    mod: AddonEntity?,
     descriptionTextExpand: Boolean,
     descriptionImageExpand: Boolean,
     onClickSwitchDescriptionImage: () -> Unit,
@@ -392,7 +392,7 @@ private fun TitleWithDescr(
 }
 
 @Composable
-private fun Preview(mod: ModEntity) {
+private fun Preview(mod: AddonEntity) {
     val context = LocalContext.current
     val request = remember(mod.image) {
         ImageRequest.Builder(context)
@@ -427,7 +427,7 @@ private fun ButtonInstruction(navigator: Navigator) {
 
 @Composable
 private fun Header(
-    mod: ModEntity?,
+    mod: AddonEntity?,
     onClickChangeFavorite: () -> Unit
 ) {
     Row(

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ConfigEntity(
+data class PropertyEntity(
     val isAdEnabled: Boolean,
     val applovinOpen: String?,
     val applovinInter: String?,

@@ -11,10 +11,10 @@ import retrofit2.http.Streaming
 import retrofit2.http.Url
 import com.hamit.android.utils.receiveLanguageFromDevice
 import com.hamit.data.api.dto.mods.AppInfoDto
-import com.hamit.domain.entity.IssueEntity
+import com.hamit.domain.entity.ProblemEntity
 import com.hamit.data.api.dto.mods.GetModsResponse
 import com.hamit.data.api.dto.mods.ModDto
-import com.hamit.domain.entity.mod.ModType
+import com.hamit.domain.entity.addon.AddonType
 
 interface ModsApi {
 
@@ -23,7 +23,7 @@ interface ModsApi {
     suspend fun downloadFile(@Url url: String): ResponseBody
 
     @POST("/v1/apps/{id}/issue")
-    suspend fun createIssue(@Path("id") id: Int, @Body issue: IssueEntity)
+    suspend fun createIssue(@Path("id") id: Int, @Body issue: ProblemEntity)
 
     @GET("/v1/apps/{appId}/mod/{status}")
     suspend fun getMods(
@@ -31,7 +31,7 @@ interface ModsApi {
         @Path("status") status: String = "actived",
         @Header("Language") language: String = receiveLanguageFromDevice(),
         @Query("q") q: String,
-        @Query("category") category: ModType?,
+        @Query("category") category: AddonType?,
         @Query("sort_key") sortKey: String,
         @Query("skip") skip: Int,
         @Query("take") take: Int,

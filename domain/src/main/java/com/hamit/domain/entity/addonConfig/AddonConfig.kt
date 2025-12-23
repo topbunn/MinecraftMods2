@@ -1,6 +1,6 @@
-package com.hamit.domain.entity.modConfig
+package com.hamit.domain.entity.addonConfig
 
-data class ModConfig(
+data class AddonConfig(
     val applovinSdkKey: String,
     val metricKey: String,
     val applicationId: String,

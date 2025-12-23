@@ -1,6 +1,6 @@
 package com.hamit.main
 
-import com.hamit.domain.entity.mod.ModType
+import com.hamit.domain.entity.addon.AddonType
 import com.hamit.ui.R
 
 enum class ModTypeUi(val titleRes: Int) {
@@ -13,10 +13,10 @@ enum class ModTypeUi(val titleRes: Int) {
 
     fun toModSortType() = when(this){
         ModTypeUi.ALL -> null
-        ModTypeUi.ADDON -> ModType.ADDON
-        ModTypeUi.MAPS -> ModType.WORLD
-        ModTypeUi.TEXTURE -> ModType.TEXTURE_PACK
-        ModTypeUi.SKINS -> ModType.SKIN_PACK
+        ModTypeUi.ADDON -> AddonType.ADDON
+        ModTypeUi.MAPS -> AddonType.WORLD
+        ModTypeUi.TEXTURE -> AddonType.TEXTURE_PACK
+        ModTypeUi.SKINS -> AddonType.SKIN_PACK
     }
 
 }

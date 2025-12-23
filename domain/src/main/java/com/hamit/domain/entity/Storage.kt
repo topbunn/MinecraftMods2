@@ -1,6 +1,6 @@
 package com.hamit.domain.entity
 
-interface KeyValueStorage {
+interface Storage {
 
     suspend fun save(key: StorageKeys, value: String)
 

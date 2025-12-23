@@ -17,14 +17,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.hamit.android.ad.natives.NativeAdCoordinator
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 
 sealed class AddonsListItem {
-    data class AddonItem(val mod: ModEntity) : AddonsListItem()
+    data class AddonItem(val mod: AddonEntity) : AddonsListItem()
     object AdItem : AddonsListItem()
 }
 
-fun buildAddonList(addons: List<ModEntity>): List<AddonsListItem> {
+fun buildAddonList(addons: List<AddonEntity>): List<AddonsListItem> {
     val result = ArrayList<AddonsListItem>()
     addons.forEachIndexed { index, addon ->
         result += AddonsListItem.AddonItem(addon)
@@ -38,14 +38,14 @@ fun buildAddonList(addons: List<ModEntity>): List<AddonsListItem> {
 
 @Composable
 fun AddonsList(
-    addons: List<ModEntity>,
+    addons: List<AddonEntity>,
     listState: LazyListState,
     modifier: Modifier = Modifier,
     isLoading: Boolean,
     isError: Boolean,
     isEndList: Boolean,
-    onClickFavorite: (ModEntity) -> Unit,
-    onClickAddon: (ModEntity) -> Unit,
+    onClickFavorite: (AddonEntity) -> Unit,
+    onClickAddon: (AddonEntity) -> Unit,
     onLoadMore: () -> Unit
 ) {
     val shouldLoadMore = remember {

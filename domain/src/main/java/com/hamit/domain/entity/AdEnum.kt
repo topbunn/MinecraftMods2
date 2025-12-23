@@ -1,5 +1,5 @@
 package com.hamit.domain.entity
 
-enum class AdType{
+enum class AdEnum{
     NATIVE, INTER
 }

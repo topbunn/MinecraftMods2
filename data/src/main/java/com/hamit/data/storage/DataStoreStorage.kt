@@ -8,12 +8,12 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import com.hamit.domain.entity.KeyValueStorage
+import com.hamit.domain.entity.Storage
 import com.hamit.domain.entity.StorageKeys
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "storage")
 
-class DataStoreStorage(private val context: Context) : KeyValueStorage {
+class DataStoreStorage(private val context: Context) : Storage {
 
     override suspend fun save(key: StorageKeys, value: String) {
         context.dataStore.edit {

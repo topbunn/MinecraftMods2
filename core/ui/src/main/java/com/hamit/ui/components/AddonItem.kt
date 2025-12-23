@@ -35,14 +35,14 @@ import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.ui.theme.AppColors
 import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.R
 
 @Composable
-fun AddonItem(addon: ModEntity, onClickFavorite: () -> Unit, onClickAddon: () -> Unit) {
+fun AddonItem(addon: AddonEntity, onClickFavorite: () -> Unit, onClickAddon: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

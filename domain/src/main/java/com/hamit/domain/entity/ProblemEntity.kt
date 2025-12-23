@@ -1,6 +1,6 @@
 package com.hamit.domain.entity
 
-data class IssueEntity(
+data class ProblemEntity(
     val text: String,
     val email: String
 )

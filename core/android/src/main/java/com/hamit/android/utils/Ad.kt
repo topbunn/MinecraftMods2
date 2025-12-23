@@ -2,17 +2,17 @@ package com.hamit.android.utils
 
 import android.util.Log
 import org.koin.java.KoinJavaComponent.inject
-import com.hamit.domain.entity.AdType
-import com.hamit.domain.entity.AdType.*
-import com.hamit.domain.entity.modConfig.ModConfigProvider
+import com.hamit.domain.entity.AdEnum
+import com.hamit.domain.entity.AdEnum.*
+import com.hamit.domain.entity.addonConfig.AddonConfigProvider
 import kotlin.random.Random
 
-fun AdType.isShow(): Boolean {
-    val configProvider: ModConfigProvider by inject(ModConfigProvider::class.java)
+fun AdEnum.isShow(): Boolean {
+    val configProvider: AddonConfigProvider by inject(AddonConfigProvider::class.java)
     val config = configProvider.getConfig()
     val percent = when (this) {
-        NATIVE -> config.percentShowNativeAd
-        INTER -> config.percentShowInterAd
+        com.hamit.domain.entity.NATIVE -> config.percentShowNativeAd
+        com.hamit.domain.entity.INTER -> config.percentShowInterAd
     }
 
     val randomValue = Random.nextInt(100)

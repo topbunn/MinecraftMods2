@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.hamit.android.BuildConfig
 import com.hamit.android.utils.AppLocation
-import com.hamit.domain.entity.ConfigEntity
+import com.hamit.domain.entity.PropertyEntity
 
 object NativeAdCoordinator {
 
@@ -16,7 +16,7 @@ object NativeAdCoordinator {
         NONE, APPLOVIN, YANDEX
     }
 
-    fun init(context: Context, location: AppLocation, config: ConfigEntity) {
+    fun init(context: Context, location: AppLocation, config: PropertyEntity) {
         if (isInitialized) return
         if (!config.isAdEnabled) return
 

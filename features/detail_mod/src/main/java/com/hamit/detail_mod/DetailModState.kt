@@ -1,9 +1,9 @@
 package com.hamit.detail_mod
 
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 
 data class DetailModState(
-    val mod: ModEntity? = null,
+    val mod: AddonEntity? = null,
     val choiceFilePathSetup: String? = null,
     val dontWorkAddonDialogIsOpen: Boolean = false,
     val descriptionImageExpand: Boolean = false,

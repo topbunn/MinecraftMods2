@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import com.hamit.data.database.entity.FavoriteEntity
 import com.hamit.data.repository.ModRepository
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.main.MainState.MainScreenState
 
 class MainViewModel(
@@ -26,9 +26,9 @@ class MainViewModel(
 
     private var loadModsJob: Job? = null
 
-    fun changeOpenMod(mod: ModEntity?) = _state.update { it.copy(openMod = mod) }
+    fun changeOpenMod(mod: AddonEntity?) = _state.update { it.copy(openMod = mod) }
 
-    fun changeFavorite(mod: ModEntity) = screenModelScope.launch{
+    fun changeFavorite(mod: AddonEntity) = screenModelScope.launch{
         val favorite = FavoriteEntity(
             modId = mod.id,
             status = !mod.isFavorite

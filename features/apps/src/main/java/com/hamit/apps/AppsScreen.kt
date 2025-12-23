@@ -88,7 +88,7 @@ object AppsScreen : Tab, Screen {
                         state.otherApps.isNotEmpty() -> {
                             state.otherApps.forEach {
                                 item {
-                                    OtherAppItem(it.logoLink, it.name) {
+                                    OtherAppItem(it.logoLink, it.title) {
                                         viewModel.openApp(it)
                                     }
                                 }

@@ -3,25 +3,25 @@ package com.hamit.data.api.dto.mods
 import com.google.gson.annotations.SerializedName
 import com.hamit.data.BuildConfig
 import com.hamit.domain.entity.app.AppInfoEntity
-import com.hamit.domain.entity.app.AppInfoStatusType
+import com.hamit.domain.entity.app.AppInfoStatusEnum
 
 data class AppInfoDto(
     val order: Int,
     val packageName: String,
     val logo: String,
-    val status: AppInfoStatusType,
+    val status: AppInfoStatusEnum,
     val sdk: SdkInfoDto? = null,
     val translations: List<AppTranslationDto>
 )
 
 fun List<AppInfoDto>.toEntity(applicationId: String) =
-    filter { it.status == AppInfoStatusType.PUBLISHED && it.packageName != applicationId }
+    filter { it.status == AppInfoStatusEnum.PUBLISHED && it.packageName != applicationId }
         .sortedBy { it.order }
         .map {
             AppInfoEntity(
                 googlePlayLink = "https://play.google.com/store/apps/details?id=" + it.packageName,
                 logoLink = BuildConfig.BASE_URL + it.logo,
-                name = it.translations.firstOrNull()?.name ?: ""
+                title = it.translations.firstOrNull()?.name ?: ""
             )
         }
 

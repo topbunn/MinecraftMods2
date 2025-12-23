@@ -1,13 +1,13 @@
 package com.hamit.favorite
 
 import androidx.compose.foundation.lazy.LazyListState
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 
 data class FavoriteState(
-    val mods: List<ModEntity> = emptyList(),
+    val mods: List<AddonEntity> = emptyList(),
     val modListState: LazyListState = LazyListState(),
     val favoriteSize: Int? = null,
-    val openMod: ModEntity? = null,
+    val openMod: AddonEntity? = null,
     val isEndList: Boolean = false,
     val favoriteScreenState: FavoriteScreenState = FavoriteScreenState.Idle,
 ){

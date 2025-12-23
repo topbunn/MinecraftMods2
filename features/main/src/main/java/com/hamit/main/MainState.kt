@@ -1,11 +1,11 @@
 package com.hamit.main
 
 import androidx.compose.foundation.lazy.LazyListState
-import com.hamit.domain.entity.mod.ModEntity
+import com.hamit.domain.entity.addon.AddonEntity
 
 data class MainState(
-    val mods: List<ModEntity> = emptyList(),
-    val openMod: ModEntity? = null,
+    val mods: List<AddonEntity> = emptyList(),
+    val openMod: AddonEntity? = null,
     val search: String = "",
     val modListState: LazyListState = LazyListState(),
     val modSorts: List<ModSortTypeUi> = ModSortTypeUi.entries,

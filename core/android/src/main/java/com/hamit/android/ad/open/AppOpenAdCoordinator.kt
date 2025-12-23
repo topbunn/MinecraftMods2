@@ -3,7 +3,7 @@ package com.hamit.android.ad.open
 import android.app.Activity
 import com.hamit.android.BuildConfig
 import com.hamit.android.utils.AppLocation
-import com.hamit.domain.entity.ConfigEntity
+import com.hamit.domain.entity.PropertyEntity
 
 object AppOpenAdCoordinator {
 
@@ -14,7 +14,7 @@ object AppOpenAdCoordinator {
         NONE, APPLOVIN, YANDEX
     }
 
-    fun init(activity: Activity, location: AppLocation, config: ConfigEntity) {
+    fun init(activity: Activity, location: AppLocation, config: PropertyEntity) {
         if (isInitialized) return
         if (!config.isAdEnabled) return
 
