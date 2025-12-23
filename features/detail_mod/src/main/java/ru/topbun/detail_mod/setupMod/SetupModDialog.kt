@@ -28,11 +28,11 @@ import ru.topbun.detail_mod.DetailModState.DownloadModState.Loading
 import ru.topbun.detail_mod.DetailModState.DownloadModState.Success
 import ru.topbun.detail_mod.DetailModViewModel
 import ru.topbun.ui.R
-import ru.topbun.ui.components.AppButton
-import ru.topbun.ui.components.DialogWrapper
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.components.CustomButton
+import ru.topbun.ui.components.ModalWrapper
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 import java.io.File
 
 @Composable
@@ -53,7 +53,7 @@ fun SetupModDialog(
             else -> {}
         }
     }
-    DialogWrapper(
+    ModalWrapper(
         onDismissDialog = onDismissDialog,
     ) {
         Text(
@@ -61,10 +61,10 @@ fun SetupModDialog(
             text = stringResource(
                 if (savedFile != null) R.string.to_install_in_game_click_the_install else R.string.to_save_click_the_download_button
             ),
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 16.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.MEDIUM,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.MEDIUM,
         )
         Spacer(Modifier.height(16.dp))
 
@@ -72,7 +72,7 @@ fun SetupModDialog(
         val downloadButtonText = stringResource(
             if (savedFile != null) R.string.install else R.string.download
         ).plus(if (downloadState is Loading) ": ${downloadState.progress} %" else "")
-        AppButton(
+        CustomButton(
             text = downloadButtonText,
             enabled = downloadState !is Loading,
             modifier = Modifier
@@ -92,14 +92,14 @@ fun SetupModDialog(
                 modifier = Modifier.fillMaxWidth(),
                 text = buildAnnotatedString {
                     append(stringResource(R.string.the_file_is_saved_the_path))
-                    withStyle(SpanStyle(color = Colors.BUTTON_RED)) {
+                    withStyle(SpanStyle(color = AppColors.BUTTON_RED)) {
                         append(it.path)
                     }
                 },
-                style = Typography.APP_TEXT,
+                style = AppTypo.APP_TEXT,
                 fontSize = 16.sp,
-                color = Colors.GRAY,
-                fontFamily = Fonts.SF.MEDIUM,
+                color = AppColors.GRAY,
+                fontFamily = AppFonts.SF.MEDIUM,
             )
         }
     }

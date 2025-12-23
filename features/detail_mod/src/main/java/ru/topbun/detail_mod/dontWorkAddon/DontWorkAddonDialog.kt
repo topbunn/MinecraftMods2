@@ -19,18 +19,18 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import ru.topbun.detail_mod.dontWorkAddon.DontWorkAddonState.DontWorkScreenState
 import ru.topbun.ui.R
-import ru.topbun.ui.components.AppButton
-import ru.topbun.ui.components.AppTextField
-import ru.topbun.ui.components.DialogWrapper
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.components.CustomButton
+import ru.topbun.ui.components.CustomTextField
+import ru.topbun.ui.components.ModalWrapper
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 @Composable
 fun Screen.DontWorkAddonDialog(
     onDismissDialog: () -> Unit
 ) {
-    DialogWrapper(onDismissDialog) {
+    ModalWrapper(onDismissDialog) {
         val context = LocalContext.current
         val viewModel = koinScreenModel<DontWorkAddonViewModel>()
         val state by viewModel.state.collectAsState()
@@ -52,33 +52,33 @@ fun Screen.DontWorkAddonDialog(
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.describe_your_problem),
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 16.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.MEDIUM,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.MEDIUM,
         )
         Spacer(Modifier.height(16.dp))
-        AppTextField(
+        CustomTextField(
             value = state.email,
-            background = Colors.BLACK_BG,
+            background = AppColors.BLACK_BG,
             placeholder = stringResource(R.string.email),
             onValueChange = { viewModel.changeEmail(it) }
         )
         Spacer(Modifier.height(10.dp))
-        AppTextField(
+        CustomTextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(150.dp),
             alignment = Alignment.Top,
             singleLine = false,
-            background = Colors.BLACK_BG,
+            background = AppColors.BLACK_BG,
             value = state.message,
             placeholder = stringResource(R.string.type_message),
             onValueChange = { if (it.length < 1024) viewModel.changeMessage(it) }
         )
         Spacer(Modifier.height(16.dp))
         val buttonEnabled by viewModel.buttonEnabled.collectAsState()
-        AppButton(
+        CustomButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),

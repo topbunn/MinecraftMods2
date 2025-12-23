@@ -3,12 +3,12 @@ package ru.topbun.ui.theme
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 
-object Typography {
+object AppTypo {
 
     val APP_TEXT = TextStyle(
-        fontFamily = Fonts.SF.SEMI_BOLD,
+        fontFamily = AppFonts.SF.SEMI_BOLD,
         fontSize = 14.sp,
-        color = Colors.GRAY
+        color = AppColors.GRAY
     )
 
 }

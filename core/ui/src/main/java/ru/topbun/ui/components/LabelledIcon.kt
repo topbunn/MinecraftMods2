@@ -11,28 +11,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 @Composable
-fun IconWithButton(value: String, icon: Int) {
+fun LabelledIcon(valueLabel: String, iconRes: Int) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         Icon(
             modifier = Modifier.size(20.dp),
-            painter = painterResource(icon),
+            painter = painterResource(iconRes),
             contentDescription = null,
-            tint = Colors.WHITE
+            tint = AppColors.WHITE
         )
         Text(
-            text = value,
-            style = Typography.APP_TEXT,
+            text = valueLabel,
+            style = AppTypo.APP_TEXT,
             fontSize = 15.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.MEDIUM,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.MEDIUM,
         )
     }
 }

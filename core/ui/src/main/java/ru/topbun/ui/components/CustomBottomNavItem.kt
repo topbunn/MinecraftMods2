@@ -15,48 +15,55 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 @Composable
-fun RowScope.BottomNavigationItem(
-    tab: Tab,
+fun RowScope.CustomBottomNavItem(
+    itemTab: Tab,
 ) {
-    val tabNavigator = LocalTabNavigator.current
-    val selected = tabNavigator.current == tab
-    val interaction = remember { MutableInteractionSource() }
+    val navigator = LocalTabNavigator.current
+    val isSelected = navigator.current == itemTab
+    val touchSource = remember { MutableInteractionSource() }
+
     Column(
         modifier = Modifier
             .weight(1f)
-            .clickable(indication = null, interactionSource = interaction) {
-                tabNavigator.current = tab
+            .clickable(
+                indication = null,
+                interactionSource = touchSource
+            ) {
+                navigator.current = itemTab
             },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val color = if(selected) MaterialTheme.colorScheme.primary else Colors.WHITE.copy(0.5f)
-        tab.options.icon?.let {
+        val tintColor =
+            if (isSelected) MaterialTheme.colorScheme.primary
+            else AppColors.WHITE.copy(0.5f)
+
+        itemTab.options.icon?.let { iconPainter ->
             Icon(
                 modifier = Modifier.size(24.dp),
-                painter = it,
-                contentDescription = tab.options.title,
-                tint = color
+                painter = iconPainter,
+                contentDescription = itemTab.options.title,
+                tint = tintColor
             )
         }
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = tab.options.title,
-            style = Typography.APP_TEXT,
-            fontSize = 14.sp,
-            color = color,
-            fontFamily = Fonts.SF.SEMI_BOLD,
-        )
 
+        Spacer(modifier = Modifier.height(4.dp))
+
+        Text(
+            text = itemTab.options.title,
+            style = AppTypo.APP_TEXT,
+            fontSize = 14.sp,
+            color = tintColor,
+            fontFamily = AppFonts.SF.SEMI_BOLD,
+        )
     }
 }

@@ -7,18 +7,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 
-@SuppressLint("ModifierFactoryUnreferencedReceiver")
 @Composable
-fun Modifier.noRippleClickable(onClick: () -> Unit): Modifier = clickable(
+fun Modifier.clickableEmpty(onAction: () -> Unit): Modifier = clickable(
     interactionSource = remember { MutableInteractionSource() },
     indication = null,
-    onClick = onClick
+    onClick = onAction
 )
 
-@SuppressLint("ModifierFactoryUnreferencedReceiver")
 @Composable
-fun Modifier.rippleClickable(onClick: () -> Unit): Modifier = clickable(
+fun Modifier.clickableRipple(onAction: () -> Unit): Modifier = clickable(
     interactionSource = remember { MutableInteractionSource() },
     indication = null,
-    onClick = onClick
+    onClick = onAction
 )

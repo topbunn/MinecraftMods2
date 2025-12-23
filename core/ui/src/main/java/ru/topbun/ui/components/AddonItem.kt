@@ -31,48 +31,46 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.ImageLoader
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import coil3.util.DebugLogger
 import ru.topbun.domain.entity.mod.ModEntity
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 import ru.topbun.ui.R
 
 @Composable
-fun ModItem(mod: ModEntity, onClickFavorite: () -> Unit, onClickMod: () -> Unit) {
+fun AddonItem(addon: ModEntity, onClickFavorite: () -> Unit, onClickAddon: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
-            .background(Colors.GRAY_BG)
-            .clickable { onClickMod() }
+            .background(AppColors.GRAY_BG)
+            .clickable { onClickAddon() }
             .padding(10.dp),
     ) {
         val context = LocalContext.current
 
-        val request = remember(mod.image) {
+        val imageRequest = remember(addon.image) {
             ImageRequest.Builder(context)
-                .data(mod.image)
+                .data(addon.image)
                 .crossfade(false)
-                .memoryCacheKey(mod.image)
-                .diskCacheKey(mod.image)
+                .memoryCacheKey(addon.image)
+                .diskCacheKey(addon.image)
                 .build()
         }
 
-        Box(contentAlignment = Alignment.Center){
+        Box(contentAlignment = Alignment.Center) {
             var isLoading by remember { mutableStateOf(true) }
             AsyncImage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1.7f)
                     .clip(RoundedCornerShape(6.dp)),
-                model = request,
-                contentDescription = "image mod",
+                model = imageRequest,
+                contentDescription = "image addon",
                 contentScale = ContentScale.Crop,
                 onState = {
                     if (it !is AsyncImagePainter.State.Loading){
@@ -83,42 +81,50 @@ fun ModItem(mod: ModEntity, onClickFavorite: () -> Unit, onClickMod: () -> Unit)
                     }
                 }
             )
-            if (isLoading){
+            if (isLoading) {
                 CircularProgressIndicator(
-                    color = Colors.WHITE,
+                    color = AppColors.WHITE,
                     strokeWidth = 2.5.dp,
                     modifier = Modifier.size(24.dp)
                 )
             }
         }
+
         Spacer(Modifier.height(10.dp))
+
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Text(
                 modifier = Modifier.weight(1f),
-                text = mod.title,
-                style = Typography.APP_TEXT,
+                text = addon.title,
+                style = AppTypo.APP_TEXT,
                 fontSize = 18.sp,
-                color = Colors.WHITE,
-                fontFamily = Fonts.SF.BOLD,
+                color = AppColors.WHITE,
+                fontFamily = AppFonts.SF.BOLD,
                 maxLines = 1,
                 overflow = TextOverflow.Clip,
             )
             Image(
-                modifier = Modifier.size(24.dp).rippleClickable{ onClickFavorite() },
-                painter = painterResource(if (mod.isFavorite) R.drawable.ic_mine_heart_filled else R.drawable.ic_mine_heart_stroke),
-                contentDescription = "status favorite mod",
+                modifier = Modifier
+                    .size(24.dp)
+                    .clickableRipple { onClickFavorite() },
+                painter = painterResource(
+                    if (addon.isFavorite) R.drawable.ic_mine_like_filled
+                    else R.drawable.ic_mine_like_stroke
+                ),
+                contentDescription = "status favorite addon",
             )
         }
+
         Spacer(Modifier.height(10.dp))
+
         Text(
-            text = mod.description,
-            style = Typography.APP_TEXT,
+            text = addon.description,
+            style = AppTypo.APP_TEXT,
             fontSize = 15.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.MEDIUM,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.MEDIUM,
             maxLines = 4,
             overflow = TextOverflow.Ellipsis,
         )
-
     }
 }

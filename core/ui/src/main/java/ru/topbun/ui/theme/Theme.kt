@@ -3,7 +3,7 @@ package ru.topbun.ui.theme
 import androidx.compose.material3.lightColorScheme
 
 val colorScheme = lightColorScheme(
-    background = Colors.BLACK_BG,
-    primary = Colors.PRIMARY,
-    secondary = Colors.PRIMARY,
+    background = AppColors.BLACK_BG,
+    primary = AppColors.PRIMARY,
+    secondary = AppColors.PRIMARY,
 )

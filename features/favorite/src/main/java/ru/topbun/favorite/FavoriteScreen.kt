@@ -42,9 +42,9 @@ import ru.topbun.navigation.SharedScreen
 import ru.topbun.ui.R
 import ru.topbun.ui.components.ModItem
 import ru.topbun.ui.components.PaginationLoader
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 object FavoriteScreen : Tab, Screen {
 
@@ -52,7 +52,7 @@ object FavoriteScreen : Tab, Screen {
         @Composable get() = TabOptions(
             0U,
             stringResource(R.string.tabs_favorite),
-            painterResource(R.drawable.ic_tabs_favorite)
+            painterResource(R.drawable.ic_nav_favorite)
         )
 
 
@@ -61,7 +61,7 @@ object FavoriteScreen : Tab, Screen {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Colors.BLACK_BG)
+                .background(AppColors.BLACK_BG)
         ) {
             val context = LocalContext.current
             val parentNavigator = LocalNavigator.currentOrThrow.parent
@@ -138,18 +138,18 @@ private fun Header(state: FavoriteState) {
     ) {
         Text(
             text = stringResource(R.string.favorite),
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 22.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.BOLD,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.BOLD,
         )
         Spacer(Modifier.width(4.dp))
         Text(
             text = "(${state.favoriteSize ?: "0"})",
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 22.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.BOLD,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.BOLD,
         )
     }
 }

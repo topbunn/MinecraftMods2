@@ -14,21 +14,21 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ProgressBar(
-    progress: Float,
+fun CustomProgressBar(
+    value: Float,
     modifier: Modifier = Modifier,
-    trackColor: Color = Color(0xff464646),
+    bgColor: Color = Color(0xff464646),
     color: Color = MaterialTheme.colorScheme.primary,
     shape: Shape = RoundedCornerShape(2.dp),
 ) {
     Box(
         modifier = modifier
-            .background(trackColor)
+            .background(bgColor)
             .clip(shape)
     ){
         Box(
             modifier = Modifier.fillMaxHeight()
-                .fillMaxWidth(progress)
+                .fillMaxWidth(value)
                 .background(color)
                 .clip(shape)
         )

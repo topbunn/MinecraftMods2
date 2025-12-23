@@ -22,34 +22,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
-
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 @Composable
-fun AppDropDown(
-    value: String,
-    items: List<String>,
+fun CustomDropDown(
+    selectedValue: String,
+    options: List<String>,
     modifier: Modifier = Modifier,
-    onValueChange: (String) -> Unit,
+    onSelectionChanged: (String) -> Unit,
 ) {
 
-    var mExpanded by remember { mutableStateOf(false) }
+    var isExpanded by remember { mutableStateOf(false) }
 
     Column {
         Row(
-            modifier = modifier.clickable { mExpanded = !mExpanded },
+            modifier = modifier.clickable { isExpanded = !isExpanded },
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = value,
-                style = Typography.APP_TEXT,
+                text = selectedValue,
+                style = AppTypo.APP_TEXT,
                 fontSize = 15.sp,
-                color = Colors.GRAY,
-                fontFamily = Fonts.SF.MEDIUM
+                color = AppColors.GRAY,
+                fontFamily = AppFonts.SF.MEDIUM
             )
+
             Icon(
-                modifier = Modifier.rotate(if (mExpanded) 180f else 0f),
+                modifier = Modifier.rotate(if (isExpanded) 180f else 0f),
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Choice type",
                 tint = MaterialTheme.colorScheme.primary
@@ -57,27 +57,27 @@ fun AppDropDown(
         }
 
         DropdownMenu(
-            containerColor = Colors.GRAY_BG,
-            expanded = mExpanded,
-            onDismissRequest = { mExpanded = false },
+            containerColor = AppColors.GRAY_BG,
+            expanded = isExpanded,
+            onDismissRequest = { isExpanded = false },
             modifier = Modifier
                 .width(100.dp)
                 .heightIn(max = 500.dp)
         ) {
-            items.forEach {
+            options.forEach { option ->
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = it,
-                            style = Typography.APP_TEXT,
+                            text = option,
+                            style = AppTypo.APP_TEXT,
                             fontSize = 14.sp,
-                            color = Colors.GRAY,
-                            fontFamily = Fonts.SF.MEDIUM
+                            color = AppColors.GRAY,
+                            fontFamily = AppFonts.SF.MEDIUM
                         )
                     },
                     onClick = {
-                        onValueChange(it)
-                        mExpanded = false
+                        onSelectionChanged(option)
+                        isExpanded = false
                     }
                 )
             }

@@ -5,12 +5,12 @@ import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.Navigator
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import ru.topbun.navigation.SharedScreen
-import ru.topbun.ui.theme.Colors
+import ru.topbun.ui.theme.AppColors
 
 @Composable
-fun App() {
-    val initScreen = rememberScreen(SharedScreen.SplashScreen)
-    val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(Colors.BLACK_BG, false)
-    Navigator(initScreen)
+fun Root() {
+    val firstScreen = rememberScreen(SharedScreen.SplashScreen)
+    val systemUi = rememberSystemUiController()
+    systemUi.setStatusBarColor(AppColors.BLACK_BG, false)
+    Navigator(firstScreen)
 }

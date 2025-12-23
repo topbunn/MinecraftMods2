@@ -34,11 +34,11 @@ import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import ru.topbun.ui.R
-import ru.topbun.ui.components.AppButton
+import ru.topbun.ui.components.CustomButton
 import ru.topbun.ui.components.OtherAppItem
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 object AppsScreen : Tab, Screen {
 
@@ -46,7 +46,7 @@ object AppsScreen : Tab, Screen {
         @Composable get() = TabOptions(
             2U,
             stringResource(R.string.tabs_apps),
-            painterResource(R.drawable.ic_tabs_apps)
+            painterResource(R.drawable.ic_nav_apps)
         )
 
     @Composable
@@ -54,7 +54,7 @@ object AppsScreen : Tab, Screen {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Colors.BLACK_BG)
+                .background(AppColors.BLACK_BG)
                 .padding(top = 20.dp)
         ) {
             val context = LocalContext.current
@@ -102,7 +102,7 @@ object AppsScreen : Tab, Screen {
                                     contentAlignment = Alignment.Center
                                 ) {
                                     CircularProgressIndicator(
-                                        color = Colors.WHITE,
+                                        color = AppColors.WHITE,
                                         strokeWidth = 2.5.dp,
                                         modifier = Modifier.size(24.dp)
                                     )
@@ -112,7 +112,7 @@ object AppsScreen : Tab, Screen {
 
                         state.screenState is AppsState.AppsStateScreen.Error -> {
                             item(span = { GridItemSpan(3) }) {
-                                AppButton(
+                                CustomButton(
                                     modifier = Modifier.fillMaxWidth(),
                                     text = stringResource(R.string.retry)
                                 ) { viewModel.loadApps() }
@@ -124,11 +124,11 @@ object AppsScreen : Tab, Screen {
                                 Text(
                                     modifier = Modifier.fillMaxWidth(),
                                     text = stringResource(R.string.the_list_is_empty),
-                                    style = Typography.APP_TEXT,
+                                    style = AppTypo.APP_TEXT,
                                     fontSize = 18.sp,
-                                    color = Colors.GRAY,
+                                    color = AppColors.GRAY,
                                     textAlign = TextAlign.Center,
-                                    fontFamily = Fonts.SF.BOLD,
+                                    fontFamily = AppFonts.SF.BOLD,
                                 )
                             }
                         }
@@ -149,10 +149,10 @@ object AppsScreen : Tab, Screen {
         ) {
             Text(
                 text = stringResource(R.string.you_might_like),
-                style = Typography.APP_TEXT,
+                style = AppTypo.APP_TEXT,
                 fontSize = 22.sp,
-                color = Colors.GRAY,
-                fontFamily = Fonts.SF.BOLD,
+                color = AppColors.GRAY,
+                fontFamily = AppFonts.SF.BOLD,
             )
         }
     }

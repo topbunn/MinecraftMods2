@@ -36,12 +36,12 @@ import ru.topbun.main.MainState.MainScreenState.Error
 import ru.topbun.main.MainState.MainScreenState.Loading
 import ru.topbun.navigation.SharedScreen
 import ru.topbun.ui.R
-import ru.topbun.ui.components.AppDropDown
-import ru.topbun.ui.components.AppTextField
+import ru.topbun.ui.components.CustomDropDown
+import ru.topbun.ui.components.CustomTextField
 import ru.topbun.ui.components.ModsList
-import ru.topbun.ui.components.TabRow
-import ru.topbun.ui.components.noRippleClickable
-import ru.topbun.ui.theme.Colors
+import ru.topbun.ui.components.CustomTabRow
+import ru.topbun.ui.components.clickableEmpty
+import ru.topbun.ui.theme.AppColors
 
 object MainScreen : Tab, Screen {
 
@@ -49,7 +49,7 @@ object MainScreen : Tab, Screen {
         @Composable get() = TabOptions(
             0U,
             stringResource(R.string.tabs_main),
-            painterResource(R.drawable.ic_tabs_main)
+            painterResource(R.drawable.ic_nav_main)
         )
 
     @Composable
@@ -57,7 +57,7 @@ object MainScreen : Tab, Screen {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Colors.BLACK_BG)
+                .background(AppColors.BLACK_BG)
                 .padding(top = 24.dp, start = 20.dp, end = 20.dp)
         ) {
             val navigator = LocalNavigator.currentOrThrow
@@ -150,14 +150,14 @@ private fun SortBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        TabRow(
+        CustomTabRow(
             modifier = Modifier.weight(1f),
-            items = modSorts.map { stringResource(it.stringRes) },
-            selectedIndex = modSortSelectedIndex
+            content = modSorts.map { stringResource(it.stringRes) },
+            selected = modSortSelectedIndex
         ) {
             changeModSort(it)
         }
-        AppDropDown(
+        CustomDropDown(
             value = stringResource(selectedModTypeUi.titleRes),
             items = modTypeUis.map { stringResource(it.titleRes) }
         ) { title ->
@@ -178,7 +178,7 @@ private fun TopBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        AppTextField(
+        CustomTextField(
             modifier = Modifier.weight(1f),
             value = value,
             placeholder = stringResource(R.string.search),
@@ -188,15 +188,15 @@ private fun TopBar(
                     modifier = Modifier.size(24.dp),
                     painter = painterResource(R.drawable.ic_search),
                     contentDescription = "search",
-                    tint = Colors.GRAY
+                    tint = AppColors.GRAY
                 )
             }
         )
         Image(
             modifier = Modifier
                 .size(28.dp)
-                .noRippleClickable { onClickFavorite() },
-            painter = painterResource(R.drawable.ic_mine_heart_filled),
+                .clickableEmpty { onClickFavorite() },
+            painter = painterResource(R.drawable.ic_mine_like_filled),
             contentDescription = "favorite mods",
         )
     }

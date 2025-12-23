@@ -22,8 +22,8 @@ import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import ru.topbun.navigation.SharedScreen
-import ru.topbun.ui.components.BottomNavigationItem
-import ru.topbun.ui.theme.Colors
+import ru.topbun.ui.components.CustomBottomNavItem
+import ru.topbun.ui.theme.AppColors
 
 object TabsScreen: Screen {
 
@@ -32,7 +32,7 @@ object TabsScreen: Screen {
         val mainScreen = rememberScreen(SharedScreen.MainScreen) as Tab
         TabNavigator(tab = mainScreen){
             Scaffold(
-                modifier = Modifier.Companion.background(Colors.GRAY_BG).navigationBarsPadding(),
+                modifier = Modifier.Companion.background(AppColors.GRAY_BG).navigationBarsPadding(),
                 content = {
                     Box(Modifier.Companion.fillMaxSize().padding(it)) {
                         CurrentTab()
@@ -42,21 +42,21 @@ object TabsScreen: Screen {
                     Column {
                         Spacer(
                             Modifier.Companion.fillMaxWidth().height(1.dp)
-                                .background(Colors.WHITE.copy(0.15f))
+                                .background(AppColors.WHITE.copy(0.15f))
                         )
                         Row(
                             modifier = Modifier.Companion
                                 .fillMaxWidth()
-                                .background(Colors.GRAY_BG)
+                                .background(AppColors.GRAY_BG)
                                 .padding(16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.Companion.CenterVertically
                         ) {
                             val favoriteScreen = rememberScreen(SharedScreen.FavoriteScreen) as Tab
                             val feedbackScreen = rememberScreen(SharedScreen.FeedbackScreen) as Tab
-                            BottomNavigationItem(mainScreen)
-                            BottomNavigationItem(favoriteScreen)
-                            BottomNavigationItem(feedbackScreen)
+                            CustomBottomNavItem(mainScreen)
+                            CustomBottomNavItem(favoriteScreen)
+                            CustomBottomNavItem(feedbackScreen)
                         }
                     }
                 }

@@ -15,41 +15,49 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.topbun.ui.R
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 @Composable
 fun PaginationLoader(
-    isEndList: Boolean,
+    isEndOfList: Boolean,
     isLoading: Boolean,
     isError: Boolean,
-    isEmpty: Boolean,
-    key: Any,
-    onLoad: () -> Unit
+    isEmptyList: Boolean,
+    loadKey: Any,
+    onLoadMore: () -> Unit
 ) {
-    when{
+    when {
         isError -> {
-            AppButton(
+            CustomButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(R.string.retry)
-            ) { onLoad() }
+                label = stringResource(R.string.retry)
+            ) { onLoadMore() }
         }
-        !isEndList && isLoading -> {
-            Box(modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp), contentAlignment = Alignment.Center) {
+
+        !isEndOfList && isLoading -> {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 24.dp),
+                contentAlignment = Alignment.Center
+            ) {
                 CircularProgressIndicator(
-                    color = Colors.WHITE,
+                    color = AppColors.WHITE,
                     strokeWidth = 2.5.dp,
                     modifier = Modifier.size(24.dp)
                 )
             }
         }
-        !isEndList && !isLoading -> {
-            LaunchedEffect(key) {
-                onLoad()
+
+        !isEndOfList && !isLoading -> {
+            LaunchedEffect(loadKey) {
+                onLoadMore()
             }
         }
-        !isLoading && !isError && isEmpty -> {
+
+        !isLoading && !isError && isEmptyList -> {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -59,11 +67,11 @@ fun PaginationLoader(
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = stringResource(R.string.the_list_is_empty),
-                    style = Typography.APP_TEXT,
+                    style = AppTypo.APP_TEXT,
                     fontSize = 18.sp,
-                    color = Colors.GRAY,
+                    color = AppColors.GRAY,
                     textAlign = TextAlign.Center,
-                    fontFamily = Fonts.SF.BOLD,
+                    fontFamily = AppFonts.SF.BOLD,
                 )
             }
         }

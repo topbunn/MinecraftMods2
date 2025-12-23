@@ -18,26 +18,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import ru.topbun.android.ad.natives.NativeAdCoordinator
-import ru.topbun.ui.theme.Colors
+import ru.topbun.ui.theme.AppColors
 
 @Composable
-fun DialogWrapper(
-    onDismissDialog: () -> Unit,
+fun ModalWrapper(
+    onDialogDismiss: () -> Unit,
     modifier: Modifier = Modifier
         .heightIn(max = 700.dp)
         .padding(horizontal = 20.dp)
-        .background(color = Colors.GRAY_BG, RoundedCornerShape(8.dp))
+        .background(color = AppColors.GRAY_BG, RoundedCornerShape(8.dp))
         .padding(horizontal = 16.dp, vertical = 20.dp)
         .clipToBounds(),
     content: @Composable ColumnScope.() -> Unit
 ) {
     Dialog(
-        onDismissRequest = onDismissDialog,
+        onDismissRequest = onDialogDismiss,
         properties = DialogProperties(
             usePlatformDefaultWidth = false
         )
     ) {
-        val context = LocalContext.current
+        val localContext = LocalContext.current
+
         Column(
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
@@ -47,8 +48,13 @@ fun DialogWrapper(
                 verticalArrangement = Arrangement.SpaceBetween,
                 content = content
             )
-            Box(Modifier.padding(horizontal = 20.dp)) {
-                NativeAdCoordinator.show(Modifier.fillMaxWidth())
+
+            Box(
+                modifier = Modifier.padding(horizontal = 20.dp)
+            ) {
+                NativeAdCoordinator.show(
+                    Modifier.fillMaxWidth()
+                )
             }
         }
     }

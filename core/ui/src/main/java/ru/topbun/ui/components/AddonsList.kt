@@ -19,88 +19,93 @@ import androidx.compose.ui.unit.dp
 import ru.topbun.android.ad.natives.NativeAdCoordinator
 import ru.topbun.domain.entity.mod.ModEntity
 
-sealed class ModsListItem {
-    data class ModItem(val mod: ModEntity) : ModsListItem()
-    object AdItem : ModsListItem()
+sealed class AddonsListItem {
+    data class AddonItem(val mod: ModEntity) : AddonsListItem()
+    object AdItem : AddonsListItem()
 }
 
-fun buildList(mods: List<ModEntity>): List<ModsListItem> {
-    val result = ArrayList<ModsListItem>()
-    mods.forEachIndexed { index, mod ->
-        result += ModsListItem.ModItem(mod)
+fun buildAddonList(addons: List<ModEntity>): List<AddonsListItem> {
+    val result = ArrayList<AddonsListItem>()
+    addons.forEachIndexed { index, addon ->
+        result += AddonsListItem.AddonItem(addon)
 
         if ((index + 1) % 3 == 0) {
-            result += ModsListItem.AdItem
+            result += AddonsListItem.AdItem
         }
     }
     return result
 }
 
 @Composable
-fun ModsList(
-    mods: List<ModEntity>,
-    state: LazyListState,
+fun AddonsList(
+    addons: List<ModEntity>,
+    listState: LazyListState,
     modifier: Modifier = Modifier,
     isLoading: Boolean,
     isError: Boolean,
     isEndList: Boolean,
     onClickFavorite: (ModEntity) -> Unit,
-    onClickMod: (ModEntity) -> Unit,
-    onLoad: () -> Unit
+    onClickAddon: (ModEntity) -> Unit,
+    onLoadMore: () -> Unit
 ) {
     val shouldLoadMore = remember {
         derivedStateOf {
-            val lastVisible = state.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
-            lastVisible >= mods.lastIndex - 3
+            val lastVisibleIndex = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
+            lastVisibleIndex >= addons.lastIndex - 3
         }
     }
 
-    var loadingTriggered by remember { mutableStateOf(false) }
+    var loadTriggered by remember { mutableStateOf(false) }
 
     LaunchedEffect(shouldLoadMore.value, isLoading, isEndList) {
-        if (shouldLoadMore.value && !isLoading && !isEndList && !loadingTriggered) {
-            loadingTriggered = true
-            onLoad()
+        if (shouldLoadMore.value && !isLoading && !isEndList && !loadTriggered) {
+            loadTriggered = true
+            onLoadMore()
         }
 
         if (!isLoading) {
-            loadingTriggered = false
+            loadTriggered = false
         }
     }
 
     LazyColumn(
-        state = state,
+        state = listState,
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(10.dp),
         contentPadding = PaddingValues(vertical = 10.dp)
     ) {
         items(
-            items = buildList(mods),
+            items = buildAddonList(addons),
             key = { it.hashCode() }
-        ) { item ->
+        ) { listItem ->
 
-            when (item) {
-                is ModsListItem.ModItem -> {
-                    ModItem(
-                        mod = item.mod,
-                        onClickFavorite = { onClickFavorite(item.mod) },
-                        onClickMod = { onClickMod(item.mod) }
+            when (listItem) {
+                is AddonsListItem.AddonItem -> {
+                    AddonItem(
+                        addon = listItem.mod,
+                        onClickFavorite = { onClickFavorite(listItem.mod) },
+                        onClickAddon = { onClickAddon(listItem.mod) }
                     )
                 }
 
-                ModsListItem.AdItem -> {
-                    NativeAdCoordinator.show(Modifier.fillMaxWidth().heightIn(min = 300.dp))
+                AddonsListItem.AdItem -> {
+                    NativeAdCoordinator.show(
+                        Modifier
+                            .fillMaxWidth()
+                            .heightIn(min = 300.dp)
+                    )
                 }
             }
         }
+
         item {
             PaginationLoader(
                 isEndList = isEndList,
                 isLoading = isLoading,
                 isError = isError,
-                isEmpty = mods.isEmpty(),
-                key = mods.size,
-                onLoad = onLoad
+                isEmpty = addons.isEmpty(),
+                key = addons.size,
+                onLoad = onLoadMore
             )
         }
     }

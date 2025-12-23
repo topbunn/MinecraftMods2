@@ -68,14 +68,14 @@ import ru.topbun.detail_mod.setupMod.SetupModDialog
 import ru.topbun.domain.entity.mod.ModEntity
 import ru.topbun.navigation.SharedScreen
 import ru.topbun.ui.R
-import ru.topbun.ui.components.AppButton
+import ru.topbun.ui.components.CustomButton
 import ru.topbun.ui.components.IconWithButton
-import ru.topbun.ui.components.noRippleClickable
-import ru.topbun.ui.components.rippleClickable
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
-import ru.topbun.ui.utils.requestPermissions
+import ru.topbun.ui.components.clickableEmpty
+import ru.topbun.ui.components.clickableRipple
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
+import ru.topbun.ui.utils.permissions
 
 @Parcelize
 data class DetailModScreen(private val modId: Int) : Screen, Parcelable {
@@ -98,7 +98,7 @@ data class DetailModScreen(private val modId: Int) : Screen, Parcelable {
             interAdIsShown = true
         }
 
-        requestPermissions(
+        permissions(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
         )
@@ -116,10 +116,10 @@ data class DetailModScreen(private val modId: Int) : Screen, Parcelable {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Colors.GRAY_BG)
+                .background(AppColors.GRAY_BG)
                 .navigationBarsPadding()
                 .statusBarsPadding()
-                .background(Colors.BLACK_BG)
+                .background(AppColors.BLACK_BG)
         ) {
             Header(
                 mod = state.mod,
@@ -169,7 +169,7 @@ data class DetailModScreen(private val modId: Int) : Screen, Parcelable {
                 Box(Modifier.fillMaxWidth(), Alignment.Center) {
                     when (loadModState) {
                         is DetailModState.LoadModState.Error -> {
-                            AppButton(
+                            CustomButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = stringResource(R.string.retry)
                             ) { viewModel.loadMod() }
@@ -178,7 +178,7 @@ data class DetailModScreen(private val modId: Int) : Screen, Parcelable {
                         DetailModState.LoadModState.Loading -> {
                             Box(Modifier.padding(vertical = 20.dp)){
                                 CircularProgressIndicator(
-                                    color = Colors.WHITE,
+                                    color = AppColors.WHITE,
                                     strokeWidth = 2.5.dp,
                                     modifier = Modifier.size(24.dp)
                                 )
@@ -219,7 +219,7 @@ private fun FileButtons(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             mod.files.forEach {
-                AppButton(
+                CustomButton(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(48.dp),
@@ -230,12 +230,12 @@ private fun FileButtons(
                     onClickMod(it)
                 }
             }
-            AppButton(
+            CustomButton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(40.dp),
                 text = stringResource(R.string.addon_don_t_work),
-                contentColor = Colors.WHITE,
+                contentColor = AppColors.WHITE,
                 containerColor = Color(0xffE03131),
             ) {
                 onClickAddonNotWork()
@@ -254,10 +254,10 @@ private fun SupportVersions(
     ) {
         Text(
             text = stringResource(R.string.supported_versions),
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 18.sp,
-            color = Colors.WHITE,
-            fontFamily = Fonts.SF.SEMI_BOLD,
+            color = AppColors.WHITE,
+            fontFamily = AppFonts.SF.SEMI_BOLD,
         )
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(4.dp),
@@ -277,24 +277,16 @@ private fun SupportVersionItem(value: String, actualVersion: Boolean = false) {
     Text(
         modifier = Modifier
             .background(
-                if (actualVersion) MaterialTheme.colorScheme.primary else Colors.WHITE,
+                if (actualVersion) MaterialTheme.colorScheme.primary else AppColors.WHITE,
                 RoundedCornerShape(6.dp)
             )
             .padding(horizontal = 10.dp, vertical = 6.dp),
         text = value,
-        style = Typography.APP_TEXT,
+        style = AppTypo.APP_TEXT,
         fontSize = 15.sp,
-        color = Colors.BLACK_BG,
-        fontFamily = Fonts.SF.SEMI_BOLD,
+        color = AppColors.BLACK_BG,
+        fontFamily = AppFonts.SF.SEMI_BOLD,
     )
-}
-
-@Composable
-private fun Metrics(mod: ModEntity) {
-    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        IconWithButton(mod.rating.toString(), R.drawable.ic_star)
-        IconWithButton(mod.commentCounts.toString(), R.drawable.ic_comment)
-    }
 }
 
 @Composable
@@ -308,34 +300,34 @@ private fun TitleWithDescr(
     mod?.let { mod ->
         Text(
             text = mod.title,
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 24.sp,
-            color = Colors.WHITE,
-            fontFamily = Fonts.SF.BOLD,
+            color = AppColors.WHITE,
+            fontFamily = AppFonts.SF.BOLD,
         )
         Spacer(Modifier.height(10.dp))
         Text(
             text = if (descriptionTextExpand) mod.description else mod.description.take(300) + "...",
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 14.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.MEDIUM,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.MEDIUM,
         )
         Spacer(Modifier.height(10.dp))
         if (mod.description.length > 300) {
             Box(Modifier.fillMaxWidth(), Alignment.CenterEnd) {
                 Row(
                     modifier = Modifier
-                        .rippleClickable() { onClickSwitchDescriptionText() }
+                        .clickableRipple() { onClickSwitchDescriptionText() }
                         .padding(6.dp),
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     Text(
                         text = stringResource(if (descriptionTextExpand) R.string.collapse else R.string.expand),
-                        style = Typography.APP_TEXT,
+                        style = AppTypo.APP_TEXT,
                         fontSize = 15.sp,
                         color = MaterialTheme.colorScheme.primary,
-                        fontFamily = Fonts.SF.BOLD,
+                        fontFamily = AppFonts.SF.BOLD,
                     )
                     Icon(
                         modifier = Modifier.rotate(if (descriptionTextExpand) 180f else 0f),
@@ -377,16 +369,16 @@ private fun TitleWithDescr(
             Box(Modifier.fillMaxWidth(), Alignment.CenterEnd) {
                 Row(
                     modifier = Modifier
-                        .rippleClickable() { onClickSwitchDescriptionImage() }
+                        .clickableRipple() { onClickSwitchDescriptionImage() }
                         .padding(6.dp),
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     Text(
                         text = stringResource(if (descriptionImageExpand) R.string.collapse else R.string.expand),
-                        style = Typography.APP_TEXT,
+                        style = AppTypo.APP_TEXT,
                         fontSize = 15.sp,
                         color = MaterialTheme.colorScheme.primary,
-                        fontFamily = Fonts.SF.BOLD,
+                        fontFamily = AppFonts.SF.BOLD,
                     )
                     Icon(
                         modifier = Modifier.rotate(if (descriptionImageExpand) 180f else 0f),
@@ -424,7 +416,7 @@ private fun Preview(mod: ModEntity) {
 @Composable
 private fun ButtonInstruction(navigator: Navigator) {
     val instructionScreen = rememberScreen(SharedScreen.InstructionScreen)
-    AppButton(
+    CustomButton(
         text = stringResource(R.string.instructions),
         modifier = Modifier
             .fillMaxWidth()
@@ -442,7 +434,7 @@ private fun Header(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Colors.GRAY_BG)
+            .background(AppColors.GRAY_BG)
             .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
@@ -451,25 +443,25 @@ private fun Header(
         Icon(
             modifier = Modifier
                 .height(20.dp)
-                .noRippleClickable { navigator.pop() },
+                .clickableEmpty { navigator.pop() },
             painter = painterResource(R.drawable.ic_back),
             contentDescription = "button back",
             tint = MaterialTheme.colorScheme.primary
         )
         Text(
             text = stringResource(R.string.installation),
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 18.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.BOLD,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.BOLD,
         )
 
         Image(
             modifier = Modifier
                 .size(24.dp)
-                .noRippleClickable { onClickChangeFavorite() },
+                .clickableEmpty { onClickChangeFavorite() },
             painter = painterResource(
-                if (mod?.isFavorite ?: false) R.drawable.ic_mine_heart_filled else R.drawable.ic_mine_heart_stroke
+                if (mod?.isFavorite ?: false) R.drawable.ic_mine_like_filled else R.drawable.ic_mine_like_stroke
             ),
             contentDescription = "favorite mods",
         )

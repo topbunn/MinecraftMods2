@@ -38,9 +38,9 @@ import org.koin.compose.koinInject
 import ru.topbun.android.ad.inter.InterAdInitializer
 import ru.topbun.domain.entity.LogoAppRes
 import ru.topbun.navigation.SharedScreen
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 object SplashScreen : Screen {
 
@@ -50,7 +50,7 @@ object SplashScreen : Screen {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Colors.BLACK_BG)
+                .background(AppColors.BLACK_BG)
                 .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -61,9 +61,9 @@ object SplashScreen : Screen {
 
             Text(
                 text = stringResource(applicationName),
-                style = Typography.APP_TEXT,
+                style = AppTypo.APP_TEXT,
                 fontSize = 32.sp,
-                fontFamily = Fonts.SF.BOLD,
+                fontFamily = AppFonts.SF.BOLD,
                 textAlign = TextAlign.Center
             )
             Spacer(Modifier.height(30.dp))

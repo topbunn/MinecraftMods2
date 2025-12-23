@@ -3,9 +3,8 @@ package ru.topbun.ui.theme
 import androidx.compose.ui.graphics.Color
 import org.koin.mp.KoinPlatform.getKoin
 import ru.topbun.domain.entity.modConfig.ModConfigProvider
-import ru.topbun.ui.BuildConfig
 
-object Colors {
+object AppColors {
 
     private val configProvider: ModConfigProvider
         get() = getKoin().get()

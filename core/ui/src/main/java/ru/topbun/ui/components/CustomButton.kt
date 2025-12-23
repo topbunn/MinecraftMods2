@@ -13,43 +13,45 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Typography.APP_TEXT
-
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppTypo.APP_TEXT
 @Composable
-fun AppButton(
+fun CustomButton(
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    loading: Boolean = false,
-    containerColor: Color = MaterialTheme.colorScheme.primary,
-    contentColor: Color = Colors.WHITE,
-    text: String,
-    onClick: () -> Unit
+    isEnabled: Boolean = true,
+    isLoading: Boolean = false,
+    backgroundColor: Color = MaterialTheme.colorScheme.primary,
+    foregroundColor: Color = AppColors.WHITE,
+    label: String,
+    onAction: () -> Unit
 ) {
     Button(
         modifier = modifier,
         colors = ButtonDefaults.buttonColors(
-            containerColor = containerColor,
-            disabledContainerColor = containerColor.copy(0.5f)
+            containerColor = backgroundColor,
+            disabledContainerColor = backgroundColor.copy(0.5f)
         ),
-        enabled = enabled || loading,
+        enabled = isEnabled || isLoading,
         shape = RoundedCornerShape(8.dp),
         onClick = {
-            onClick()
+            onAction()
         }
     ) {
-        if (loading){
-            CircularProgressIndicator(color = Colors.WHITE, strokeWidth = 2.5.dp, modifier = Modifier.size(20.dp))
+        if (isLoading) {
+            CircularProgressIndicator(
+                color = AppColors.WHITE,
+                strokeWidth = 2.5.dp,
+                modifier = Modifier.size(20.dp)
+            )
         } else {
             Text(
-                text = text,
+                text = label,
                 style = APP_TEXT,
                 fontSize = 16.sp,
-                color = contentColor,
+                color = foregroundColor,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
         }
-
     }
 }

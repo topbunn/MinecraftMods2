@@ -14,10 +14,10 @@ import ru.topbun.android.ad.natives.NativeAdCoordinator
 import ru.topbun.android.ad.open.OpenAdInitializer
 import ru.topbun.data.repository.LocationRepository
 import ru.topbun.data.repository.ModRepository
-import ru.topbun.ui.App
-import ru.topbun.ui.theme.Colors
+import ru.topbun.ui.Root
+import ru.topbun.ui.theme.AppColors
 import ru.topbun.ui.theme.colorScheme
-import ru.topbun.ui.utils.requestPermissions
+import ru.topbun.ui.utils.permissions
 
 class MainActivity : ComponentActivity() {
 
@@ -31,9 +31,9 @@ class MainActivity : ComponentActivity() {
         initOpenAd()
         enableEdgeToEdge()
         setContent {
-            requestPermissions(Manifest.permission.POST_NOTIFICATIONS)
-            MaterialTheme(colorScheme.copy(primary = Colors.PRIMARY)) {
-                App()
+            permissions(Manifest.permission.POST_NOTIFICATIONS)
+            MaterialTheme(colorScheme.copy(primary = AppColors.PRIMARY)) {
+                Root()
             }
         }
     }

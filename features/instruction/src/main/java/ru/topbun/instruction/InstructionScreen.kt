@@ -32,10 +32,10 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ru.topbun.android.ad.natives.NativeAdCoordinator
 import ru.topbun.ui.R
-import ru.topbun.ui.components.noRippleClickable
-import ru.topbun.ui.theme.Colors
-import ru.topbun.ui.theme.Fonts
-import ru.topbun.ui.theme.Typography
+import ru.topbun.ui.components.clickableEmpty
+import ru.topbun.ui.theme.AppColors
+import ru.topbun.ui.theme.AppFonts
+import ru.topbun.ui.theme.AppTypo
 
 object InstructionScreen : Screen {
 
@@ -44,10 +44,10 @@ object InstructionScreen : Screen {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Colors.GRAY_BG)
+                .background(AppColors.GRAY_BG)
                 .navigationBarsPadding()
                 .statusBarsPadding()
-                .background(Colors.BLACK_BG)
+                .background(AppColors.BLACK_BG)
         ) {
             val context = LocalContext.current
             val navigator = LocalNavigator.currentOrThrow
@@ -84,10 +84,10 @@ private fun ButtonInstruction(text: String, onClick: () -> Unit) {
         Text(
             modifier = Modifier.weight(1f),
             text = text,
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 16.sp,
-            color = Colors.WHITE,
-            fontFamily = Fonts.SF.SEMI_BOLD,
+            color = AppColors.WHITE,
+            fontFamily = AppFonts.SF.SEMI_BOLD,
         )
         Spacer(Modifier.width(10.dp))
         Icon(
@@ -96,7 +96,7 @@ private fun ButtonInstruction(text: String, onClick: () -> Unit) {
                 .rotate(180f),
             painter = painterResource(R.drawable.ic_back),
             contentDescription = "arrow go to instruction",
-            tint = Colors.WHITE
+            tint = AppColors.WHITE
         )
     }
 }
@@ -106,7 +106,7 @@ private fun Header() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Colors.GRAY_BG)
+            .background(AppColors.GRAY_BG)
             .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
@@ -115,17 +115,17 @@ private fun Header() {
         Icon(
             modifier = Modifier
                 .height(20.dp)
-                .noRippleClickable { navigator.pop() },
+                .clickableEmpty { navigator.pop() },
             painter = painterResource(R.drawable.ic_back),
             contentDescription = "button back",
             tint = MaterialTheme.colorScheme.primary
         )
         Text(
             text = stringResource(R.string.instructions),
-            style = Typography.APP_TEXT,
+            style = AppTypo.APP_TEXT,
             fontSize = 18.sp,
-            color = Colors.GRAY,
-            fontFamily = Fonts.SF.BOLD,
+            color = AppColors.GRAY,
+            fontFamily = AppFonts.SF.BOLD,
         )
         Box {}
     }
