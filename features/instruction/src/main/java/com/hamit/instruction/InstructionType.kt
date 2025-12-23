@@ -1,0 +1,10 @@
+package com.hamit.instruction
+
+import com.hamit.ui.R
+
+enum class InstructionType(val titleRes: Int) {
+
+    ADDON(R.string.instructions_for_the_installation_of_addons_and_textures),
+    WORLD(R.string.instructions_for_the_installation_of_worlds)
+
+}

@@ -1,2 +1,0 @@
-package ru.topbun.domain
-

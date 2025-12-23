@@ -1,4 +1,4 @@
-import ru.topbun.buildSrc.PropertiesController
+import com.hamit.buildSrc.PropertiesController
 
 plugins {
     alias(libs.plugins.android.application)

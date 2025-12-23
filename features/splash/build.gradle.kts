@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.topbun.splash"
+    namespace = "com.hamit.splash"
     compileSdk = 36
 
     defaultConfig {

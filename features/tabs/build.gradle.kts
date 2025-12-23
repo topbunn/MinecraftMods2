@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.topbun.tabs"
+    namespace = "com.hamit.tabs"
     compileSdk = 36
 
     defaultConfig {

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.topbun.navigation"
+    namespace = "com.hamit.navigation"
     compileSdk = 36
 
     defaultConfig {

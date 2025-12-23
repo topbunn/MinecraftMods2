@@ -1,4 +1,4 @@
-package ru.topbun.buildSrc
+package com.hamit.buildSrc
 
 data class AddonConfig(
     val applovinSdkKey: String,

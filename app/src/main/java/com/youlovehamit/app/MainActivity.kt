@@ -9,15 +9,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.getKoin
-import ru.topbun.android.ad.inter.InterAdInitializer
-import ru.topbun.android.ad.natives.NativeAdCoordinator
-import ru.topbun.android.ad.open.OpenAdInitializer
-import ru.topbun.data.repository.LocationRepository
-import ru.topbun.data.repository.ModRepository
-import ru.topbun.ui.Root
-import ru.topbun.ui.theme.AppColors
-import ru.topbun.ui.theme.colorScheme
-import ru.topbun.ui.utils.permissions
+import com.hamit.android.ad.inter.InterAdInitializer
+import com.hamit.android.ad.natives.NativeAdCoordinator
+import com.hamit.android.ad.open.OpenAdInitializer
+import com.hamit.data.repository.LocationRepository
+import com.hamit.data.repository.ModRepository
+import com.hamit.ui.Root
+import com.hamit.ui.theme.AppColors
+import com.hamit.ui.theme.colorScheme
+import com.hamit.ui.utils.permissions
 
 class MainActivity : ComponentActivity() {
 

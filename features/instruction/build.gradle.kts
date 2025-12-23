@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.topbun.instruction"
+    namespace = "com.hamit.instruction"
     compileSdk = 36
 
     defaultConfig {

@@ -1,37 +1,37 @@
 package com.youlovehamit.app.app
 
 import cafe.adriel.voyager.core.registry.ScreenRegistry
-import ru.topbun.apps.AppsScreen
-import ru.topbun.detail_mod.DetailModScreen
-import ru.topbun.favorite.FavoriteScreen
-import ru.topbun.instruction.InstructionScreen
-import ru.topbun.main.MainScreen
-import ru.topbun.navigation.SharedScreen
-import ru.topbun.splash.SplashScreen
-import ru.topbun.tabs.TabsScreen
+import com.hamit.apps.AppsScreen
+import com.hamit.detail_mod.DetailModScreen
+import com.hamit.favorite.FavoriteScreen
+import com.hamit.instruction.InstructionScreen
+import com.hamit.main.MainScreen
+import com.hamit.navigation.Destination
+import com.hamit.splash.SplashScreen
+import com.hamit.tabs.TabsScreen
 
 fun initSharedScreens() {
     ScreenRegistry {
-        register<SharedScreen.TabsScreen> {
+        register<com.hamit.navigation.SharedScreen.TabsScreen> {
             TabsScreen
         }
-        register<SharedScreen.SplashScreen> {
+        register<com.hamit.navigation.SharedScreen.SplashScreen> {
             SplashScreen
         }
-        register<SharedScreen.MainScreen> {
+        register<com.hamit.navigation.SharedScreen.MainScreen> {
             MainScreen
         }
-        register<SharedScreen.InstructionScreen> {
+        register<com.hamit.navigation.SharedScreen.InstructionScreen> {
             InstructionScreen
         }
-        register<SharedScreen.FeedbackScreen> {
+        register<Destination.FeedbackScreen> {
             AppsScreen
         }
-        register<SharedScreen.FavoriteScreen> {
+        register<com.hamit.navigation.SharedScreen.FavoriteScreen> {
             FavoriteScreen
         }
-        register<SharedScreen.DetailModScreen> { provider ->
-            DetailModScreen(provider.modId)
+        register<Destination.AddonScreen> { provider ->
+            DetailModScreen(provider.addonId)
         }
     }
 }

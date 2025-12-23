@@ -1,4 +1,4 @@
-package ru.topbun.buildSrc
+package com.hamit.buildSrc
 
 import java.io.File
 import java.util.*
