@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.rustore.sdk.review.RuStoreReviewManagerFactory
 import com.hamit.android.utils.getModNameFromUrl
-import com.hamit.data.DownloadState
+import com.hamit.data.DataProcessState
 import com.hamit.data.database.entity.FavoriteEntity
 import com.hamit.data.repository.ModRepository
 import com.hamit.detail_mod.DetailModState.DownloadModState
@@ -78,9 +78,9 @@ class DetailModViewModel(
                 result.onSuccess { downloadFlow ->
                     downloadFlow.collect {
                         val downloadState = when (val state = it) {
-                            is DownloadState.Downloading -> DownloadModState.Loading(state.progress)
-                            is DownloadState.Failed -> DownloadModState.Error("Download error. Check Internet connection")
-                            DownloadState.Finished -> DownloadModState.Success
+                            is DataProcessState.Running -> DownloadModState.Loading(state.progress)
+                            is DataProcessState.Interrupted -> DownloadModState.Error("Download error. Check Internet connection")
+                            DataProcessState.Completed -> DownloadModState.Success
                         }
                         _state.update { it.copy(downloadState = downloadState) }
                     }

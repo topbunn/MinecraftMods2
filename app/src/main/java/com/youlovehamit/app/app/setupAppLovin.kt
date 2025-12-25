@@ -7,7 +7,7 @@ import com.applovin.sdk.AppLovinSdk
 import com.applovin.sdk.AppLovinSdkInitializationConfiguration
 import com.youlovehamit.app.BuildConfig
 
-fun Context.initAppLovin() {
+fun Context.setupAppLovin() {
     val initConfig = AppLovinSdkInitializationConfiguration.builder(BuildConfig.APPLOVIN_SDK_KEY)
         .setMediationProvider(AppLovinMediationProvider.MAX)
         .build()

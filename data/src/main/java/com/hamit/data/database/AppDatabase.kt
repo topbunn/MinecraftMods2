@@ -4,22 +4,22 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.hamit.data.database.dao.FavoriteDao
-import com.hamit.data.database.entity.FavoriteEntity
+import com.hamit.data.database.dao.RecordAccessObject
+import com.hamit.data.database.entity.LocalRecord
 
 @Database(
     entities = [
-        FavoriteEntity::class
+        LocalRecord::class
     ], version = 1
 )
 abstract class AppDatabase: RoomDatabase() {
 
-    abstract fun favoriteDao(): FavoriteDao
+    abstract fun recordAccess(): RecordAccessObject
 
     companion object{
 
         private var INSTANCE: AppDatabase? = null
-        private const val DB_NAME = "mcpe_mods.db"
+        private const val DB_NAME = "internal_core.db"
 
         fun getInstance(context: Context) = INSTANCE ?: synchronized(this){
             INSTANCE ?: run { buildInstance(context).also { INSTANCE = it } }

@@ -1,5 +1,5 @@
 package com.hamit.data.api.dto.mods
 
-data class ModTranslationDto(
+data class EntryTranslationDto(
     val description: String
 )

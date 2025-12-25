@@ -1,11 +1,11 @@
 package com.hamit.data.di
 
-import org.koin.dsl.module
 import com.hamit.data.api.ApiFactory
-import com.hamit.data.api.LocationApi
-import com.hamit.data.api.ModsApi
+import com.hamit.data.api.CoreNetworkService
+import com.hamit.data.api.RegionService
+import org.koin.dsl.module
 
 internal val apiModule = module {
-    single<ModsApi>{ ApiFactory.modsApi }
-    single<LocationApi>{ ApiFactory.locationApi }
+    single<CoreNetworkService> { ApiFactory.coreNetworkService }
+    single<RegionService> { ApiFactory.regionApi }
 }

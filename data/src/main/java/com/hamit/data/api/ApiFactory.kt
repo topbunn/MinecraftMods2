@@ -1,11 +1,11 @@
 package com.hamit.data.api
 
+import com.hamit.data.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
-import com.hamit.data.BuildConfig
 
 object ApiFactory {
 
@@ -24,7 +24,7 @@ object ApiFactory {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val modsApi = retrofit.create<ModsApi>()
-    val locationApi = retrofit.create<LocationApi>()
+    val coreNetworkService = retrofit.create<CoreNetworkService>()
+    val regionApi = retrofit.create<RegionService>()
 
 }

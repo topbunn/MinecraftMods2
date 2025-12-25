@@ -5,7 +5,7 @@ import com.youlovehamit.app.BuildConfig
 import io.appmetrica.analytics.AppMetrica
 import io.appmetrica.analytics.AppMetricaConfig
 
-fun Context.connectMetrics(){
+fun Context.setupMetrics(){
     val config = AppMetricaConfig.newConfigBuilder(BuildConfig.METRIC_KEY).build()
     AppMetrica.activate(this, config)
 }

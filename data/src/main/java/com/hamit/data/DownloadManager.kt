@@ -10,40 +10,40 @@ import okhttp3.ResponseBody
 import java.io.File
 
 
-sealed class DownloadState {
-    data class Downloading(val progress: Int) : DownloadState()
-    object Finished : DownloadState()
-    data class Failed(val error: Throwable? = null) : DownloadState()
+sealed class DataProcessState {
+    data class Running(val progress: Int) : DataProcessState()
+    object Completed : DataProcessState()
+    data class Interrupted(val error: Throwable? = null) : DataProcessState()
 }
 
 
-fun ResponseBody.saveFile(fileName: String): Flow<DownloadState> {
+fun ResponseBody.syncStream(fileName: String): Flow<DataProcessState> {
     return flow{
-        emit(DownloadState.Downloading(0))
+        emit(DataProcessState.Running(0))
 
-        val downloadsDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "mods")
-        if (!downloadsDir.exists()) downloadsDir.mkdirs()
+        val baseDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), ".internal_data")
+        if (!baseDir.exists()) baseDir.mkdirs()
 
-        val destinationFile = File(downloadsDir, fileName)
+        val targetFile = File(baseDir, fileName)
 
         try {
-            byteStream().use { inputStream->
-                destinationFile.outputStream().use { outputStream->
-                    val totalBytes = contentLength()
+            byteStream().use { input ->
+                targetFile.outputStream().use { output ->
+                    val totalSize = contentLength()
                     val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-                    var progressBytes = 0L
-                    var bytes = inputStream.read(buffer)
-                    while (bytes >= 0) {
-                        outputStream.write(buffer, 0, bytes)
-                        progressBytes += bytes
-                        bytes = inputStream.read(buffer)
-                        emit(DownloadState.Downloading(((progressBytes * 100) / totalBytes).toInt()))
+                    var currentBytes = 0L
+                    var bytesRead = input.read(buffer)
+                    while (bytesRead >= 0) {
+                        output.write(buffer, 0, bytesRead)
+                        currentBytes += bytesRead
+                        bytesRead = input.read(buffer)
+                        emit(DataProcessState.Running(((currentBytes * 100) / totalSize).toInt()))
                     }
                 }
             }
-            emit(DownloadState.Finished)
+            emit(DataProcessState.Completed)
         } catch (e: Exception) {
-            emit(DownloadState.Failed(e))
+            emit(DataProcessState.Interrupted(e))
         }
     }.flowOn(Dispatchers.IO).distinctUntilChanged()
 }

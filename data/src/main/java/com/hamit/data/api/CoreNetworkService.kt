@@ -1,5 +1,11 @@
 package com.hamit.data.api
 
+import com.hamit.android.utils.receiveLanguageFromDevice
+import com.hamit.data.api.dto.mods.EntryDto
+import com.hamit.data.api.dto.mods.EntryListResponse
+import com.hamit.data.api.dto.mods.SystemConfigDto
+import com.hamit.domain.entity.ProblemEntity
+import com.hamit.domain.entity.addon.AddonType
 import okhttp3.ResponseBody
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -9,24 +15,18 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.Streaming
 import retrofit2.http.Url
-import com.hamit.android.utils.receiveLanguageFromDevice
-import com.hamit.data.api.dto.mods.AppInfoDto
-import com.hamit.domain.entity.ProblemEntity
-import com.hamit.data.api.dto.mods.GetModsResponse
-import com.hamit.data.api.dto.mods.ModDto
-import com.hamit.domain.entity.addon.AddonType
 
-interface ModsApi {
+interface CoreNetworkService {
 
     @Streaming
     @GET
-    suspend fun downloadFile(@Url url: String): ResponseBody
+    suspend fun streamResource(@Url url: String): ResponseBody
 
     @POST("/v1/apps/{id}/issue")
-    suspend fun createIssue(@Path("id") id: Int, @Body issue: ProblemEntity)
+    suspend fun reportIssue(@Path("id") id: Int, @Body issue: ProblemEntity)
 
     @GET("/v1/apps/{appId}/mod/{status}")
-    suspend fun getMods(
+    suspend fun fetchDataList(
         @Path("appId") appId: Int,
         @Path("status") status: String = "actived",
         @Header("Language") language: String = receiveLanguageFromDevice(),
@@ -36,22 +36,22 @@ interface ModsApi {
         @Query("skip") skip: Int,
         @Query("take") take: Int,
         @Query("sort_value") sortValue: String = "asc",
-    ): GetModsResponse
+    ): EntryListResponse
 
     @GET("/v1/mod/{id}")
-    suspend fun getMod(
+    suspend fun fetchDetails(
         @Path("id") id: Int,
         @Header("Language") language: String = receiveLanguageFromDevice()
-    ): ModDto
+    ): EntryDto
 
     @GET("/v1/apps")
-    suspend fun getApps(
+    suspend fun fetchApplicationList(
         @Header("Language") language: String = receiveLanguageFromDevice()
-    ): List<AppInfoDto>
+    ): List<SystemConfigDto>
 
     @GET("/v1/apps/{id}")
-    suspend fun loadConfig(
+    suspend fun loadConfiguration(
         @Path("id") id: Int,
-    ): AppInfoDto
+    ): SystemConfigDto
 
 }

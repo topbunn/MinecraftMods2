@@ -1,15 +1,15 @@
 package com.hamit.data.mappers
 
 import android.content.Context
-import com.hamit.data.api.dto.mods.ModDto
+import com.hamit.data.api.dto.mods.EntryDto
 import com.hamit.data.database.AppDatabase
 import com.hamit.domain.entity.addon.AddonEntity
 
-class ModMapper(context: Context){
+class EntityTransformer(context: Context) {
 
-    private val dao = AppDatabase.getInstance(context).favoriteDao()
+    private val recordAccess = AppDatabase.getInstance(context).recordAccess()
 
-    suspend fun toEntity(dto: ModDto) = AddonEntity(
+    suspend fun toEntity(dto: EntryDto) = AddonEntity(
         id = dto.id,
         category = dto.category,
         rating = dto.rating,
@@ -20,11 +20,12 @@ class ModMapper(context: Context){
         image = dto.image.mapImageLink(),
         files = dto.files,
         versions = dto.versions.map { it.version },
-        isFavorite = dao.getFavorite(dto.id)?.status ?: false
+        isFavorite = recordAccess.getRecord(dto.id)?.isActive ?: false
     )
 
-    suspend fun toEntity(dtoList: List<ModDto>) = dtoList.map { toEntity(it) }
+    suspend fun toEntity(dtoList: List<EntryDto>) = dtoList.map { toEntity(it) }
 
-    private fun String.mapImageLink() = if (this.take(2) == "/u") com.hamit.data.BuildConfig.BASE_URL + this else this
+    private fun String.mapImageLink() =
+        if (this.take(2) == "/u") com.hamit.data.BuildConfig.BASE_URL + this else this
 
 }

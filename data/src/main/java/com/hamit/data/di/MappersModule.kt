@@ -1,8 +1,8 @@
 package com.hamit.data.di
 
 import org.koin.dsl.module
-import com.hamit.data.mappers.ModMapper
+import com.hamit.data.mappers.EntityTransformer
 
 internal val mappersModule = module {
-    factory<ModMapper> { ModMapper(context = get()) }
+    factory<EntityTransformer> { EntityTransformer(context = get()) }
 }

@@ -5,10 +5,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-fun App.initKoin() {
+fun App.setupKoin() {
     startKoin {
         androidLogger()
-        androidContext(this@initKoin)
+        androidContext(this@setupKoin)
         modules(appModule)
     }
 }

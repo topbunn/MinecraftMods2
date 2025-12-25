@@ -4,15 +4,14 @@ import android.app.Application
 
 class App : Application() {
 
-
     override fun onCreate() {
         super.onCreate()
-        initKoin()
-        initSharedScreens()
-        initAppLovin()
-        initYandex()
-        initFirebasePush()
-        connectMetrics()
+        setupKoin()
+        setupSharedScreens()
+        setupAppLovin()
+        setupYandex()
+        setupFirebasePush()
+        setupMetrics()
     }
 
 }

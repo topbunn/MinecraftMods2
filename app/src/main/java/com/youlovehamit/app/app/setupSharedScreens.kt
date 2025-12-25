@@ -10,7 +10,7 @@ import com.hamit.navigation.Destination
 import com.hamit.splash.SplashScreen
 import com.hamit.tabs.TabsScreen
 
-fun initSharedScreens() {
+fun setupSharedScreens() {
     ScreenRegistry {
         register<com.hamit.navigation.SharedScreen.TabsScreen> {
             TabsScreen

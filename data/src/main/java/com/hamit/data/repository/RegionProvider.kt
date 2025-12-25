@@ -3,23 +3,23 @@ package com.hamit.data.repository
 import android.content.Context
 import android.telephony.TelephonyManager
 import com.hamit.android.utils.AppLocation
-import com.hamit.data.api.LocationApi
+import com.hamit.data.api.RegionService
 import kotlinx.coroutines.withTimeoutOrNull
 
-class LocationRepository(
+class RegionProvider(
     private val context: Context,
-    private val api: LocationApi,
+    private val service: RegionService,
 ) {
 
-    suspend fun getLocation(): AppLocation {
-        val country = getCountryFromIpWithTimeout()
-        return country?.countryCodeToLocationAd() ?: getLocationFromTelephony(context)
+    suspend fun getAssignedRegion(): AppLocation {
+        val region = getZoneFromNetworkWithTimeout()
+        return region?.zoneCodeToRegionType() ?: getRegionFromTelephony(context)
     }
 
-    private suspend fun getCountryFromIpWithTimeout() = withTimeoutOrNull(3000) {
+    private suspend fun getZoneFromNetworkWithTimeout() = withTimeoutOrNull(3000) {
         try {
-            val response = api.getInfo()
-            response.countryCode?.lowercase()
+            val response = service.fetchRegionData()
+            response.zoneCode?.lowercase()
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -27,7 +27,7 @@ class LocationRepository(
     }
 
 
-    private fun getLocationFromTelephony(context: Context): AppLocation {
+    private fun getRegionFromTelephony(context: Context): AppLocation {
         val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         val simCountry = telephonyManager.simCountryIso?.lowercase()
         val networkCountry = telephonyManager.networkCountryIso?.lowercase()
@@ -40,9 +40,9 @@ class LocationRepository(
             else -> "other"
         }
 
-        return country.countryCodeToLocationAd()
+        return country.zoneCodeToRegionType()
     }
 
-    private fun String?.countryCodeToLocationAd() =
+    private fun String?.zoneCodeToRegionType() =
         if (this == "ru") AppLocation.RU else AppLocation.OTHER
 }

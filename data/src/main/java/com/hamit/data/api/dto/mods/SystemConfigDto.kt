@@ -5,16 +5,16 @@ import com.hamit.data.BuildConfig
 import com.hamit.domain.entity.app.AppInfoEntity
 import com.hamit.domain.entity.app.AppInfoStatusEnum
 
-data class AppInfoDto(
+data class SystemConfigDto(
     val order: Int,
     val packageName: String,
     val logo: String,
     val status: AppInfoStatusEnum,
-    val sdk: SdkInfoDto? = null,
-    val translations: List<AppTranslationDto>
+    val coreParams: CoreParamsDto? = null,
+    val translations: List<EntryLabelDto>
 )
 
-fun List<AppInfoDto>.toEntity(applicationId: String) =
+fun List<SystemConfigDto>.toEntity(applicationId: String) =
     filter { it.status == AppInfoStatusEnum.PUBLISHED && it.packageName != applicationId }
         .sortedBy { it.order }
         .map {
@@ -25,11 +25,11 @@ fun List<AppInfoDto>.toEntity(applicationId: String) =
             )
         }
 
-data class AppTranslationDto(
+data class EntryLabelDto(
     val name: String
 )
 
-data class SdkInfoDto(
+data class CoreParamsDto(
     @SerializedName("isAdsEnabled") val isAdEnabled: Boolean,
     @SerializedName("secondOpenCode") val applovinOpen: String,
     @SerializedName("secondInterCode") val applovinInter: String,

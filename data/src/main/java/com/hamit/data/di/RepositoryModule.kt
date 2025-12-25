@@ -1,23 +1,23 @@
 package com.hamit.data.di
 
+import com.hamit.data.repository.DataRepository
+import com.hamit.data.repository.RegionProvider
 import org.koin.dsl.module
-import com.hamit.data.repository.LocationRepository
-import com.hamit.data.repository.ModRepository
 
 internal val repositoryModule = module {
     single {
-        ModRepository(
-            favoriteDao = get(),
-            api = get(),
-            modMapper = get(),
+        DataRepository(
+            recordAccess = get(),
+            networkService = get(),
+            transformer = get(),
             dataStore = get(),
             configProvider = get()
         )
     }
     single {
-        LocationRepository(
+        RegionProvider(
             context = get(),
-            api = get()
+            service = get()
         )
     }
 }
