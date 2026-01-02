@@ -2,6 +2,11 @@ package com.hamit.home
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import com.hamit.domain.entity.addon.AddonEntity
+import com.hamit.domain.entity.like.LikeEntity
+import com.hamit.domain.useCases.addon.ReceiveAddonListUseCase
+import com.hamit.domain.useCases.like.AddLikeUseCase
+import com.hamit.home.HomeState.HomeScreenState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,14 +17,11 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import com.hamit.data.database.entity.LikeEntity
-import com.hamit.data.repository.DataRepository
-import com.hamit.domain.entity.addon.AddonEntity
-import com.hamit.home.HomeState.HomeScreenState
 
 class HomeViewModel(
-    private val repo: DataRepository
-) : ScreenModel  {
+    private val addLikeUseCase: AddLikeUseCase,
+    private val receiveAddonListUseCase: ReceiveAddonListUseCase
+) : ScreenModel {
 
     private val _state = MutableStateFlow(HomeState())
     val state = _state.asStateFlow()
@@ -28,12 +30,12 @@ class HomeViewModel(
 
     fun shouldOpenAddon(mod: AddonEntity?) = _state.update { it.copy(shouldAddonOpen = mod) }
 
-    fun switchLike(mod: AddonEntity) = screenModelScope.launch{
+    fun switchLike(mod: AddonEntity) = screenModelScope.launch {
         val favorite = LikeEntity(
             addonId = mod.id,
             isActive = !mod.isLike
         )
-        repo.addLike(favorite)
+        addLikeUseCase(favorite)
         val newMods = _state.value.addons.map {
             if (it.id == favorite.addonId) it.copy(isLike = favorite.isActive) else it
         }
@@ -43,8 +45,11 @@ class HomeViewModel(
     }
 
     fun changeQuery(value: String) = _state.update { it.copy(query = value) }
-    fun changeAddonSort(selectedIndex: Int) = _state.update { it.copy(addonSortSelectedIndex = selectedIndex) }
-    fun changeSortType(addonTypeUi: AddonTypeUi) = _state.update { it.copy(selectedAddonTypeUi = addonTypeUi) }
+    fun changeAddonSort(selectedIndex: Int) =
+        _state.update { it.copy(addonSortSelectedIndex = selectedIndex) }
+
+    fun changeSortType(addonTypeUi: AddonTypeUi) =
+        _state.update { it.copy(selectedAddonTypeUi = addonTypeUi) }
 
 
     fun handlingStateChanged() {
@@ -60,15 +65,19 @@ class HomeViewModel(
 
     fun refreshMods() {
         _state.update {
-            it.copy(addons = emptyList(), homeScreenState = HomeScreenState.Idle, isAddonListEnd = false)
+            it.copy(
+                addons = emptyList(),
+                homeScreenState = HomeScreenState.Idle,
+                isAddonListEnd = false
+            )
         }
     }
 
-    fun loadMods(){
+    fun loadMods() {
         loadModsJob?.cancel()
-        loadModsJob = screenModelScope.launch{
+        loadModsJob = screenModelScope.launch {
             _state.update { it.copy(homeScreenState = HomeScreenState.Loading) }
-            val result = repo.getMods(
+            val result = receiveAddonListUseCase(
                 q = _state.value.query,
                 offset = _state.value.addons.size,
                 type = _state.value.selectedAddonTypeUi.toAddonSortType(),

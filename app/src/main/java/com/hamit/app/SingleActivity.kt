@@ -12,8 +12,10 @@ import org.koin.android.ext.android.getKoin
 import com.hamit.android.ads.interstitial.InterstitialCoordinator
 import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.android.ads.open.OpenCoordinator
-import com.hamit.data.repository.RegionProvider
-import com.hamit.data.repository.DataRepository
+import com.hamit.data.repository.RegionRepositoryImpl
+import com.hamit.data.repository.AddonRepositoryImpl
+import com.hamit.domain.useCases.config.ReceiveConfigUseCase
+import com.hamit.domain.useCases.region.ReceiveRegionUseCase
 import com.hamit.ui.Root
 import com.hamit.ui.theme.AppColors
 import com.hamit.ui.theme.colorScheme
@@ -21,13 +23,13 @@ import com.hamit.ui.utils.permissions
 
 class SingleActivity : ComponentActivity() {
 
-    private lateinit var repo: DataRepository
-    private lateinit var regionProvider: RegionProvider
+    private lateinit var receiveConfigUseCase: ReceiveConfigUseCase
+    private lateinit var receiveRegionUseCase: ReceiveRegionUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        repo = getKoin().get()
-        regionProvider = getKoin().get()
+        receiveConfigUseCase = getKoin().get()
+        receiveRegionUseCase = getKoin().get()
         initialAppOpenAd()
         enableEdgeToEdge()
         setContent {
@@ -39,8 +41,8 @@ class SingleActivity : ComponentActivity() {
     }
 
     private fun initialAppOpenAd() = lifecycleScope.launch{
-        val config = repo.receiveConfig()
-        val location = regionProvider.receiveRegion()
+        val config = receiveConfigUseCase()
+        val location = receiveRegionUseCase()
         OpenCoordinator.init(this@SingleActivity, location, config)
     }
 

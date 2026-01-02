@@ -5,6 +5,6 @@ import com.hamit.addon.AddonViewModel
 import com.hamit.addon.dontWorkAddon.DontWorkAddonViewModel
 
 val addonFeatureModule = module {
-    factory { (modId: Int) -> AddonViewModel(modId, get()) }
+    factory { (addonId: Int) -> AddonViewModel(addonId, get(), get()) }
     factory { DontWorkAddonViewModel(get()) }
 }

@@ -10,15 +10,13 @@ import androidx.core.content.FileProvider
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.google.android.play.core.review.ReviewManagerFactory
-import com.hamit.addon.AddonState.DownloadModState
 import com.hamit.addon.AddonState.DownloadModState.Idle
 import com.hamit.addon.AddonState.LoadAddonState.Error
 import com.hamit.addon.AddonState.LoadAddonState.Loading
 import com.hamit.addon.AddonState.LoadAddonState.Success
-import com.hamit.android.utills.getModNameFromUrl
-import com.hamit.data.DataProcessState
-import com.hamit.data.database.entity.LikeEntity
-import com.hamit.data.repository.DataRepository
+import com.hamit.domain.entity.like.LikeEntity
+import com.hamit.domain.useCases.addon.ReceiveAddonUseCase
+import com.hamit.domain.useCases.like.AddLikeUseCase
 import com.hamit.ui.R
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,7 +28,8 @@ import java.io.File
 
 class AddonViewModel(
     private val addonId: Int,
-    private val repo: DataRepository,
+    private val receiveAddonUseCase: ReceiveAddonUseCase,
+    private val addLikeUseCase: AddLikeUseCase,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(AddonState())
@@ -42,7 +41,7 @@ class AddonViewModel(
 
     fun loadAddon() = screenModelScope.launch {
         _state.update { it.copy(addon = null, loadAddonState = Loading) }
-        val result = repo.getMod(addonId)
+        val result = receiveAddonUseCase(addonId)
         result.onSuccess { addon ->
             _state.update { it.copy(addon = addon, loadAddonState = Success) }
         }.onFailure {
@@ -71,24 +70,24 @@ class AddonViewModel(
     }
 
     fun downloadFile() = screenModelScope.launch(CoroutineExceptionHandler { _, _ -> }) {
-        _state.value.addon?.let { mod ->
-            _state.value.pathFile?.let {
-                val result =
-                    repo.downloadFile(it, it.getModNameFromUrl(mod.category.toExtension()))
-                result.onSuccess { downloadFlow ->
-                    downloadFlow.collect {
-                        val downloadState = when (val state = it) {
-                            is DataProcessState.Running -> DownloadModState.Loading(state.progress)
-                            is DataProcessState.Interrupted -> DownloadModState.Error("Download error. Check Internet connection")
-                            DataProcessState.Completed -> DownloadModState.Success
-                        }
-                        _state.update { it.copy(downloadState = downloadState) }
-                    }
-                }.onFailure { error ->
-                    _state.update { it.copy(downloadState = DownloadModState.Error("Download error. Check Internet connection")) }
-                }
-            }
-        }
+//        _state.value.addon?.let { mod ->
+//            _state.value.pathFile?.let {
+//                val result =
+//                    repo.downloadFile(it, it.getModNameFromUrl(mod.category.toExtension()))
+//                result.onSuccess { downloadFlow ->
+//                    downloadFlow.collect {
+//                        val downloadState = when (val state = it) {
+//                            is DataProcessState.Running -> DownloadModState.Loading(state.progress)
+//                            is DataProcessState.Interrupted -> DownloadModState.Error("Download error. Check Internet connection")
+//                            DataProcessState.Completed -> DownloadModState.Success
+//                        }
+//                        _state.update { it.copy(downloadState = downloadState) }
+//                    }
+//                }.onFailure { error ->
+//                    _state.update { it.copy(downloadState = DownloadModState.Error("Download error. Check Internet connection")) }
+//                }
+//            }
+//        }
     }
 
 
@@ -157,7 +156,7 @@ class AddonViewModel(
                 addonId = mod.id,
                 isActive = !mod.isLike
             )
-            repo.addLike(newLike)
+            addLikeUseCase(newLike)
             val newAddon = mod.copy(isLike = newLike.isActive)
             _state.update { it.copy(addon = newAddon) }
         }

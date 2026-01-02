@@ -27,11 +27,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
     buildFeatures {
         compose = true
@@ -76,7 +78,6 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(project(":navigation"))
-    implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":core:ui"))
     implementation(project(":core:android"))

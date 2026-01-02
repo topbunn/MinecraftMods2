@@ -40,7 +40,6 @@ include(":features:home")
 include(":features:loader")
 include(":features:addon")
 include(":features:like")
-include(":features:apps")
 include(":features:guide")
 include(":features:dashboard")
 

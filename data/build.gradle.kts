@@ -32,11 +32,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
     buildFeatures{
         buildConfig = true
@@ -50,10 +52,11 @@ dependencies {
 
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.gson)
-    implementation(libs.converter.gson)
-    implementation(libs.retrofit)
-    implementation(libs.logging.interceptor)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.negotiation)
+    implementation(libs.ktor.kotlinx.serialization.json)
+    implementation(libs.ktor.logging.android)
 
     // Koin
     implementation(project.dependencies.platform(libs.koin.bom))

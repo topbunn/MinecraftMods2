@@ -9,6 +9,5 @@ val dataModule = module {
         mappersModule,
         repositoryModule,
         storageModule,
-
     )
 }

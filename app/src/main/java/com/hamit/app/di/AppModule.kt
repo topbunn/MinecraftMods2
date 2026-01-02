@@ -4,14 +4,15 @@ import com.hamit.app.R
 import org.koin.dsl.module
 import com.hamit.data.di.dataModule
 import com.hamit.domain.entity.AppLogoRes
-import com.hamit.domain.entity.addonConfig.AddonConfigProvider
-import com.hamit.app.AppAddonConfigProvider
+import com.hamit.domain.entity.appConfig.AppConfigProvider
+import com.hamit.app.AppAppConfigProvider
 
 val appModule = module {
-    single<AddonConfigProvider> { AppAddonConfigProvider() }
+    single<AppConfigProvider> { AppAppConfigProvider() }
     single<AppLogoRes> { AppLogoRes(R.drawable.logo) }
     includes(
         dataModule,
-        featureModule
+        featureModule,
+        useCaseModule,
     )
 }

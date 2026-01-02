@@ -31,12 +31,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.hamit.android.ads.natives.NativeCoordinator
-import kotlinx.android.parcel.Parcelize
 import com.hamit.ui.R
 import com.hamit.ui.components.clickableEmpty
 import com.hamit.ui.theme.AppColors
 import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.AppTypo
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class InstructionFragment(private val guideType: GuideType) : Screen, Parcelable {

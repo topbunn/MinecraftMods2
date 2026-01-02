@@ -2,9 +2,9 @@ package com.hamit.android.ads.interstitial
 
 import android.app.Activity
 import android.content.Context
-import com.hamit.domain.entity.PropertyEntity
+import com.hamit.domain.entity.adConfig.AdConfigEntity
 import com.hamit.android.BuildConfig
-import com.hamit.android.utills.AppLocation
+import com.hamit.domain.entity.AppLocation
 import com.hamit.android.utills.isShow
 import com.hamit.domain.entity.AdEnum
 
@@ -17,7 +17,7 @@ object InterstitialCoordinator {
         NONE, APPLOVIN, YANDEX
     }
 
-    fun init(context: Context, location: AppLocation, config: PropertyEntity) {
+    fun init(context: Context, location: AppLocation, config: AdConfigEntity) {
         if (initialized) return
         if (!config.isAdEnabled) return
 

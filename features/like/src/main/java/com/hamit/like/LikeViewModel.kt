@@ -2,9 +2,11 @@ package com.hamit.like
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.hamit.data.database.entity.LikeEntity
-import com.hamit.data.repository.DataRepository
 import com.hamit.domain.entity.addon.AddonEntity
+import com.hamit.domain.entity.like.LikeEntity
+import com.hamit.domain.useCases.like.AddLikeUseCase
+import com.hamit.domain.useCases.like.ReceiveFavoriteAddonsUseCase
+import com.hamit.domain.useCases.like.ReceiveLikeTotalSizeUseCase
 import com.hamit.like.LikeState.LikeScreenState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,7 +14,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class LikeViewModel(
-    private val repo: DataRepository
+    private val addLikeUseCase: AddLikeUseCase,
+    private val receiveFavoriteAddonsUseCase: ReceiveFavoriteAddonsUseCase,
+    private val receiveLikeTotalSizeUseCase: ReceiveLikeTotalSizeUseCase
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(LikeState())
@@ -20,7 +24,7 @@ class LikeViewModel(
 
     fun switchLike(addon: AddonEntity) = screenModelScope.launch {
         val like = LikeEntity(addonId = addon.id, isActive = false)
-        repo.addLike(like)
+        addLikeUseCase(like)
         _state.update {
             val newAddons = it.addons.toMutableList()
             newAddons.removeIf { it.id == addon.id }
@@ -38,7 +42,7 @@ class LikeViewModel(
 
     fun receiveAddons() = screenModelScope.launch {
         _state.update { it.copy(likeScreenState = LikeScreenState.Loading) }
-        val result = repo.getFavoriteMods(
+        val result = receiveFavoriteAddonsUseCase(
             offset = _state.value.addons.size
         )
         result.onSuccess { mods ->
@@ -62,7 +66,7 @@ class LikeViewModel(
     }
 
     private fun getLikeTotalCount() = screenModelScope.launch {
-        val size = repo.getLikeTotalSize()
+        val size = receiveLikeTotalSizeUseCase()
         _state.update { it.copy(likeTotalCount = size) }
     }
 

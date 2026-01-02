@@ -7,10 +7,10 @@ import com.hamit.android.BuildConfig
 import com.hamit.android.ads.natives.NativeCoordinator.Network.APPLOVIN
 import com.hamit.android.ads.natives.NativeCoordinator.Network.NONE
 import com.hamit.android.ads.natives.NativeCoordinator.Network.YANDEX
-import com.hamit.android.utills.AppLocation
+import com.hamit.domain.entity.AppLocation
 import com.hamit.android.utills.isShow
 import com.hamit.domain.entity.AdEnum
-import com.hamit.domain.entity.PropertyEntity
+import com.hamit.domain.entity.adConfig.AdConfigEntity
 
 object NativeCoordinator {
 
@@ -21,7 +21,7 @@ object NativeCoordinator {
         NONE, APPLOVIN, YANDEX
     }
 
-    fun init(context: Context, location: AppLocation, config: PropertyEntity) {
+    fun init(context: Context, location: AppLocation, config: AdConfigEntity) {
         if (initialized) return
         if (!config.isAdEnabled) return
 

@@ -1,13 +1,13 @@
 [versions]
 # Android Gradle Plugin & Kotlin
-agp = "8.13.1"
-kotlin = "2.2.21"
+agp = "8.13.2"
+kotlin = "2.3.0"
 ksp = "2.3.0"
 
 # AndroidX
-activityCompose = "1.12.0"
+activityCompose = "1.12.2"
 appcompat = "1.7.1"
-composeBom = "2025.11.01"
+composeBom = "2025.12.01"
 coreKtx = "1.17.0"
 datastorePreferences = "1.2.0"
 espressoCore = "3.7.0"
@@ -22,20 +22,17 @@ roomRuntime = "2.8.4"
 
 # Google Play & Firebase
 appUpdateKtx = "2.1.0"
-firebaseBom = "34.6.0"
+firebaseBom = "34.7.0"
 gms = "4.4.4"
-playServicesAds = "24.8.0"
+playServicesAds = "24.9.0"
 review = "2.0.2"
 
 # Navigation
 voyagerVersion = "1.1.0-beta03"
 
 # Networking & Serialization
-converterGson = "3.0.0"
-gson = "2.13.2"
 kotlinxSerializationJson = "1.9.0"
-loggingInterceptor = "5.3.2"
-retrofit = "3.0.0"
+ktor = "3.3.3"
 
 # UI & Images
 accompanistSystemuicontroller = "0.36.0"
@@ -48,22 +45,27 @@ koin-bom = "4.1.1"
 junit = "4.13.2"
 
 # Monetization & Analytics
-analytics = "7.13.0"
+analytics = "7.14.1"
 applovinSdk = "13.5.1"
 facebookAdapter = "6.21.0.0"
-googleAdapter = "24.8.0.0"
-mintegralAdapter = "17.0.31.0"
-unityAdapter = "4.16.4.0"
+googleAdapter = "24.9.0.0"
+mintegralAdapter = "17.0.51.0"
+unityAdapter = "4.16.5.0"
 inmobiAdapter = "11.1.0.0"
-pangleAdapter = "7.8.0.7.0"
-mobileads = "7.17.0"
+pangleAdapter = "7.8.5.2.0"
+mobileads = "7.18.1"
 reviewVersion = "10.0.0"
-playServicesLocation = "21.3.0" # RuStore Review
+playServicesLocation = "21.3.0"
 
 
 [libraries]
-# Kotlin & Serialization
+# Networking & Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-kotlinx-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-logging-android = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 
 # AndroidX - Core & AppCompat
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -96,17 +98,10 @@ voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voy
 voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyagerVersion" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyagerVersion" }
 
-# Networking - Retrofit & OkHttp
-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-
 # Dependency Injection - Koin
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-android = { module = "io.insert-koin:koin-android" }
 koin-compose = { module = "io.insert-koin:koin-compose" }
-koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 koin-core = { module = "io.insert-koin:koin-core" }
 
 # UI Helpers - Coil, Accompanist, Material

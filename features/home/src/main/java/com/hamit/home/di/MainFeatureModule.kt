@@ -4,5 +4,5 @@ import org.koin.dsl.module
 import com.hamit.home.HomeViewModel
 
 val mainFeatureModule = module {
-    single { HomeViewModel(get()) }
+    single { HomeViewModel(get(), get()) }
 }

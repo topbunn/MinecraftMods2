@@ -2,11 +2,11 @@ package com.hamit.ui.theme
 
 import androidx.compose.ui.graphics.Color
 import org.koin.mp.KoinPlatform.getKoin
-import com.hamit.domain.entity.addonConfig.AddonConfigProvider
+import com.hamit.domain.entity.appConfig.AppConfigProvider
 
 object AppColors {
 
-    private val configProvider: AddonConfigProvider
+    private val configProvider: AppConfigProvider
         get() = getKoin().get()
 
     val WHITE = Color(0xFFFFFFFF)

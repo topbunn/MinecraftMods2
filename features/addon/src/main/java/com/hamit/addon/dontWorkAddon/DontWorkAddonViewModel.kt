@@ -4,8 +4,8 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.hamit.addon.dontWorkAddon.DontWorkAddonState.DontWorkScreenState
 import com.hamit.android.utills.isEmail
-import com.hamit.data.repository.DataRepository
-import com.hamit.domain.entity.ProblemEntity
+import com.hamit.domain.entity.problem.ProblemEntity
+import com.hamit.domain.useCases.problem.SendProblemUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class DontWorkAddonViewModel(
-    private val repo: DataRepository
+    private val sendProblemUseCase: SendProblemUseCase,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(DontWorkAddonState())
@@ -26,8 +26,8 @@ class DontWorkAddonViewModel(
 
     fun sendIssue() = screenModelScope.launch {
         _state.update { it.copy(feedbackState = DontWorkScreenState.Loading) }
-        val issue = ProblemEntity(email = state.value.email, text = state.value.message)
-        val result = repo.sendIssue(issue)
+        val problem = ProblemEntity(email = state.value.email, text = state.value.message)
+        val result = sendProblemUseCase(problem)
         result.onSuccess {
             _state.update {
                 it.copy(

@@ -5,8 +5,8 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.hamit.android.ads.interstitial.InterstitialCoordinator
 import com.hamit.android.ads.natives.NativeCoordinator
-import com.hamit.data.repository.DataRepository
-import com.hamit.data.repository.RegionProvider
+import com.hamit.domain.useCases.config.ReceiveConfigUseCase
+import com.hamit.domain.useCases.region.ReceiveRegionUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 
 class LoaderViewModel(
     private val application: Application,
-    private val addonRepository: DataRepository,
-    private val regionProvider: RegionProvider
+    private val receiveConfigUseCase: ReceiveConfigUseCase,
+    private val receiveRegionUseCase: ReceiveRegionUseCase
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(LoaderState())
@@ -32,8 +32,8 @@ class LoaderViewModel(
     }
 
     private fun preloadAds() = screenModelScope.launch {
-        val config = addonRepository.receiveConfig()
-        val location = regionProvider.receiveRegion()
+        val config = receiveConfigUseCase()
+        val location = receiveRegionUseCase()
         InterstitialCoordinator.init(application.applicationContext, location, config)
         NativeCoordinator.init(application.applicationContext, location, config)
         _state.update { it.copy(adInit = true) }

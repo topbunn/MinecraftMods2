@@ -4,5 +4,5 @@ import org.koin.dsl.module
 import com.hamit.like.LikeViewModel
 
 val likeFeatureModule = module {
-    factory { LikeViewModel(get()) }
+    factory { LikeViewModel(get(), get(), get()) }
 }

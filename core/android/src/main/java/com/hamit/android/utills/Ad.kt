@@ -3,11 +3,11 @@ package com.hamit.android.utills
 import android.util.Log
 import org.koin.java.KoinJavaComponent.inject
 import com.hamit.domain.entity.AdEnum
-import com.hamit.domain.entity.addonConfig.AddonConfigProvider
+import com.hamit.domain.entity.appConfig.AppConfigProvider
 import kotlin.random.Random
 
 fun AdEnum.isShow(): Boolean {
-    val configProvider: AddonConfigProvider by inject(AddonConfigProvider::class.java)
+    val configProvider: AppConfigProvider by inject(AppConfigProvider::class.java)
     val config = configProvider.getConfig()
     val percent = when (this) {
         AdEnum.NATIVE -> config.percentShowNativeAd

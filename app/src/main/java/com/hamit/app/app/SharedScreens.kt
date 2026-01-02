@@ -2,7 +2,6 @@ package com.hamit.app.app
 
 import cafe.adriel.voyager.core.registry.ScreenRegistry
 import com.hamit.addon.AddonScreen
-import com.hamit.apps.AppsScreen
 import com.hamit.dashboard.DashboardScreen
 import com.hamit.guide.GuideScreen
 import com.hamit.home.HomeScreen
@@ -30,8 +29,6 @@ fun setupSharedScreens() {
         register<Destination.AddonScreen> { provider ->
             AddonScreen(provider.addonId)
         }
-        register<Destination.AppsScreen> {
-            AppsScreen
-        }
+
     }
 }
