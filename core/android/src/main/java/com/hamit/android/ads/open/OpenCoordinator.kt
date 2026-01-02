@@ -1,0 +1,76 @@
+package com.hamit.android.ads.open
+
+import android.app.Activity
+import com.hamit.domain.entity.PropertyEntity
+import com.hamit.android.BuildConfig
+import com.hamit.android.utills.AppLocation
+import com.hamit.android.utills.isShow
+import com.hamit.domain.entity.AdEnum
+
+object OpenCoordinator {
+
+    private var initialized = false
+    private var activeNetwork: Network = Network.NONE
+
+    private enum class Network {
+        NONE, APPLOVIN, YANDEX
+    }
+
+    fun init(activity: Activity, location: AppLocation, config: PropertyEntity) {
+        if (initialized) return
+        if (!config.isAdEnabled) return
+
+        initialized = true
+
+        activeNetwork =
+            if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
+                config.applovinOpen?.let { OpenApplovinController.init(activity, it) }
+                Network.APPLOVIN
+            } else {
+                config.yandexOpen?.let { OpenYandexController.init(activity.application, it) }
+                Network.YANDEX
+            }
+    }
+
+    fun show(activity: Activity) {
+        if (!initialized) return
+        when (activeNetwork) {
+            Network.APPLOVIN -> OpenApplovinController.show()
+            Network.YANDEX -> OpenYandexController.show(activity)
+            else -> {}
+        }
+
+    }
+
+    fun start(activity: Activity) {
+        if (!initialized) return
+        when (activeNetwork) {
+            Network.APPLOVIN -> {
+                OpenApplovinController.resume()
+                OpenApplovinController.show()
+            }
+
+            Network.YANDEX -> OpenYandexController.show(activity)
+            else -> {}
+        }
+    }
+
+    fun stop() {
+        if (!initialized) return
+        when (activeNetwork) {
+            Network.APPLOVIN -> OpenApplovinController.pause()
+            else -> {}
+        }
+    }
+
+    fun destroy() {
+        if (!initialized) return
+        when (activeNetwork) {
+            Network.APPLOVIN -> OpenApplovinController.destroy()
+            Network.YANDEX -> OpenYandexController.destroy()
+            else -> {}
+        }
+    }
+
+
+}
