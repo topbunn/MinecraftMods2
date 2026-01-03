@@ -21,13 +21,14 @@
 
     <string name="tabs_main">Accueil</string>
     <string name="tabs_favorite">Favoris</string>
+    <string name="tabs_suggest">Suggérer</string>
     <string name="tabs_apps">Autres mods</string>
 
     <string name="contact_us">Contactez-nous</string>
     <string name="any_question">Des questions ou suggestions ?</string>
 
     <string name="name">Nom</string>
-    <string name="email">E-mail</string>
+    <string name="email">E-Mail</string>
     <string name="type_message">Tapez votre message…</string>
     <string name="message_is_sent">Message envoyé</string>
 

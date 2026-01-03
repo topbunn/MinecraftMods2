@@ -21,6 +21,7 @@
 
     <string name="tabs_main">메인</string>
     <string name="tabs_favorite">즐겨찾기</string>
+    <string name="tabs_suggest">제안</string>
     <string name="tabs_apps">다른 모드</string>
 
     <string name="contact_us">문의하기</string>

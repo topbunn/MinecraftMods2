@@ -4,7 +4,7 @@
     <string name="search">Pesquisar</string>
 
     <string name="sort_enum_name">Por nome</string>
-    <string name="sort_enum_best">Por popularidade</string>
+    <string name="sort_enum_best">Por popularidad</string>
     <string name="sort_enum_comment">Por comentários</string>
     <string name="sort_enum_rating">Por classificação</string>
     <string name="sort_enum_relevance">Por relevância</string>
@@ -21,6 +21,7 @@
 
     <string name="tabs_main">Início</string>
     <string name="tabs_favorite">Favoritos</string>
+    <string name="tabs_suggest">Sugerir</string>
     <string name="tabs_apps">Outros mods</string>
 
     <string name="contact_us">Fale conosco</string>
@@ -35,7 +36,7 @@
 
     <string name="instr_addon_1">Alguns complementos são carregados como arquivos .mcpack ou .mcworld. Toque no arquivo desejado para instalá-lo no Minecraft. Você também pode baixar para o dispositivo.</string>
     <string name="instr_addon_2">Entre no modo de edição do seu mundo.</string>
-    <string name="instr_addon_3">Selecione um pacote de recursos. Adicione o complemento ou textura baixado pressionando o botão de ativar.\n\nRepita o processo para o pacote de comportamento.</string>
+    <string name="instr_addon_3">Selecione um pacote de recursos. Adicione o complemento ou textura baixado pressionando o botão de ativar.\n\nRepite o processo para o pacote de comportamento.</string>
     <string name="instr_addon_4">Importante! Ative todas as configurações experimentais.</string>
 
     <string name="instr_world_1">Nas configurações, selecione “armazenamento externo”.</string>

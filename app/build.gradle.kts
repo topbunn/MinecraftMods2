@@ -112,13 +112,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(project(":features:home"))
-    implementation(project(":features:loader"))
 
-    implementation(project(":features:addon"))
-    implementation(project(":features:like"))
-    implementation(project(":features:guide"))
+    implementation(project(":features:loader"))
     implementation(project(":features:dashboard"))
+    implementation(project(":features:home"))
+    implementation(project(":features:like"))
+    implementation(project(":features:suggest"))
+    implementation(project(":features:guide"))
+    implementation(project(":features:addon"))
+
     implementation(project(":domain"))
     implementation(project(":data"))
 

@@ -8,23 +8,27 @@ import com.hamit.home.HomeScreen
 import com.hamit.like.LikeScreen
 import com.hamit.loader.LoaderScreen
 import com.hamit.navigation.Destination
+import com.hamit.suggest.SuggestScreen
 
 fun setupSharedScreens() {
     ScreenRegistry {
-        register<Destination.DashboardScreen> {
-            DashboardScreen
-        }
         register<Destination.LoaderScreen> {
             LoaderScreen
+        }
+        register<Destination.DashboardScreen> {
+            DashboardScreen
         }
         register<Destination.HomeScreen> {
             HomeScreen
         }
-        register<Destination.GuideScreen> {
-            GuideScreen
-        }
         register<Destination.LikeScreen> {
             LikeScreen
+        }
+        register<Destination.SuggestScreen> {
+            SuggestScreen
+        }
+        register<Destination.GuideScreen> {
+            GuideScreen
         }
         register<Destination.AddonScreen> { provider ->
             AddonScreen(provider.addonId)

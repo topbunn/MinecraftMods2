@@ -6,7 +6,8 @@ sealed class Destination : ScreenProvider {
     object DashboardScreen : Destination()
     object LoaderScreen : Destination()
     object HomeScreen : Destination()
-    object GuideScreen : Destination()
     object LikeScreen : Destination()
+    object SuggestScreen : Destination()
+    object GuideScreen : Destination()
     data class AddonScreen(val addonId: Int) : Destination()
 }

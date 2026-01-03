@@ -20,6 +20,7 @@
 
     <string name="tabs_main">Main</string>
     <string name="tabs_favorite">Favorites</string>
+    <string name="tabs_suggest">Suggest</string>
     <string name="tabs_apps">Other mods</string>
 
     <string name="contact_us">Contact Us</string>

@@ -21,6 +21,7 @@
 
     <string name="tabs_main">Startseite</string>
     <string name="tabs_favorite">Favoriten</string>
+    <string name="tabs_suggest">Vorschlagen</string>
     <string name="tabs_apps">Andere Mods</string>
 
     <string name="contact_us">Kontaktieren Sie uns</string>

@@ -21,6 +21,7 @@
 
     <string name="tabs_main">Home</string>
     <string name="tabs_favorite">Preferiti</string>
+    <string name="tabs_suggest">Suggerisci</string>
     <string name="tabs_apps">Altre mod</string>
 
     <string name="contact_us">Contattaci</string>
@@ -53,7 +54,7 @@
     <string name="to_save_click_the_download_button">Per salvare, clicca il pulsante “Download”.</string>
 
     <string name="download">Scarica</string>
-    <string name="to_install_in_game_click_the_install">Per installare nel gioco clicca “Installa”.</string>
+    <string name="to_install_in_game_click_the_install">Per installare nel gioco clicca “Install’”.</string>
     <string name="install">Installa</string>
     <string name="the_file_is_saved_the_path">Il file è stato salvato nel percorso: </string>
     <string name="minecraft_is_not_installed">Minecraft non è installato o la versione è obsoleta.</string>

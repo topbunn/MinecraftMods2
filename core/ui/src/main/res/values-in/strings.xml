@@ -21,6 +21,7 @@
 
     <string name="tabs_main">Utama</string>
     <string name="tabs_favorite">Favorit</string>
+    <string name="tabs_suggest">Sarankan</string>
     <string name="tabs_apps">Mod lainnya</string>
 
     <string name="contact_us">Hubungi Kami</string>

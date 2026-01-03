@@ -21,6 +21,7 @@
 
     <string name="tabs_main">الرئيسية</string>
     <string name="tabs_favorite">المفضلة</string>
+    <string name="tabs_suggest">اقتراح</string>
     <string name="tabs_apps">تعديلات أخرى</string>
 
     <string name="contact_us">اتصل بنا</string>

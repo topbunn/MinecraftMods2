@@ -19,10 +19,14 @@ import com.hamit.ui.theme.LocalAppColors
 fun Root() {
     AppTheme{
         val colors = LocalAppColors.current
-        val firstScreen = rememberScreen(Destination.LoaderScreen)
+        val firstScreen = rememberScreen(Destination.DashboardScreen)
         val systemUi = rememberSystemUiController()
         systemUi.setStatusBarColor(Color.Transparent, !isSystemInDarkTheme())
-        Box(Modifier.fillMaxSize().background(colors.background).systemBarsPadding()){
+        Box(
+            Modifier.fillMaxSize()
+                .background(colors.background)
+                .systemBarsPadding()
+        ){
             Navigator(firstScreen)
         }
     }

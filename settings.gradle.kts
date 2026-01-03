@@ -43,3 +43,4 @@ include(":features:like")
 include(":features:guide")
 include(":features:dashboard")
 
+include(":features:suggest")
