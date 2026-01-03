@@ -22,39 +22,44 @@ import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import com.hamit.navigation.Destination
-import com.hamit.ui.components.CustomBottomNavItem
 import com.hamit.ui.theme.AppColors
+import com.hamit.ui.theme.LocalAppColors
 
-object DashboardScreen: Screen {
+object DashboardScreen : Screen {
 
     @Composable
     override fun Content() {
         val mainScreen = rememberScreen(Destination.HomeScreen) as Tab
-        TabNavigator(tab = mainScreen){
+        val colors = LocalAppColors.current
+        TabNavigator(tab = mainScreen) {
             Scaffold(
-                modifier = Modifier.Companion.background(AppColors.GRAY_BG).navigationBarsPadding(),
+                modifier = Modifier.Companion
+                    .background(colors.background)
+                    .navigationBarsPadding(),
                 content = {
-                    Box(Modifier.Companion.fillMaxSize().padding(it)) {
+                    Box(Modifier.Companion
+                        .fillMaxSize()
+                        .padding(it)) {
                         CurrentTab()
                     }
                 },
                 bottomBar = {
                     Column {
                         Spacer(
-                            Modifier.Companion.fillMaxWidth().height(1.dp)
-                                .background(AppColors.WHITE.copy(0.15f))
+                            Modifier.Companion
+                                .fillMaxWidth()
+                                .height(1.dp)
                         )
                         Row(
                             modifier = Modifier.Companion
                                 .fillMaxWidth()
-                                .background(AppColors.GRAY_BG)
+                                .background(colors.card)
                                 .padding(16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.Companion.CenterVertically
                         ) {
                             val likeScreen = rememberScreen(Destination.LikeScreen) as Tab
-                            CustomBottomNavItem(mainScreen)
-                            CustomBottomNavItem(likeScreen)
+
                         }
                     }
                 }

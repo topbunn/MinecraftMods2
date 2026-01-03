@@ -1,9 +1,27 @@
 package com.hamit.ui.theme
 
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 
-val colorScheme = lightColorScheme(
-    background = AppColors.BLACK_BG,
-    primary = AppColors.PRIMARY,
-    secondary = AppColors.PRIMARY,
-)
+@Composable
+fun AppTheme(
+    content: @Composable () -> Unit
+) {
+    val darkTheme = isSystemInDarkTheme()
+
+    val appColors = if (darkTheme) {
+        DarkThemeColors
+    } else {
+        LightThemeColors
+    }
+
+    CompositionLocalProvider(
+        LocalAppColors provides appColors
+    ) {
+        MaterialTheme(
+            content = content
+        )
+    }
+}
