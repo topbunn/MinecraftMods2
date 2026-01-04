@@ -27,10 +27,11 @@
     <string name="contact_us">Contattaci</string>
     <string name="any_question">Hai domande o commenti?</string>
 
-    <string name="name">Nome</string>
-    <string name="email">Email</string>
-    <string name="type_message">Digita il messaggio…</string>
-    <string name="message_is_sent">Messaggio inviato</string>
+    <string name="hint_name">Nome</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_link">Link</string>
+    <string name="hint_type_message">Digita il messaggio…</string>
+    <string name="hint_message_is_sent">Messaggio inviato</string>
 
     <string name="installation">Installazione</string>
     <string name="instructions">Istruzioni</string>
@@ -46,6 +47,7 @@
 
     <string name="instructions_for_the_installation_of_addons_and_textures">Istruzioni per l\'installazione di addon e texture</string>
     <string name="instructions_for_the_installation_of_worlds">Istruzioni per l\'installazione delle mappe</string>
+
     <string name="installing_addons_and_textures">Installazione di addon e texture</string>
     <string name="installation_of_worlds">Installazione delle mappe</string>
 
@@ -57,8 +59,10 @@
     <string name="to_install_in_game_click_the_install">Per installare nel gioco clicca “Install’”.</string>
     <string name="install">Installa</string>
     <string name="the_file_is_saved_the_path">Il file è stato salvato nel percorso: </string>
-    <string name="minecraft_is_not_installed">Minecraft non è installato o la versione è obsoleta.</string>
+    <string name="minecraft_is_not_installed">Minecraft non è installato o la version è obsoleta.</string>
     <string name="describe_your_problem">Descrivi il tuo problema</string>
+    <string name="suggest">Suggerisci</string>
+    <string name="suggest_desc">Hai trovato una mod fantastica online? Condividila con noi! Siamo sempre alla ricerca di grandi progetti da aggiungere alla nostra collezione. Il tema della mod non importa, accogliamo tutto e tutti. La mod suggerita potrebbe essere aggiunta a questa app o inclusa in una delle nostre app future.</string>
     <string name="send">Invia</string>
     <string name="the_list_is_empty">L\'elenco è vuoto :(</string>
     <string name="retry">Riprova</string>

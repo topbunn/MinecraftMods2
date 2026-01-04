@@ -25,16 +25,18 @@
     <string name="tabs_apps">Andere Mods</string>
 
     <string name="contact_us">Kontaktieren Sie uns</string>
-    <string name="any_question">Fragen oder Vorschläge?</string>
-    <string name="name">Name</string>
-    <string name="email">E-Mail</string>
-    <string name="type_message">Nachricht eingeben…</string>
-    <string name="message_is_sent">Nachricht wurde gesendet</string>
+    <string name="any_question">Fragen or Vorschläge?</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">E-Mail</string>
+    <string name="hint_link">Link</string>
+    <string name="hint_desc">Beschreibung</string>
+    <string name="hint_type_message">Nachricht eingeben…</string>
+    <string name="hint_message_is_sent">Nachricht wurde gesendet</string>
 
     <string name="installation">Installation</string>
     <string name="instructions">Anleitung</string>
 
-    <string name="instr_addon_1">Einige Add-ons werden als .mcpack- oder .mcworld-Dateien geladen. Tippe auf die gewünschte Datei, um sie in Minecraft zu installieren. Du kannst sie auch auf dein Gerät herunterladen.</string>
+    <string name="instr_addon_1">Einige Add-ons werden als .mcpack- oder .mcworld-Dateien geladen. Tippe auf die gewünschte Datei, um sie in Minecraft. Du kannst sie auch auf dein Gerät herunterladen.</string>
     <string name="instr_addon_2">Gehe in den Bearbeitungsmodus deiner Welt.</string>
     <string name="instr_addon_3">Wähle ein Ressourcenpaket aus. Füge das heruntergeladene Add-on oder die Textur hinzu, indem du auf "Aktivieren" klickst.\n\nWiederhole dies auch für das Verhaltenspaket.</string>
     <string name="instr_addon_4">Wichtig! Aktiviere alle experimentellen Einstellungen.</string>
@@ -58,6 +60,9 @@
     <string name="the_file_is_saved_the_path">Datei gespeichert unter: </string>
     <string name="minecraft_is_not_installed">Minecraft ist nicht installiert oder die Version ist veraltet</string>
     <string name="describe_your_problem">Beschreibe dein Problem</string>
+    <string name="suggest">Vorschlagen</string>
+    <string name="suggest_desc">Hast du online einen tollen Mod gefunden? Teile ihn mit uns! Wir sind immer auf der Suche nach großartigen Projekten für unsere Sammlung. Das Thema des Mods spielt keine Rolle, wir freuen uns über jeden. Dein vorgeschlagener Mod könnte zu dieser App hinzugefügt oder in eine unserer zukünftigen Apps aufgenommen werden.</string>
+    <string name="submit">Absenden</string>
     <string name="send">Senden</string>
     <string name="the_list_is_empty">Die Liste ist leer :(</string>
     <string name="retry">Erneut versuchen</string>

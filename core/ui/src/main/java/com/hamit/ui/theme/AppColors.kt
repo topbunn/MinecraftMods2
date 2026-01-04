@@ -3,8 +3,8 @@ package com.hamit.ui.theme
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
-import org.koin.mp.KoinPlatform.getKoin
 import com.hamit.domain.entity.appConfig.AppConfigProvider
+import org.koin.mp.KoinPlatform.getKoin
 
 @Immutable
 data class LocalColors(
@@ -28,6 +28,8 @@ object AppColors {
     private val configProvider: AppConfigProvider
         get() = getKoin().get()
 
+    val RED = Color(0xffEB4566)
+
     val BG_LIGHT = Color(0xffF3F5FB)
     val BG_DARK = Color(0xff191B21)
 
@@ -40,7 +42,7 @@ object AppColors {
     val TITLE_LIGHT = Color(0xff262A33)
     val TITLE_DARK = Color(0xffEAEAEA)
 
-    val TEXT_LIGHT = Color(0xff262A33).copy(0.7f)
+    val TEXT_LIGHT = Color(0xff686A71)
     val TEXT_DARK = Color(0xffB3B5B7)
 
     val HINT_LIGHT = Color(0xffA1AAC2)

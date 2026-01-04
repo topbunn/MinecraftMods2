@@ -14,4 +14,22 @@ object AppTypo {
         textAlign = TextAlign.Center
     )
 
+    val M1 = TextStyle(
+        fontFamily = AppFonts.CORE,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+    )
+
+    val placeholder = TextStyle(
+        fontFamily = AppFonts.CORE,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+    )
+
+    val button = TextStyle(
+        fontFamily = AppFonts.CORE,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 16.sp,
+    )
+
 }

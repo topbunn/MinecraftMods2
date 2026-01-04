@@ -27,10 +27,11 @@
     <string name="contact_us">Hubungi Kami</string>
     <string name="any_question">Ada pertanyaan atau saran?</string>
 
-    <string name="name">Nama</string>
-    <string name="email">Email</string>
-    <string name="type_message">Ketik pesan Anda…</string>
-    <string name="message_is_sent">Pesan terkirim</string>
+    <string name="hint_name">Nama</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_link">Tautan</string>
+    <string name="hint_type_message">Ketik pesan Anda…</string>
+    <string name="hint_message_is_sent">Pesan terkirim</string>
 
     <string name="installation">Instalasi</string>
     <string name="instructions">Petunjuk</string>
@@ -58,6 +59,8 @@
     <string name="the_file_is_saved_the_path">File disimpan di: </string>
     <string name="minecraft_is_not_installed">Minecraft tidak terinstal atau versinya kedaluwarsa.</string>
     <string name="describe_your_problem">Jelaskan masalah Anda</string>
+    <string name="suggest">Sarankan</string>
+    <string name="suggest_desc">Menemukan mod keren secara online? Bagikan dengan kami! Kami selalu mencari proyek hebat untuk ditambahkan ke koleksi kami. Tema mod tidak masalah, kami menerima semuanya. Mod yang Anda sarankan mungkin ditambahkan ke aplikasi ini atau disertakan dalam salah satu aplikasi masa depan kami.</string>
     <string name="send">Kirim</string>
 
     <string name="the_list_is_empty">Daftar kosong :(</string>

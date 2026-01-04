@@ -26,10 +26,12 @@
 
     <string name="contact_us">Contáctanos</string>
     <string name="any_question">¿Tienes alguna pregunta o sugerencia?</string>
-    <string name="name">Nombre</string>
-    <string name="email">Correo electrónico</string>
-    <string name="type_message">Escribe tu mensaje…</string>
-    <string name="message_is_sent">El mensaje ha sido enviado</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_link">Enlace</string>
+    <string name="hint_desc">Descripción</string>
+    <string name="hint_type_message">Escribe tu mensaje…</string>
+    <string name="hint_message_is_sent">El mensaje ha sido enviado</string>
 
     <string name="installation">Instalación</string>
     <string name="instructions">Instrucciones</string>
@@ -56,8 +58,11 @@
     <string name="to_install_in_game_click_the_install">Para instalar en el juego, pulsa “Instalar”</string>
     <string name="install">Instalar</string>
     <string name="the_file_is_saved_the_path">El archivo se ha guardado en la ruta: </string>
-    <string name="minecraft_is_not_installed">Minecraft no está instalado o su versión está desactualizada</string>
+    <string name="minecraft_is_not_installed">Minecraft не установлен или версия устарела</string>
     <string name="describe_your_problem">Describe tu problema</string>
+    <string name="suggest">Sugerir</string>
+    <string name="suggest_desc">¿Has encontrado un mod genial en Internet? ¡Compártelo con nosotros! Siempre estamos buscando proyectos estupendos para añadir a nuestra colección. El tema del mod no importa, todos son bienvenidos. El mod sugerido puede añadirse a esta aplicación o incluirse en una de nuestras futuras aplicaciones.</string>
+    <string name="submit">Enviar</string>
     <string name="send">Enviar</string>
     <string name="the_list_is_empty">La lista está vacía :(</string>
     <string name="retry">Reintentar</string>

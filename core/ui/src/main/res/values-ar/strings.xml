@@ -26,10 +26,12 @@
 
     <string name="contact_us">اتصل بنا</string>
     <string name="any_question">هل لديك سؤال أو اقتراح؟</string>
-    <string name="name">الاسم</string>
-    <string name="email">البريد الإلكتروني</string>
-    <string name="type_message">اكتب رسالتك…</string>
-    <string name="message_is_sent">تم إرسال الرسالة</string>
+    <string name="hint_name">الاسم</string>
+    <string name="hint_email">البريد الإلكتروني</string>
+    <string name="hint_link">الرابط</string>
+    <string name="hint_desc">الوصف</string>
+    <string name="hint_type_message">اكتب رسالتك…</string>
+    <string name="hint_message_is_sent">تم إرسال الرسالة</string>
 
     <string name="installation">التثبيت</string>
     <string name="instructions">إرشادات</string>
@@ -58,6 +60,9 @@
     <string name="the_file_is_saved_the_path">تم حفظ الملف في المسار: </string>
     <string name="minecraft_is_not_installed">ماينكرافت غير مثبتة أو إصدارها قديم</string>
     <string name="describe_your_problem">صف مشكلتك</string>
+    <string name="suggest">اقتراح</string>
+    <string name="suggest_desc">هل وجدت موداً رائعاً على الإنترنت؟ شاركه معنا! نحن نبحث دائماً عن مشاريع رائعة لإضافتها إلى مجموعتنا. لا يهم موضوع المود، فنحن نرحب بالجميع. قد تتم إضافة المود الذي اقترحته إلى هذا التطبيق أو تضمينه في أحد تطبيقاتنا المستقبلية.</string>
+    <string name="submit">تقديم</string>
     <string name="send">إرسال</string>
 
     <string name="the_list_is_empty">القائمة فارغة :(</string>

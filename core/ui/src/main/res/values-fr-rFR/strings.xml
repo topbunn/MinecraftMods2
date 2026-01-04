@@ -27,10 +27,11 @@
     <string name="contact_us">Contactez-nous</string>
     <string name="any_question">Des questions ou suggestions ?</string>
 
-    <string name="name">Nom</string>
-    <string name="email">E-Mail</string>
-    <string name="type_message">Tapez votre message…</string>
-    <string name="message_is_sent">Message envoyé</string>
+    <string name="hint_name">Nom</string>
+    <string name="hint_email">E-Mail</string>
+    <string name="hint_link">Lien</string>
+    <string name="hint_type_message">Tapez votre message…</string>
+    <string name="hint_message_is_sent">Message envoyé</string>
 
     <string name="installation">Installation</string>
     <string name="instructions">Instructions</string>
@@ -58,6 +59,8 @@
     <string name="the_file_is_saved_the_path">Le fichier a été enregistré à : </string>
     <string name="minecraft_is_not_installed">Minecraft n’est pas installé ou la version est obsolète.</string>
     <string name="describe_your_problem">Décrivez votre problème</string>
+    <string name="suggest">Suggérer</string>
+    <string name="suggest_desc">Vous avez trouvé un mod génial en ligne ? Partagez-le avec nous ! Nous sommes toujours à la recherche de superbes projets à ajouter à notre collection. Le thème du mod n\'importe peu, nous accueillons tout le monde. Votre mod suggéré pourra être ajouté à cette application ou inclus dans l\'une de nos futures applications.</string>
     <string name="send">Envoyer</string>
     <string name="the_list_is_empty">La liste est vide :(</string>
     <string name="retry">Réessayer</string>
