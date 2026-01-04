@@ -4,6 +4,7 @@ import com.hamit.addon.di.addonFeatureModule
 import com.hamit.home.di.mainFeatureModule
 import com.hamit.like.di.likeFeatureModule
 import com.hamit.loader.di.loaderFeatureModule
+import com.hamit.suggest.di.suggestFeatureModule
 import org.koin.dsl.module
 
 val featureModule = module {
@@ -12,5 +13,6 @@ val featureModule = module {
         likeFeatureModule,
         mainFeatureModule,
         loaderFeatureModule,
+        suggestFeatureModule
     )
 }

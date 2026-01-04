@@ -15,7 +15,7 @@
     <string name="sort_type_enum_maps">맵</string>
     <string name="sort_type_enum_addon">모드</string>
     <string name="sort_type_enum_texture">텍스처</string>
-    <string name="sort_type_enum_skins">스킨</string>
+    <string name="sort_type_enum_skins">S킨</string>
 
     <string name="favorite">즐겨찾기 </string>
 
@@ -62,6 +62,8 @@
     <string name="suggest">제안</string>
     <string name="suggest_desc">온라인에서 멋진 모드를 찾으셨나요? 저희와 공유해 주세요! 저희는 항상 컬렉션에 추가할 훌륭한 프로젝트를 찾고 있습니다. 모드의 테마는 중요하지 않으며 모든 프로젝트를 환영합니다. 제안하신 모드는 이 앱에 추가되거나 향후 앱 중 하나에 포함될 수 있습니다.</string>
     <string name="send">보내기</string>
+    <string name="suggest_submitted">제안이 제출되었습니다</string>
+    <string name="error_check_internet">오류가 발생했습니다. 인터넷 연결을 확인하거나 다시 시도해 주세요.</string>
     <string name="the_list_is_empty">목록은 비어 있습니다 :(</string>
     <string name="retry">다시 시도</string>
 

@@ -5,11 +5,13 @@ import com.hamit.data.repository.ConfigRepositoryImpl
 import com.hamit.data.repository.LikeRepositoryImpl
 import com.hamit.data.repository.ProblemRepositoryImpl
 import com.hamit.data.repository.RegionRepositoryImpl
+import com.hamit.data.repository.SuggestRepositoryImpl
 import com.hamit.domain.repository.AddonRepository
 import com.hamit.domain.repository.ConfigRepository
 import com.hamit.domain.repository.LikeRepository
 import com.hamit.domain.repository.ProblemRepository
 import com.hamit.domain.repository.RegionRepository
+import com.hamit.domain.repository.SuggestRepository
 import org.koin.dsl.module
 
 internal val repositoryModule = module {
@@ -27,6 +29,9 @@ internal val repositoryModule = module {
     }
     single<ProblemRepository> {
         ProblemRepositoryImpl(get(), get())
+    }
+    single<SuggestRepository> {
+        SuggestRepositoryImpl(get())
     }
 
 }

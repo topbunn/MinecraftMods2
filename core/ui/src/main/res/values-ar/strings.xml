@@ -36,7 +36,7 @@
     <string name="installation">التثبيت</string>
     <string name="instructions">إرشادات</string>
 
-    <string name="instr_addon_1">يتم تحميل بعض الإضافات كملف .mcpack أو .mcworld. انقر على الملف المرغوب لتثبيت الإضافة في ماينكرافت. يمكنك أيضًا تحميل الإضافة إلى الجهاز.</string>
+    <string name="instr_addon_1">يتم تحميل بعض الإضافات كملف .mcpack или .mcworld. انقر على الملف المرغوب لتثبيت الإضافة في ماينكرافت. يمكنك أيضًا تحميل الإضافة إلى الجهاز.</string>
     <string name="instr_addon_2">ادخل إلى وضع التعديل لعالمك.</string>
     <string name="instr_addon_3">اختر حزمة الموارد. أضف الإضافة أو الخامة التي تم تحميلها بالضغط على زر التفعيل.\n\nكرر هذه الخطوات لاختيار حزم الإعدادات.</string>
     <string name="instr_addon_4">هام! فعّل جميع الإعدادات التجريبية.</string>
@@ -64,6 +64,8 @@
     <string name="suggest_desc">هل وجدت موداً رائعاً على الإنترنت؟ شاركه معنا! نحن نبحث دائماً عن مشاريع رائعة لإضافتها إلى مجموعتنا. لا يهم موضوع المود، فنحن نرحب بالجميع. قد تتم إضافة المود الذي اقترحته إلى هذا التطبيق أو تضمينه في أحد تطبيقاتنا المستقبلية.</string>
     <string name="submit">تقديم</string>
     <string name="send">إرسال</string>
+    <string name="suggest_submitted">تم ارسال الاقتراح</string>
+    <string name="error_check_internet">حدث خطأ. يرجى التحقق من اتصالك بالإنترنت أو المحاولة مرة أخرى.</string>
 
     <string name="the_list_is_empty">القائمة فارغة :(</string>
     <string name="retry">إعادة المحاولة</string>

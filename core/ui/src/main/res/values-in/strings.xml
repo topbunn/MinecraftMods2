@@ -22,7 +22,6 @@
     <string name="tabs_main">Utama</string>
     <string name="tabs_favorite">Favorit</string>
     <string name="tabs_suggest">Sarankan</string>
-    <string name="tabs_apps">Mod lainnya</string>
 
     <string name="contact_us">Hubungi Kami</string>
     <string name="any_question">Ada pertanyaan atau saran?</string>
@@ -62,6 +61,8 @@
     <string name="suggest">Sarankan</string>
     <string name="suggest_desc">Menemukan mod keren secara online? Bagikan dengan kami! Kami selalu mencari proyek hebat untuk ditambahkan ke koleksi kami. Tema mod tidak masalah, kami menerima semuanya. Mod yang Anda sarankan mungkin ditambahkan ke aplikasi ini atau disertakan dalam salah satu aplikasi masa depan kami.</string>
     <string name="send">Kirim</string>
+    <string name="suggest_submitted">Saran dikirim</string>
+    <string name="error_check_internet">Terjadi kesalahan. Silakan periksa koneksi internet Anda atau coba lagi.</string>
 
     <string name="the_list_is_empty">Daftar kosong :(</string>
     <string name="retry">Coba Lagi</string>

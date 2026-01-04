@@ -64,6 +64,8 @@
     <string name="suggest_desc">Hast du online einen tollen Mod gefunden? Teile ihn mit uns! Wir sind immer auf der Suche nach großartigen Projekten für unsere Sammlung. Das Thema des Mods spielt keine Rolle, wir freuen uns über jeden. Dein vorgeschlagener Mod könnte zu dieser App hinzugefügt oder in eine unserer zukünftigen Apps aufgenommen werden.</string>
     <string name="submit">Absenden</string>
     <string name="send">Senden</string>
+    <string name="suggest_submitted">Vorschlag eingereicht</string>
+    <string name="error_check_internet">Ein Fehler ist aufgetreten. Bitte überprüfe deine Internetverbindung oder versuche es erneut.</string>
     <string name="the_list_is_empty">Die Liste ist leer :(</string>
     <string name="retry">Erneut versuchen</string>
 

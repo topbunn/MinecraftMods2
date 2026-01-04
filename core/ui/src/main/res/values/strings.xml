@@ -65,6 +65,8 @@ Repeat the steps for behavior packs.</string>
     <string name="suggest_desc">Found an awesome mod online? Share it with us! We are always looking for great projects to add to our collection. The theme of the mod doesn\'t matter, we welcome any and all. Your suggested mod may be added to this app or included in one of our future apps.</string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
+    <string name="suggest_submitted">Suggestion submitted</string>
+    <string name="error_check_internet">An error occurred. Please check your internet connection or try again.</string>
 
     <string name="the_list_is_empty">The list is empty :(</string>
     <string name="retry">Retry</string>

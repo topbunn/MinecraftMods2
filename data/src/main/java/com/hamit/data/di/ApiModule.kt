@@ -6,6 +6,7 @@ import com.hamit.data.source.remote.api.AddonApi
 import com.hamit.data.source.remote.api.FileApi
 import com.hamit.data.source.remote.api.ProblemApi
 import com.hamit.data.source.remote.api.RegionApi
+import com.hamit.data.source.remote.api.SuggestApi
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
@@ -16,4 +17,5 @@ internal val apiModule = module {
     single<FileApi> { FileApi(get()) }
     single<ProblemApi> { ProblemApi(get()) }
     single<RegionApi> { RegionApi(get()) }
+    single<SuggestApi> { SuggestApi(get()) }
 }

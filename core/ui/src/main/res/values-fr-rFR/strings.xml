@@ -62,6 +62,8 @@
     <string name="suggest">Suggérer</string>
     <string name="suggest_desc">Vous avez trouvé un mod génial en ligne ? Partagez-le avec nous ! Nous sommes toujours à la recherche de superbes projets à ajouter à notre collection. Le thème du mod n\'importe peu, nous accueillons tout le monde. Votre mod suggéré pourra être ajouté à cette application ou inclus dans l\'une de nos futures applications.</string>
     <string name="send">Envoyer</string>
+    <string name="suggest_submitted">Suggestion soumise</string>
+    <string name="error_check_internet">Une erreur est survenue. Veuillez vérifier votre connexion Internet ou réessayer.</string>
     <string name="the_list_is_empty">La liste est vide :(</string>
     <string name="retry">Réessayer</string>
 

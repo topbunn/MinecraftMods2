@@ -8,6 +8,7 @@ import com.hamit.domain.useCases.like.ReceiveFavoriteAddonsUseCase
 import com.hamit.domain.useCases.like.ReceiveLikeTotalSizeUseCase
 import com.hamit.domain.useCases.problem.SendProblemUseCase
 import com.hamit.domain.useCases.region.ReceiveRegionUseCase
+import com.hamit.domain.useCases.suggest.SubmitSuggestUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -19,4 +20,5 @@ val useCaseModule = module {
     single { ReceiveLikeTotalSizeUseCase(get()) }
     single { SendProblemUseCase(get()) }
     single { ReceiveRegionUseCase(get()) }
+    single { SubmitSuggestUseCase(get()) }
 }

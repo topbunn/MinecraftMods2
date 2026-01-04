@@ -63,6 +63,8 @@
     <string name="suggest">提案</string>
     <string name="suggest_desc">オンラインで素晴らしいModを見つけましたか？私たちと共有してください！私たちは常にコレクションに追加する素晴らしいプロジェクトを探しています。Modのテーマは問いません、どなたでも大歓迎です。提案されたModはこのアプリに追加されるか、将来のアプリの1つに含まれる可能性があります。</string>
     <string name="send">送信</string>
+    <string name="suggest_submitted">提案が送信されました</string>
+    <string name="error_check_internet">エラーが発生しました。インターネット接続を確認するか、もう一度お試しください。</string>
     <string name="the_list_is_empty">リストは空です:(</string>
     <string name="retry">再試行</string>
 

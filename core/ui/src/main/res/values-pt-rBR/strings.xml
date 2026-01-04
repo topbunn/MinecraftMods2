@@ -59,8 +59,10 @@
     <string name="minecraft_is_not_installed">Minecraft não está instalado ou a versão está desatualizada</string>
     <string name="describe_your_problem">Descreva seu problema</string>
     <string name="suggest">Sugerir</string>
-    <string name="suggest_desc">Encontrou um mod incrível online? Compartilhe conosco! Estamos sempre procurando ótimos projetos para adicionar à nossa coleção. O tema do mod não importa, aceitamos todos. Seu mod sugerido pode ser adicionado a este aplicativo ou incluído em um de nossos aplicativos futuros.</string>
+    <string name="suggest_desc">Encontrou um mod incrível online? Compartilhe conosco! Estamos sempre procurando ótimos projetos para adicionar à nossa coleção. El tema do mod não importa, aceitamos todos. Seu mod sugerido pode ser adicionado a este aplicativo ou incluído em um de nossos aplicativos futuros.</string>
     <string name="send">Enviar</string>
+    <string name="suggest_submitted">Sugestão enviada</string>
+    <string name="error_check_internet">Ocorreu um erro. Verifique sua conexão com a internet ou tente novamente.</string>
     <string name="the_list_is_empty">A lista está vazia :(</string>
     <string name="retry">Tentar novamente</string>
 
