@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,11 +22,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hamit.ui.theme.AppColors
@@ -41,6 +45,7 @@ fun AppTextField(
     required: Boolean = false,
     enabled: Boolean = true,
     readOnly: Boolean = false,
+    fontSize: TextUnit? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = true,
@@ -58,6 +63,7 @@ fun AppTextField(
     }
     CompositionLocalProvider(LocalTextSelectionColors provides customSelectionColors) {
         Column(
+            modifier = modifier,
             verticalArrangement = Arrangement.spacedBy(5.dp)
         ){
             Row(
@@ -65,7 +71,8 @@ fun AppTextField(
                     .border(2.dp, colors.border, RoundedCornerShape(12.dp))
                     .clip(RoundedCornerShape(12.dp))
                     .padding(paddingValues),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalAlignment = if (singleLine) Alignment.CenterVertically else Alignment.Top
             ) {
                 leadingIconRes?.let {
                     Icon(
@@ -75,13 +82,18 @@ fun AppTextField(
                         tint = colors.primary
                     )
                 }
-                Box {
+                Box(
+                    contentAlignment = if (singleLine) Alignment.CenterStart else Alignment.TopStart
+                ){
                     if (text.isEmpty()) {
-                        Row{
+                        Row(
+                             verticalAlignment = Alignment.CenterVertically
+                        ){
                             Text(
                                 text = hint,
                                 style = AppTypo.placeholder,
-                                color = colors.hint
+                                color = colors.hint,
+                                fontSize = fontSize ?: AppTypo.placeholder.fontSize
                             )
                             if (required){
                                 Text(
@@ -94,13 +106,13 @@ fun AppTextField(
                         }
                     }
                     BasicTextField(
+                        modifier = Modifier.fillMaxSize(),
                         value = text,
                         onValueChange = onTextChange,
-                        modifier = modifier,
                         textStyle = TextStyle(
                             fontFamily = AppTypo.placeholder.fontFamily,
                             fontWeight = AppTypo.placeholder.fontWeight,
-                            fontSize = AppTypo.placeholder.fontSize,
+                            fontSize = fontSize ?: AppTypo.placeholder.fontSize,
                             color = colors.text,
                         ),
                         cursorBrush = SolidColor(colors.primary),

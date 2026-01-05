@@ -19,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -163,7 +164,7 @@ object SuggestScreen : Tab, Screen {
         onChangeText: (String) -> Unit
     ) {
         val colors = LocalAppColors.current
-        val modifier = if (type == DESC) Modifier.height(120.dp) else Modifier
+        val modifier =  Modifier.height(if (type == DESC) 120.dp else 48.dp )
 
         @Composable
         fun TipDesc(){
