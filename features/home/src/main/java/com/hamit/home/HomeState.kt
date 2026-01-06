@@ -1,28 +1,13 @@
 package com.hamit.home
 
-import androidx.compose.foundation.lazy.LazyListState
-import com.hamit.domain.entity.addon.AddonEntity
-
-data class HomeState(
-    val addons: List<AddonEntity> = emptyList(),
-    val shouldAddonOpen: AddonEntity? = null,
-    val query: String = "",
-    val addonListState: LazyListState = LazyListState(),
-    val homeSorts: List<AddonSortTypeUi> = AddonSortTypeUi.entries,
-    val addonSortSelectedIndex: Int = 0,
-    val addonTypeUis: List<AddonTypeUi> = AddonTypeUi.entries,
-    val selectedAddonTypeUi: AddonTypeUi = AddonTypeUi.ALL,
-    val isAddonListEnd: Boolean = false,
-    val homeScreenState: HomeScreenState = HomeScreenState.Idle
+internal data class HomeState(
+    val sortTypes: List<Int> = AddonSortTypeUi.entries.map { it.stringResourceId },
+    val selectedSortTypeIndex: Int = 0,
+    val addonTypes : List<Int> = AddonTypeUi.entries.map { it.titleStringRes },
+    val selectedAddonTypeIndex: Int = 0,
+    val filterIsOpen: Boolean = false,
 ){
 
-    sealed interface HomeScreenState{
-
-        object Idle: HomeScreenState
-        object Loading: HomeScreenState
-        object Success: HomeScreenState
-        data class Error(val message: String): HomeScreenState
-
-    }
+    enum class FilterType{ SORTS, ADDON_TYPES }
 
 }

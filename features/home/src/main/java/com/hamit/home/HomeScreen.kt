@@ -2,7 +2,10 @@ package com.hamit.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -10,26 +13,32 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.hamit.ui.R
 import com.hamit.ui.components.AppTextField
 import com.hamit.ui.theme.LocalAppColors
-import okhttp3.internal.http2.Header
+
 
 object HomeScreen : Tab, Screen {
 
@@ -40,23 +49,56 @@ object HomeScreen : Tab, Screen {
             painterResource(R.drawable.ic_nav_main)
         )
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content() {
-        Column{
-            Header()
+        val viewModel = koinScreenModel<HomeViewModel>()
+        val state by viewModel.state.collectAsState()
+        Column {
+            Header{ viewModel.changeFilterDialog(true) }
+        }
+        FilterDialog(state, viewModel)
+    }
+
+    @Composable
+    private fun FilterDialog(state: HomeState, viewModel: HomeViewModel) {
+        if (state.filterIsOpen) {
+            FilterDialog(
+                sortTypeItems = state.sortTypes,
+                addonTypeItems = state.addonTypes,
+                selectedSortTypeIndex = state.selectedSortTypeIndex,
+                selectedAddonTypeIndex = state.selectedAddonTypeIndex,
+                onSelectSortType = { viewModel.changeFilterValue(it, HomeState.FilterType.SORTS) },
+                onSelectAddonType = {
+                    viewModel.changeFilterValue(
+                        it,
+                        HomeState.FilterType.ADDON_TYPES
+                    )
+                }
+            ) {
+                viewModel.changeFilterDialog(false)
+            }
         }
     }
 
     @Composable
-    private fun Header() {
+    private fun Header(
+        onClickFilter: () -> Unit
+    ) {
         val colors = LocalAppColors.current
         Row(
-            modifier = Modifier.fillMaxWidth().background(colors.card).padding(12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(colors.card)
+                .statusBarsPadding()
+                .padding(12.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             var text by remember { mutableStateOf("") }
             AppTextField(
-                modifier = Modifier.weight(1f).height(52.dp),
+                modifier = Modifier
+                    .weight(1f)
+                    .height(52.dp),
                 text = text,
                 fontSize = 18.sp,
                 paddingValues = PaddingValues(start = 17.dp, top = 17.dp, bottom = 17.dp, end = 12.dp),
@@ -65,21 +107,33 @@ object HomeScreen : Tab, Screen {
             ) {
                 text = it
             }
-            IconButton(
-                modifier = Modifier.size(52.dp)
-                    .border(2.dp, colors.border, RoundedCornerShape(12.dp)),
-                shape = RoundedCornerShape(12.dp),
-                onClick = {
+            FilterButton(
+                onClick = onClickFilter
+            )
+        }
+    }
 
-                }
-            ) {
-                Icon(
-                    modifier = Modifier.size(20.dp),
-                    painter = painterResource(R.drawable.ic_filters),
-                    contentDescription = null,
-                    tint = colors.primary
-                )
-            }
+    @Composable
+    private fun FilterButton(onClick: () -> Unit) {
+        val colors = LocalAppColors.current
+        val interactionSource = remember { MutableInteractionSource() }
+        Box(
+            modifier = Modifier.size(52.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .border(2.dp, colors.border, RoundedCornerShape(12.dp))
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = ripple(color = colors.primaryContainer),
+                    onClick = onClick
+                ),
+            contentAlignment = Alignment.Center
+        ){
+            Icon(
+                modifier = Modifier.size(20.dp),
+                painter = painterResource(R.drawable.ic_filters),
+                contentDescription = null,
+                tint = colors.primary
+            )
         }
     }
 

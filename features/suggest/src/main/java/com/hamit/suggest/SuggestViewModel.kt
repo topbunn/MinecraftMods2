@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class SuggestViewModel(
+internal class SuggestViewModel(
     private val submitSuggestUseCase: SubmitSuggestUseCase
 ): ScreenModel {
 

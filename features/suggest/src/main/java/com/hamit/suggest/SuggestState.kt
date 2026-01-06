@@ -1,6 +1,6 @@
 package com.hamit.suggest
 
-data class SuggestState(
+internal data class SuggestState(
     val email: String = "",
     val link: String = "",
     val desc: String = "",

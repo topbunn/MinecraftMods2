@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,9 +22,7 @@ fun Root() {
         val systemUi = rememberSystemUiController()
         systemUi.setStatusBarColor(Color.Transparent, !isSystemInDarkTheme())
         Box(
-            Modifier.fillMaxSize()
-                .background(colors.background)
-                .systemBarsPadding()
+            Modifier.fillMaxSize().background(colors.background)
         ){
             Navigator(firstScreen)
         }

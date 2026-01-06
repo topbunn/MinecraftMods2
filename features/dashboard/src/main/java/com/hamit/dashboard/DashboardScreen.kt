@@ -5,15 +5,15 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -41,35 +41,32 @@ object DashboardScreen : Screen {
         val homeScreen = rememberScreen(Destination.HomeScreen) as Tab
         val colors = LocalAppColors.current
         TabNavigator(tab = homeScreen) {
-            Scaffold(
-                content = {
-                    Box(
-                        Modifier
-                            .fillMaxSize()
-                            .background(colors.background)
-                            .padding(it)
-                    ) {
-                        CurrentTab()
-                    }
-                },
-                bottomBar = {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .appDropShadow(shape = RectangleShape, offset = DpOffset.Zero, radius = 4.dp)
-                            .background(colors.card)
-                            .padding(12.dp),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        val likeScreen = rememberScreen(Destination.LikeScreen) as Tab
-                        val suggestScreen = rememberScreen(Destination.SuggestScreen) as Tab
-                        BottomNavBar(homeScreen)
-                        BottomNavBar(likeScreen)
-                        BottomNavBar(suggestScreen)
-                    }
+            Column{
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .background(colors.background)
+                ) {
+                    CurrentTab()
                 }
-            )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .appDropShadow(shape = RectangleShape, offset = DpOffset.Zero, radius = 4.dp)
+                        .background(colors.card)
+                        .navigationBarsPadding()
+                        .padding(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    val likeScreen = rememberScreen(Destination.LikeScreen) as Tab
+                    val suggestScreen = rememberScreen(Destination.SuggestScreen) as Tab
+                    BottomNavBar(homeScreen)
+                    BottomNavBar(likeScreen)
+                    BottomNavBar(suggestScreen)
+                }
+            }
         }
     }
 

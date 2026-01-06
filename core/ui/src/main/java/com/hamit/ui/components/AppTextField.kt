@@ -55,82 +55,99 @@ fun AppTextField(
     onTextChange: (String) -> Unit,
 ) {
     val colors = LocalAppColors.current
-    val customSelectionColors = remember(colors.primary) {
+
+    val selectionColors = remember(colors.primary) {
         TextSelectionColors(
             handleColor = colors.primary,
             backgroundColor = colors.primary.copy(alpha = 0.2f)
         )
     }
-    CompositionLocalProvider(LocalTextSelectionColors provides customSelectionColors) {
+
+    CompositionLocalProvider(LocalTextSelectionColors provides selectionColors) {
         Column(
             modifier = modifier,
             verticalArrangement = Arrangement.spacedBy(5.dp)
-        ){
+        ) {
+
             Row(
                 modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
                     .border(2.dp, colors.border, RoundedCornerShape(12.dp))
                     .clip(RoundedCornerShape(12.dp))
                     .padding(paddingValues),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = if (singleLine) Alignment.CenterVertically else Alignment.Top
             ) {
+
                 leadingIconRes?.let {
                     Icon(
                         modifier = Modifier.size(20.dp),
-                        painter = painterResource(leadingIconRes),
+                        painter = painterResource(it),
                         contentDescription = null,
                         tint = colors.primary
                     )
                 }
-                Box(
-                    contentAlignment = if (singleLine) Alignment.CenterStart else Alignment.TopStart
-                ){
-                    if (text.isEmpty()) {
-                        Row(
-                             verticalAlignment = Alignment.CenterVertically
-                        ){
-                            Text(
-                                text = hint,
-                                style = AppTypo.placeholder,
-                                color = colors.hint,
-                                fontSize = fontSize ?: AppTypo.placeholder.fontSize
-                            )
-                            if (required){
-                                Text(
-                                    modifier = Modifier.offset(y = -4.dp),
-                                    text = "*",
-                                    fontSize = 12.sp,
-                                    color = AppColors.RED
-                                )
+
+                BasicTextField(
+                    modifier = Modifier.fillMaxSize(),
+                    value = text,
+                    onValueChange = onTextChange,
+                    enabled = enabled,
+                    readOnly = readOnly,
+                    singleLine = singleLine,
+                    maxLines = maxLines,
+                    minLines = minLines,
+                    keyboardOptions = keyboardOptions,
+                    keyboardActions = keyboardActions,
+                    cursorBrush = SolidColor(colors.primary),
+                    textStyle = TextStyle(
+                        fontFamily = AppTypo.placeholder.fontFamily,
+                        fontWeight = AppTypo.placeholder.fontWeight,
+                        fontSize = fontSize ?: AppTypo.placeholder.fontSize,
+                        color = colors.text
+                    ),
+                    decorationBox = { innerTextField ->
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = if (singleLine)
+                                Alignment.CenterStart
+                            else
+                                Alignment.TopStart
+                        ) {
+
+                            if (text.isEmpty()) {
+                                Row {
+                                    Text(
+                                        text = hint,
+                                        style = AppTypo.placeholder,
+                                        color = colors.hint,
+                                        fontSize = fontSize ?: AppTypo.placeholder.fontSize
+                                    )
+                                    if (required) {
+                                        Text(
+                                            text = "*",
+                                            fontSize = 12.sp,
+                                            color = AppColors.RED,
+                                            modifier = Modifier.offset(y = (-4).dp)
+                                        )
+                                    }
+                                }
                             }
+
+                            innerTextField()
                         }
                     }
-                    BasicTextField(
-                        modifier = Modifier.fillMaxSize(),
-                        value = text,
-                        onValueChange = onTextChange,
-                        textStyle = TextStyle(
-                            fontFamily = AppTypo.placeholder.fontFamily,
-                            fontWeight = AppTypo.placeholder.fontWeight,
-                            fontSize = fontSize ?: AppTypo.placeholder.fontSize,
-                            color = colors.text,
-                        ),
-                        cursorBrush = SolidColor(colors.primary),
-                        enabled = enabled,
-                        readOnly = readOnly,
-                        keyboardOptions = keyboardOptions,
-                        keyboardActions = keyboardActions,
-                        maxLines = maxLines,
-                        minLines = minLines,
-                    )
-                }
+                )
             }
-            if (tipContent != null){
-                Box(Modifier.padding(start = 4.dp)){
-                    tipContent()
+
+            tipContent?.let {
+                Box(
+                    modifier = Modifier.padding(start = 4.dp)
+                ) {
+                    it()
                 }
             }
         }
-
     }
 }
