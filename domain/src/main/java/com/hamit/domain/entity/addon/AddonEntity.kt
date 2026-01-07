@@ -6,14 +6,14 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class AddonEntity(
     val id: Int,
-    val title: String,
-    val description: String,
-    val image: String,
-    val category: AddonType,
+    val name: String,
+    val desc: String,
+    val preview: String,
+    val type: AddonType,
     val isLike: Boolean,
-    val rating: Double,
+    val stars: Double,
     val commentCounts: Int,
-    val descriptionImages: List<String>,
+    val images: List<String>,
     val files: List<String>,
     val versions: List<String>,
 ): Parcelable

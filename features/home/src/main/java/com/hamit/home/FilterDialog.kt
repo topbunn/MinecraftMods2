@@ -3,6 +3,7 @@ package com.hamit.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -82,6 +84,7 @@ private fun AppDropDown(
     val colors = LocalAppColors.current
     var mExpanded by remember { mutableStateOf(false) }
 
+    val interactionSource = remember { MutableInteractionSource() }
     Column {
         Row(
             modifier = modifier
@@ -89,7 +92,10 @@ private fun AppDropDown(
                 .appDropShadow(RoundedCornerShape(10.dp), alpha = 0.15f, spread = 10.dp)
                 .background(colors.card)
                 .border(2.dp, colors.border, RoundedCornerShape(10.dp))
-                .clickable { mExpanded = !mExpanded }
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = ripple(color = colors.primaryContainer)
+                ){ mExpanded = !mExpanded }
                 .padding(12.dp, 14.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween

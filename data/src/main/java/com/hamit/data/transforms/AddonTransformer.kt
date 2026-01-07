@@ -11,13 +11,13 @@ class AddonTransformer(context: Context) {
 
     suspend fun toEntity(dto: AddonDto) = AddonEntity(
         id = dto.id,
-        category = dto.category,
-        rating = dto.rating,
+        type = dto.category,
+        stars = dto.rating,
         commentCounts = dto.commentCounts,
-        descriptionImages = dto.descriptionImages.map { it.mapImageLink() },
-        title = dto.title,
-        description = dto.description,
-        image = dto.image.mapImageLink(),
+        images = dto.descriptionImages.map { it.mapImageLink() },
+        name = dto.title,
+        desc = dto.description,
+        preview = dto.image.mapImageLink(),
         files = dto.files,
         versions = dto.versions.map { it.version },
         isLike = recordAccess.getLike(dto.id)?.isActive ?: false

@@ -53,7 +53,7 @@ object DashboardScreen : Screen {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .appDropShadow(shape = RectangleShape, offset = DpOffset.Zero, radius = 4.dp)
+                        .appDropShadow(shape = RectangleShape, offset = DpOffset.Zero, alpha = 0.1f)
                         .background(colors.card)
                         .navigationBarsPadding()
                         .padding(12.dp),

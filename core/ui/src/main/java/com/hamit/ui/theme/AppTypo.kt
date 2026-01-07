@@ -14,6 +14,12 @@ object AppTypo {
         textAlign = TextAlign.Center
     )
 
+    val H2 = TextStyle(
+        fontFamily = AppFonts.CORE,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp,
+    )
+
     val M1 = TextStyle(
         fontFamily = AppFonts.CORE,
         fontWeight = FontWeight.Medium,
