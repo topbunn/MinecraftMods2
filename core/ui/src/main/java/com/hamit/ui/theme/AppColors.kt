@@ -17,6 +17,7 @@ data class LocalColors(
     val text: Color,
     val hint: Color,
     val border: Color,
+    val shimmer: Color,
 )
 
 val LocalAppColors = staticCompositionLocalOf<LocalColors> {
@@ -51,6 +52,9 @@ object AppColors {
     val BORDER_LIGHT = Color(0xffF2F4FA)
     val BORDER_DARK = Color(0xff1C1E25)
 
+    val SHIMMER_LIGHT = Color(0xffD9D9D9)
+    val SHIMMER_DARK = Color(0xff686868)
+
     val PRIMARY = Color(configProvider.getConfig().primaryColor)
 }
 
@@ -63,7 +67,8 @@ val LightThemeColors = LocalColors(
     title = AppColors.TITLE_LIGHT,
     text = AppColors.TEXT_LIGHT,
     hint = AppColors.HINT_LIGHT,
-    border = AppColors.BORDER_LIGHT
+    border = AppColors.BORDER_LIGHT,
+    shimmer = AppColors.SHIMMER_LIGHT
 )
 
 val DarkThemeColors = LocalColors(
@@ -75,6 +80,7 @@ val DarkThemeColors = LocalColors(
     title = AppColors.TITLE_DARK,
     text = AppColors.TEXT_DARK,
     hint = AppColors.HINT_DARK,
-    border = AppColors.BORDER_DARK
+    border = AppColors.BORDER_DARK,
+    shimmer = AppColors.SHIMMER_DARK
 )
 

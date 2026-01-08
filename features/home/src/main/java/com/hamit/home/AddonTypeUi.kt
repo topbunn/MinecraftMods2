@@ -11,7 +11,7 @@ enum class AddonTypeUi(val titleStringRes: Int) {
     TEXTURE(R.string.sort_type_enum_texture),
     SKINS(R.string.sort_type_enum_skins);
 
-    fun toAddonSortType() = when(this){
+    fun toAddonType() = when(this){
         AddonTypeUi.ALL -> null
         AddonTypeUi.ADDON -> AddonType.ADDON
         AddonTypeUi.MAPS -> AddonType.WORLD

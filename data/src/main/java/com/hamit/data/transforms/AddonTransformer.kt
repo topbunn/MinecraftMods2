@@ -1,8 +1,8 @@
 package com.hamit.data.transforms
 
 import android.content.Context
-import com.hamit.data.source.remote.dto.addon.AddonDto
 import com.hamit.data.source.local.database.CoreDatabase
+import com.hamit.data.source.remote.dto.addon.AddonDto
 import com.hamit.domain.entity.addon.AddonEntity
 
 class AddonTransformer(context: Context) {
@@ -12,8 +12,6 @@ class AddonTransformer(context: Context) {
     suspend fun toEntity(dto: AddonDto) = AddonEntity(
         id = dto.id,
         type = dto.category,
-        stars = dto.rating,
-        commentCounts = dto.commentCounts,
         images = dto.descriptionImages.map { it.mapImageLink() },
         name = dto.title,
         desc = dto.description,

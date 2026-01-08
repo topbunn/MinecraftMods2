@@ -11,8 +11,6 @@ data class AddonEntity(
     val preview: String,
     val type: AddonType,
     val isLike: Boolean,
-    val stars: Double,
-    val commentCounts: Int,
     val images: List<String>,
     val files: List<String>,
     val versions: List<String>,

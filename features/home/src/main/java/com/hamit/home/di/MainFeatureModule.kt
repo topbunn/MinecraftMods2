@@ -1,8 +1,8 @@
 package com.hamit.home.di
 
-import org.koin.dsl.module
 import com.hamit.home.HomeViewModel
+import org.koin.dsl.module
 
 val mainFeatureModule = module {
-    single { HomeViewModel(get(), get()) }
+    single { HomeViewModel(get()) }
 }

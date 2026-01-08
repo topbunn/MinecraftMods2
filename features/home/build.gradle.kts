@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.facebook.adapter)
     implementation(libs.mintegral.adapter)
 
+    implementation(libs.compose.shimmer)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

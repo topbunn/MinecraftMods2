@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.voyager.tab)
     implementation(libs.voyager.transitions)
 
+    implementation(libs.compose.shimmer)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.coil.network.okhttp)

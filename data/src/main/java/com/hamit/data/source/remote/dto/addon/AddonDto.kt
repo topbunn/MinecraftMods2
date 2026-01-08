@@ -8,8 +8,6 @@ import kotlinx.serialization.Serializable
 data class AddonDto(
     @SerialName("id") val id: Int,
     @SerialName("category") val category: AddonType,
-    @SerialName("rating") val rating: Double,
-    @SerialName("commentCounts") val commentCounts: Int,
     @SerialName("descriptionImages") val descriptionImages: List<String>,
     @SerialName("title") val title: String,
     @SerialName("description") val description: String,

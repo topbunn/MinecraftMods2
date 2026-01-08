@@ -11,11 +11,9 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,6 +38,7 @@ import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
 import com.hamit.ui.utils.appDropShadow
+import com.valentinilk.shimmer.shimmer
 
 @Composable
 fun AddonItem(addon: AddonEntity) {
@@ -118,9 +117,7 @@ private fun AddonTitle(addon: AddonEntity, ) {
 }
 
 @Composable
-private fun AddonPreview(
-    addon: AddonEntity,
-) {
+private fun AddonPreview(addon: AddonEntity, ) {
     val colors = LocalAppColors.current
     val context = LocalContext.current
 
@@ -134,6 +131,7 @@ private fun AddonPreview(
     }
     Box(contentAlignment = Alignment.Center) {
         var isLoad by remember { mutableStateOf(true) }
+        val loaderModifier = if (isLoad) Modifier.background(colors.shimmer).shimmer() else Modifier
         AsyncImage(
             model = request,
             contentDescription = addon.name,
@@ -150,15 +148,9 @@ private fun AddonPreview(
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp)
                 .aspectRatio(1.78f)
-                .clip(RoundedCornerShape(12.dp)),
+                .clip(RoundedCornerShape(12.dp))
+                .then(loaderModifier),
         )
-        if (isLoad) {
-            CircularProgressIndicator(
-                color = colors.title,
-                strokeWidth = 3.dp,
-                modifier = Modifier.size(24.dp)
-            )
-        }
 
     }
 }
