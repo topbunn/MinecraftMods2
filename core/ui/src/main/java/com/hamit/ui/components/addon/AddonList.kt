@@ -35,6 +35,7 @@ fun AddonList(
     modifier: Modifier = Modifier,
     status: AddonListStatusUi,
     isEndOfList: Boolean,
+    onClick: (id: Int) -> Unit,
     onPreload: () -> Unit
 ) {
     val colors = LocalAppColors.current
@@ -56,7 +57,8 @@ fun AddonList(
     ) {
         AddonListContent(
             addons = addons,
-            isLoad = status == AddonListStatusUi.Loading
+            isLoad = status == AddonListStatusUi.Loading,
+            onClick = onClick
         )
 
         AddonListFooter(

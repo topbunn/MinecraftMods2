@@ -10,6 +10,7 @@ import com.hamit.home.HomeState.FilterType.ADDON_TYPES
 import com.hamit.home.HomeState.FilterType.SORTS
 import com.hamit.ui.components.addon.AddonListStatusUi
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -26,6 +28,9 @@ internal class HomeViewModel(
 
     private val _state = MutableStateFlow(HomeState())
     val state = _state.asStateFlow()
+
+    private val _events = Channel<HomeEvent>()
+    val events get() = _events.receiveAsFlow()
 
     private var addonJob: Job? = null
 
@@ -60,21 +65,30 @@ internal class HomeViewModel(
         }
     }
 
+    
     fun handleChangeState() {
         _state
             .map { listOf(it.query, it.selectedSortTypeIndex, it.selectedAddonTypeIndex) }
             .distinctUntilChanged()
             .drop(1)
             .onEach {
-                refreshMods()
+                refreshAddons()
             }
             .launchIn(screenModelScope)
     }
 
-    fun refreshMods() {
+    fun refreshAddons() {
+        addonJob?.cancel()
+
         _state.update {
-            it.copy(addons = emptyList(), addonStatus = AddonListStatusUi.Idle, isEndOfList = false)
+            it.copy(
+                addons = emptyList(),
+                isEndOfList = false,
+                addonStatus = AddonListStatusUi.Loading
+            )
         }
+
+        loadAddons()
     }
 
     fun changeFilterValue(selectedIndex: Int, type: HomeState.FilterType){
@@ -88,5 +102,6 @@ internal class HomeViewModel(
 
     fun changeFilterDialog(status: Boolean) = _state.update { it.copy(filterIsOpen = status) }
     fun changeQuery(q: String) = _state.update { it.copy(query = q) }
+    fun openAddon(id: Int) = screenModelScope.launch { _events.send(HomeEvent.OpenMod(id)) }
 
 }

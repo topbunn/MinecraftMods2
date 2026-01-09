@@ -2,6 +2,7 @@ package com.hamit.ui.components.addon
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -41,7 +42,7 @@ import com.hamit.ui.utils.appDropShadow
 import com.valentinilk.shimmer.shimmer
 
 @Composable
-fun AddonItem(addon: AddonEntity) {
+fun AddonItem(addon: AddonEntity, onClick: (id: Int) -> Unit) {
     val colors = LocalAppColors.current
     Column(
         modifier = Modifier
@@ -49,6 +50,7 @@ fun AddonItem(addon: AddonEntity) {
             .appDropShadow(RoundedCornerShape(24.dp))
             .clip(RoundedCornerShape(24.dp))
             .background(colors.card)
+            .clickable{ onClick(addon.id) }
             .padding(vertical = 12.dp),
     ) {
         AddonPreview(addon)

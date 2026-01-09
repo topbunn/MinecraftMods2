@@ -1,6 +1,5 @@
 package com.hamit.home
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -42,6 +41,7 @@ import com.hamit.ui.R
 import com.hamit.ui.components.AppTextField
 import com.hamit.ui.components.addon.AddonList
 import com.hamit.ui.theme.LocalAppColors
+import com.hamit.ui.utils.ObserveAsEvents
 import com.hamit.ui.utils.appDropShadow
 
 
@@ -59,8 +59,11 @@ object HomeScreen : Tab, Screen {
     override fun Content() {
         val viewModel = koinScreenModel<HomeViewModel>()
         val state by viewModel.state.collectAsState()
-        LaunchedEffect(Unit) {
-            viewModel.handleChangeState()
+        LaunchedEffect(Unit) { viewModel.handleChangeState() }
+        ObserveAsEvents(viewModel.events) {
+            when(it){
+                is HomeEvent.OpenMod -> {}
+            }
         }
         Column {
             Header(
@@ -73,7 +76,7 @@ object HomeScreen : Tab, Screen {
                     .fillMaxWidth()
                     .weight(1f),
                 isRefreshing = false,
-                onRefresh = { viewModel.refreshMods() }
+                onRefresh = { viewModel.refreshAddons() }
             ) {
                 AddonList(
                     addons = state.addons,
@@ -81,8 +84,8 @@ object HomeScreen : Tab, Screen {
                     state = state.listState,
                     status = state.addonStatus,
                     isEndOfList = state.isEndOfList,
+                    onClick = viewModel::openAddon,
                     onPreload = {
-                        Log.d("CALL ON PRELOAD", "CALL ON PRELOAD")
                         viewModel.loadAddons()
                     },
                 )
