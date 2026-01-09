@@ -66,10 +66,15 @@
     <string name="send">Senden</string>
     <string name="suggest_submitted">Vorschlag eingereicht</string>
     <string name="error_check_internet">Ein Fehler ist aufgetreten. Bitte überprüfe deine Internetverbindung oder versuche es erneut.</string>
-    <string name="the_list_is_empty">Die Liste ist leer :(</string>
+    <string name="the_list_is_empty">Nichts gefunden</string>
     <string name="retry">Erneut versuchen</string>
 
     <string name="collapse">Einklappen</string>
     <string name="expand">Erweitern</string>
+
+    <string name="error_no_internet">Keine Internetverbindung</string>
+    <string name="error_maintenance">Der Server wird gerade gewartet. Bitte versuchen Sie es später erneut.</string>
+    <string name="error_unknown">Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</string>
+
     <string name="you_might_like">Das könnte Ihnen gefallen</string>
 </resources>

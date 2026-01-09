@@ -2,9 +2,13 @@ package com.hamit.home
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import com.hamit.android.AppExceptionType
+import com.hamit.android.Maintenance
+import com.hamit.android.NoInternet
 import com.hamit.domain.useCases.addon.ReceiveAddonListUseCase
 import com.hamit.home.HomeState.FilterType.ADDON_TYPES
 import com.hamit.home.HomeState.FilterType.SORTS
+import com.hamit.ui.components.addon.AddonListStatusUi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,7 +32,7 @@ internal class HomeViewModel(
     fun loadAddons() = with(_state.value){
         addonJob?.cancel()
         addonJob = screenModelScope.launch{
-            _state.update { it.copy(loadingStatus = HomeState.AddonLoadingStatus.Loading) }
+            _state.update { it.copy(addonStatus = AddonListStatusUi.Loading) }
             val result = receiveAddonListUseCase(
                 q = query,
                 offset = addons.size,
@@ -40,12 +44,18 @@ internal class HomeViewModel(
                     it.copy(
                         addons = it.addons + addons,
                         isEndOfList = addons.isEmpty(),
-                        loadingStatus = HomeState.AddonLoadingStatus.Success
+                        addonStatus = AddonListStatusUi.Success
                     )
                 }
             }.onFailure { error ->
                 error.printStackTrace()
-                _state.update { it.copy(loadingStatus = HomeState.AddonLoadingStatus.Error("")) }
+
+                val type = when (error) {
+                    NoInternet -> AppExceptionType.NoInternet
+                    Maintenance -> AppExceptionType.Maintenance
+                    else -> AppExceptionType.Error
+                }
+                _state.update { it.copy(addonStatus = AddonListStatusUi.Error(type)) }
             }
         }
     }
@@ -63,7 +73,7 @@ internal class HomeViewModel(
 
     fun refreshMods() {
         _state.update {
-            it.copy(addons = emptyList(), loadingStatus = HomeState.AddonLoadingStatus.Idle, isEndOfList = false)
+            it.copy(addons = emptyList(), addonStatus = AddonListStatusUi.Idle, isEndOfList = false)
         }
     }
 

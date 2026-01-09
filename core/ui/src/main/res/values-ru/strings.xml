@@ -68,11 +68,15 @@
     <string name="suggest_submitted">Предложение отправлено</string>
     <string name="error_check_internet">Произошла ошибка. Проверьте интернет-соединение или попробуйте снова.</string>
 
-    <string name="the_list_is_empty">Список пуст :(</string>
+    <string name="the_list_is_empty">Ничего не найдено</string>
     <string name="retry">Повторить</string>
 
     <string name="collapse">Свернуть</string>
     <string name="expand">Развернуть</string>
+
+    <string name="error_no_internet">Отсутствует интернет-соединение</string>
+    <string name="error_maintenance">Сервер находится на техническом обслуживании. Пожалуйста, попробуйте позже.</string>
+    <string name="error_unknown">Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.</string>
 
     <string name="you_might_like">Вам может понравится</string>
 

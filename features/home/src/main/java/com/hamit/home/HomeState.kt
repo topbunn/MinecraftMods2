@@ -2,6 +2,7 @@ package com.hamit.home
 
 import androidx.compose.foundation.lazy.LazyListState
 import com.hamit.domain.entity.addon.AddonEntity
+import com.hamit.ui.components.addon.AddonListStatusUi
 
 internal data class HomeState(
     val addons: List<AddonEntity> = emptyList(),
@@ -13,17 +14,9 @@ internal data class HomeState(
     val filterIsOpen: Boolean = false,
     val listState: LazyListState = LazyListState(),
     val isEndOfList: Boolean = false,
-    val loadingStatus: AddonLoadingStatus = AddonLoadingStatus.Idle
+    val addonStatus: AddonListStatusUi = AddonListStatusUi.Idle
 ){
 
-    sealed interface AddonLoadingStatus{
-
-        object Idle: AddonLoadingStatus
-        object Loading: AddonLoadingStatus
-        object Success: AddonLoadingStatus
-        data class Error(val message: String): AddonLoadingStatus
-
-    }
 
     enum class FilterType{ SORTS, ADDON_TYPES }
 

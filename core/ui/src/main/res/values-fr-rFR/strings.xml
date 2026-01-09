@@ -30,6 +30,7 @@
     <string name="hint_name">Nom</string>
     <string name="hint_email">E-Mail</string>
     <string name="hint_link">Lien</string>
+    <string name="hint_desc">La description</string>
     <string name="hint_type_message">Tapez votre message…</string>
     <string name="hint_message_is_sent">Message envoyé</string>
 
@@ -61,13 +62,19 @@
     <string name="describe_your_problem">Décrivez votre problème</string>
     <string name="suggest">Suggérer</string>
     <string name="suggest_desc">Vous avez trouvé un mod génial en ligne ? Partagez-le avec nous ! Nous sommes toujours à la recherche de superbes projets à ajouter à notre collection. Le thème du mod n\'importe peu, nous accueillons tout le monde. Votre mod suggéré pourra être ajouté à cette application ou inclus dans l\'une de nos futures applications.</string>
+    <string name="submit">Soumettre</string>
     <string name="send">Envoyer</string>
     <string name="suggest_submitted">Suggestion soumise</string>
     <string name="error_check_internet">Une erreur est survenue. Veuillez vérifier votre connexion Internet ou réessayer.</string>
-    <string name="the_list_is_empty">La liste est vide :(</string>
+    <string name="the_list_is_empty">Aucun résultat</string>
     <string name="retry">Réessayer</string>
 
     <string name="collapse">Réduire</string>
     <string name="expand">Développer</string>
+
+    <string name="error_no_internet">Pas de connexion Internet</string>
+    <string name="error_maintenance">Le serveur est en maintenance. Veuillez réessayer plus tard.</string>
+    <string name="error_unknown">Une erreur inconnue est survenue. Veuillez réessayer.</string>
+
     <string name="you_might_like">Vous pourriez aimer</string>
 </resources>

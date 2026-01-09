@@ -66,10 +66,15 @@
     <string name="send">Enviar</string>
     <string name="suggest_submitted">Sugerencia enviada</string>
     <string name="error_check_internet">Ocurrió un error. Por favor, comprueba tu conexión a internet o inténtalo de nuevo.</string>
-    <string name="the_list_is_empty">La lista está vacía :(</string>
+    <string name="the_list_is_empty">No se encontró nada</string>
     <string name="retry">Reintentar</string>
 
     <string name="collapse">Contraer</string>
     <string name="expand">Expandir</string>
+
+    <string name="error_no_internet">No hay conexión a Internet</string>
+    <string name="error_maintenance">El servidor está en mantenimiento. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="error_unknown">Ha ocurrido un error desconocido. Por favor, inténtelo de nuevo.</string>
+
     <string name="you_might_like">Puede que te guste</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,6 +19,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,8 +39,8 @@ import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.hamit.ui.R
-import com.hamit.ui.components.addon.AddonList
 import com.hamit.ui.components.AppTextField
+import com.hamit.ui.components.addon.AddonList
 import com.hamit.ui.theme.LocalAppColors
 import com.hamit.ui.utils.appDropShadow
 
@@ -66,18 +68,25 @@ object HomeScreen : Tab, Screen {
                 onChangeQuery = viewModel::changeQuery,
                 onClickFilter = { viewModel.changeFilterDialog(true) },
             )
-            AddonList(
-                addons = state.addons,
-                modifier = Modifier.fillMaxWidth().weight(1f),
-                state = state.listState,
-                isLoad = state.loadingStatus is HomeState.AddonLoadingStatus.Loading,
-                isError = state.loadingStatus is HomeState.AddonLoadingStatus.Error,
-                isEndOfList = state.isEndOfList,
-                onPreload = {
-                    Log.d("CALL ON PRELOAD", "CALL ON PRELOAD")
-                    viewModel.loadAddons()
-                },
-            )
+            PullToRefreshBox(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                isRefreshing = false,
+                onRefresh = { viewModel.refreshMods() }
+            ) {
+                AddonList(
+                    addons = state.addons,
+                    modifier = Modifier.fillMaxSize(),
+                    state = state.listState,
+                    status = state.addonStatus,
+                    isEndOfList = state.isEndOfList,
+                    onPreload = {
+                        Log.d("CALL ON PRELOAD", "CALL ON PRELOAD")
+                        viewModel.loadAddons()
+                    },
+                )
+            }
         }
         FilterDialog(state, viewModel)
     }

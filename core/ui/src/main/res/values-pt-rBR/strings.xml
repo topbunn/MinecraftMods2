@@ -28,6 +28,8 @@
     <string name="any_question">Alguma dúvida ou sugestão?</string>
     <string name="hint_name">Nome</string>
     <string name="hint_email">E-mail</string>
+    <string name="hint_link">Link</string>
+    <string name="hint_desc">Descrição</string>
     <string name="hint_type_message">Digite a mensagem…</string>
     <string name="hint_message_is_sent">Mensagem enviada</string>
 
@@ -60,13 +62,19 @@
     <string name="describe_your_problem">Descreva seu problema</string>
     <string name="suggest">Sugerir</string>
     <string name="suggest_desc">Encontrou um mod incrível online? Compartilhe conosco! Estamos sempre procurando ótimos projetos para adicionar à nossa coleção. El tema do mod não importa, aceitamos todos. Seu mod sugerido pode ser adicionado a este aplicativo ou incluído em um de nossos aplicativos futuros.</string>
+    <string name="submit">Enviar</string>
     <string name="send">Enviar</string>
     <string name="suggest_submitted">Sugestão enviada</string>
     <string name="error_check_internet">Ocorreu um erro. Verifique sua conexão com a internet ou tente novamente.</string>
-    <string name="the_list_is_empty">A lista está vazia :(</string>
+    <string name="the_list_is_empty">Nada encontrado</string>
     <string name="retry">Tentar novamente</string>
 
     <string name="collapse">Recolher</string>
     <string name="expand">Expandir</string>
+
+    <string name="error_no_internet">Sem conexão com a internet</string>
+    <string name="error_maintenance">O servidor está em manutenção. Por favor, tente novamente mais tarde.</string>
+    <string name="error_unknown">Ocorreu um erro desconhecido. Por favor, tente novamente.</string>
+
     <string name="you_might_like">Você pode gostar</string>
 </resources>

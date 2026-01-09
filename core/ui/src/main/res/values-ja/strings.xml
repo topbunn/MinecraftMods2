@@ -30,13 +30,14 @@
     <string name="hint_name">名前</string>
     <string name="hint_email">メール</string>
     <string name="hint_link">リンク</string>
+    <string name="hint_desc">説明</string>
     <string name="hint_type_message">メッセージを入力してください…</string>
     <string name="hint_message_is_sent">メッセージが送信されました</string>
 
     <string name="installation">インストール</string>
     <string name="instructions">手順</string>
 
-    <string name="instr_addon_1">一部のアドオンは.mcpackまたは.mcworldファイル形式です。インストールするには、目的의ファイルをタップしてください。手動でデバイスにダウンロードすることもできます。</string>
+    <string name="instr_addon_1">一部のアドオンは.mcpackまたは.mcworldファイル形式です。インストールするには、目的のファイルをタップしてください。手動でデバイスにダウンロードすることもできます。</string>
     <string name="instr_addon_2">ワールドを編集モードで開きます。</string>
     <string name="instr_addon_3">リソースパックを選択し、ダウンロードしたアドオンやテクスチャを有効にするには「有効」ボタンをタップします。\n\nビヘイビアパックも同様です。</string>
     <string name="instr_addon_4">重要！すべての実験的機能を有効にしてください。</string>
@@ -62,13 +63,19 @@
     <string name="describe_your_problem">問題を説明してください</string>
     <string name="suggest">提案</string>
     <string name="suggest_desc">オンラインで素晴らしいModを見つけましたか？私たちと共有してください！私たちは常にコレクションに追加する素晴らしいプロジェクトを探しています。Modのテーマは問いません、どなたでも大歓迎です。提案されたModはこのアプリに追加されるか、将来のアプリの1つに含まれる可能性があります。</string>
+    <string name="submit">送信</string>
     <string name="send">送信</string>
     <string name="suggest_submitted">提案が送信されました</string>
     <string name="error_check_internet">エラーが発生しました。インターネット接続を確認するか、もう一度お試しください。</string>
-    <string name="the_list_is_empty">リストは空です:(</string>
+    <string name="the_list_is_empty">何も見つかりませんでした</string>
     <string name="retry">再試行</string>
 
     <string name="collapse">折りたたむ</string>
     <string name="expand">展開する</string>
+
+    <string name="error_no_internet">インターネットに接続されていません</string>
+    <string name="error_maintenance">サーバーはメンテナンス中です。後でもう一度お試しください。</string>
+    <string name="error_unknown">不明なエラーが発生しました。もう一度お試しください。</string>
+
     <string name="you_might_like">気に入るかもしれません</string>
 </resources>

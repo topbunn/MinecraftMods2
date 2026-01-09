@@ -55,6 +55,7 @@ Repeat the steps for behavior packs.</string>
     <string name="supported_versions">Supported versions</string>
     <string name="addon_don_t_work">Addon not working?</string>
     <string name="to_save_click_the_download_button">To save, click the “Download” button.</string>
+
     <string name="download">Download</string>
     <string name="to_install_in_game_click_the_install">To install in the game, click “Install”.</string>
     <string name="install">Install</string>
@@ -68,10 +69,15 @@ Repeat the steps for behavior packs.</string>
     <string name="suggest_submitted">Suggestion submitted</string>
     <string name="error_check_internet">An error occurred. Please check your internet connection or try again.</string>
 
-    <string name="the_list_is_empty">The list is empty :(</string>
+    <string name="the_list_is_empty">Nothing found</string>
     <string name="retry">Retry</string>
 
     <string name="collapse">Collapse</string>
     <string name="expand">Expand</string>
+
+    <string name="error_no_internet">No internet connection</string>
+    <string name="error_maintenance">The server is under maintenance. Please try again later.</string>
+    <string name="error_unknown">An unknown error has occurred. Please try again.</string>
+
     <string name="you_might_like">You might like</string>
 </resources>

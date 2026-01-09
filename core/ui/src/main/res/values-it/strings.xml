@@ -30,6 +30,7 @@
     <string name="hint_name">Nome</string>
     <string name="hint_email">Email</string>
     <string name="hint_link">Link</string>
+    <string name="hint_desc">Descrizione</string>
     <string name="hint_type_message">Digita il messaggio…</string>
     <string name="hint_message_is_sent">Messaggio inviato</string>
 
@@ -63,12 +64,19 @@
     <string name="describe_your_problem">Descrivi il tuo problema</string>
     <string name="suggest">Suggerisci</string>
     <string name="suggest_desc">Hai trovato una mod fantastica online? Condividila con noi! Siamo sempre alla ricerca di grandi progetti da aggiungere alla nostra collezione. Il tema della mod non importa, accogliamo tutto e tutti. La mod suggerita potrebbe essere aggiunta a questa app o inclusa in una delle nostre app future.</string>
+    <string name="submit">Invia</string>
     <string name="send">Invia</string>
     <string name="suggest_submitted">Suggerimento inviato</string>
-    <string name="the_list_is_empty">L\'elenco è vuoto :(</string>
+    <string name="error_check_internet">Si è verificato un errore. Controlla la tua connessione Internet o riprova.</string>
+    <string name="the_list_is_empty">Nessun risultato trovato</string>
     <string name="retry">Riprova</string>
 
     <string name="collapse">Comprimi</string>
     <string name="expand">Espandi</string>
+
+    <string name="error_no_internet">Nessuna connessione a Internet</string>
+    <string name="error_maintenance">Il server è in manutenzione. Riprova più tardi.</string>
+    <string name="error_unknown">Si è verificato un errore sconosciuto. Riprova.</string>
+
     <string name="you_might_like">Potrebbe piacerti</string>
 </resources>

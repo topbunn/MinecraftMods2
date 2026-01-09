@@ -22,6 +22,7 @@
     <string name="tabs_main">Utama</string>
     <string name="tabs_favorite">Favorit</string>
     <string name="tabs_suggest">Sarankan</string>
+    <string name="tabs_apps">Mod lain</string>
 
     <string name="contact_us">Hubungi Kami</string>
     <string name="any_question">Ada pertanyaan atau saran?</string>
@@ -29,6 +30,7 @@
     <string name="hint_name">Nama</string>
     <string name="hint_email">Email</string>
     <string name="hint_link">Tautan</string>
+    <string name="hint_desc">Keterangan</string>
     <string name="hint_type_message">Ketik pesan Anda…</string>
     <string name="hint_message_is_sent">Pesan terkirim</string>
 
@@ -60,14 +62,20 @@
     <string name="describe_your_problem">Jelaskan masalah Anda</string>
     <string name="suggest">Sarankan</string>
     <string name="suggest_desc">Menemukan mod keren secara online? Bagikan dengan kami! Kami selalu mencari proyek hebat untuk ditambahkan ke koleksi kami. Tema mod tidak masalah, kami menerima semuanya. Mod yang Anda sarankan mungkin ditambahkan ke aplikasi ini atau disertakan dalam salah satu aplikasi masa depan kami.</string>
+    <string name="submit">Kirim</string>
     <string name="send">Kirim</string>
     <string name="suggest_submitted">Saran dikirim</string>
     <string name="error_check_internet">Terjadi kesalahan. Silakan periksa koneksi internet Anda atau coba lagi.</string>
 
-    <string name="the_list_is_empty">Daftar kosong :(</string>
+    <string name="the_list_is_empty">Tidak ada yang ditemukan</string>
     <string name="retry">Coba Lagi</string>
 
     <string name="collapse">Tutup</string>
     <string name="expand">Buka</string>
+
+    <string name="error_no_internet">Tidak ada koneksi internet</string>
+    <string name="error_maintenance">Server sedang dalam pemeliharaan. Silakan coba lagi nanti.</string>
+    <string name="error_unknown">Terjadi kesalahan yang tidak diketahui. Silakan coba lagi.</string>
+
     <string name="you_might_like">Mungkin Anda akan menyukainya</string>
 </resources>
