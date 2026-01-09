@@ -1,5 +1,6 @@
 package com.hamit.home
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -36,7 +37,7 @@ import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.hamit.ui.R
-import com.hamit.ui.components.AddonList
+import com.hamit.ui.components.addon.AddonList
 import com.hamit.ui.components.AppTextField
 import com.hamit.ui.theme.LocalAppColors
 import com.hamit.ui.utils.appDropShadow
@@ -72,7 +73,10 @@ object HomeScreen : Tab, Screen {
                 isLoad = state.loadingStatus is HomeState.AddonLoadingStatus.Loading,
                 isError = state.loadingStatus is HomeState.AddonLoadingStatus.Error,
                 isEndOfList = state.isEndOfList,
-                onPreload = { viewModel.loadAddons() },
+                onPreload = {
+                    Log.d("CALL ON PRELOAD", "CALL ON PRELOAD")
+                    viewModel.loadAddons()
+                },
             )
         }
         FilterDialog(state, viewModel)

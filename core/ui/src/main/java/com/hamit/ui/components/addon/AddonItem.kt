@@ -1,4 +1,4 @@
-package com.hamit.ui.components
+package com.hamit.ui.components.addon
 
 import android.util.Log
 import androidx.compose.foundation.background
