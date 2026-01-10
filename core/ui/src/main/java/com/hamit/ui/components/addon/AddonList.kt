@@ -35,6 +35,7 @@ fun AddonList(
     modifier: Modifier = Modifier,
     status: AddonListStatusUi,
     isEndOfList: Boolean,
+    paddingValues: PaddingValues = PaddingValues(horizontal = 12.dp, vertical = 20.dp),
     onClick: (id: Int) -> Unit,
     onPreload: () -> Unit
 ) {
@@ -53,7 +54,7 @@ fun AddonList(
         userScrollEnabled = !(addons.isEmpty() && status == AddonListStatusUi.Loading),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp),
-        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 20.dp)
+        contentPadding = paddingValues
     ) {
         AddonListContent(
             addons = addons,

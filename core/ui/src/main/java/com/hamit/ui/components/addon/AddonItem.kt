@@ -111,7 +111,7 @@ private fun AddonTitle(addon: AddonEntity, ) {
     Text(
         modifier = Modifier.padding(horizontal = 12.dp),
         text = addon.name,
-        style = AppTypo.H2,
+        style = AppTypo.H3,
         color = colors.title,
         maxLines = 2,
         overflow = TextOverflow.Ellipsis,

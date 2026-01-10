@@ -16,6 +16,12 @@ object AppTypo {
 
     val H2 = TextStyle(
         fontFamily = AppFonts.CORE,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+    )
+
+    val H3 = TextStyle(
+        fontFamily = AppFonts.CORE,
         fontWeight = FontWeight.SemiBold,
         fontSize = 20.sp,
     )

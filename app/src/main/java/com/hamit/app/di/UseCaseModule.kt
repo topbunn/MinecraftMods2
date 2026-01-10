@@ -4,7 +4,7 @@ import com.hamit.domain.useCases.addon.ReceiveAddonListUseCase
 import com.hamit.domain.useCases.addon.ReceiveAddonUseCase
 import com.hamit.domain.useCases.config.ReceiveConfigUseCase
 import com.hamit.domain.useCases.like.AddLikeUseCase
-import com.hamit.domain.useCases.like.ReceiveFavoriteAddonsUseCase
+import com.hamit.domain.useCases.like.ReceiveLikeAddonsUseCase
 import com.hamit.domain.useCases.like.ReceiveLikeTotalSizeUseCase
 import com.hamit.domain.useCases.problem.SendProblemUseCase
 import com.hamit.domain.useCases.region.ReceiveRegionUseCase
@@ -16,7 +16,7 @@ val useCaseModule = module {
     single { ReceiveAddonUseCase(get()) }
     single { ReceiveConfigUseCase(get()) }
     single { AddLikeUseCase(get()) }
-    single { ReceiveFavoriteAddonsUseCase(get()) }
+    single { ReceiveLikeAddonsUseCase(get()) }
     single { ReceiveLikeTotalSizeUseCase(get()) }
     single { SendProblemUseCase(get()) }
     single { ReceiveRegionUseCase(get()) }
