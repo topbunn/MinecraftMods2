@@ -33,10 +33,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import com.hamit.navigation.Destination
 import com.hamit.ui.R
 import com.hamit.ui.components.AppTextField
 import com.hamit.ui.components.addon.AddonList
@@ -59,10 +63,14 @@ object HomeScreen : Tab, Screen {
     override fun Content() {
         val viewModel = koinScreenModel<HomeViewModel>()
         val state by viewModel.state.collectAsState()
+        val navigator = LocalNavigator.currentOrThrow.parent
         LaunchedEffect(Unit) { viewModel.handleChangeState() }
         ObserveAsEvents(viewModel.events) {
             when(it){
-                is HomeEvent.OpenMod -> {}
+                is HomeEvent.OpenMod -> {
+                    val addonScreen = ScreenRegistry.get(Destination.AddonScreen(it.id))
+                    navigator?.push(addonScreen)
+                }
             }
         }
         Column {

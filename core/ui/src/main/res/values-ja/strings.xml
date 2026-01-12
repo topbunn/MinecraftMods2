@@ -78,4 +78,6 @@
     <string name="error_unknown">不明なエラーが発生しました。もう一度お試しください。</string>
 
     <string name="you_might_like">気に入るかもしれません</string>
+    <string name="gallery">ギャラリー</string>
+    <string name="files">ファイル</string>
 </resources>

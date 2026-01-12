@@ -57,6 +57,7 @@ pangleAdapter = "7.8.5.2.0"
 mobileads = "7.18.1"
 reviewVersion = "10.0.0"
 playServicesLocation = "21.3.0"
+foundation = "1.10.0"
 
 
 [libraries]
@@ -142,6 +143,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 
 [plugins]
 # Core

@@ -77,4 +77,6 @@
     <string name="error_unknown">Ha ocurrido un error desconocido. Por favor, inténtelo de nuevo.</string>
 
     <string name="you_might_like">Puede que te guste</string>
+    <string name="gallery">Galería</string>
+    <string name="files">Archivos</string>
 </resources>

@@ -77,4 +77,6 @@
     <string name="error_unknown">Une erreur inconnue est survenue. Veuillez réessayer.</string>
 
     <string name="you_might_like">Vous pourriez aimer</string>
+    <string name="gallery">Galerie</string>
+    <string name="files">Fichiers</string>
 </resources>

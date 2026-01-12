@@ -26,16 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hamit.domain.entity.addon.AddonEntity
-import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
 import com.hamit.ui.utils.appDropShadow
@@ -76,21 +73,7 @@ private fun AddonVersionList(versions: List<String>) {
     }
 }
 
-@Composable
-private fun AddonVersionItem(version: String) {
-    val colors = LocalAppColors.current
-    Text(
-        modifier = Modifier
-            .clip(RoundedCornerShape(6.dp))
-            .background(colors.primaryContainer)
-            .padding(horizontal = 10.dp, vertical = 2.dp),
-        text = version,
-        fontSize = 14.sp,
-        color = colors.primary,
-        fontFamily = AppFonts.CORE,
-        fontWeight = FontWeight.Bold,
-    )
-}
+
 
 @Composable
 private fun AddonDesc(addon: AddonEntity, ) {

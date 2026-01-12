@@ -80,4 +80,6 @@ Repeat the steps for behavior packs.</string>
     <string name="error_unknown">An unknown error has occurred. Please try again.</string>
 
     <string name="you_might_like">You might like</string>
+    <string name="gallery">Gallery</string>
+    <string name="files">Files</string>
 </resources>

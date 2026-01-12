@@ -9,8 +9,10 @@ import com.hamit.domain.useCases.like.ReceiveLikeAddonsUseCase
 import com.hamit.domain.useCases.like.ReceiveLikeTotalSizeUseCase
 import com.hamit.ui.components.addon.AddonListStatusUi
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -21,6 +23,9 @@ class LikeViewModel(
 
     private val _state = MutableStateFlow(LikeState())
     val state = _state.asStateFlow()
+
+    private val _events = Channel<LikeEvent>()
+    val events get() = _events.receiveAsFlow()
 
     private var addonJob: Job? = null
 
@@ -39,7 +44,7 @@ class LikeViewModel(
         receiveAddons()
     }
 
-    fun openAddon(id: Int) = _state.update { it.copy(openAddon = id) }
+    fun openAddon(id: Int) = screenModelScope.launch { _events.send(LikeEvent.OpenMod(id)) }
 
     fun receiveAddons(){
         addonJob?.cancel()

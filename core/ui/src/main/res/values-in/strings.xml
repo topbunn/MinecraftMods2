@@ -78,4 +78,6 @@
     <string name="error_unknown">Terjadi kesalahan yang tidak diketahui. Silakan coba lagi.</string>
 
     <string name="you_might_like">Mungkin Anda akan menyukainya</string>
+    <string name="gallery">Galeri</string>
+    <string name="files">File</string>
 </resources>

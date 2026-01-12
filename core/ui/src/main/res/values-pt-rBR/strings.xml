@@ -26,6 +26,7 @@
 
     <string name="contact_us">Fale conosco</string>
     <string name="any_question">Alguma dúvida ou sugestão?</string>
+
     <string name="hint_name">Nome</string>
     <string name="hint_email">E-mail</string>
     <string name="hint_link">Link</string>
@@ -77,4 +78,6 @@
     <string name="error_unknown">Ocorreu um erro desconhecido. Por favor, tente novamente.</string>
 
     <string name="you_might_like">Você pode gostar</string>
+    <string name="gallery">Galeria</string>
+    <string name="files">Arquivos</string>
 </resources>
