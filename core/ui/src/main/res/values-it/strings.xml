@@ -37,6 +37,7 @@
     <string name="installation">Installazione</string>
     <string name="instructions">Istruzioni</string>
 
+    <string name="how_to_install">Come installare?</string>
     <string name="instr_addon_1">Alcuni addon sono in formato .mcpack o .mcworld. Per installarli, tocca il file desiderato. Puoi anche scaricarli manualmente sul dispositivo.</string>
     <string name="instr_addon_2">Apri il mondo in modalità modifica.</string>
     <string name="instr_addon_3">Seleziona il pacchetto risorse e tocca “Abilita” per attivare gli addon o le texture scaricati.\n\nLo stesso vale per i pacchetti comportamentali.</string>
@@ -81,4 +82,14 @@
     <string name="you_might_like">Potrebbe piacerti</string>
     <string name="gallery">Galleria</string>
     <string name="files">File</string>
+    <string name="support">Supporto</string>
+    <string name="other_mods">Altre mod</string>
+    <string name="describe_problem">Descrivi il tuo problema in modo più dettagliato. Cosa stai riscontrando esattamente?</string>
+    <string name="download_file">Scarica file</string>
+    <string name="downloading">Download in corso:</string>
+    <string name="random_mod">Mod casuale</string>
+    <string name="servers">Server</string>
+    <string name="crafts">Ricette</string>
+    <string name="not_working">Non funziona?</string>
+
 </resources>

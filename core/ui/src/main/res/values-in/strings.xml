@@ -37,6 +37,7 @@
     <string name="installation">Instalasi</string>
     <string name="instructions">Petunjuk</string>
 
+    <string name="how_to_install">Bagaimana cara menginstal?</string>
     <string name="instr_addon_1">Beberapa addon berupa file .mcpack atau .mcworld. Ketuk file yang diinginkan untuk menginstalnya di Minecraft. Anda juga bisa mengunduh addon secara manual ke perangkat Anda.</string>
     <string name="instr_addon_2">Buka dunia Anda dalam mode edit.</string>
     <string name="instr_addon_3">Pilih paket sumber daya. Tambahkan addon atau tekstur yang diunduh dengan menekan tombol aktivasi.\n\nUlangi langkah untuk paket perilaku.</string>
@@ -80,4 +81,14 @@
     <string name="you_might_like">Mungkin Anda akan menyukainya</string>
     <string name="gallery">Galeri</string>
     <string name="files">File</string>
+    <string name="support">Dukungan</string>
+    <string name="other_mods">Mod lainnya</string>
+    <string name="describe_problem">Silakan jelaskan masalah Anda secara lebih rinci. Apa yang Anda alami?</string>
+    <string name="download_file">Unduh file</string>
+    <string name="downloading">Mengunduh:</string>
+    <string name="random_mod">Mod acak</string>
+    <string name="servers">Server</string>
+    <string name="crafts">Resep</string>
+    <string name="not_working">Tidak berfungsi?</string>
+
 </resources>

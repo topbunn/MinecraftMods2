@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
@@ -20,11 +21,13 @@ import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.hamit.addon.components.AddonVersionList
-import com.hamit.addon.components.Buttons
+import com.hamit.addon.components.TopbarButtons
 import com.hamit.addon.components.Description
 import com.hamit.addon.components.Files
 import com.hamit.addon.components.Gallery
+import com.hamit.addon.components.OtherMods
 import com.hamit.addon.components.Preview
+import com.hamit.addon.components.SupportButtons
 import com.hamit.addon.components.Title
 import kotlinx.parcelize.Parcelize
 import org.koin.core.parameter.parametersOf
@@ -47,6 +50,7 @@ data class AddonScreen(private val addonId: Int) : Screen, Parcelable {
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
                     .padding(top = 12.dp, bottom = 20.dp)
+                    .navigationBarsPadding()
             ){
                 state.addon?.let { addon ->
                     Preview(addon)
@@ -60,9 +64,18 @@ data class AddonScreen(private val addonId: Int) : Screen, Parcelable {
                     Gallery(addon)
                     Spacer(Modifier.height(16.dp))
                     Files(addon){}
+                    Spacer(Modifier.height(16.dp))
+                    SupportButtons(
+                        onClickHowInstall = {},
+                        onClickNotWork = {}
+                    )
+                    Spacer(Modifier.height(16.dp))
+                    OtherMods(null)
+                } ?: run {
+                    AddonShimmerContent()
                 }
             }
-            Buttons(
+            TopbarButtons(
                 addon = state.addon,
                 onClickBack = { navigator.pop() },
                 onClickLike = { viewModel.switchLikeStatus() }

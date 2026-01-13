@@ -30,6 +30,7 @@ object AppColors {
         get() = getKoin().get()
 
     val RED = Color(0xffEB4566)
+    val GREEN = Color(0xff4EC565)
 
     val BG_LIGHT = Color(0xffF3F5FB)
     val BG_DARK = Color(0xff191B21)

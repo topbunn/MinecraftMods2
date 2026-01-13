@@ -78,5 +78,16 @@
 
     <string name="you_might_like">Das könnte Ihnen gefallen</string>
     <string name="gallery">Galerie</string>
+    <string name="how_to_install">Wie installiert man?</string>
     <string name="files">Dateien</string>
+    <string name="support">Support</string>
+    <string name="other_mods">Andere Mods</string>
+    <string name="describe_problem">Bitte beschreiben Sie Ihr Problem genauer. Was genau erleben Sie?</string>
+    <string name="download_file">Datei herunterladen</string>
+    <string name="downloading">Wird heruntergeladen:</string>
+    <string name="random_mod">Zufälliger Mod</string>
+    <string name="servers">Server</string>
+    <string name="crafts">Rezepte</string>
+    <string name="not_working">Funktioniert nicht?</string>
+
 </resources>

@@ -12,7 +12,7 @@ import com.hamit.ui.R
 import com.hamit.ui.components.AppIconButton
 
 @Composable
-internal fun BoxScope.Buttons(
+internal fun BoxScope.TopbarButtons(
     addon: AddonEntity?,
     onClickBack: () -> Unit,
     onClickLike: () -> Unit,

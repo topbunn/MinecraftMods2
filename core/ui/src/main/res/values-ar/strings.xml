@@ -36,7 +36,7 @@
     <string name="installation">التثبيت</string>
     <string name="instructions">إرشادات</string>
 
-    <string name="instr_addon_1">يتم تحميل بعض الإضافات كملف .mcpack или .mcworld. انقر على الملف المرغوب لتثبيت الإضافة في ماينكرافت. يمكنك أيضًا تحميل الإضافة إلى الجهاز.</string>
+    <string name="instr_addon_1">يتم تحميل بعض الإضافات كملف .mcpack বা .mcworld. انقر على الملف المرغوب لتثبيت الإضافة في ماينكرافت. يمكنك أيضًا تحميل الإضافة إلى الجهاز.</string>
     <string name="instr_addon_2">ادخل إلى وضع التعديل لعالمك.</string>
     <string name="instr_addon_3">اختر حزمة الموارد. أضف الإضافة أو الخامة التي تم تحميلها بالضغط على زر التفعيل.\n\nكرر هذه الخطوات لاختيار حزم الإعدادات.</string>
     <string name="instr_addon_4">هام! فعّل جميع الإعدادات التجريبية.</string>
@@ -79,5 +79,16 @@
 
     <string name="you_might_like">قد يعجبك</string>
     <string name="gallery">معرض</string>
+    <string name="how_to_install">كيفية التثبيت؟</string>
     <string name="files">ملفات</string>
+    <string name="support">الدعم</string>
+    <string name="other_mods">تعديلات أخرى</string>
+    <string name="describe_problem">يرجى وصف مشكلتك بمزيد من التفاصيل. ماذا تواجه بالضبط؟</string>
+    <string name="download_file">تحميل الملف</string>
+    <string name="downloading">جاري التحميل:</string>
+    <string name="random_mod">تعديل عشوائي</string>
+    <string name="servers">الخوادم</string>
+    <string name="crafts">الوصفات</string>
+    <string name="not_working">لا يعمل؟</string>
+
 </resources>

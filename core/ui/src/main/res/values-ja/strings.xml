@@ -37,6 +37,7 @@
     <string name="installation">インストール</string>
     <string name="instructions">手順</string>
 
+    <string name="how_to_install">インストール方法</string>
     <string name="instr_addon_1">一部のアドオンは.mcpackまたは.mcworldファイル形式です。インストールするには、目的のファイルをタップしてください。手動でデバイスにダウンロードすることもできます。</string>
     <string name="instr_addon_2">ワールドを編集モードで開きます。</string>
     <string name="instr_addon_3">リソースパックを選択し、ダウンロードしたアドオンやテクスチャを有効にするには「有効」ボタンをタップします。\n\nビヘイビアパックも同様です。</string>
@@ -80,4 +81,14 @@
     <string name="you_might_like">気に入るかもしれません</string>
     <string name="gallery">ギャラリー</string>
     <string name="files">ファイル</string>
+    <string name="support">サポート</string>
+    <string name="other_mods">他のMOD</string>
+    <string name="describe_problem">問題をより詳しく説明してください。具体的にどのような問題が発生していますか？</string>
+    <string name="download_file">ファイルをダウンロード</string>
+    <string name="downloading">ダウンロード中:</string>
+    <string name="random_mod">ランダムMOD</string>
+    <string name="servers">サーバー</string>
+    <string name="crafts">クラフト</string>
+    <string name="not_working">動作しませんか？</string>
+
 </resources>

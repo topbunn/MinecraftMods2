@@ -37,6 +37,7 @@
     <string name="installation">Instalação</string>
     <string name="instructions">Instruções</string>
 
+    <string name="how_to_install">Como instalar?</string>
     <string name="instr_addon_1">Alguns complementos são carregados como arquivos .mcpack ou .mcworld. Toque no arquivo desejado para instalá-lo no Minecraft. Você também pode baixar para o dispositivo.</string>
     <string name="instr_addon_2">Entre no modo de edição do seu mundo.</string>
     <string name="instr_addon_3">Selecione um pacote de recursos. Adicione o complemento ou textura baixado pressionando o botão de ativar.\n\nRepite o processo para o pacote de comportamento.</string>
@@ -80,4 +81,14 @@
     <string name="you_might_like">Você pode gostar</string>
     <string name="gallery">Galeria</string>
     <string name="files">Arquivos</string>
+    <string name="support">Suporte</string>
+    <string name="other_mods">Outros mods</string>
+    <string name="describe_problem">Descreva seu problema com mais detalhes. O que exatamente você está enfrentando?</string>
+    <string name="download_file">Baixar arquivo</string>
+    <string name="downloading">Baixando:</string>
+    <string name="random_mod">Mod aleatório</string>
+    <string name="servers">Servidores</string>
+    <string name="crafts">Receitas</string>
+    <string name="not_working">Não está funcionando?</string>
+
 </resources>

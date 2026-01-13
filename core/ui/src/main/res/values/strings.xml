@@ -35,6 +35,7 @@
 
     <string name="installation">Installation</string>
     <string name="instructions">Instructions</string>
+    <string name="how_to_install">How to install?</string>
 
     <string name="instr_addon_1">Some addons come as .mcpack or .mcworld files. Tap the desired file to install it in Minecraft. You can also manually download the addon to your device.</string>
     <string name="instr_addon_2">Open your world in edit mode.</string>
@@ -82,4 +83,14 @@ Repeat the steps for behavior packs.</string>
     <string name="you_might_like">You might like</string>
     <string name="gallery">Gallery</string>
     <string name="files">Files</string>
+    <string name="support">Support</string>
+    <string name="other_mods">Other mods</string>
+    <string name="describe_problem">Please describe your problem in more detail. What exactly are you experiencing?</string>
+    <string name="download_file">Download file</string>
+    <string name="downloading">Downloading:</string>
+    <string name="random_mod">Random mod</string>
+    <string name="servers">Servers</string>
+    <string name="crafts">Crafts</string>
+    <string name="not_working">Not working?</string>
+
 </resources>
