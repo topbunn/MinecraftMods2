@@ -116,15 +116,13 @@ private fun AddonPreview(addon: AddonEntity, ) {
     }
     Box(contentAlignment = Alignment.Center) {
         var isLoad by remember { mutableStateOf(true) }
-        val loaderModifier = if (isLoad) Modifier.background(colors.shimmer).shimmer() else Modifier
+        val loaderModifier = if (isLoad) Modifier.shimmer() else Modifier
         AsyncImage(
             model = request,
             contentDescription = addon.name,
             contentScale = ContentScale.Crop,
             onState = {
-                if (it !is AsyncImagePainter.State.Loading) {
-                    isLoad = false
-                }
+                isLoad = it !is AsyncImagePainter.State.Success
                 if (it is AsyncImagePainter.State.Error) {
                     Log.e("Async Image", it.result.throwable.message ?: "???")
                 }
@@ -134,7 +132,8 @@ private fun AddonPreview(addon: AddonEntity, ) {
                 .padding(horizontal = 12.dp)
                 .aspectRatio(1.78f)
                 .clip(RoundedCornerShape(12.dp))
-                .then(loaderModifier),
+                .then(loaderModifier)
+                .background(colors.shimmer),
         )
 
     }

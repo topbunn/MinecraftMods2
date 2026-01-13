@@ -40,9 +40,7 @@ internal fun Preview(addon: AddonEntity) {
     }
 
     var isLoad by remember { mutableStateOf(true) }
-    val loaderModifier = if (isLoad) Modifier
-        .background(colors.shimmer)
-        .shimmer() else Modifier
+    val loaderModifier = if (isLoad) Modifier.shimmer() else Modifier
 
     Box(
         modifier = Modifier
@@ -55,7 +53,8 @@ internal fun Preview(addon: AddonEntity) {
                 .fillMaxWidth()
                 .aspectRatio(1.78f)
                 .clip(RoundedCornerShape(12.dp))
-                .then(loaderModifier),
+                .then(loaderModifier)
+                .background(colors.shimmer),
             model = request,
             contentDescription = addon.name,
             contentScale = ContentScale.Crop,

@@ -1,154 +1,66 @@
 package com.hamit.addon
 
-import android.app.Activity
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
-import android.util.Log
-import android.widget.Toast
-import androidx.core.content.FileProvider
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.google.android.play.core.review.ReviewManagerFactory
-import com.hamit.addon.AddonState.DownloadModState.Idle
-import com.hamit.addon.AddonState.LoadAddonState.Error
-import com.hamit.addon.AddonState.LoadAddonState.Loading
-import com.hamit.addon.AddonState.LoadAddonState.Success
+import com.hamit.android.AppExceptionType
+import com.hamit.android.Maintenance
+import com.hamit.android.NoInternet
+import com.hamit.domain.entity.addon.AddonSortType
 import com.hamit.domain.entity.like.LikeEntity
+import com.hamit.domain.useCases.addon.ReceiveAddonListUseCase
 import com.hamit.domain.useCases.addon.ReceiveAddonUseCase
 import com.hamit.domain.useCases.like.AddLikeUseCase
-import com.hamit.ui.R
-import kotlinx.coroutines.CoroutineExceptionHandler
+import com.hamit.ui.components.addon.AddonListStatusUi
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import ru.rustore.sdk.review.RuStoreReviewManagerFactory
-import java.io.File
 
 class AddonViewModel(
     private val addonId: Int,
     private val receiveAddonUseCase: ReceiveAddonUseCase,
+    private val receiveAddonListUseCase: ReceiveAddonListUseCase,
     private val addLikeUseCase: AddLikeUseCase,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(AddonState())
     val state get() = _state.asStateFlow()
 
+    private var job: Job? = null
+
     init {
         loadAddon()
+        loadOtherAddons()
     }
 
-    fun loadAddon() = screenModelScope.launch {
-        _state.update { it.copy(addon = null, loadAddonState = Loading) }
-        val result = receiveAddonUseCase(addonId)
-        result.onSuccess { addon ->
-            _state.update { it.copy(addon = addon, loadAddonState = Success) }
-        }.onFailure {
-            _state.update { it.copy(loadAddonState = Error("Loading error. Check internet connection")) }
+    fun loadAddon() {
+        job?.cancel()
+        job = screenModelScope.launch {
+            _state.update { it.copy(addon = null, loadStatus = AddonListStatusUi.Loading) }
+            val result = receiveAddonUseCase(addonId)
+            result.onSuccess { addon ->
+                _state.update { it.copy(addon = addon, loadStatus = AddonListStatusUi.Success) }
+            }.onFailure { error ->
+
+                error.printStackTrace()
+
+                val type = when (error) {
+                    NoInternet -> AppExceptionType.NoInternet
+                    Maintenance -> AppExceptionType.Maintenance
+                    else -> AppExceptionType.Error
+                }
+                _state.update { it.copy(loadStatus = AddonListStatusUi.Error(type)) }
+            }
+
         }
-
-    }
-
-    fun changePathFile(path: String?) = _state.update {
-        it.copy(
-            pathFile = path,
-            downloadState = Idle
-        )
-    }
-
-    fun switchImageExpand() = _state.update {
-        it.copy(imageIsExpand = !state.value.imageIsExpand)
     }
 
     fun switchTextExpand() = _state.update {
         it.copy(textIsExpand = !state.value.textIsExpand)
     }
 
-    fun shouldOpenIssue(value: Boolean) = _state.update {
-        it.copy(shouldOpenIssue = value)
-    }
-
-    fun downloadFile() = screenModelScope.launch(CoroutineExceptionHandler { _, _ -> }) {
-//        _state.value.addon?.let { mod ->
-//            _state.value.pathFile?.let {
-//                val result =
-//                    repo.downloadFile(it, it.getModNameFromUrl(mod.category.toExtension()))
-//                result.onSuccess { downloadFlow ->
-//                    downloadFlow.collect {
-//                        val downloadState = when (val state = it) {
-//                            is DataProcessState.Running -> DownloadModState.Loading(state.progress)
-//                            is DataProcessState.Interrupted -> DownloadModState.Error("Download error. Check Internet connection")
-//                            DataProcessState.Completed -> DownloadModState.Success
-//                        }
-//                        _state.update { it.copy(downloadState = downloadState) }
-//                    }
-//                }.onFailure { error ->
-//                    _state.update { it.copy(downloadState = DownloadModState.Error("Download error. Check Internet connection")) }
-//                }
-//            }
-//        }
-    }
-
-
-    fun showReview(activity: Activity) {
-        if (BuildConfig.RUSTORE) {
-            showRuStoreReview(activity)
-        } else {
-            showGooglePlayReview(activity)
-        }
-    }
-
-    private fun showRuStoreReview(activity: Activity) {
-        val manager = RuStoreReviewManagerFactory.create(activity.applicationContext)
-        val request = manager.requestReviewFlow()
-
-        request.addOnSuccessListener {
-            val launch = manager.launchReviewFlow(it)
-            launch.addOnFailureListener {
-                Log.d("RUSTORE_REVIEW", "Ошибка launch: ${it.message}")
-            }
-        }
-        request.addOnFailureListener {
-            Log.d("RUSTORE_REVIEW", "Ошибка request: ${it.message}")
-        }
-    }
-
-    private fun showGooglePlayReview(activity: Activity) {
-        val manager = ReviewManagerFactory.create(activity)
-        val request = manager.requestReviewFlow()
-
-        request.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val reviewInfo = task.result
-                manager.launchReviewFlow(activity, reviewInfo)
-            }
-        }
-    }
-
-    fun installMod(context: Context, file: File) {
-        val uri = FileProvider.getUriForFile(
-            context,
-            "${context.packageName}.provider",
-            file
-        )
-
-        val intent = Intent(Intent.ACTION_VIEW).apply {
-            setDataAndType(uri, "application/octet-stream")
-            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-        }
-
-        try {
-            context.startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            e.printStackTrace()
-            Toast.makeText(
-                context,
-                context.getString(R.string.minecraft_is_not_installed),
-                Toast.LENGTH_LONG
-            ).show()
-        }
-    }
+    fun openIssue(value: Boolean) = _state.update { it.copy(openProblem = value) }
 
     fun switchLikeStatus() = screenModelScope.launch {
         state.value.addon?.let { mod ->
@@ -159,6 +71,22 @@ class AddonViewModel(
             addLikeUseCase(newLike)
             val newAddon = mod.copy(isLike = newLike.isActive)
             _state.update { it.copy(addon = newAddon) }
+        }
+    }
+
+    private fun loadOtherAddons() = screenModelScope.launch{
+        val result = receiveAddonListUseCase(
+            q = "",
+            offset = 0,
+            type = null,
+            sortType = AddonSortType.RELEVANCE,
+            limit = 4
+        )
+        result.onSuccess { addons ->
+            val addons = addons.filter { it.id != addonId }.take(3)
+            _state.update { it.copy(otherAddons = addons) }
+        }.onFailure {
+            it.printStackTrace()
         }
     }
 

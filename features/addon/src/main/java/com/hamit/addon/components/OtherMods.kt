@@ -1,6 +1,7 @@
 package com.hamit.addon.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,7 +38,7 @@ import com.valentinilk.shimmer.rememberShimmer
 import com.valentinilk.shimmer.shimmer
 
 @Composable
-internal fun OtherMods(others: List<AddonEntity>?) {
+internal fun OtherMods(others: List<AddonEntity>?, onClickOther: (id: Int) -> Unit) {
     val colors = LocalAppColors.current
     val shimmer = rememberShimmer(ShimmerBounds.Window)
     Text(
@@ -54,7 +55,9 @@ internal fun OtherMods(others: List<AddonEntity>?) {
         horizontalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         others?.forEach {
-            OtherModItem(addon = it,)
+            OtherModItem(addon = it){
+                onClickOther(it.id)
+            }
         } ?: run {
             repeat(3){
                 OtherModShimmerItem(
@@ -66,7 +69,7 @@ internal fun OtherMods(others: List<AddonEntity>?) {
 }
 
 @Composable
-private fun RowScope.OtherModItem(addon: AddonEntity, ) {
+private fun RowScope.OtherModItem(addon: AddonEntity, onClick: () -> Unit) {
     val colors = LocalAppColors.current
     val context = LocalContext.current
 
@@ -80,7 +83,9 @@ private fun RowScope.OtherModItem(addon: AddonEntity, ) {
     }
 
     Column(
-        modifier = Modifier.weight(1f),
+        modifier = Modifier.weight(1f)
+            .clip(RoundedCornerShape(12.dp))
+            .clickable{ onClick() },
     ){
         AsyncImage(
             modifier = Modifier.fillMaxWidth()
@@ -97,7 +102,8 @@ private fun RowScope.OtherModItem(addon: AddonEntity, ) {
             text = addon.name,
             fontFamily = AppFonts.CORE,
             fontWeight = FontWeight.SemiBold,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
+            lineHeight = 16.sp,
             color = colors.title,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis

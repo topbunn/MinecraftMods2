@@ -28,13 +28,15 @@ import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.ui.R
 import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.LocalAppColors
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.rememberShimmer
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun Gallery(addon: AddonEntity) {
     if (addon.images.isEmpty()) return
     val scope = rememberCoroutineScope()
-
+    val shimmer = rememberShimmer(ShimmerBounds.Window)
     val colors = LocalAppColors.current
 
     val smallListState = rememberLazyListState()
@@ -75,6 +77,7 @@ internal fun Gallery(addon: AddonEntity) {
     ) {
         itemsIndexed(addon.images, key = { _, it -> it }) { index, image ->
             SmallGalleryItem(
+                shimmer = shimmer,
                 link = image,
                 isSelected = selectedIndex == index
             ) {
@@ -94,6 +97,7 @@ internal fun Gallery(addon: AddonEntity) {
     ) {
         items(addon.images.size, key = { addon.images[it] }) { index ->
             LargeGalleryItem(
+                shimmer = shimmer,
                 link = addon.images[index],
                 width = itemWidth
             )
