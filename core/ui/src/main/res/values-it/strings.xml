@@ -91,5 +91,6 @@
     <string name="servers">Server</string>
     <string name="crafts">Ricette</string>
     <string name="not_working">Non funziona?</string>
+    <string name="feedback">Feedback</string>
 
 </resources>

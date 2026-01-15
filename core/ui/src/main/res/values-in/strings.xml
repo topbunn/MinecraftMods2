@@ -90,5 +90,6 @@
     <string name="servers">Server</string>
     <string name="crafts">Resep</string>
     <string name="not_working">Tidak berfungsi?</string>
+    <string name="feedback">Masukan</string>
 
 </resources>

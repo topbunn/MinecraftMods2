@@ -89,5 +89,6 @@
     <string name="servers">Servidores</string>
     <string name="crafts">Crafteos</string>
     <string name="not_working">¿No funciona?</string>
+    <string name="feedback">Comentarios</string>
 
 </resources>

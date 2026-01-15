@@ -90,5 +90,6 @@
     <string name="servers">サーバー</string>
     <string name="crafts">クラフト</string>
     <string name="not_working">動作しませんか？</string>
+    <string name="feedback">フィードバック</string>
 
 </resources>

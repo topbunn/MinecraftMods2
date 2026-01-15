@@ -89,5 +89,6 @@
     <string name="servers">서버</string>
     <string name="crafts">제작</string>
     <string name="not_working">작동하지 않나요?</string>
+    <string name="feedback">피드백</string>
 
 </resources>

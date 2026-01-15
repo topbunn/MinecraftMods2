@@ -90,5 +90,6 @@
     <string name="servers">الخوادم</string>
     <string name="crafts">الوصفات</string>
     <string name="not_working">لا يعمل؟</string>
+    <string name="feedback">ملاحظات</string>
 
 </resources>
