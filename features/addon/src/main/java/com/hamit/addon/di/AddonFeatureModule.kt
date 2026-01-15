@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val addonFeatureModule = module {
     factory { (addonId: Int) -> AddonViewModel(addonId, get(), get(), get()) }
-    single { IssueViewModel() }
+    single { IssueViewModel(get()) }
 }

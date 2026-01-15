@@ -57,14 +57,16 @@ fun Screen.IssueDialog(
             IssueEvent.ShowSuccess -> R.string.suggest_submitted
         }
         Toast.makeText(context, context.getString(messageRes), Toast.LENGTH_SHORT).show()
+        if (IssueEvent.ShowSuccess == it){
+            onDismiss()
+        }
     }
 
     LaunchedEffect(Unit) {
         viewModel.handleChangeState()
     }
     Column(
-        modifier = Modifier.fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center
     ) {
         Column(
@@ -90,6 +92,7 @@ fun Screen.IssueDialog(
                 fontSize = 14.sp,
                 lineHeight = 16.sp
             )
+            Spacer(modifier = Modifier.height(16.dp))
             AppTextField(
                 text = state.email,
                 modifier = Modifier
@@ -114,9 +117,9 @@ fun Screen.IssueDialog(
                 onTextChange = { viewModel.changeFieldValue(it, IssueState.FieldType.DESC) },
                 tipContent = {
                     Text(
-                        text = "Min ${state.email.length}/40",
+                        text = "Min ${state.desc.length}/40",
                         style = AppTypo.M1,
-                        color = if (state.email.length < 40) AppColors.RED else colors.text
+                        color = if (state.desc.length < 40) AppColors.RED else colors.text
                     )
                 }
             )
