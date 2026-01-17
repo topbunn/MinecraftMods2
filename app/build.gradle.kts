@@ -120,6 +120,7 @@ dependencies {
     implementation(project(":features:suggest"))
     implementation(project(":features:guide"))
     implementation(project(":features:addon"))
+    implementation(project(":features:download"))
 
     implementation(project(":domain"))
     implementation(project(":data"))

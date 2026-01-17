@@ -9,5 +9,6 @@ sealed class Destination : ScreenProvider {
     object LikeScreen : Destination()
     object SuggestScreen : Destination()
     object GuideScreen : Destination()
+    data class DownloadScreen(val files: List<String>) : Destination()
     data class AddonScreen(val addonId: Int) : Destination()
 }

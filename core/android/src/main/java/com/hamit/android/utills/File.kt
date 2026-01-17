@@ -3,7 +3,7 @@ package com.hamit.android.utills
 import android.os.Environment
 import java.io.File
 
-fun getModFile(fileName: String): File? {
+fun getAddonFile(fileName: String): File? {
     val downloadsDir = File(
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
         "mods"
@@ -13,9 +13,13 @@ fun getModFile(fileName: String): File? {
 }
 
 
-fun String.getModNameFromUrl(type: String = "") = substringBeforeLast("/?")
-    .substringAfterLast('/')
-    .substringBeforeLast('.')
-    .replace("%20", " ")
-    .replace("%2", "")
-    .replace("%", "") + type
+fun String.getModNameFromUrl(type: String = ""): String{
+    val isPrimitiveLink = this.takeLast(10).contains('.')
+    return if (isPrimitiveLink) {
+        substringAfterLast('/')
+    } else {
+        substringBeforeLast("/?")
+            .substringAfterLast('/')
+            .substringBeforeLast('.') + type
+    }.replace("%20", " ")
+}

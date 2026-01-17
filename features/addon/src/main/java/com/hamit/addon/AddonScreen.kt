@@ -93,6 +93,10 @@ data class AddonScreen(private val addonId: Int) : Screen, Parcelable {
                                     val guideScreen = ScreenRegistry.get(Destination.GuideScreen)
                                     navigator.push(guideScreen)
                                 },
+                                onClickFiles = {
+                                    val downloadScreen = ScreenRegistry.get(Destination.DownloadScreen(it.files))
+                                    navigator.push(downloadScreen)
+                                },
                                 onClickOther = {
                                     val addonScreen = ScreenRegistry.get(Destination.AddonScreen(it))
                                     navigator.push(addonScreen)
@@ -153,6 +157,7 @@ data class AddonScreen(private val addonId: Int) : Screen, Parcelable {
         textIsExpand: Boolean,
         onClickOther: (id: Int) -> Unit,
         onClickNotWork: () -> Unit,
+        onClickFiles: () -> Unit,
         onClickHowInstall: () -> Unit,
         onClickTextExpand: () -> Unit,
     ) {
@@ -166,7 +171,7 @@ data class AddonScreen(private val addonId: Int) : Screen, Parcelable {
         Spacer(Modifier.height(16.dp))
         Gallery(addon)
         Spacer(Modifier.height(16.dp))
-        Files(addon){}
+        Files(addon, onClickFiles)
         Spacer(Modifier.height(16.dp))
         SupportButtons(
             onClickHowInstall = onClickHowInstall,

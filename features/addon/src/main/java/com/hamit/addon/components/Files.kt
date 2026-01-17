@@ -26,7 +26,7 @@ import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.LocalAppColors
 
 @Composable
-internal fun Files(addon: AddonEntity, onClick: (String) -> Unit) {
+internal fun Files(addon: AddonEntity, onClick: () -> Unit) {
     val colors = LocalAppColors.current
     Text(
         modifier = Modifier.padding(horizontal = 20.dp),
@@ -42,7 +42,7 @@ internal fun Files(addon: AddonEntity, onClick: (String) -> Unit) {
         verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         addon.files.forEach {
-            FileButton(it.getModNameFromUrl(addon.type.toExtension())) { onClick(it) }
+            FileButton(it.getModNameFromUrl(addon.type.toExtension())) { onClick() }
         }
     }
 }
