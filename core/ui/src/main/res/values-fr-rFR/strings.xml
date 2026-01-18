@@ -58,7 +58,6 @@
     <string name="download">Télécharger</string>
     <string name="to_install_in_game_click_the_install">Pour installer dans le jeu, cliquez sur « Installer ».</string>
     <string name="install">Installer</string>
-    <string name="the_file_is_saved_the_path">Le fichier a été enregistré à : </string>
     <string name="minecraft_is_not_installed">Minecraft n’est pas installé ou la version est obsolète.</string>
     <string name="describe_your_problem">Décrivez votre problème</string>
     <string name="suggest">Suggérer</string>
@@ -90,5 +89,6 @@
     <string name="crafts">Crafts</string>
     <string name="not_working">Ça ne fonctionne pas ?</string>
     <string name="feedback">Retour</string>
+    <string name="file_saved_to_storage">Datei im Speicher gespeichert</string>
 
 </resources>

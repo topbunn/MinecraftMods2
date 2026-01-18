@@ -18,8 +18,8 @@ class ApiFactory {
 
     val client = HttpClient {
         install(HttpTimeout) {
-            requestTimeoutMillis = 30000
-            socketTimeoutMillis = 30000
+            requestTimeoutMillis = 60000
+            socketTimeoutMillis = 60000
         }
         install(ContentNegotiation) {
             json(

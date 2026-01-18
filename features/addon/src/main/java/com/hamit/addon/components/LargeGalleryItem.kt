@@ -43,7 +43,7 @@ internal fun LargeGalleryItem(
     }
 
     var isLoad by remember { mutableStateOf(true) }
-    val loaderModifier = if (isLoad) Modifier.shimmer() else Modifier
+    val loaderModifier = if (isLoad) Modifier.shimmer(shimmer) else Modifier
 
     AsyncImage(
         modifier = Modifier

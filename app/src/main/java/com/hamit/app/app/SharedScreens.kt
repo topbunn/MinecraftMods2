@@ -32,7 +32,7 @@ fun setupSharedScreens() {
             GuideScreen
         }
         register<Destination.DownloadScreen> { provider ->
-            DownloadScreen(provider.files)
+            DownloadScreen(provider.addon)
         }
         register<Destination.AddonScreen> { provider ->
             AddonScreen(provider.addonId)

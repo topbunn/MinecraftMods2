@@ -57,7 +57,6 @@
     <string name="download">Download</string>
     <string name="to_install_in_game_click_the_install">Zum Installieren im Spiel klicke auf "Installieren"</string>
     <string name="install">Installieren</string>
-    <string name="the_file_is_saved_the_path">Datei gespeichert unter: </string>
     <string name="minecraft_is_not_installed">Minecraft ist nicht installiert oder die Version ist veraltet</string>
     <string name="describe_your_problem">Beschreibe dein Problem</string>
     <string name="suggest">Vorschlagen</string>
@@ -90,5 +89,6 @@
     <string name="crafts">Rezepte</string>
     <string name="not_working">Funktioniert nicht?</string>
     <string name="feedback">Feedback</string>
+    <string name="file_saved_to_storage">Datei im Speicher gespeichert</string>
 
 </resources>

@@ -2,12 +2,16 @@ package com.hamit.data.di
 
 import com.hamit.data.repository.AddonRepositoryImpl
 import com.hamit.data.repository.ConfigRepositoryImpl
+import com.hamit.data.repository.DownloadRepositoryImpl
+import com.hamit.data.repository.FileRepositoryImpl
 import com.hamit.data.repository.LikeRepositoryImpl
 import com.hamit.data.repository.ProblemRepositoryImpl
 import com.hamit.data.repository.RegionRepositoryImpl
 import com.hamit.data.repository.SuggestRepositoryImpl
 import com.hamit.domain.repository.AddonRepository
 import com.hamit.domain.repository.ConfigRepository
+import com.hamit.domain.repository.DownloadRepository
+import com.hamit.domain.repository.FileRepository
 import com.hamit.domain.repository.LikeRepository
 import com.hamit.domain.repository.ProblemRepository
 import com.hamit.domain.repository.RegionRepository
@@ -32,6 +36,12 @@ internal val repositoryModule = module {
     }
     single<SuggestRepository> {
         SuggestRepositoryImpl(get())
+    }
+    single<FileRepository> {
+        FileRepositoryImpl(get())
+    }
+    single<DownloadRepository> {
+        DownloadRepositoryImpl(get(), get())
     }
 
 }

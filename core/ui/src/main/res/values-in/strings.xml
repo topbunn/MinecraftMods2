@@ -58,7 +58,6 @@
     <string name="download">Unduh</string>
     <string name="to_install_in_game_click_the_install">Untuk menginstal dalam game, klik \"Instal\".</string>
     <string name="install">Instal</string>
-    <string name="the_file_is_saved_the_path">File disimpan di: </string>
     <string name="minecraft_is_not_installed">Minecraft tidak terinstal atau versinya kedaluwarsa.</string>
     <string name="describe_your_problem">Jelaskan masalah Anda</string>
     <string name="suggest">Sarankan</string>
@@ -91,5 +90,6 @@
     <string name="crafts">Resep</string>
     <string name="not_working">Tidak berfungsi?</string>
     <string name="feedback">Masukan</string>
+    <string name="file_saved_to_storage">File disimpan ke penyimpanan</string>
 
 </resources>

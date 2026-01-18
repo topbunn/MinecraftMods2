@@ -22,4 +22,6 @@ fun String.getModNameFromUrl(type: String = ""): String{
             .substringAfterLast('/')
             .substringBeforeLast('.') + type
     }.replace("%20", " ")
+        .replace("%2", "")
+        .replace("%", "")
 }

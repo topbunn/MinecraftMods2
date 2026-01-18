@@ -58,7 +58,6 @@
     <string name="download">다운로드</string>
     <string name="to_install_in_game_click_the_install">게임에 설치하려면 “설치”를 클릭하세요</string>
     <string name="install">설치</string>
-    <string name="the_file_is_saved_the_path">파일이 저장된 경로: </string>
     <string name="minecraft_is_not_installed">Minecraft가 설치되지 않았거나 버전이 오래되었습니다</string>
     <string name="describe_your_problem">문제를 설명하세요</string>
     <string name="suggest">제안</string>
@@ -90,5 +89,6 @@
     <string name="crafts">제작</string>
     <string name="not_working">작동하지 않나요?</string>
     <string name="feedback">피드백</string>
+    <string name="file_saved_to_storage">파일이 저장소에 저장되었습니다</string>
 
 </resources>

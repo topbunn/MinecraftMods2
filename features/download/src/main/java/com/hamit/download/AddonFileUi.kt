@@ -5,7 +5,16 @@ data class AddonFileUi(
     val link: String,
     val status: AddonFileUiStatus
 ){
-    enum class AddonFileUiStatus{
-        NO_SAVED, DOWNLOADING, SAVED
+    sealed interface AddonFileUiStatus{
+
+        object NoSaved: AddonFileUiStatus
+
+        data class Downloading(
+            val bytesDownloaded: Long,
+            val totalBytes: Long,
+            val progress: Float
+        ): AddonFileUiStatus
+
+        data class Saved(val path: String): AddonFileUiStatus
     }
 }

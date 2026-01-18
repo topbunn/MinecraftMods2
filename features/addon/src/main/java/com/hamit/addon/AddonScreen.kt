@@ -94,7 +94,7 @@ data class AddonScreen(private val addonId: Int) : Screen, Parcelable {
                                     navigator.push(guideScreen)
                                 },
                                 onClickFiles = {
-                                    val downloadScreen = ScreenRegistry.get(Destination.DownloadScreen(it.files))
+                                    val downloadScreen = ScreenRegistry.get(Destination.DownloadScreen(it))
                                     navigator.push(downloadScreen)
                                 },
                                 onClickOther = {

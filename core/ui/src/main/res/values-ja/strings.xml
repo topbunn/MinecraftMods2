@@ -59,7 +59,6 @@
     <string name="download">ダウンロード</string>
     <string name="to_install_in_game_click_the_install">ゲーム内でインストールするには「インストール」をクリックしてください。</string>
     <string name="install">インストール</string>
-    <string name="the_file_is_saved_the_path">ファイルは次のパスに保存されました: </string>
     <string name="minecraft_is_not_installed">Minecraftがインストールされていないか、バージョンが古いです。</string>
     <string name="describe_your_problem">問題を説明してください</string>
     <string name="suggest">提案</string>
@@ -91,5 +90,6 @@
     <string name="crafts">クラフト</string>
     <string name="not_working">動作しませんか？</string>
     <string name="feedback">フィードバック</string>
+    <string name="file_saved_to_storage">ファイルがストレージに保存されました</string>
 
 </resources>
