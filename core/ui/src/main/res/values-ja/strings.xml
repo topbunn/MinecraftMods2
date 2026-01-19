@@ -36,16 +36,30 @@
 
     <string name="installation">インストール</string>
     <string name="instructions">手順</string>
-
     <string name="how_to_install">インストール方法</string>
-    <string name="instr_addon_1">一部のアドオンは.mcpackまたは.mcworldファイル形式です。インストールするには、目的のファイルをタップしてください。手動でデバイスにダウンロードすることもできます。</string>
-    <string name="instr_addon_2">ワールドを編集モードで開きます。</string>
-    <string name="instr_addon_3">リソースパックを選択し、ダウンロードしたアドオンやテクスチャを有効にするには「有効」ボタンをタップします。\n\nビヘイビアパックも同様です。</string>
-    <string name="instr_addon_4">重要！すべての実験的機能を有効にしてください。</string>
 
-    <string name="instr_world_1">設定で「外部ストレージ」を選択します。</string>
-    <string name="instr_world_2">マップをダウンロードし、インストールします。</string>
-    <string name="instr_world_3">マップは「ワールド」セクションに表示されます。</string>
+    <string-array name="guide_addon_array">
+        <item>一覧からモッドまたはリソースパックを選択します。</item>
+        <item>「ダウンロード」をタップします。</item>
+        <item>ダウンロードが完了するまで待ちます。</item>
+        <item>「インストール」をタップします。</item>
+        <item>表示された画面でMinecraftを選択します。</item>
+        <item>インポート完了のメッセージを待ちます。</item>
+        <item>Minecraftを開き、ワールドを作成または編集します。</item>
+        <item>「リソースパック」を開いて有効化します。</item>
+    </string-array>
+
+    <string-array name="guide_map_array">
+        <item>一覧からマップを選択します。</item>
+        <item>「ダウンロード」をタップします。</item>
+        <item>マップのダウンロードが完了するまで待ちます。</item>
+        <item>「インストール」をタップします。</item>
+        <item>表示された画面でMinecraftを選択します。</item>
+        <item>ワールドのインポート完了メッセージを待ちます。</item>
+        <item>ワールド一覧からインポートされたマップを起動します。</item>
+    </string-array>
+
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">アドオンとテクスチャのインストール手順</string>
     <string name="instructions_for_the_installation_of_worlds">マップのインストール手順</string>

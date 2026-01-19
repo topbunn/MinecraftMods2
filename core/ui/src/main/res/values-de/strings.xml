@@ -36,14 +36,27 @@
     <string name="installation">Installation</string>
     <string name="instructions">Anleitung</string>
 
-    <string name="instr_addon_1">Einige Add-ons werden als .mcpack- oder .mcworld-Dateien geladen. Tippe auf die gewünschte Datei, um sie in Minecraft. Du kannst sie auch auf dein Gerät herunterladen.</string>
-    <string name="instr_addon_2">Gehe in den Bearbeitungsmodus deiner Welt.</string>
-    <string name="instr_addon_3">Wähle ein Ressourcenpaket aus. Füge das heruntergeladene Add-on oder die Textur hinzu, indem du auf "Aktivieren" klickst.\n\nWiederhole dies auch für das Verhaltenspaket.</string>
-    <string name="instr_addon_4">Wichtig! Aktiviere alle experimentellen Einstellungen.</string>
+    <string-array name="guide_addon_array">
+        <item>Wählen Sie den Mod oder das Ressourcenpaket aus der Liste.</item>
+        <item>Tippen Sie auf „Download“.</item>
+        <item>Warten Sie, bis der Download abgeschlossen ist.</item>
+        <item>Tippen Sie auf „Installieren“.</item>
+        <item>Wählen Sie Minecraft im Auswahlfenster.</item>
+        <item>Warten Sie auf die Erfolgsmeldung.</item>
+        <item>Öffnen Sie Minecraft und erstellen oder bearbeiten Sie eine Welt.</item>
+        <item>Gehen Sie zu „Ressourcenpakete“ und aktivieren Sie das Paket.</item>
+    </string-array>
 
-    <string name="instr_world_1">Wähle in den Einstellungen "Externer Speicher" aus.</string>
-    <string name="instr_world_2">Lade die Karte herunter und installiere sie.</string>
-    <string name="instr_world_3">Die Karte wird im Bereich "Welten" angezeigt.</string>
+    <string-array name="guide_map_array">
+        <item>Wählen Sie die Karte aus der Dateiliste aus.</item>
+        <item>Tippen Sie auf „Download“.</item>
+        <item>Warten Sie, bis die Karte heruntergeladen ist.</item>
+        <item>Tippen Sie auf „Installieren“.</item>
+        <item>Wählen Sie Minecraft im Auswahlfenster.</item>
+        <item>Warten Sie auf die erfolgreiche Welt-Importmeldung.</item>
+        <item>Starten Sie die importierte Karte aus der Weltliste.</item>
+    </string-array>
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">Anleitung zur Installation von Add-ons und Texturen</string>
     <string name="instructions_for_the_installation_of_worlds">Anleitung zur Installation von Welten</string>

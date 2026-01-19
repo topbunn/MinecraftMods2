@@ -37,16 +37,28 @@
     <string name="instructions">Instructions</string>
     <string name="how_to_install">How to install?</string>
 
-    <string name="instr_addon_1">Some addons come as .mcpack or .mcworld files. Tap the desired file to install it in Minecraft. You can also manually download the addon to your device.</string>
-    <string name="instr_addon_2">Open your world in edit mode.</string>
-    <string name="instr_addon_3">Select a resource pack. Add the downloaded addon or texture by tapping the activate button.
+    <string-array name="guide_addon_array">
+        <item>Select the mod or resource pack from the list.</item>
+        <item>Tap the “Download” button.</item>
+        <item>Wait until the file is downloaded.</item>
+        <item>Tap the “Install” button.</item>
+        <item>Choose Minecraft in the open-with window.</item>
+        <item>Wait for the successful import message.</item>
+        <item>Open Minecraft and create or edit a world.</item>
+        <item>Go to “Resource Packs” and activate the pack.</item>
+    </string-array>
 
-Repeat the steps for behavior packs.</string>
-    <string name="instr_addon_4">Important! Enable all experimental features.</string>
+    <string-array name="guide_map_array">
+        <item>Select the map from the file list.</item>
+        <item>Tap the “Download” button.</item>
+        <item>Wait until the map file is downloaded.</item>
+        <item>Tap the “Install” button.</item>
+        <item>Choose Minecraft in the open-with window.</item>
+        <item>Wait for the successful world import message.</item>
+        <item>Find the imported map in the worlds list and start it.</item>
+    </string-array>
 
-    <string name="instr_world_1">In settings, select “External storage”.</string>
-    <string name="instr_world_2">Download and install the map.</string>
-    <string name="instr_world_3">The map will appear in the "Worlds" section.</string>
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">How to install addons and textures</string>
     <string name="instructions_for_the_installation_of_worlds">How to install maps</string>

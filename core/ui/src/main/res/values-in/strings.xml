@@ -38,14 +38,28 @@
     <string name="instructions">Petunjuk</string>
 
     <string name="how_to_install">Bagaimana cara menginstal?</string>
-    <string name="instr_addon_1">Beberapa addon berupa file .mcpack atau .mcworld. Ketuk file yang diinginkan untuk menginstalnya di Minecraft. Anda juga bisa mengunduh addon secara manual ke perangkat Anda.</string>
-    <string name="instr_addon_2">Buka dunia Anda dalam mode edit.</string>
-    <string name="instr_addon_3">Pilih paket sumber daya. Tambahkan addon atau tekstur yang diunduh dengan menekan tombol aktivasi.\n\nUlangi langkah untuk paket perilaku.</string>
-    <string name="instr_addon_4">Penting! Aktifkan semua fitur eksperimental.</string>
 
-    <string name="instr_world_1">Dalam pengaturan, pilih \"Penyimpanan eksternal\".</string>
-    <string name="instr_world_2">Unduh dan instal peta.</string>
-    <string name="instr_world_3">Peta akan muncul di bagian \"Dunia\".</string>
+    <string-array name="guide_addon_array">
+        <item>Pilih mod atau resource pack dari daftar.</item>
+        <item>Tekan tombol “Download”.</item>
+        <item>Tunggu hingga unduhan selesai.</item>
+        <item>Tekan tombol “Install”.</item>
+        <item>Pilih Minecraft di jendela yang muncul.</item>
+        <item>Tunggu pesan impor berhasil.</item>
+        <item>Buka Minecraft dan buat atau edit dunia.</item>
+        <item>Buka “Resource Packs” dan aktifkan paket.</item>
+    </string-array>
+
+    <string-array name="guide_map_array">
+        <item>Pilih map dari daftar file.</item>
+        <item>Tekan tombol “Download”.</item>
+        <item>Tunggu hingga unduhan map selesai.</item>
+        <item>Tekan tombol “Install”.</item>
+        <item>Pilih Minecraft di jendela yang muncul.</item>
+        <item>Tunggu pesan impor dunia berhasil.</item>
+        <item>Cari map yang diimpor di daftar dunia dan jalankan.</item>
+    </string-array>
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">Cara menginstal addon dan tekstur</string>
     <string name="instructions_for_the_installation_of_worlds">Cara menginstal peta</string>

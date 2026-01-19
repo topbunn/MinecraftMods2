@@ -90,7 +90,7 @@ class DownloadScreen(
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 contentPadding = PaddingValues(horizontal = 12.dp, vertical = 10.dp)
             ) {
-                items(items = state.files, key = { it.name }){ file ->
+                items(items = state.files, key = { it.link }){ file ->
                     FileItem(
                         file = file,
                         onClickDownload = { viewModel.download(file) },

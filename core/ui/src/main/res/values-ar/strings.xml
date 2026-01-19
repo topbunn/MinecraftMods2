@@ -36,14 +36,28 @@
     <string name="installation">التثبيت</string>
     <string name="instructions">إرشادات</string>
 
-    <string name="instr_addon_1">يتم تحميل بعض الإضافات كملف .mcpack বা .mcworld. انقر على الملف المرغوب لتثبيت الإضافة في ماينكرافت. يمكنك أيضًا تحميل الإضافة إلى الجهاز.</string>
-    <string name="instr_addon_2">ادخل إلى وضع التعديل لعالمك.</string>
-    <string name="instr_addon_3">اختر حزمة الموارد. أضف الإضافة أو الخامة التي تم تحميلها بالضغط على زر التفعيل.\n\nكرر هذه الخطوات لاختيار حزم الإعدادات.</string>
-    <string name="instr_addon_4">هام! فعّل جميع الإعدادات التجريبية.</string>
+    <string-array name="guide_addon_array">
+        <item>اختر المود أو حزمة الموارد من القائمة.</item>
+        <item>اضغط على زر «تحميل».</item>
+        <item>انتظر حتى يكتمل التحميل.</item>
+        <item>اضغط على زر «تثبيت».</item>
+        <item>اختر Minecraft من النافذة التي تظهر.</item>
+        <item>انتظر رسالة الاستيراد الناجح.</item>
+        <item>افتح Minecraft وأنشئ عالماً جديداً أو عدّل عالماً موجوداً.</item>
+        <item>انتقل إلى «حزم الموارد» وقم بتفعيل الحزمة.</item>
+    </string-array>
 
-    <string name="instr_world_1">اختر "التخزين الخارجي" من الإعدادات.</string>
-    <string name="instr_world_2">قم بتحميل وتثبيت الخريطة.</string>
-    <string name="instr_world_3">سيتم إضافة الخريطة إلى قسم "العوالم".</string>
+    <string-array name="guide_map_array">
+        <item>اختر الخريطة من قائمة الملفات.</item>
+        <item>اضغط على زر «تحميل».</item>
+        <item>انتظر حتى يكتمل تحميل الخريطة.</item>
+        <item>اضغط على زر «تثبيت».</item>
+        <item>اختر Minecraft من النافذة التي تظهر.</item>
+        <item>انتظر رسالة استيراد العالم بنجاح.</item>
+        <item>ابحث عن الخريطة المستوردة في قائمة العوالم وقم بتشغيلها.</item>
+    </string-array>
+
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">إرشادات تثبيت الإضافات والخامات</string>
     <string name="instructions_for_the_installation_of_worlds">إرشادات تثبيت العوالم</string>

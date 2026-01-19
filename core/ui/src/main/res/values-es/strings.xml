@@ -35,16 +35,30 @@
 
     <string name="installation">Instalación</string>
     <string name="instructions">Instrucciones</string>
-
     <string name="how_to_install">¿Cómo instalar?</string>
-    <string name="instr_addon_1">Algunas adiciones se cargan como archivos .mcpack o .mcworld. Pulsa el archivo deseado y se instalará автоматически en Minecraft. También puedes descargar la adición al dispositivo.</string>
-    <string name="instr_addon_2">Entra en el modo de edición de tu mundo.</string>
-    <string name="instr_addon_3">Selecciona un paquete de recursos. Añade el addon o textura descargado pulsando el botón de activación.\n\nRepite estos pasos para los paquetes de comportamiento.</string>
-    <string name="instr_addon_4">¡Importante! Activa todas las funciones experimentales.</string>
 
-    <string name="instr_world_1">Selecciona "almacenamiento externo" en los ajustes.</string>
-    <string name="instr_world_2">Descarga e instala el mapa.</string>
-    <string name="instr_world_3">El mapa aparecerá en la sección "Mundos".</string>
+    <string-array name="guide_addon_array">
+        <item>Seleccione el mod o paquete de recursos de la lista.</item>
+        <item>Pulse el botón “Descargar”.</item>
+        <item>Espere a que finalice la descarga.</item>
+        <item>Pulse el botón “Instalar”.</item>
+        <item>Elija Minecraft en la ventana.</item>
+        <item>Espere el mensaje de importación exitosa.</item>
+        <item>Abra Minecraft y cree o edite un mundo.</item>
+        <item>Vaya a “Paquetes de recursos” y active el paquete.</item>
+    </string-array>
+
+    <string-array name="guide_map_array">
+        <item>Seleccione el mapa de la lista de archivos.</item>
+        <item>Pulse el botón “Descargar”.</item>
+        <item>Espere a que se complete la descarga del mapa.</item>
+        <item>Pulse el botón “Instalar”.</item>
+        <item>Elija Minecraft en la ventana.</item>
+        <item>Espere el mensaje de importación correcta del mundo.</item>
+        <item>Busque el mapa importado en la lista de mundos y ejecútelo.</item>
+    </string-array>
+
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">Instrucciones para instalar addons y texturas</string>
     <string name="instructions_for_the_installation_of_worlds">Instrucciones para instalar mundos</string>

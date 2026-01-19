@@ -1,29 +1,42 @@
 package com.hamit.guide
 
-import kotlinx.serialization.Serializable
+import android.content.Context
 import com.hamit.ui.R
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class GuideEntity(
-    val titleResourceId: Int,
-    val previewResourceId: Int,
+    val text: String,
+    val imageResId: Int,
 ){
 
     companion object{
 
-        fun getAddonGuide() = listOf(
-            GuideEntity(R.string.instr_addon_1, R.drawable.manual_addon_1),
-            GuideEntity(R.string.instr_addon_2, R.drawable.manual_addon_2),
-            GuideEntity(R.string.instr_addon_3, R.drawable.manual_addon_3),
-            GuideEntity(R.string.instr_addon_4, R.drawable.manual_addon_4),
-        )
+        fun getAddonGuide(context: Context): List<GuideEntity> {
+            val guideTextArray = context.resources.getStringArray(R.array.guide_addon_array)
+            return listOf(
+                GuideEntity(guideTextArray[0], R.drawable.guide_addon_1),
+                GuideEntity(guideTextArray[1], R.drawable.guide_addon_2),
+                GuideEntity(guideTextArray[2], R.drawable.guide_addon_3),
+                GuideEntity(guideTextArray[3], R.drawable.guide_addon_4),
+                GuideEntity(guideTextArray[4], R.drawable.guide_addon_5),
+                GuideEntity(guideTextArray[5], R.drawable.guide_addon_6),
+                GuideEntity(guideTextArray[6], R.drawable.guide_addon_7),
+            )
+        }
 
-        fun getWorldGuide() = listOf(
-            GuideEntity(R.string.instr_world_1, R.drawable.manual_world_1),
-            GuideEntity(R.string.instr_world_2, R.drawable.manual_world_2),
-            GuideEntity(R.string.instr_world_3, R.drawable.manual_world_3),
-            GuideEntity(R.string.instr_addon_4, R.drawable.manual_addon_4),
-        )
+        fun getMapGuide(context: Context): List<GuideEntity> {
+            val guideTextArray = context.resources.getStringArray(R.array.guide_addon_array)
+            return listOf(
+                GuideEntity(guideTextArray[0], R.drawable.guide_map_1),
+                GuideEntity(guideTextArray[1], R.drawable.guide_map_2),
+                GuideEntity(guideTextArray[2], R.drawable.guide_map_3),
+                GuideEntity(guideTextArray[3], R.drawable.guide_map_4),
+                GuideEntity(guideTextArray[4], R.drawable.guide_map_5),
+                GuideEntity(guideTextArray[5], R.drawable.guide_map_6),
+                GuideEntity(guideTextArray[6], R.drawable.guide_map_7),
+            )
+        }
 
 
     }

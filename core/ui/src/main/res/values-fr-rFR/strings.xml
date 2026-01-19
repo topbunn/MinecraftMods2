@@ -36,16 +36,30 @@
 
     <string name="installation">Installation</string>
     <string name="instructions">Instructions</string>
-
     <string name="how_to_install">Comment installer ?</string>
-    <string name="instr_addon_1">Certains addons sont fournis sous forme de fichiers .mcpack ou .mcworld. Touchez le fichier souhaité pour l’installer dans Minecraft. Vous pouvez aussi télécharger manuellement l’addon sur votre appareil.</string>
-    <string name="instr_addon_2">Ouvrez votre monde en mode édition.</string>
-    <string name="instr_addon_3">Sélectionnez un pack de ressources. Ajoutez l’addon ou la texture téléchargée en appuyant sur le bouton d’activation.\n\nRépétez les étapes pour les packs de comportement.</string>
-    <string name="instr_addon_4">Important ! Activez toutes les fonctionnalités expérimentales.</string>
 
-    <string name="instr_world_1">Dans les paramètres, sélectionnez « Stockage externe ».</string>
-    <string name="instr_world_2">Téléchargez et installez la carte.</string>
-    <string name="instr_world_3">La carte apparaîtra dans la section « Mondes ».</string>
+    <string-array name="guide_addon_array">
+        <item>Sélectionnez le mod ou le pack de ressources dans la liste.</item>
+        <item>Appuyez sur le bouton « Télécharger ».</item>
+        <item>Attendez la fin du téléchargement.</item>
+        <item>Appuyez sur le bouton « Installer ».</item>
+        <item>Choisissez Minecraft dans la fenêtre.</item>
+        <item>Attendez le message d’importation réussie.</item>
+        <item>Ouvrez Minecraft et créez ou modifiez un monde.</item>
+        <item>Allez dans « Packs de ressources » et activez le pack.</item>
+    </string-array>
+
+    <string-array name="guide_map_array">
+        <item>Sélectionnez la carte dans la liste des fichiers.</item>
+        <item>Appuyez sur le bouton « Télécharger ».</item>
+        <item>Attendez la fin du téléchargement de la carte.</item>
+        <item>Appuyez sur le bouton « Installer ».</item>
+        <item>Choisissez Minecraft dans la fenêtre.</item>
+        <item>Attendez le message d’importation réussie du monde.</item>
+        <item>Trouvez la carte importée dans la liste des mondes et lancez-la.</item>
+    </string-array>
+
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">Comment installer les addons et textures</string>
     <string name="instructions_for_the_installation_of_worlds">Comment installer les cartes</string>

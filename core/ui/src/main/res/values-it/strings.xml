@@ -38,14 +38,29 @@
     <string name="instructions">Istruzioni</string>
 
     <string name="how_to_install">Come installare?</string>
-    <string name="instr_addon_1">Alcuni addon sono in formato .mcpack o .mcworld. Per installarli, tocca il file desiderato. Puoi anche scaricarli manualmente sul dispositivo.</string>
-    <string name="instr_addon_2">Apri il mondo in modalità modifica.</string>
-    <string name="instr_addon_3">Seleziona il pacchetto risorse e tocca “Abilita” per attivare gli addon o le texture scaricati.\n\nLo stesso vale per i pacchetti comportamentali.</string>
-    <string name="instr_addon_4">Importante! Abilita tutte le funzionalità sperimentali.</string>
 
-    <string name="instr_world_1">Seleziona “Storage esterno” nelle impostazioni.</string>
-    <string name="instr_world_2">Scarica e installa la mappa.</string>
-    <string name="instr_world_3">La mappa apparirà nella sezione “Mondi”.</string>
+    <string-array name="guide_addon_array">
+        <item>Seleziona la mod o il pacchetto di risorse dall’elenco.</item>
+        <item>Tocca il pulsante “Download”.</item>
+        <item>Attendi il completamento del download.</item>
+        <item>Tocca il pulsante “Installa”.</item>
+        <item>Scegli Minecraft nella finestra.</item>
+        <item>Attendi il messaggio di importazione completata.</item>
+        <item>Apri Minecraft e crea o modifica un mondo.</item>
+        <item>Vai su “Pacchetti di risorse” e attiva il pacchetto.</item>
+    </string-array>
+
+    <string-array name="guide_map_array">
+        <item>Seleziona la mappa dall’elenco dei file.</item>
+        <item>Tocca il pulsante “Download”.</item>
+        <item>Attendi il completamento del download della mappa.</item>
+        <item>Tocca il pulsante “Installa”.</item>
+        <item>Scegli Minecraft nella finestra visualizzata.</item>
+        <item>Attendi il messaggio di importazione del mondo riuscita.</item>
+        <item>Trova la mappa importata nell’elenco dei mondi e avviala.</item>
+    </string-array>
+
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">Istruzioni per l\'installazione di addon e texture</string>
     <string name="instructions_for_the_installation_of_worlds">Istruzioni per l\'installazione delle mappe</string>

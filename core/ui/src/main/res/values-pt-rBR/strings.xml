@@ -36,16 +36,30 @@
 
     <string name="installation">Instalação</string>
     <string name="instructions">Instruções</string>
-
     <string name="how_to_install">Como instalar?</string>
-    <string name="instr_addon_1">Alguns complementos são carregados como arquivos .mcpack ou .mcworld. Toque no arquivo desejado para instalá-lo no Minecraft. Você também pode baixar para o dispositivo.</string>
-    <string name="instr_addon_2">Entre no modo de edição do seu mundo.</string>
-    <string name="instr_addon_3">Selecione um pacote de recursos. Adicione o complemento ou textura baixado pressionando o botão de ativar.\n\nRepite o processo para o pacote de comportamento.</string>
-    <string name="instr_addon_4">Importante! Ative todas as configurações experimentais.</string>
 
-    <string name="instr_world_1">Nas configurações, selecione “armazenamento externo”.</string>
-    <string name="instr_world_2">Baixe e instale o mapa.</string>
-    <string name="instr_world_3">O mapa será adicionado à seção "Mundos".</string>
+    <string-array name="guide_addon_array">
+        <item>Selecione o mod ou pacote de recursos na lista.</item>
+        <item>Toque no botão “Download”.</item>
+        <item>Aguarde o término do download.</item>
+        <item>Toque no botão “Instalar”.</item>
+        <item>Escolha Minecraft na janela exibida.</item>
+        <item>Aguarde a mensagem de importação concluída.</item>
+        <item>Abra o Minecraft e crie ou edite um mundo.</item>
+        <item>Vá em “Pacotes de recursos” e ative o pacote.</item>
+    </string-array>
+
+    <string-array name="guide_map_array">
+        <item>Selecione o mapa na lista de arquivos.</item>
+        <item>Toque no botão “Download”.</item>
+        <item>Aguarde o término do download do mapa.</item>
+        <item>Toque no botão “Instalar”.</item>
+        <item>Escolha Minecraft na janela exibida.</item>
+        <item>Aguarde a mensagem de importação do mundo concluída.</item>
+        <item>Encontre o mapa importado na lista de mundos e inicie-o.</item>
+    </string-array>
+
+
 
     <string name="instructions_for_the_installation_of_addons_and_textures">Instruções para instalação de complementos e texturas</string>
     <string name="instructions_for_the_installation_of_worlds">Instruções para instalação de mundos</string>
