@@ -26,7 +26,7 @@ data class GuideEntity(
         }
 
         fun getMapGuide(context: Context): List<GuideEntity> {
-            val guideTextArray = context.resources.getStringArray(R.array.guide_addon_array)
+            val guideTextArray = context.resources.getStringArray(R.array.guide_map_array)
             return listOf(
                 GuideEntity(guideTextArray[0], R.drawable.guide_map_1),
                 GuideEntity(guideTextArray[1], R.drawable.guide_map_2),
