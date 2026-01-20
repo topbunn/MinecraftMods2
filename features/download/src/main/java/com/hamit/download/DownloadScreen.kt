@@ -218,8 +218,8 @@ class DownloadScreen(
                     append(stringResource(R.string.downloading))
                     withStyle(SpanStyle(color = colors.primary, fontWeight = FontWeight.SemiBold)){
                         val percent = (progress * 100).toInt().toString() + "%"
-                        val downloadedMb = String.format(Locale.US, "%.2f MB", downloadedBytes.bytesToMb())
-                        append(" $percent ($downloadedMb Mb)")
+                        val downloadedMb = String.format(Locale.US, "%.2f", downloadedBytes.bytesToMb())
+                        append(" $percent ($downloadedMb MB)")
                     }
                 },
             color = colors.text,
