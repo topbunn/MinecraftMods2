@@ -33,6 +33,7 @@
     <string name="hint_desc">説明</string>
     <string name="hint_type_message">メッセージを入力してください…</string>
     <string name="hint_message_is_sent">メッセージが送信されました</string>
+    <string name="error_download_mod">MODのダウンロード中にエラーが発生しました</string>
 
     <string name="installation">インストール</string>
     <string name="instructions">手順</string>

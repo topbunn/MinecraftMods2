@@ -37,6 +37,7 @@
     <string name="instructions">설명</string>
 
     <string name="how_to_install">어떻게 설치하나요?</string>
+    <string name="error_download_mod">모드를 다운로드하는 동안 오류가 발생했습니다</string>
 
     <string-array name="guide_addon_array">
         <item>목록에서 모드 또는 리소스 팩을 선택하세요.</item>

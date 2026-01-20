@@ -89,6 +89,8 @@
     <string name="error_no_internet">لا يوجد اتصال بالإنترنت</string>
     <string name="error_maintenance">الخادم قيد الصيانة. يرجى المحاولة مرة أخرى في وقت لاحق.</string>
     <string name="error_unknown">حدث خطأ غير معروف. يرجى المحاولة مرة أخرى.</string>
+    <string name="error_download_mod">حدث خطأ أثناء تنزيل التعديل</string>
+
 
     <string name="you_might_like">قد يعجبك</string>
     <string name="gallery">معرض</string>

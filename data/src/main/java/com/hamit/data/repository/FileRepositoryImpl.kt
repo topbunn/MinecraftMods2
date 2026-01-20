@@ -76,6 +76,17 @@ class FileRepositoryImpl(
         }
     }
 
+    override suspend fun deleteFile(fileName: String) {
+        val dir = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+            "mods"
+        )
+        val file = File(dir, fileName)
+        if (file.exists()) {
+            file.delete()
+        }
+    }
+
 }
 
 

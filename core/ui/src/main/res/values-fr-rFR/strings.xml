@@ -34,6 +34,8 @@
     <string name="hint_type_message">Tapez votre message…</string>
     <string name="hint_message_is_sent">Message envoyé</string>
 
+    <string name="error_download_mod">Une erreur s\'est produite lors du téléchargement du mod</string>
+
     <string name="installation">Installation</string>
     <string name="instructions">Instructions</string>
     <string name="how_to_install">Comment installer ?</string>

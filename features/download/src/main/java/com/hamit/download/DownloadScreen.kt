@@ -1,6 +1,7 @@
 package com.hamit.download
 
 import android.os.Parcelable
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -50,9 +51,11 @@ import com.hamit.ui.components.AppButton
 import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
+import com.hamit.ui.utils.ObserveAsEvents
 import com.hamit.ui.utils.appDropShadow
 import kotlinx.parcelize.Parcelize
 import org.koin.core.parameter.parametersOf
+import java.util.Locale
 
 @Parcelize
 class DownloadScreen(
@@ -67,6 +70,15 @@ class DownloadScreen(
         val navigator = LocalNavigator.currentOrThrow
         val viewModel = koinScreenModel<DownloadViewModel>{ parametersOf(addon) }
         val state by viewModel.state.collectAsState()
+
+        val errorMessage = stringResource(R.string.error_download_mod)
+        ObserveAsEvents(viewModel.events) {
+            when(it){
+                is DownloadEvent.ShowError -> {
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -76,7 +88,9 @@ class DownloadScreen(
         ) {
             Header{ navigator.pop() }
             Text(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
                 text = stringResource(R.string.download_file),
                 fontFamily = AppFonts.CORE,
                 fontWeight = FontWeight.Medium,
@@ -155,15 +169,17 @@ class DownloadScreen(
         ){
             AppButton(
                 text = stringResource(R.string.install),
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
                     .height(48.dp)
             ) { onClickInstall() }
             Box(
-                modifier = Modifier.size(48.dp)
+                modifier = Modifier
+                    .size(48.dp)
                     .clip(RoundedCornerShape(10.dp))
                     .background(colors.card)
                     .border(2.dp, colors.primary, RoundedCornerShape(10.dp))
-                    .clickable{ onClickDirectory() }
+                    .clickable { onClickDirectory() }
                     .padding(12.dp),
                 contentAlignment = Alignment.Center
             ){
@@ -202,7 +218,7 @@ class DownloadScreen(
                     append(stringResource(R.string.downloading))
                     withStyle(SpanStyle(color = colors.primary, fontWeight = FontWeight.SemiBold)){
                         val percent = (progress * 100).toInt().toString() + "%"
-                        val downloadedMb = downloadedBytes.bytesToMb()
+                        val downloadedMb = String.format(Locale.US, "%.2f MB", downloadedBytes.bytesToMb())
                         append(" $percent ($downloadedMb Mb)")
                     }
                 },
@@ -218,18 +234,24 @@ class DownloadScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(2.dp)
             ) {
-                Box(
-                    Modifier.weight(progress)
-                        .height(8.dp)
-                        .clip(CircleShape)
-                        .background(colors.primary)
-                )
-                Box(
-                    Modifier.weight(1 - progress)
-                        .height(8.dp)
-                        .clip(CircleShape)
-                        .background(colors.background)
-                )
+                if (progress != 0f){
+                    Box(
+                        Modifier
+                            .weight(progress)
+                            .height(8.dp)
+                            .clip(CircleShape)
+                            .background(colors.primary)
+                    )
+                }
+                if ((1 - progress) != 0f){
+                    Box(
+                        Modifier
+                            .weight(1 - progress)
+                            .height(8.dp)
+                            .clip(CircleShape)
+                            .background(colors.background)
+                    )
+                }
             }
             Box(
                 Modifier
@@ -246,7 +268,8 @@ class DownloadScreen(
     private fun FileItemNoSaved(onClickDownload: () -> Unit) {
         AppButton(
             text = stringResource(R.string.download),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .height(48.dp)
         ) { onClickDownload() }
     }

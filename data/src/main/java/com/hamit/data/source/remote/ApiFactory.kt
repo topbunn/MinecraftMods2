@@ -17,6 +17,10 @@ import kotlinx.serialization.json.Json
 class ApiFactory {
 
     val client = HttpClient {
+        expectSuccess = true
+        engine {
+            pipelining = true
+        }
         install(HttpTimeout) {
             requestTimeoutMillis = 60000
             socketTimeoutMillis = 60000

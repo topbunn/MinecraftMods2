@@ -66,6 +66,8 @@
     <string name="supported_versions">Unterstützte Versionen</string>
     <string name="addon_don_t_work">Funktioniert das Add-on nicht?</string>
     <string name="to_save_click_the_download_button">Zum Speichern klicke auf "Download".</string>
+    <string name="error_download_mod">Beim Herunterladen des Mods ist ein Fehler aufgetreten</string>
+
 
     <string name="download">Download</string>
     <string name="to_install_in_game_click_the_install">Zum Installieren im Spiel klicke auf "Installieren"</string>

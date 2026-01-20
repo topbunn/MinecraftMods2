@@ -36,6 +36,7 @@
 
     <string name="installation">Installazione</string>
     <string name="instructions">Istruzioni</string>
+    <string name="error_download_mod">Si è verificato un errore durante il download della mod</string>
 
     <string name="how_to_install">Come installare?</string>
 

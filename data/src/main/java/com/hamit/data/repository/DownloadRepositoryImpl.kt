@@ -6,16 +6,18 @@ import android.os.Environment
 import com.hamit.data.source.remote.ApiFactory
 import com.hamit.domain.entity.DownloadFileStatus
 import com.hamit.domain.repository.DownloadRepository
-import io.ktor.client.request.get
+import io.ktor.client.request.prepareGet
 import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.contentLength
-import io.ktor.utils.io.cancel
 import io.ktor.utils.io.readAvailable
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.io.File
+import kotlin.coroutines.cancellation.CancellationException
+import kotlin.coroutines.coroutineContext
 
 class DownloadRepositoryImpl(
     private val context: Context,
@@ -26,33 +28,36 @@ class DownloadRepositoryImpl(
         url: String,
         fileName: String
     ): Flow<DownloadFileStatus> = flow {
+
+        val dir = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+            "mods"
+        )
+        if (!dir.exists()) dir.mkdirs()
+
+        val file = File(dir, fileName)
+
         try {
-            val dir = File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                "mods"
-            )
-            if (!dir.exists()) dir.mkdirs()
+            api.client.prepareGet(url).execute { response ->
 
-            val file = File(dir, fileName)
+                val totalBytes = response.contentLength() ?: -1L
+                val channel = response.bodyAsChannel()
 
-            val response = api.client.get(url)
-            val channel = response.bodyAsChannel()
+                var downloaded = 0L
+                val buffer = ByteArray(8 * 1024)
 
-            val totalBytes = response.contentLength() ?: -1L
-            var downloaded = 0L
+                context.contentResolver
+                    .openOutputStream(Uri.fromFile(file))!!
+                    .use { output ->
 
-            context.contentResolver
-                .openOutputStream(Uri.fromFile(file))!!
-                .use { output ->
-                    val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+                        while (true) {
+                            coroutineContext.ensureActive()
 
-                    try {
-                        while (!channel.isClosedForRead) {
-                            val read = channel.readAvailable(buffer)
-                            if (read <= 0) break
+                            val bytesRead = channel.readAvailable(buffer)
+                            if (bytesRead == -1) break
 
-                            output.write(buffer, 0, read)
-                            downloaded += read
+                            output.write(buffer, 0, bytesRead)
+                            downloaded += bytesRead
 
                             emit(
                                 DownloadFileStatus.Downloading(
@@ -60,20 +65,24 @@ class DownloadRepositoryImpl(
                                     totalBytes = totalBytes,
                                     progress = if (totalBytes > 0)
                                         downloaded.toFloat() / totalBytes
-                                    else 0f
+                                    else -1f
                                 )
                             )
                         }
-                        output.flush()
-                        emit(DownloadFileStatus.Success)
-                    } finally {
-                        channel.cancel()
                     }
-                }
-        } catch (e: Exception){
-            e.printStackTrace()
+
+                emit(DownloadFileStatus.Success)
+            }
+
+        } catch (e: CancellationException) {
+            file.delete()
+            throw e
+        } catch (e: Exception) {
+            file.delete()
             emit(DownloadFileStatus.Error)
         }
     }.flowOn(Dispatchers.IO)
+
+
 
 }
