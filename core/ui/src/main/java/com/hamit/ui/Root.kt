@@ -18,7 +18,7 @@ import com.hamit.ui.theme.LocalAppColors
 fun Root() {
     AppTheme{
         val colors = LocalAppColors.current
-        val firstScreen = rememberScreen(Destination.DashboardScreen)
+        val firstScreen = rememberScreen(Destination.LoaderScreen)
         val systemUi = rememberSystemUiController()
         systemUi.setStatusBarColor(Color.Transparent, !isSystemInDarkTheme())
         Box(

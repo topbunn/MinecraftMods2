@@ -1,5 +1,7 @@
 package com.hamit.loader
 
+import android.widget.Toast
+import androidx.activity.compose.LocalActivity
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.StartOffset
 import androidx.compose.animation.core.animateFloat
@@ -20,6 +22,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,10 +37,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.koinScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import com.hamit.android.ads.interstitial.InterstitialCoordinator
 import com.hamit.domain.entity.AppLogoRes
+import com.hamit.navigation.Destination
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
+import com.hamit.ui.utils.ObserveAsEvents
 import com.hamit.ui.utils.appDropShadow
 import org.koin.compose.koinInject
 
@@ -44,6 +55,20 @@ object LoaderScreen : Screen {
 
     @Composable
     override fun Content() {
+        val activity = LocalActivity.currentOrThrow
+        val navigator = LocalNavigator.currentOrThrow
+        val viewModel = koinScreenModel<LoaderViewModel>()
+        val dashboardScreen = rememberScreen(Destination.DashboardScreen)
+
+        ObserveAsEvents(viewModel.events) {
+            when(it){
+                is LoaderEvent.OpenDashboard -> {
+                    InterstitialCoordinator.show(activity)
+                    navigator.replaceAll(dashboardScreen)
+                }
+            }
+        }
+
         Column(
             Modifier
                 .fillMaxSize()
