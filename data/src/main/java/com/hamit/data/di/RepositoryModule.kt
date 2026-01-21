@@ -35,7 +35,7 @@ internal val repositoryModule = module {
         ProblemRepositoryImpl(get(), get())
     }
     single<SuggestRepository> {
-        SuggestRepositoryImpl(get())
+        SuggestRepositoryImpl(get(), get())
     }
     single<FileRepository> {
         FileRepositoryImpl(get())

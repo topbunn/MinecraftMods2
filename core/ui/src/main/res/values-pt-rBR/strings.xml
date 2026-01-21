@@ -34,6 +34,7 @@
     <string name="hint_type_message">Digite a mensagem…</string>
     <string name="hint_message_is_sent">Mensagem enviada</string>
     <string name="error_download_mod">Ocorreu um erro ao baixar o mod</string>
+    <string name="start">Iniciar</string>
 
     <string name="installation">Instalação</string>
     <string name="instructions">Instruções</string>

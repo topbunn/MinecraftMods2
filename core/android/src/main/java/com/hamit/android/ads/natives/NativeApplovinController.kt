@@ -9,6 +9,7 @@ import com.applovin.mediation.nativeAds.MaxNativeAdLoader
 import com.applovin.mediation.nativeAds.MaxNativeAdView
 import com.applovin.mediation.nativeAds.MaxNativeAdViewBinder
 import com.hamit.android.R
+import com.hamit.android.ads.natives.NativeCoordinator.PreloadStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -32,6 +33,16 @@ object NativeApplovinController {
 
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
+    private var onPreloadComplete: ((PreloadStatus) -> Unit)? = null
+
+    fun setCallback(callback: (PreloadStatus) -> Unit) {
+        onPreloadComplete = callback
+    }
+
+    fun deleteCallback() {
+        onPreloadComplete = null
+    }
+
     fun init(context: Context, adUnitId: String) {
         log { "Инициализация Native Ad с adUnitId=$adUnitId" }
         if (initialized) return
@@ -54,6 +65,7 @@ object NativeApplovinController {
                 }
 
                 loadNext(context.applicationContext)
+                onPreloadComplete?.invoke(isPreloadComplete())
             }
 
             override fun onNativeAdLoadFailed(adUnitId: String, error: MaxError) {
@@ -69,6 +81,8 @@ object NativeApplovinController {
             }
         })
     }
+
+    private fun isPreloadComplete() = if (loadedAdViews.size >= POOL_SIZE) PreloadStatus.PRELOADED else PreloadStatus.NOT_PRELOADED
 
     private fun loadNext(context: Context) {
         scope.launch {

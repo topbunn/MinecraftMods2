@@ -37,7 +37,7 @@
     <string name="installation">Instalasi</string>
     <string name="instructions">Petunjuk</string>
     <string name="error_download_mod">Terjadi kesalahan saat mengunduh mod</string>
-
+    <string name="start">Mulai</string>
     <string name="how_to_install">Bagaimana cara menginstal?</string>
 
     <string-array name="guide_addon_array">

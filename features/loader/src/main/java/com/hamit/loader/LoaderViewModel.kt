@@ -1,12 +1,12 @@
 package com.hamit.loader
 
 import android.app.Application
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.loader.content.Loader
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.hamit.android.ads.interstitial.InterstitialCoordinator
 import com.hamit.android.ads.natives.NativeCoordinator
+import com.hamit.android.ads.natives.NativeCoordinator.PreloadStatus.NONE
+import com.hamit.android.ads.natives.NativeCoordinator.PreloadStatus.PRELOADED
 import com.hamit.domain.useCases.config.ReceiveConfigUseCase
 import com.hamit.domain.useCases.region.ReceiveRegionUseCase
 import kotlinx.coroutines.channels.Channel
@@ -23,26 +23,35 @@ class LoaderViewModel(
     private val receiveRegionUseCase: ReceiveRegionUseCase
 ) : ScreenModel {
 
+    private val _state = MutableStateFlow(LoaderState())
+    val state get() = _state.asStateFlow()
+
     private val _events = Channel<LoaderEvent>()
     val events get() = _events.receiveAsFlow()
 
     private fun simulateLoading() = screenModelScope.launch {
         delay(10000)
-        navigateToDashboard()
+        _state.update { it.copy(nativePreloadComplete = true) }
     }
 
-    private fun navigateToDashboard() = screenModelScope.launch{
+    fun navigateToDashboard() = screenModelScope.launch{
         _events.send(LoaderEvent.OpenDashboard)
         InterstitialCoordinator.deleteCallback()
     }
 
+
     private fun preloadAds() = screenModelScope.launch {
         val config = receiveConfigUseCase()
         val location = receiveRegionUseCase()
-        InterstitialCoordinator.init(application.applicationContext, location, config)
         NativeCoordinator.init(application.applicationContext, location, config)
-        InterstitialCoordinator.setCallback {
-            navigateToDashboard()
+        NativeCoordinator.setOnPreload {
+            when(it){
+                NONE, PRELOADED -> {
+                    _state.update { it.copy(nativePreloadComplete = true) }
+                    NativeCoordinator.clearOnPreload()
+                }
+                else -> {}
+            }
         }
     }
 

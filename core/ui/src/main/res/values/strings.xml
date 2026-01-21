@@ -90,6 +90,7 @@
     <string name="error_maintenance">The server is under maintenance. Please try again later.</string>
     <string name="error_unknown">An unknown error has occurred. Please try again.</string>
     <string name="error_download_mod">An error occurred while downloading the mod</string>
+    <string name="start">Start</string>
 
 
     <string name="you_might_like">You might like</string>

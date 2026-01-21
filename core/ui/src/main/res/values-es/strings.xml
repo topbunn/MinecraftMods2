@@ -69,6 +69,7 @@
     <string name="addon_don_t_work">¿El addon no funciona?</string>
     <string name="to_save_click_the_download_button">Para guardar, pulsa el botón “Descargar”.</string>
     <string name="error_download_mod">Se produjo un error al descargar el mod</string>
+    <string name="start">Empezar</string>
 
 
     <string name="download">Descargar</string>

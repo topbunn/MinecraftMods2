@@ -35,6 +35,7 @@
     <string name="hint_message_is_sent">Message envoyé</string>
 
     <string name="error_download_mod">Une erreur s\'est produite lors du téléchargement du mod</string>
+    <string name="start">Commencer</string>
 
     <string name="installation">Installation</string>
     <string name="instructions">Instructions</string>

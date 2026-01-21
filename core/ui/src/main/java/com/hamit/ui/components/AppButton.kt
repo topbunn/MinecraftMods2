@@ -3,7 +3,9 @@ package com.hamit.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
@@ -29,6 +31,7 @@ fun AppButton(
     isLoading: Boolean = false,
     isEnabled: Boolean = true,
     shape: Shape = RoundedCornerShape(10.dp),
+    afterTextContent: @Composable (() -> Unit)? = null,
     onClick: () -> Unit,
 ) {
     val colors = LocalAppColors.current
@@ -59,11 +62,20 @@ fun AppButton(
                 strokeWidth = 3.dp
             )
         } else {
-            Text(
-                text = text,
-                style = AppTypo.button,
-                color = contentColor
-            )
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = text,
+                    style = AppTypo.button,
+                    color = contentColor
+                )
+                afterTextContent?.let { content ->
+                    content()
+                }
+            }
+
         }
     }
 }

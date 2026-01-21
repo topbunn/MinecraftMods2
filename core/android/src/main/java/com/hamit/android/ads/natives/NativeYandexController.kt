@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import com.hamit.android.R
+import com.hamit.android.ads.natives.NativeCoordinator.PreloadStatus
 import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
 import com.yandex.mobile.ads.nativeads.NativeAd
@@ -25,7 +26,6 @@ import kotlin.math.pow
 
 object NativeYandexController {
 
-
     private const val POOL_SIZE = 5
 
     private var adLoader: NativeAdLoader? = null
@@ -35,6 +35,16 @@ object NativeYandexController {
     private var initialized = false
     private var retryAttempt = 0
     private var loadingCount = 0
+
+    private var onPreloadComplete: ((PreloadStatus) -> Unit)? = null
+
+    fun setCallback(callback: (PreloadStatus) -> Unit) {
+        onPreloadComplete = callback
+    }
+
+    fun deleteCallback() {
+        onPreloadComplete = null
+    }
 
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
@@ -61,6 +71,7 @@ object NativeYandexController {
                     }
 
                     loadNext()
+                    onPreloadComplete?.invoke(isPreloadComlete())
                 }
 
                 override fun onAdFailedToLoad(error: AdRequestError) {
@@ -77,6 +88,8 @@ object NativeYandexController {
             })
         }
     }
+
+    private fun isPreloadComlete() = if (loadedAdViews.size >= POOL_SIZE) PreloadStatus.PRELOADED else PreloadStatus.PRELOADED
 
     private fun createView(context: Context): NativeAdView {
         val adView = LayoutInflater.from(context)

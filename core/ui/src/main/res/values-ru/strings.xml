@@ -32,6 +32,8 @@
     <string name="hint_type_message">Введите сообщение…</string>
     <string name="hint_message_is_sent">Сообщение отправлено</string>
     <string name="error_download_mod">Произошла ошибка при скачивании мода</string>
+    <string name="start">Начать</string>
+
 
     <string name="installation">Установка</string>
     <string name="instructions">Инструкции</string>
