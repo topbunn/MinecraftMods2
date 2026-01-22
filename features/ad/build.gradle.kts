@@ -2,20 +2,20 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.hamit.android"
-    compileSdk = 36
+    namespace = "com.hamit.ad"
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        val forRuStore = property("rustore")?.toString() ?: error("not found property with name 'rustore'")
-        buildConfigField("Boolean", "RUSTORE", forRuStore)
-        
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -36,11 +36,9 @@ android {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
     }
-    buildFeatures{
+    buildFeatures {
         compose = true
-        buildConfig = true
     }
-
 }
 
 dependencies {
@@ -48,6 +46,13 @@ dependencies {
     // Koin
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.core)
+    implementation(libs.koin.compose)
+
+    // Voyager
+    implementation(libs.voyager.tab)
+    implementation(libs.voyager.navigator)
+    implementation(libs.voyager.screenmodel)
+    implementation(libs.voyager.koin)
 
     // Ads
     implementation (libs.mobileads.yandex)
@@ -60,16 +65,21 @@ dependencies {
     implementation(libs.facebook.adapter)
     implementation(libs.mintegral.adapter)
 
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
 
-
+    implementation(project(":navigation"))
     implementation(project(":domain"))
     implementation(project(":core:ui"))
-    implementation(libs.play.services.location)
-
+    implementation(project(":core:android"))
 }

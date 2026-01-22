@@ -21,11 +21,10 @@ import kotlin.math.pow
 
 object NativeApplovinController {
 
-
     private const val POOL_SIZE = 5
 
     private lateinit var adLoader: MaxNativeAdLoader
-    private val loadedAdViews = ArrayDeque<MaxNativeAdView>(POOL_SIZE)
+    private val loadedAds = ArrayDeque<MaxAd>(POOL_SIZE)
 
     private var initialized = false
     private var retryAttempt = 0
@@ -48,23 +47,22 @@ object NativeApplovinController {
         if (initialized) return
         initialized = true
 
-        adLoader = MaxNativeAdLoader(adUnitId)
+        adLoader = MaxNativeAdLoader(adUnitId, context)
         adLoader.setNativeAdListener(object : MaxNativeAdListener() {
+
             override fun onNativeAdLoaded(nativeAdView: MaxNativeAdView?, nativeAd: MaxAd) {
                 retryAttempt = 0
                 loadingCount--
 
-                if (nativeAdView != null) {
-                    if (loadedAdViews.size < POOL_SIZE) {
-                        loadedAdViews.add(nativeAdView)
-                        log { "Native AdView добавлен в пул (текущий размер: ${loadedAdViews.size})" }
-                    } else {
-                        adLoader.destroy(nativeAd)
-                        log { "Пул переполнен, лишняя Native Ad уничтожена" }
-                    }
+                if (loadedAds.size < POOL_SIZE) {
+                    loadedAds.add(nativeAd)
+                    log { "Native Ad добавлена в пул (текущий размер: ${loadedAds.size})" }
+                } else {
+                    adLoader.destroy(nativeAd)
+                    log { "Пул переполнен, лишняя реклама уничтожена" }
                 }
 
-                loadNext(context.applicationContext)
+                loadNext()
                 onPreloadComplete?.invoke(isPreloadComplete())
             }
 
@@ -76,68 +74,78 @@ object NativeApplovinController {
 
                 scope.launch {
                     delay(delayMs)
-                    loadNext(context.applicationContext)
+                    loadNext()
                 }
             }
         })
     }
 
-    private fun isPreloadComplete() = if (loadedAdViews.size >= POOL_SIZE) PreloadStatus.PRELOADED else PreloadStatus.NOT_PRELOADED
+    private fun isPreloadComplete() =
+        if (loadedAds.size >= POOL_SIZE) PreloadStatus.PRELOADED else PreloadStatus.NOT_PRELOADED
 
-    private fun loadNext(context: Context) {
+    private fun loadNext() {
         scope.launch {
-            if (loadedAdViews.size + loadingCount >= POOL_SIZE) {
-                log { "Пул Native Ad полон, загрузка следующей отменена" }
+            if (loadedAds.size + loadingCount >= POOL_SIZE) {
+                log { "Пул полон, загрузка отменена" }
                 return@launch
             }
 
             loadingCount++
-            log { "Запуск загрузки следующей Native Ad (текущий пул: ${loadedAdViews.size}, в процессе: $loadingCount)" }
+            log { "Запуск загрузки Native Ad (пул: ${loadedAds.size}, в процессе: $loadingCount)" }
 
-
-            val binder = MaxNativeAdViewBinder.Builder(R.layout.applovin_native_ad_container)
-                .setTitleTextViewId(R.id.applovin_title)
-                .setBodyTextViewId(R.id.applovin_body)
-                .setAdvertiserTextViewId(R.id.applovin_advertiser)
-                .setIconImageViewId(R.id.applovin_icon)
-                .setMediaContentViewGroupId(R.id.applovin_media)
-                .setOptionsContentViewGroupId(R.id.applovin_options)
-                .setCallToActionButtonId(R.id.applovin_call_to_action)
-                .build()
-
-            val adView = MaxNativeAdView(binder, context)
-
-            adLoader.loadAd(adView)
+            adLoader.loadAd()
         }
     }
 
     fun load(context: Context) {
         if (!::adLoader.isInitialized) {
-            log { "Реклама еще не инициализирована" }
+            log { "Ошибка: вызов load() до инициализации" }
             return
         }
-        log { "Старт предзагрузки Native Ads" }
-        repeat(POOL_SIZE) { loadNext(context) }
+        log { "Старт предзагрузки пула Native Ads" }
+        repeat(POOL_SIZE) { loadNext() }
     }
 
-    fun pop(context: Context): MaxNativeAdView? {
-        val adView = loadedAdViews.removeFirstOrNull()
-        if (adView != null) {
-            log { "Native AdView выдан из пула (осталось: ${loadedAdViews.size})" }
-            loadNext(context.applicationContext)
-        } else {
-            log { "Нет готовых Native Ads в пуле, вернется null" }
+
+    fun pop(context: Context, layoutResId: Int): MaxNativeAdView? {
+        val nativeAd = loadedAds.removeFirstOrNull() ?: run {
+            log { "Нет готовых объявлений в пуле" }
+            loadNext()
+            return null
         }
+
+        log { "Реклама взята из пула. Осталось: ${loadedAds.size}" }
+
+        val binder = MaxNativeAdViewBinder.Builder(layoutResId)
+            .setTitleTextViewId(R.id.applovin_title)
+            .setBodyTextViewId(R.id.applovin_body)
+            .setAdvertiserTextViewId(R.id.applovin_advertiser)
+            .setIconImageViewId(R.id.applovin_icon)
+            .setMediaContentViewGroupId(R.id.applovin_media)
+            .setOptionsContentViewGroupId(R.id.applovin_options)
+            .setCallToActionButtonId(R.id.applovin_call_to_action)
+            .build()
+
+        val adView = MaxNativeAdView(binder, context)
+
+        adLoader.render(adView, nativeAd)
+
+        loadNext()
+
         return adView
     }
 
     fun destroy() {
         log { "Destroy Native Ad Manager" }
         scope.coroutineContext.cancel()
-        loadedAdViews.clear()
-        adLoader.setNativeAdListener(null)
+
+        loadedAds.forEach { adLoader.destroy(it) }
+        loadedAds.clear()
+
+        if (::adLoader.isInitialized) {
+            adLoader.destroy()
+        }
     }
 
     private fun log(message: () -> String) = Log.d("APPLOVIN_NATIVE_AD", message())
 }
-

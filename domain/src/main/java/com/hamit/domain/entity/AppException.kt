@@ -1,4 +1,4 @@
-package com.hamit.android
+package com.hamit.domain.entity
 
 open class AppException: Exception()
 

@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.hamit.domain.entity.AddonListStatusUi
 import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.ui.theme.LocalAppColors
 

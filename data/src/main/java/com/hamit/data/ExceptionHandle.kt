@@ -1,8 +1,8 @@
 package com.hamit.data
 
-import com.hamit.android.Error
-import com.hamit.android.Maintenance
-import com.hamit.android.NoInternet
+import com.hamit.domain.entity.Error
+import com.hamit.domain.entity.Maintenance
+import com.hamit.domain.entity.NoInternet
 import io.ktor.util.network.UnresolvedAddressException
 
 fun Throwable.exceptionHandle() = when (this) {

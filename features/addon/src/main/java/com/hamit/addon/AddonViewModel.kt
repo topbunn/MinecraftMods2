@@ -2,15 +2,15 @@ package com.hamit.addon
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.hamit.android.AppExceptionType
-import com.hamit.android.Maintenance
-import com.hamit.android.NoInternet
+import com.hamit.domain.entity.AppExceptionType
+import com.hamit.domain.entity.Maintenance
+import com.hamit.domain.entity.NoInternet
 import com.hamit.domain.entity.addon.AddonSortType
 import com.hamit.domain.entity.like.LikeEntity
 import com.hamit.domain.useCases.addon.ReceiveAddonListUseCase
 import com.hamit.domain.useCases.addon.ReceiveAddonUseCase
 import com.hamit.domain.useCases.like.AddLikeUseCase
-import com.hamit.ui.components.addon.AddonListStatusUi
+import com.hamit.domain.entity.AddonListStatusUi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

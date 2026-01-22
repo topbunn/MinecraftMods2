@@ -1,6 +1,4 @@
-package com.hamit.ui.components.addon
-
-import com.hamit.android.AppExceptionType
+package com.hamit.domain.entity
 
 sealed interface AddonListStatusUi {
 

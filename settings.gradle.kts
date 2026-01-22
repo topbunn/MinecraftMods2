@@ -45,3 +45,4 @@ include(":features:dashboard")
 
 include(":features:suggest")
 include(":features:download")
+include(":features:ad")

@@ -16,9 +16,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hamit.android.AppExceptionType.Error
-import com.hamit.android.AppExceptionType.Maintenance
-import com.hamit.android.AppExceptionType.NoInternet
+import com.hamit.domain.entity.AddonListStatusUi
+import com.hamit.domain.entity.AppExceptionType
 import com.hamit.ui.R
 import com.hamit.ui.components.AppButton
 import com.hamit.ui.theme.AppTypo
@@ -40,9 +39,9 @@ internal fun LazyListScope.AddonListFooter(
                 verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
                 val errorResId = when (status.type) {
-                    NoInternet -> R.string.error_no_internet
-                    Maintenance -> R.string.error_maintenance
-                    Error -> R.string.error_unknown
+                    AppExceptionType.NoInternet -> R.string.error_no_internet
+                    AppExceptionType.Maintenance -> R.string.error_maintenance
+                    AppExceptionType.Error -> R.string.error_unknown
                 }
                 Text(
                     text = stringResource(errorResId),

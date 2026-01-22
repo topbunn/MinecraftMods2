@@ -1,7 +1,6 @@
 package com.hamit.loader
 
 import androidx.activity.compose.LocalActivity
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.StartOffset
@@ -78,7 +77,7 @@ object LoaderScreen : Screen {
         val navigator = LocalNavigator.currentOrThrow
         val viewModel = koinScreenModel<LoaderViewModel>()
         val state by viewModel.state.collectAsState()
-        val dashboardScreen = rememberScreen(Destination.DashboardScreen)
+        val dashboardScreen = rememberScreen(Destination.AdScreen(Destination.DashboardScreen))
 
         ObserveAsEvents(viewModel.events) {
             when(it){
@@ -116,12 +115,12 @@ object LoaderScreen : Screen {
                 .clip(RoundedCornerShape(32.dp))
                 .background(colors.card)
                 .verticalScroll(rememberScrollState())
-                .padding(start = 12.dp, top = 48.dp, end = 12.dp, bottom = 32.dp),
+                .padding(top = 48.dp, bottom = 32.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
-                modifier = Modifier.padding(horizontal = 12.dp),
+                modifier = Modifier.padding(horizontal = 24.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val appLogoRes = koinInject<AppLogoRes>()
@@ -178,17 +177,28 @@ object LoaderScreen : Screen {
                 )
 
                 val additionalModifiers = if (preloadCompleted) Modifier.wrapContentHeight() else Modifier.height(0.dp)
-                NativeCoordinator.show(
-                    modifier = Modifier.animateContentSize(tween(300))
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = 12.dp)
                         .fillMaxWidth()
-                        .then(additionalModifiers)
-                )
+//                        .appDropShadow(RoundedCornerShape(24.dp))
+//                        .clip(RoundedCornerShape(24.dp))
+                        .background(colors.card)
+                ){
+                    NativeCoordinator.show(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .then(additionalModifiers)
+                    )
+                }
             } else {
-                Spacer(Modifier.height(24.dp))
-                PulseLoader(
-                    size = 38.dp,
-                    color = colors.primary
-                )
+                Column {
+                    Spacer(Modifier.height(24.dp))
+                    PulseLoader(
+                        size = 38.dp,
+                        color = colors.primary
+                    )
+                }
             }
         }
     }
@@ -245,7 +255,7 @@ object LoaderScreen : Screen {
         val imageHeight by animateDpAsState(
             targetValue = if (preloadCompleted) 0.dp else imageWidth,
             animationSpec = tween(
-                durationMillis = if (preloadCompleted) 500 else 0,
+                durationMillis = if (preloadCompleted) 1000 else 0,
                 easing = FastOutSlowInEasing
             )
         )
@@ -253,7 +263,7 @@ object LoaderScreen : Screen {
         val animateAlpha by animateFloatAsState(
             targetValue = if (preloadCompleted) 0f else 1f,
             animationSpec = tween(
-                durationMillis = 200,
+                durationMillis = 900,
                 easing = FastOutSlowInEasing
             )
         )

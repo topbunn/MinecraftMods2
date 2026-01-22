@@ -1,7 +1,7 @@
 package com.hamit.addon
 
 import com.hamit.domain.entity.addon.AddonEntity
-import com.hamit.ui.components.addon.AddonListStatusUi
+import com.hamit.domain.entity.AddonListStatusUi
 
 data class AddonState(
     val addon: AddonEntity? = null,
