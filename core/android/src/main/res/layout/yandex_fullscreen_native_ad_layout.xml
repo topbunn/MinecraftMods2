@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yandex.mobile.ads.nativeads.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/native_ad_view"
+    android:background="#14161B">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/yandex_sponsored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:fontFamily="@font/bold"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:translationZ="2dp"
+            app:layout_constraintEnd_toEndOf="@+id/yandex_media"
+            app:layout_constraintTop_toTopOf="@+id/yandex_media"
+            tools:text="Sponsored" />
+
+        <ImageView
+            android:id="@+id/yandex_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/yandex_feedback"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="12dp"
+            android:contentDescription="Feedback"
+            android:src="@drawable/ic_feedback"
+            app:layout_constraintBottom_toBottomOf="@+id/yandex_media"
+            app:layout_constraintEnd_toEndOf="@+id/yandex_media" />
+
+
+        <com.yandex.mobile.ads.nativeads.MediaView
+            android:id="@+id/yandex_media"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yandex_icon" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/space2"
+            app:layout_constraintEnd_toEndOf="@+id/yandex_call_to_action"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/yandex_call_to_action">
+
+
+            <TextView
+                android:id="@+id/yandex_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/semibold"
+                android:textColor="#EAEAEA"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/yandex_domain"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/yandex_domain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/regular"
+                android:textColor="#B3B5B7"
+                android:textSize="12sp"
+                android:translationZ="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/yandex_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/yandex_title"
+                app:layout_constraintTop_toTopOf="@+id/yandex_title"
+                tools:text="example.com" />
+
+
+            <TextView
+                android:id="@+id/yandex_body"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:maxLines="4"
+                android:textColor="#B3B5B7"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/yandex_title"
+                app:layout_constraintTop_toBottomOf="@+id/yandex_title"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do lkg rgdfgk fdgjdf qweriwo svlksdf eiusod tempor incididunt ut..." />
+
+
+            <TextView
+                android:id="@+id/yandex_warning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/medium"
+                android:textColor="#B3B5B7"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/yandex_body"
+                app:layout_constraintTop_toBottomOf="@+id/yandex_body"
+                tools:text="Ad warning" />
+
+            <TextView
+                android:id="@+id/yandex_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bold"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:layout_margin="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/yandex_warning"
+                tools:text="$4.99" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="1dp"
+            android:layout_height="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/yandex_call_to_action"
+            app:layout_constraintEnd_toEndOf="@+id/yandex_call_to_action"
+            app:layout_constraintStart_toStartOf="@+id/yandex_call_to_action" />
+
+        <TextView
+            android:id="@+id/yandex_call_to_action"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_button"
+            android:fontFamily="@font/semibold"
+            android:gravity="center"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="32dp"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Install" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.yandex.mobile.ads.nativeads.NativeAdView>

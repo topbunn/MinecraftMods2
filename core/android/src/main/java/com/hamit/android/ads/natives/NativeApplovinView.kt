@@ -18,7 +18,6 @@ import com.hamit.ui.theme.LocalAppColors
 @Composable
 fun NativeApplovinView(modifier: Modifier = Modifier) {
     val context = LocalContext.current
-
     val adView = remember { NativeApplovinController.pop(context, R.layout.applovin_native_ad_container) } ?: return
 
     with(adView){

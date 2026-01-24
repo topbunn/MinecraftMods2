@@ -29,12 +29,14 @@ object NativeYandexController {
     private const val POOL_SIZE = 5
 
     private var adLoader: NativeAdLoader? = null
-    private val loadedAdViews = ArrayDeque<NativeAdView>(POOL_SIZE)
-    private var adUnitId: String? = null
+    private val loadedAds = ArrayDeque<NativeAd>(POOL_SIZE)
 
+    private var adUnitId: String? = null
     private var initialized = false
     private var retryAttempt = 0
     private var loadingCount = 0
+
+    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     private var onPreloadComplete: ((PreloadStatus) -> Unit)? = null
 
@@ -46,39 +48,37 @@ object NativeYandexController {
         onPreloadComplete = null
     }
 
-    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-
     fun init(context: Context, adUnitId: String) {
-        log { "Инициализация Yandex Native Ad с adUnitId=$adUnitId" }
         if (initialized) return
-        NativeYandexController.adUnitId = adUnitId
         initialized = true
+        this.adUnitId = adUnitId
+
+        log { "Инициализация Yandex Native Ad: $adUnitId" }
 
         adLoader = NativeAdLoader(context).apply {
             setNativeAdLoadListener(object : NativeAdLoadListener {
+
                 override fun onAdLoaded(ad: NativeAd) {
                     retryAttempt = 0
                     loadingCount--
 
-                    val adView = createView(context)
-                    bindAdToView(ad, adView)
-
-                    if (loadedAdViews.size < POOL_SIZE) {
-                        loadedAdViews.add(adView)
-                        log { "Native AdView добавлен в пул (текущий размер: ${loadedAdViews.size})" }
+                    if (loadedAds.size < POOL_SIZE) {
+                        loadedAds.add(ad)
+                        log { "NativeAd добавлен в пул (${loadedAds.size})" }
                     } else {
-                        log { "Пул переполнен, лишняя Native Ad пропущена" }
+                        log { "Пул переполнен, NativeAd пропущена" }
                     }
 
                     loadNext()
-                    onPreloadComplete?.invoke(isPreloadComlete())
+                    onPreloadComplete?.invoke(preloadStatus())
                 }
 
                 override fun onAdFailedToLoad(error: AdRequestError) {
                     retryAttempt++
                     loadingCount--
+
                     val delayMs = 2.0.pow(min(retryAttempt, 6)).toLong() * 1000
-                    log { "Ошибка загрузки Yandex Native Ad: ${error.description}. Повтор через $delayMs ms" }
+                    log { "Ошибка загрузки: ${error.description}. Повтор через $delayMs ms" }
 
                     scope.launch {
                         delay(delayMs)
@@ -89,96 +89,94 @@ object NativeYandexController {
         }
     }
 
-    private fun isPreloadComlete() = if (loadedAdViews.size >= POOL_SIZE) PreloadStatus.PRELOADED else PreloadStatus.PRELOADED
+    fun hasAd() = loadedAds.isNotEmpty()
 
-    private fun createView(context: Context): NativeAdView {
+    private fun preloadStatus() =
+        if (loadedAds.size >= POOL_SIZE) PreloadStatus.PRELOADED
+        else PreloadStatus.NOT_PRELOADED
+
+    private fun loadNext() {
+        if (!initialized) return
+        if (loadedAds.size + loadingCount >= POOL_SIZE) return
+
+        loadingCount++
+        log { "Запуск загрузки NativeAd (пул=${loadedAds.size}, loading=$loadingCount)" }
+
+        adUnitId?.let {
+            val request = NativeAdRequestConfiguration.Builder(it).build()
+            adLoader?.loadAd(request)
+        }
+    }
+
+    fun load() {
+        log { "Старт предзагрузки Yandex Native Ads" }
+        repeat(POOL_SIZE) { loadNext() }
+    }
+
+    fun pop(context: Context, layoutResId: Int): NativeAdView? {
+        val ad = loadedAds.removeFirstOrNull() ?: run {
+            log { "Пул пуст" }
+            loadNext()
+            return null
+        }
+
+        log { "NativeAd выдан из пула (осталось ${loadedAds.size})" }
+
         val adView = LayoutInflater.from(context)
-            .inflate(R.layout.yandex_native_ad_container, null) as NativeAdView
+            .inflate(layoutResId, null) as NativeAdView
+
+        bind(ad, adView)
+        loadNext()
+
         return adView
     }
 
-    private fun bindAdToView(ad: NativeAd, adView: NativeAdView) {
+    private fun bind(ad: NativeAd, adView: NativeAdView) {
         val binder = NativeAdViewBinder.Builder(adView)
-            .setTitleView(adView.findViewById(R.id.title))
-            .setDomainView(adView.findViewById(R.id.domain))
-            .setWarningView(adView.findViewById(R.id.warning))
-            .setSponsoredView(adView.findViewById(R.id.sponsored))
-            .setFeedbackView(adView.findViewById(R.id.feedback))
-            .setCallToActionView(adView.findViewById(R.id.call_to_action))
-            .setMediaView(adView.findViewById(R.id.media))
-            .setIconView(adView.findViewById(R.id.icon))
-            .setPriceView(adView.findViewById(R.id.price))
-            .setBodyView(adView.findViewById(R.id.body))
+            .setTitleView(adView.findViewById(R.id.yandex_title))
+            .setBodyView(adView.findViewById(R.id.yandex_body))
+            .setIconView(adView.findViewById(R.id.yandex_icon))
+            .setMediaView(adView.findViewById(R.id.yandex_media))
+            .setCallToActionView(adView.findViewById(R.id.yandex_call_to_action))
+            .setDomainView(adView.findViewById(R.id.yandex_domain))
+            .setSponsoredView(adView.findViewById(R.id.yandex_sponsored))
+            .setWarningView(adView.findViewById(R.id.yandex_warning))
+            .setFeedbackView(adView.findViewById(R.id.yandex_feedback))
+            .setPriceView(adView.findViewById(R.id.yandex_price))
             .build()
 
         try {
             ad.bindNativeAd(binder)
             ad.setNativeAdEventListener(object : NativeAdEventListener {
                 override fun onAdClicked() {
-                    log { "Yandex Native Ad clicked" }
+                    log { "Ad clicked" }
+                }
+
+                override fun onImpression(data: ImpressionData?) {
+                    log { "Ad impression" }
                 }
 
                 override fun onLeftApplication() {}
                 override fun onReturnedToApplication() {}
-                override fun onImpression(impressionData: ImpressionData?) {
-                    log { "Yandex Native Ad impression" }
-                }
             })
-        } catch (_: NativeAdException) {
+        } catch (e: NativeAdException) {
+            log { "Ошибка биндинга NativeAd: ${e.message}" }
         }
-    }
-
-    private fun loadNext() {
-        if (!initialized) return
-        if (loadedAdViews.size + loadingCount >= POOL_SIZE) return
-
-        loadingCount++
-        log { "Запуск загрузки следующей Yandex Native Ad (текущий пул: ${loadedAdViews.size}, в процессе: $loadingCount)" }
-
-        adUnitId?.let {
-            val request = NativeAdRequestConfiguration.Builder(it)
-                .build()
-
-            adLoader?.loadAd(request)
-        } ?: run {
-            log { "adUnitId == null" }
-            return
-        }
-
-    }
-
-    fun load() {
-        if (!initialized) {
-            log { "Реклама еще не инициализирована" }
-            return
-        }
-
-        log { "Старт предзагрузки Yandex Native Ads" }
-        repeat(POOL_SIZE) { loadNext() }
-    }
-
-    fun pop(): NativeAdView? {
-        if (!initialized) return null
-
-        val adView = loadedAdViews.removeFirstOrNull()
-        if (adView != null) {
-            log { "Yandex Native AdView выдан из пула (осталось: ${loadedAdViews.size})" }
-            loadNext()
-        } else {
-            log { "Нет готовых Yandex Native Ads в пуле, вернется null" }
-        }
-        return adView
     }
 
     fun destroy() {
         log { "Destroy Yandex Native Ad Manager" }
+
         scope.coroutineContext.cancel()
-        loadedAdViews.clear()
+
+        loadedAds.clear()
+
         adLoader = null
         initialized = false
         retryAttempt = 0
         loadingCount = 0
     }
 
-    private fun log(message: () -> String) = Log.d("YANDEX_NATIVE_AD", message())
+    private fun log(message: () -> String) =
+        Log.d("YANDEX_NATIVE_AD", message())
 }

@@ -1,6 +1,5 @@
 package com.hamit.loader
 
-import androidx.activity.compose.LocalActivity
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.StartOffset
@@ -53,15 +52,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import cafe.adriel.voyager.core.registry.rememberScreen
+import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.hamit.android.ads.interstitial.InterstitialCoordinator
 import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.domain.entity.AppLogoRes
-import com.hamit.navigation.Destination
 import com.hamit.ui.components.AppButton
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
@@ -73,17 +70,15 @@ object LoaderScreen : Screen {
 
     @Composable
     override fun Content() {
-        val activity = LocalActivity.currentOrThrow
         val navigator = LocalNavigator.currentOrThrow
         val viewModel = koinScreenModel<LoaderViewModel>()
         val state by viewModel.state.collectAsState()
-        val dashboardScreen = rememberScreen(Destination.AdScreen(Destination.DashboardScreen))
 
         ObserveAsEvents(viewModel.events) {
             when(it){
-                is LoaderEvent.OpenDashboard -> {
-                    InterstitialCoordinator.show(activity)
-                    navigator.replaceAll(dashboardScreen)
+                is LoaderEvent.OpenScreen -> {
+                    val screen = ScreenRegistry.get(it.destination)
+                    navigator.replaceAll(screen)
                 }
             }
         }
@@ -92,11 +87,12 @@ object LoaderScreen : Screen {
         Column(
             Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp),
             verticalArrangement = Arrangement.Center
         ) {
             Logo(preloadCompleted = state.nativePreloadComplete)
-            Spacer(Modifier.height(80.dp))
+            if(!state.nativePreloadComplete) Spacer(Modifier.height(80.dp))
             Card(preloadCompleted = state.nativePreloadComplete){
                 viewModel.navigateToDashboard()
             }
@@ -114,7 +110,6 @@ object LoaderScreen : Screen {
                 .appDropShadow()
                 .clip(RoundedCornerShape(32.dp))
                 .background(colors.card)
-                .verticalScroll(rememberScrollState())
                 .padding(top = 48.dp, bottom = 32.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -175,22 +170,6 @@ object LoaderScreen : Screen {
                         )
                     }
                 )
-
-                val additionalModifiers = if (preloadCompleted) Modifier.wrapContentHeight() else Modifier.height(0.dp)
-                Box(
-                    modifier = Modifier
-                        .padding(horizontal = 12.dp)
-                        .fillMaxWidth()
-//                        .appDropShadow(RoundedCornerShape(24.dp))
-//                        .clip(RoundedCornerShape(24.dp))
-                        .background(colors.card)
-                ){
-                    NativeCoordinator.show(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .then(additionalModifiers)
-                    )
-                }
             } else {
                 Column {
                     Spacer(Modifier.height(24.dp))
@@ -199,6 +178,22 @@ object LoaderScreen : Screen {
                         color = colors.primary
                     )
                 }
+            }
+            val additionalModifiers = if (preloadCompleted) Modifier.wrapContentHeight() else Modifier.height(0.dp)
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .fillMaxWidth()
+//                        .appDropShadow(RoundedCornerShape(24.dp))
+//                        .clip(RoundedCornerShape(24.dp))
+                    .background(colors.card)
+            ){
+                NativeCoordinator.show(
+                    type = NativeCoordinator.ViewAdType.Native,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .then(additionalModifiers)
+                )
             }
         }
     }
@@ -209,7 +204,7 @@ object LoaderScreen : Screen {
         color: Color,
         shape: Shape = CircleShape,
         count: Int = 2,
-        durationMillis: Int = 2500,
+        durationMillis: Int = 1500,
         targetScale: Float = 2.5f,
         initialScale: Float = 0.5f,
     ) {

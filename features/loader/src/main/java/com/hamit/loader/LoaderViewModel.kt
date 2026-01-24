@@ -9,6 +9,7 @@ import com.hamit.android.ads.natives.NativeCoordinator.PreloadStatus.NONE
 import com.hamit.android.ads.natives.NativeCoordinator.PreloadStatus.PRELOADED
 import com.hamit.domain.useCases.config.ReceiveConfigUseCase
 import com.hamit.domain.useCases.region.ReceiveRegionUseCase
+import com.hamit.navigation.Destination
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,7 +36,9 @@ class LoaderViewModel(
     }
 
     fun navigateToDashboard() = screenModelScope.launch{
-        _events.send(LoaderEvent.OpenDashboard)
+        val dashboard = Destination.DashboardScreen
+        val destination = if (NativeCoordinator.hasAd()) Destination.AdScreen(dashboard) else dashboard
+        _events.send(LoaderEvent.OpenScreen(destination))
         InterstitialCoordinator.deleteCallback()
     }
 

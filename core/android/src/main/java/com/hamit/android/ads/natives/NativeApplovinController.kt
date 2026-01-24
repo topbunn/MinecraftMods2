@@ -80,6 +80,9 @@ object NativeApplovinController {
         })
     }
 
+
+    fun hasAd() = loadedAds.isNotEmpty()
+
     private fun isPreloadComplete() =
         if (loadedAds.size >= POOL_SIZE) PreloadStatus.PRELOADED else PreloadStatus.NOT_PRELOADED
 

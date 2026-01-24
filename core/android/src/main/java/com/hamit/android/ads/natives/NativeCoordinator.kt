@@ -7,6 +7,8 @@ import com.hamit.android.BuildConfig
 import com.hamit.android.ads.natives.NativeCoordinator.Network.APPLOVIN
 import com.hamit.android.ads.natives.NativeCoordinator.Network.NONE
 import com.hamit.android.ads.natives.NativeCoordinator.Network.YANDEX
+import com.hamit.android.ads.natives.NativeCoordinator.ViewAdType.Fullscreen
+import com.hamit.android.ads.natives.NativeCoordinator.ViewAdType.Native
 import com.hamit.android.utills.isShow
 import com.hamit.domain.entity.AdEnum
 import com.hamit.domain.entity.AppLocation
@@ -23,6 +25,10 @@ object NativeCoordinator {
 
     enum class PreloadStatus{
         NONE, PRELOADED, NOT_PRELOADED
+    }
+
+    enum class ViewAdType{
+        Fullscreen, Native
     }
 
     fun init(context: Context, location: AppLocation, config: AdConfigEntity) {
@@ -52,12 +58,20 @@ object NativeCoordinator {
     fun setOnPreload(onPreloaded: (PreloadStatus) -> Unit) {
         when {
             !initialized -> onPreloaded(PreloadStatus.NONE)
-            !AdEnum.NATIVE.isShow() -> onPreloaded(PreloadStatus.NONE)
             else -> when (activeNetwork) {
                 APPLOVIN -> NativeApplovinController.setCallback(onPreloaded)
                 YANDEX -> NativeYandexController.setCallback(onPreloaded)
                 else -> onPreloaded(PreloadStatus.NONE)
             }
+        }
+    }
+
+    fun hasAd(): Boolean = when{
+        !initialized -> false
+        else -> when (activeNetwork) {
+            APPLOVIN -> NativeApplovinController.hasAd()
+            YANDEX -> NativeYandexController.hasAd()
+            else -> false
         }
     }
 
@@ -73,12 +87,22 @@ object NativeCoordinator {
 
 
     @Composable
-    fun show(modifier: Modifier = Modifier) {
+    fun show(type: ViewAdType, modifier: Modifier = Modifier) {
         if (!initialized) return
         if (AdEnum.NATIVE.isShow()){
             when (activeNetwork) {
-                Network.APPLOVIN -> NativeApplovinView(modifier = modifier)
-                Network.YANDEX -> NativeYandexView(modifier = modifier)
+                Network.APPLOVIN -> {
+                    when(type){
+                        Fullscreen -> FullscreenNativeApplovinView()
+                        Native -> NativeApplovinView(modifier = modifier)
+                    }
+                }
+                Network.YANDEX -> {
+                    when(type){
+                        Fullscreen -> FullscreenNativeYandexView()
+                        Native -> NativeYandexView(modifier = modifier)
+                    }
+                }
                 else -> {}
             }
         }
