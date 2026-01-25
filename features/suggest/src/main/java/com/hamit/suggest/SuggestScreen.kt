@@ -31,6 +31,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.suggest.SuggestState.FieldType.DESC
 import com.hamit.suggest.SuggestState.FieldType.EMAIL
 import com.hamit.suggest.SuggestState.FieldType.LINK
@@ -62,9 +63,18 @@ object SuggestScreen : Tab, Screen {
                 .verticalScroll(rememberScrollState())
                 .padding(12.dp, 20.dp)
         ) {
+            val colors = LocalAppColors.current
             TitleWithDesc()
             Spacer(Modifier.height(20.dp))
             Card()
+            Spacer(Modifier.height(20.dp))
+            NativeCoordinator.show(
+                modifier = Modifier.fillMaxWidth()
+                    .appDropShadow(RoundedCornerShape(24.dp))
+                    .clip(RoundedCornerShape(24.dp))
+                    .background(color = colors.card),
+                type = NativeCoordinator.ViewAdType.Native,
+            )
         }
     }
 

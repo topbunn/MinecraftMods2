@@ -24,6 +24,7 @@ class SingleActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         receiveConfigUseCase = getKoin().get()
         receiveRegionUseCase = getKoin().get()
+        initialNativeAd()
         initialAppOpenAd()
         enableEdgeToEdge()
         setContent {
@@ -38,22 +39,25 @@ class SingleActivity : ComponentActivity() {
         OpenCoordinator.init(this@SingleActivity, location, config)
     }
 
+    private fun initialNativeAd() = lifecycleScope.launch {
+        val config = receiveConfigUseCase()
+        val location = receiveRegionUseCase()
+        NativeCoordinator.init(this@SingleActivity, location, config)
+    }
+
     override fun onStart() {
         super.onStart()
         OpenCoordinator.start(this)
-//        InterstitialCoordinator.start()
     }
 
     override fun onStop() {
         super.onStop()
         OpenCoordinator.stop()
-//        InterstitialCoordinator.stop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         OpenCoordinator.destroy()
-//        InterstitialCoordinator.destroy()
         NativeCoordinator.destroy()
     }
 

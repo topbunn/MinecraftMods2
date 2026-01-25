@@ -30,6 +30,7 @@ import androidx.compose.ui.window.DialogProperties
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import com.hamit.addon.AddonViewModel
+import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.ui.R
 import com.hamit.ui.components.AppButton
 import com.hamit.ui.components.AppTextField
@@ -38,6 +39,7 @@ import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
 import com.hamit.ui.utils.ObserveAsEvents
+import com.hamit.ui.utils.appDropShadow
 
 @Composable
 fun Screen.IssueDialog(
@@ -134,5 +136,15 @@ fun Screen.IssueDialog(
                 onClick = { viewModel.submit() }
             )
         }
+        Spacer(Modifier.height(10.dp))
+        NativeCoordinator.show(
+            modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth()
+                .appDropShadow(RoundedCornerShape(24.dp))
+                .clip(RoundedCornerShape(24.dp))
+                .background(color = colors.card),
+            type = NativeCoordinator.ViewAdType.Native,
+        )
     }
 }

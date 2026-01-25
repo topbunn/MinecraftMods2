@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
@@ -36,9 +37,11 @@ fun NativeApplovinView(modifier: Modifier = Modifier) {
         val title = findViewById<TextView>(R.id.applovin_title)
         title.setTextColor(ColorStateList.valueOf(colors.title.toArgb()))
 
-        listOf(R.id.applovin_body, R.id.applovin_advertiser).forEach {
-            findViewById<TextView>(it).setTextColor(ColorStateList.valueOf(colors.text.toArgb()))
-        }
+        val advertiser =  findViewById<TextView>(R.id.applovin_advertiser)
+        advertiser.setTextColor(ColorStateList.valueOf(Color.White.toArgb()))
+
+        val body = findViewById<TextView>(R.id.applovin_body)
+        body.setTextColor(ColorStateList.valueOf(colors.text.toArgb()))
 
     }
 

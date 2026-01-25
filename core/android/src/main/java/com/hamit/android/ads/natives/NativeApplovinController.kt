@@ -30,7 +30,7 @@ object NativeApplovinController {
     private var retryAttempt = 0
     private var loadingCount = 0
 
-    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    private var scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     private var onPreloadComplete: ((PreloadStatus) -> Unit)? = null
 
@@ -47,7 +47,7 @@ object NativeApplovinController {
         if (initialized) return
         initialized = true
 
-        adLoader = MaxNativeAdLoader(adUnitId, context)
+        adLoader = MaxNativeAdLoader(adUnitId, context.applicationContext)
         adLoader.setNativeAdListener(object : MaxNativeAdListener() {
 
             override fun onNativeAdLoaded(nativeAdView: MaxNativeAdView?, nativeAd: MaxAd) {
@@ -140,7 +140,9 @@ object NativeApplovinController {
 
     fun destroy() {
         log { "Destroy Native Ad Manager" }
-        scope.coroutineContext.cancel()
+
+        scope.cancel()
+        scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
         loadedAds.forEach { adLoader.destroy(it) }
         loadedAds.clear()
@@ -148,6 +150,7 @@ object NativeApplovinController {
         if (::adLoader.isInitialized) {
             adLoader.destroy()
         }
+        initialized = false
     }
 
     private fun log(message: () -> String) = Log.d("APPLOVIN_NATIVE_AD", message())

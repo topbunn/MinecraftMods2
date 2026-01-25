@@ -5,8 +5,6 @@
     android:id="@+id/native_ad_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_rounded"
-    android:backgroundTint="#2A2A2A"
     android:minHeight="300dp"
     android:padding="10dp">
 
@@ -35,7 +33,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/regular"
             tool:text="example.com"
-            android:textColor="#DFDFDF"
+            android:textColor="#FFF"
             android:layout_margin="4dp"
             android:textSize="12sp"
             android:translationZ="1dp"
@@ -100,6 +98,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:maxHeight="100dp"
+            android:foreground="@drawable/bg_image"
             app:layout_constraintDimensionRatio="5:3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

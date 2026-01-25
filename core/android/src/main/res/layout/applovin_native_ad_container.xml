@@ -4,8 +4,6 @@
     android:id="@+id/applovin_native_ad_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_rounded"
-    android:backgroundTint="#2A2A2A"
     android:minHeight="300dp"
     android:padding="10dp">
 
@@ -80,6 +78,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:maxHeight="100dp"
+        android:foreground="@drawable/bg_image"
         app:layout_constraintDimensionRatio="5:3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -48,7 +48,7 @@ data class AdScreen(private val nextDestination: Destination): Screen, Parcelabl
                     .clip(CircleShape)
                     .background(Color.Black.copy(0.5f))
                     .clickable {
-                        navigator.replaceAll(nextScreen)
+                        navigator.replace(nextScreen)
                     }
                     .padding(6.dp),
                 painter = painterResource(com.hamit.ui.R.drawable.ic_close),

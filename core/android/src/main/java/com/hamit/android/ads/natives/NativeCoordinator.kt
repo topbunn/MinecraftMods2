@@ -115,5 +115,6 @@ object NativeCoordinator {
             Network.YANDEX -> NativeYandexController.destroy()
             else -> {}
         }
+        initialized = false
     }
 }

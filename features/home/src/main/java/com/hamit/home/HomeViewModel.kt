@@ -2,13 +2,15 @@ package com.hamit.home
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import com.hamit.android.ads.natives.NativeCoordinator
+import com.hamit.domain.entity.AddonListStatusUi
 import com.hamit.domain.entity.AppExceptionType
 import com.hamit.domain.entity.Maintenance
 import com.hamit.domain.entity.NoInternet
 import com.hamit.domain.useCases.addon.ReceiveAddonListUseCase
 import com.hamit.home.HomeState.FilterType.ADDON_TYPES
 import com.hamit.home.HomeState.FilterType.SORTS
-import com.hamit.domain.entity.AddonListStatusUi
+import com.hamit.navigation.Destination
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -102,6 +104,11 @@ internal class HomeViewModel(
 
     fun changeFilterDialog(status: Boolean) = _state.update { it.copy(filterIsOpen = status) }
     fun changeQuery(q: String) = _state.update { it.copy(query = q) }
-    fun openAddon(id: Int) = screenModelScope.launch { _events.send(HomeEvent.OpenMod(id)) }
+
+    fun openAddon(id: Int) = screenModelScope.launch {
+        val addon = Destination.AddonScreen(id)
+        val destination = if (NativeCoordinator.hasAd()) Destination.AdScreen(addon) else addon
+        _events.send(HomeEvent.OpenMod(destination))
+    }
 
 }

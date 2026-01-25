@@ -2,11 +2,13 @@ package com.hamit.ui.components.addon
 
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.Composable
 import com.hamit.domain.entity.addon.AddonEntity
 
 internal fun LazyListScope.AddonListContent(
     addons: List<AddonEntity>,
     isLoad: Boolean,
+    adContent: @Composable () -> Unit,
     onClick: (id: Int) -> Unit
 ) {
     if (addons.isEmpty() && isLoad) {
@@ -22,8 +24,9 @@ internal fun LazyListScope.AddonListContent(
                 is AddonListItemType.Addon -> {
                     AddonItem(addon = item.addon, onClick = onClick)
                 }
-
-                else -> {}
+                is AddonListItemType.Ad -> {
+                    adContent()
+                }
             }
         }
     }

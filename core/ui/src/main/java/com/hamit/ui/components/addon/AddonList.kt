@@ -37,6 +37,7 @@ fun AddonList(
     status: AddonListStatusUi,
     isEndOfList: Boolean,
     paddingValues: PaddingValues = PaddingValues(horizontal = 12.dp, vertical = 20.dp),
+    adContent: @Composable () -> Unit,
     onClick: (id: Int) -> Unit,
     onPreload: () -> Unit
 ) {
@@ -60,6 +61,7 @@ fun AddonList(
         AddonListContent(
             addons = addons,
             isLoad = status == AddonListStatusUi.Loading,
+            adContent = adContent,
             onClick = onClick
         )
 

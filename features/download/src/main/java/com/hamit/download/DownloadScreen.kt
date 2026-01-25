@@ -1,7 +1,9 @@
 package com.hamit.download
 
+import android.Manifest
 import android.os.Parcelable
 import android.widget.Toast
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -19,7 +21,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -44,6 +46,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.android.utills.bytesToMb
 import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.ui.R
@@ -53,6 +56,7 @@ import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
 import com.hamit.ui.utils.ObserveAsEvents
 import com.hamit.ui.utils.appDropShadow
+import com.hamit.ui.utils.permissions
 import kotlinx.parcelize.Parcelize
 import org.koin.core.parameter.parametersOf
 import java.util.Locale
@@ -65,6 +69,7 @@ class DownloadScreen(
 
     @Composable
     override fun Content() {
+        val activity = LocalActivity.current
         val context = LocalContext.current
         val colors = LocalAppColors.current
         val navigator = LocalNavigator.currentOrThrow
@@ -79,6 +84,12 @@ class DownloadScreen(
                 }
             }
         }
+
+        permissions(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -104,13 +115,37 @@ class DownloadScreen(
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 contentPadding = PaddingValues(horizontal = 12.dp, vertical = 10.dp)
             ) {
-                items(items = state.files, key = { it.link }){ file ->
+                itemsIndexed(items = state.files, key = { _, item -> item.link }){ index, file ->
                     FileItem(
                         file = file,
-                        onClickDownload = { viewModel.download(file) },
+                        onClickDownload = {
+                            viewModel.download(file)
+                            activity?.let { viewModel.showReview(it) }
+                        },
                         onClickInstall = { viewModel.openFile(file) },
                         onClickDirectory = { viewModel.openDownloads(context) },
                     )
+                    if ((index + 1) % 3 == 0){
+                        Spacer(Modifier.height(20.dp))
+                        NativeCoordinator.show(
+                            modifier = Modifier.fillMaxWidth()
+                                .appDropShadow(RoundedCornerShape(24.dp))
+                                .clip(RoundedCornerShape(24.dp))
+                                .background(color = colors.card),
+                            type = NativeCoordinator.ViewAdType.Native,
+                        )
+                    }
+                }
+                if (state.files.size < 3){
+                    item {
+                        NativeCoordinator.show(
+                            modifier = Modifier.fillMaxWidth()
+                                .appDropShadow(RoundedCornerShape(24.dp))
+                                .clip(RoundedCornerShape(24.dp))
+                                .background(color = colors.card),
+                            type = NativeCoordinator.ViewAdType.Native,
+                        )
+                    }
                 }
             }
         }

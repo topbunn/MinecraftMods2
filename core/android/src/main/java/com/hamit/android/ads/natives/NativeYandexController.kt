@@ -36,7 +36,7 @@ object NativeYandexController {
     private var retryAttempt = 0
     private var loadingCount = 0
 
-    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    private var scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     private var onPreloadComplete: ((PreloadStatus) -> Unit)? = null
 
@@ -55,7 +55,7 @@ object NativeYandexController {
 
         log { "Инициализация Yandex Native Ad: $adUnitId" }
 
-        adLoader = NativeAdLoader(context).apply {
+        adLoader = NativeAdLoader(context.applicationContext).apply {
             setNativeAdLoadListener(object : NativeAdLoadListener {
 
                 override fun onAdLoaded(ad: NativeAd) {
@@ -167,7 +167,8 @@ object NativeYandexController {
     fun destroy() {
         log { "Destroy Yandex Native Ad Manager" }
 
-        scope.coroutineContext.cancel()
+        scope.cancel()
+        scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
         loadedAds.clear()
 

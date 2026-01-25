@@ -1,11 +1,13 @@
 package com.hamit.download
 
+import android.app.Activity
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.hamit.android.utills.getModNameFromUrl
 import com.hamit.domain.entity.DownloadFileStatus
 import com.hamit.domain.entity.addon.AddonEntity
@@ -21,6 +23,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import ru.rustore.sdk.review.RuStoreReviewManagerFactory
 
 class DownloadViewModel(
     private val addon: AddonEntity,
@@ -94,6 +97,41 @@ class DownloadViewModel(
                 }
 
                 updateFileState(file, newStatus)
+            }
+        }
+    }
+
+    fun showReview(activity: Activity) {
+        if (BuildConfig.RUSTORE){
+            showRuStoreReview(activity)
+        } else {
+            showGooglePlayReview(activity)
+        }
+    }
+
+    private fun showRuStoreReview(activity: Activity){
+        val manager = RuStoreReviewManagerFactory.create(activity.applicationContext)
+        val request = manager.requestReviewFlow()
+
+        request.addOnSuccessListener {
+            val launch = manager.launchReviewFlow(it)
+            launch.addOnFailureListener {
+                Log.d("RUSTORE_REVIEW", "Ошибка launch: ${it.message}")
+            }
+        }
+        request.addOnFailureListener {
+            Log.d("RUSTORE_REVIEW", "Ошибка request: ${it.message}")
+        }
+    }
+
+    private fun showGooglePlayReview(activity: Activity){
+        val manager = ReviewManagerFactory.create(activity)
+        val request = manager.requestReviewFlow()
+
+        request.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val reviewInfo = task.result
+                manager.launchReviewFlow(activity, reviewInfo)
             }
         }
     }

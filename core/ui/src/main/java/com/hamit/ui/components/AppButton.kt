@@ -12,6 +12,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -37,7 +38,7 @@ fun AppButton(
     val colors = LocalAppColors.current
     val containerColor = container ?: colors.primary
     val contentColor = content ?: colors.onPrimary
-    val interaction = MutableInteractionSource()
+    val interaction = remember { MutableInteractionSource() }
     val isEnabled = !isLoading && isEnabled
     Box(
         modifier = modifier

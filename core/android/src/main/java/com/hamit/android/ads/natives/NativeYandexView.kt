@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
@@ -40,8 +41,12 @@ fun NativeYandexView(
         val title = findViewById<TextView>(R.id.yandex_title)
         title.setTextColor(ColorStateList.valueOf(colors.title.toArgb()))
 
-        listOf(R.id.yandex_domain, R.id.yandex_warning, R.id.yandex_sponsored, R.id.yandex_body).forEach {
+        listOf(R.id.yandex_warning,  R.id.yandex_body).forEach {
             findViewById<TextView>(it).setTextColor(ColorStateList.valueOf(colors.text.toArgb()))
+        }
+
+        listOf(R.id.yandex_domain, R.id.yandex_sponsored).forEach {
+            findViewById<TextView>(it).setTextColor(ColorStateList.valueOf(Color.White.toArgb()))
         }
 
     }

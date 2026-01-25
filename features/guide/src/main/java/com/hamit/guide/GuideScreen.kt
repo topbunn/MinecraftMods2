@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.guide.GuideType.ADDON
 import com.hamit.guide.GuideType.WORLD
 import com.hamit.ui.R
@@ -58,6 +59,7 @@ object GuideScreen : Screen {
         val context = LocalContext.current
         val navigator = LocalNavigator.currentOrThrow
         val lazyListState = rememberLazyListState()
+        val colors = LocalAppColors.current
 
         val guideTypes = GuideType.entries
         var selectedGuideTypeIndex by rememberSaveable { mutableIntStateOf(0) }
@@ -98,6 +100,15 @@ object GuideScreen : Screen {
                 }
                 itemsIndexed(items = items){ index, guide ->
                     GuideItem(index, guide)
+                }
+                item {
+                    NativeCoordinator.show(
+                        type = NativeCoordinator.ViewAdType.Native,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(color = colors.card),
+                    )
                 }
             }
         }
