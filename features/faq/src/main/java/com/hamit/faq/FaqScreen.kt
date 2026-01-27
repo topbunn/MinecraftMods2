@@ -20,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -34,11 +35,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.hamit.faq.FaqType.SHARE_MOD
+import com.hamit.issue.IssueDialog
 import com.hamit.navigation.Destination
 import com.hamit.ui.R
 import com.hamit.ui.components.AppButton
@@ -57,6 +60,8 @@ object FaqScreen: Tab, Screen {
 
     @Composable
     override fun Content() {
+        val viewModel = koinScreenModel<FaqViewModel>()
+        val state by viewModel.state.collectAsState()
         val navigator = LocalNavigator.currentOrThrow
         Column(
             modifier = Modifier
@@ -73,7 +78,22 @@ object FaqScreen: Tab, Screen {
                     navigator.push(suggestScreen)
                 }
             )
+            Spacer(Modifier.height(20.dp))
+            ButtonQuestion{ viewModel.openIssue(true) }
         }
+
+        if (state.openIssue){
+            IssueDialog { viewModel.openIssue(false) }
+        }
+    }
+
+    @Composable
+    private fun ButtonQuestion(onClick: () -> Unit) {
+        AppButton(
+            modifier = Modifier.fillMaxWidth().height(48.dp),
+            text = stringResource(R.string.ask_a_question),
+            onClick = onClick
+        )
     }
 
     @Composable
@@ -82,7 +102,7 @@ object FaqScreen: Tab, Screen {
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             faqList.forEach {
                 FaqItem(
@@ -90,7 +110,9 @@ object FaqScreen: Tab, Screen {
                     content = when(it.typeQuestion){
                         SHARE_MOD -> {{
                             AppButton(
-                                modifier = Modifier.fillMaxWidth().height(42.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(42.dp),
                                 text = stringResource(R.string.suggest),
                                 onClick = onClickSuggest
                             )

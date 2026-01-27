@@ -26,6 +26,7 @@
 
     <string name="contact_us">Contact Us</string>
     <string name="any_question">Any questions or suggestions?</string>
+    <string name="ask_a_question">Ask a question</string>
 
     <string name="hint_name">Name</string>
     <string name="hint_email">Email</string>

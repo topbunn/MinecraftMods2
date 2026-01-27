@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -46,6 +47,7 @@ fun AppTextField(
     enabled: Boolean = true,
     readOnly: Boolean = false,
     fontSize: TextUnit? = null,
+    border: Color? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = true,
@@ -73,7 +75,7 @@ fun AppTextField(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .border(2.dp, colors.border, RoundedCornerShape(12.dp))
+                    .border(2.dp, border ?: colors.border, RoundedCornerShape(12.dp))
                     .clip(RoundedCornerShape(12.dp))
                     .padding(paddingValues),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),

@@ -26,6 +26,7 @@
 
     <string name="contact_us">Связаться с нами</string>
     <string name="any_question">Есть вопросы или предложения?</string>
+    <string name="ask_a_question">Задать вопрос</string>
     <string name="hint_name">Имя</string>
     <string name="hint_email">Электронная почта</string>
     <string name="hint_link">Ссылка</string>

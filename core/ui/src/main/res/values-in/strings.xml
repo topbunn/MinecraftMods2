@@ -27,6 +27,7 @@
     <string name="tabs_faq">FAQ</string>
     <string name="contact_us">Hubungi Kami</string>
     <string name="any_question">Ada pertanyaan atau saran?</string>
+    <string name="ask_a_question">Ajukan pertanyaan</string>
 
     <string name="hint_name">Nama</string>
     <string name="hint_email">Email</string>
@@ -37,8 +38,6 @@
 
     <string name="installation">Instalasi</string>
     <string name="instructions">Petunjuk</string>
-    <string name="error_download_mod">Terjadi kesalahan saat mengunduh mod</string>
-    <string name="start">Mulai</string>
     <string name="how_to_install">Bagaimana cara menginstal?</string>
 
     <string-array name="guide_addon_array">
@@ -71,6 +70,10 @@
     <string name="supported_versions">Versi yang didukung</string>
     <string name="addon_don_t_work">Addon tidak berfungsi?</string>
     <string name="to_save_click_the_download_button">Untuk menyimpan, klik tombol \"Unduh\".</string>
+    <string name="error_download_mod">Terjadi kesalahan saat mengunduh mod</string>
+    <string name="start">Mulai</string>
+
+
     <string name="download">Unduh</string>
     <string name="to_install_in_game_click_the_install">Untuk menginstal dalam game, klik \"Instal\".</string>
     <string name="install">Instal</string>
@@ -83,7 +86,6 @@
     <string name="send">Kirim</string>
     <string name="suggest_submitted">Saran dikirim</string>
     <string name="error_check_internet">Terjadi kesalahan. Silakan periksa koneksi internet Anda atau coba lagi.</string>
-
     <string name="the_list_is_empty">Tidak ada yang ditemukan</string>
     <string name="retry">Coba Lagi</string>
 

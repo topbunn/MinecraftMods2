@@ -4,7 +4,7 @@
     <string name="search">Pesquisar</string>
 
     <string name="sort_enum_name">Por nome</string>
-    <string name="sort_enum_best">Por popularidad</string>
+    <string name="sort_enum_best">Por popularidade</string>
     <string name="sort_enum_comment">Por comentários</string>
     <string name="sort_enum_rating">Por classificação</string>
     <string name="sort_enum_relevance">Por relevância</string>
@@ -27,6 +27,7 @@
     <string name="tabs_faq">FAQ</string>
     <string name="contact_us">Fale conosco</string>
     <string name="any_question">Alguma dúvida ou sugestão?</string>
+    <string name="ask_a_question">Fazer uma pergunta</string>
 
     <string name="hint_name">Nome</string>
     <string name="hint_email">E-mail</string>

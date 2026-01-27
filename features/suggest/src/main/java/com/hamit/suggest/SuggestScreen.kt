@@ -1,5 +1,6 @@
 package com.hamit.suggest
 
+import android.R.attr.required
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -196,6 +199,13 @@ object SuggestScreen : Tab, Screen {
                     EMAIL -> R.string.hint_email
                     LINK -> R.string.hint_link
                     DESC -> R.string.hint_desc
+                }
+            ),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = when(type){
+                    EMAIL -> KeyboardType.Email
+                    LINK -> KeyboardType.Uri
+                    DESC -> KeyboardType.Text
                 }
             ),
             leadingIconRes = when(type){

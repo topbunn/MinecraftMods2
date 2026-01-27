@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    implementation(project(":features:issue"))
     implementation(project(":domain"))
     implementation(project(":navigation"))
     implementation(project(":core:ui"))

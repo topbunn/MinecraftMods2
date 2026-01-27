@@ -36,6 +36,7 @@
 
     <string name="installation">Installation</string>
     <string name="instructions">Anleitung</string>
+    <string name="ask_a_question">Eine Frage stellen</string>
 
     <string-array name="guide_addon_array">
         <item>Wählen Sie den Mod oder das Ressourcenpaket aus der Liste.</item>

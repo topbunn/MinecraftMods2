@@ -1,4 +1,4 @@
-package com.hamit.addon.issue
+package com.hamit.issue
 
 internal data class IssueState(
     val email: String = "",

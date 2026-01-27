@@ -1,12 +1,11 @@
-package com.hamit.addon.issue
+package com.hamit.issue
 
-import android.R.attr.onClick
+import com.hamit.ui.R
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -29,9 +28,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
-import com.hamit.addon.AddonViewModel
 import com.hamit.android.ads.natives.NativeCoordinator
-import com.hamit.ui.R
 import com.hamit.ui.components.AppButton
 import com.hamit.ui.components.AppTextField
 import com.hamit.ui.theme.AppColors

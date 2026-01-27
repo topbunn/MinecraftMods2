@@ -1,4 +1,4 @@
-package com.hamit.addon.issue
+package com.hamit.issue
 
 sealed interface IssueEvent{
     data object ShowSuccess: IssueEvent

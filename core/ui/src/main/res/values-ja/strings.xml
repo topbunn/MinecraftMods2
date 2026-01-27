@@ -27,6 +27,7 @@
     <string name="tabs_faq">FAQ</string>
     <string name="contact_us">お問い合わせ</string>
     <string name="any_question">質問やご意見はありますか？</string>
+    <string name="ask_a_question">質問する</string>
 
     <string name="hint_name">名前</string>
     <string name="hint_email">メール</string>

@@ -43,7 +43,6 @@ import com.hamit.addon.components.Preview
 import com.hamit.addon.components.SupportButtons
 import com.hamit.addon.components.Title
 import com.hamit.addon.components.TopbarButtons
-import com.hamit.addon.issue.IssueDialog
 import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.domain.entity.AddonListStatusUi
 import com.hamit.domain.entity.AppExceptionType
@@ -51,6 +50,7 @@ import com.hamit.domain.entity.AppExceptionType.Error
 import com.hamit.domain.entity.AppExceptionType.Maintenance
 import com.hamit.domain.entity.AppExceptionType.NoInternet
 import com.hamit.domain.entity.addon.AddonEntity
+import com.hamit.issue.IssueDialog
 import com.hamit.navigation.Destination
 import com.hamit.ui.R
 import com.hamit.ui.components.AppButton

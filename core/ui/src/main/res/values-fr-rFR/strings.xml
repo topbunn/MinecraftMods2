@@ -27,6 +27,7 @@
     <string name="tabs_faq">FAQ</string>
     <string name="contact_us">Contactez-nous</string>
     <string name="any_question">Des questions ou suggestions ?</string>
+    <string name="ask_a_question">Poser une question</string>
 
     <string name="hint_name">Nom</string>
     <string name="hint_email">E-Mail</string>
@@ -108,6 +109,6 @@
     <string name="crafts">Crafts</string>
     <string name="not_working">Ça ne fonctionne pas ?</string>
     <string name="feedback">Retour</string>
-    <string name="file_saved_to_storage">Datei im Speicher gespeichert</string>
+    <string name="file_saved_to_storage">Fichier enregistré dans le stockage</string>
 
 </resources>

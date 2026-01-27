@@ -2,21 +2,19 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.hamit.addon"
-    compileSdk = 36
+    namespace = "com.hamit.issue"
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        val forRuStore = property("rustore")?.toString() ?: error("not found property with name 'rustore'")
-        buildConfigField("Boolean", "RUSTORE", forRuStore)
     }
 
     buildTypes {
@@ -37,19 +35,16 @@ android {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
     }
-    buildFeatures {
+    buildFeatures{
         compose = true
         buildConfig = true
     }
 }
 
 dependencies {
-
     // Koin
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.core)
-    implementation(libs.koin.compose)
-
 
     // Voyager
     implementation(libs.voyager.tab)
@@ -60,6 +55,7 @@ dependencies {
     // Ads
     implementation (libs.mobileads.yandex)
     implementation(libs.applovin.sdk)
+    implementation(libs.analytics)
     implementation(libs.picasso)
     implementation(libs.google.adapter)
     implementation(libs.unity.adapter)
@@ -70,11 +66,8 @@ dependencies {
 
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)
-    implementation(libs.coil.network.okhttp)
-    implementation(libs.coil.compose)
-    implementation(libs.app.update.ktx)
-    implementation(libs.review)
-    implementation(libs.rustore.review)
+    implementation(libs.androidx.lifecycle.process)
+    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -87,8 +80,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation(project(":features:issue"))
-    implementation(project(":navigation"))
     implementation(project(":domain"))
     implementation(project(":core:ui"))
     implementation(project(":core:android"))

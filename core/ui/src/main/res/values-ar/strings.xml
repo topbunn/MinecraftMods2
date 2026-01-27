@@ -27,6 +27,7 @@
 
     <string name="contact_us">اتصل بنا</string>
     <string name="any_question">هل لديك سؤال أو اقتراح؟</string>
+    <string name="ask_a_question">اطرح سؤالاً</string>
     <string name="hint_name">الاسم</string>
     <string name="hint_email">البريد الإلكتروني</string>
     <string name="hint_link">الرابط</string>
@@ -36,6 +37,8 @@
 
     <string name="installation">التثبيت</string>
     <string name="instructions">إرشادات</string>
+
+    <string name="how_to_install">كيفية التثبيت؟</string>
 
     <string-array name="guide_addon_array">
         <item>اختر المود أو حزمة الموارد من القائمة.</item>
@@ -97,7 +100,6 @@
 
     <string name="you_might_like">قد يعجبك</string>
     <string name="gallery">معرض</string>
-    <string name="how_to_install">كيفية التثبيت؟</string>
     <string name="files">ملفات</string>
     <string name="support">الدعم</string>
     <string name="other_mods">تعديلات أخرى</string>

@@ -27,6 +27,7 @@
 
     <string name="contact_us">Contáctanos</string>
     <string name="any_question">¿Tienes alguna pregunta o sugerencia?</string>
+    <string name="ask_a_question">Hacer una pregunta</string>
     <string name="hint_name">Nombre</string>
     <string name="hint_email">Correo electrónico</string>
     <string name="hint_link">Enlace</string>

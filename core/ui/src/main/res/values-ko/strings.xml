@@ -27,6 +27,7 @@
     <string name="tabs_faq">FAQ</string>
     <string name="contact_us">문의하기</string>
     <string name="any_question">질문이나 제안이 있으신가요?</string>
+    <string name="ask_a_question">질문하기</string>
     <string name="hint_name">이름</string>
     <string name="hint_email">이메일</string>
     <string name="hint_link">링크</string>

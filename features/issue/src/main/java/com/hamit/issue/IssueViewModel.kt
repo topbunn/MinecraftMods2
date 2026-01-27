@@ -1,14 +1,9 @@
-package com.hamit.addon.issue
+package com.hamit.issue
 
-import android.system.Os.link
-import androidx.lifecycle.ViewModel
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.google.common.net.HttpHeaders.LINK
-import com.hamit.addon.issue.IssueState.FieldType.*
 import com.hamit.android.utills.isEmail
 import com.hamit.domain.entity.problem.ProblemEntity
-import com.hamit.domain.entity.suggest.SuggestEntity
 import com.hamit.domain.useCases.problem.SendProblemUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -46,8 +41,8 @@ internal class IssueViewModel(
     fun changeFieldValue(text: String, type: IssueState.FieldType) {
         _state.update {
             when(type){
-                EMAIL -> if (text.length <= 64) it.copy(email = text) else it
-                DESC -> if (text.length <= 2000) it.copy(desc = text) else it
+                IssueState.FieldType.EMAIL -> if (text.length <= 64) it.copy(email = text) else it
+                IssueState.FieldType.DESC -> if (text.length <= 2000) it.copy(desc = text) else it
             }
         }
     }
