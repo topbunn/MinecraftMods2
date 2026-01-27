@@ -1,0 +1,93 @@
+<resources>
+    <string name="faq_q_install_error">なぜMODがインストールできない、またはエラーが表示されますか？</string>
+    <string name="faq_a_install_error">
+• MODのバージョンがMinecraftのバージョンと一致しているか確認してください。
+• 対応バージョンはMODページの下部に記載されています。
+• 端末の空き容量を確認してください。
+• Minecraftとアプリを再起動してください。
+    </string>
+
+    <string name="faq_q_not_visible">MODがゲーム内に表示されないのはなぜですか？</string>
+    <string name="faq_a_not_visible">
+• ワールド設定でMODを手動で有効にしてください。
+• 実験的機能が有効になっているか確認してください。
+• 新しいワールドを作成してみてください。
+    </string>
+
+    <string name="faq_q_no_internet">インターネットがないと表示されます</string>
+    <string name="faq_a_no_internet">
+インターネットがあるのにエラーが表示される場合、
+サーバーのメンテナンス中の可能性があります。
+しばらくしてから再試行してください。
+    </string>
+
+    <string name="faq_q_file_corrupted">ファイルが破損していると表示されるのはなぜですか？</string>
+    <string name="faq_a_file_corrupted">
+• ダウンロードが中断された可能性があります。
+• MODを削除して再度ダウンロードしてください。
+• インターネット接続を確認してください。
+    </string>
+
+    <string name="faq_q_install_mod">MODのインストール方法は？</string>
+    <string name="faq_a_install_mod">
+• MODページを開きます。
+• ダウンロードをタップします。
+• ダウンロード完了まで待ちます。
+• インストールをタップします。
+• MinecraftでMODを開きます。
+    </string>
+
+    <string name="faq_q_install_texture">テクスチャパックやスキンのインストール方法は？</string>
+    <string name="faq_a_install_texture">
+MODと同じ手順です。
+インストール後、Minecraftの設定で有効にしてください。
+    </string>
+
+    <string name="faq_q_need_internet">インターネットは必要ですか？</string>
+    <string name="faq_a_need_internet">
+MODのダウンロードにはインターネットが必要です。
+インストール済みのMODはオフラインで動作します。
+    </string>
+
+    <string name="faq_q_new_mods">新しいMODは追加されますか？</string>
+    <string name="faq_a_new_mods">はい。定期的に新しいMODを追加しています。</string>
+
+    <string name="faq_q_not_working">問題がある場合はどこに報告すればいいですか？</string>
+    <string name="faq_a_not_working">
+MOD画面で「動作しない」をタップし、
+問題を詳しく説明してください。
+    </string>
+
+    <string name="faq_q_share_mod">自分のMODを共有できますか？</string>
+    <string name="faq_a_share_mod">
+アプリ内で直接MODを提案できます。
+下のボタンをタップしてください。
+    </string>
+
+    <string name="faq_btn_submit_mod">MODを提案</string>
+
+    <string name="faq_q_multiplayer">MODを使ってマルチプレイできますか？</string>
+    <string name="faq_a_multiplayer">
+サーバーによります。
+通常、同じMODをサポートしている必要があります。
+    </string>
+
+    <string name="faq_q_safe">MODは安全ですか？</string>
+    <string name="faq_a_safe">
+はい。すべてのMODはチェックされています。
+有害なファイルは公開していません。
+    </string>
+
+    <string name="faq_q_lag">MODが重いのはなぜですか？</string>
+    <string name="faq_a_lag">
+• 一部のMODは端末に負荷をかけます。
+• 他のアプリを閉じてください。
+• Minecraftのグラフィック設定を下げてください。
+    </string>
+
+    <string name="faq_q_ads">なぜ広告が表示されるのですか？</string>
+    <string name="faq_a_ads">
+広告はアプリの維持と開発を支えています。
+できるだけ邪魔にならないようにしています。
+    </string>
+</resources>

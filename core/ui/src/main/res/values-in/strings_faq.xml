@@ -1,0 +1,93 @@
+<resources>
+    <string name="faq_q_install_error">Mengapa mod tidak bisa dipasang atau muncul error?</string>
+    <string name="faq_a_install_error">
+• Pastikan versi mod sesuai dengan versi Minecraft.
+• Versi yang didukung tercantum di bagian bawah halaman mod.
+• Pastikan ruang penyimpanan cukup.
+• Coba restart Minecraft dan aplikasi.
+    </string>
+
+    <string name="faq_q_not_visible">Mengapa mod tidak muncul di dalam game?</string>
+    <string name="faq_a_not_visible">
+• Buka pengaturan dunia dan aktifkan mod secara manual.
+• Pastikan pengaturan Eksperimental aktif.
+• Coba buat dunia baru.
+    </string>
+
+    <string name="faq_q_no_internet">Aplikasi menampilkan tidak ada internet</string>
+    <string name="faq_a_no_internet">
+Jika internet tersedia tetapi masih error,
+kemungkinan server sedang dalam perbaikan.
+Silakan coba lagi nanti.
+    </string>
+
+    <string name="faq_q_file_corrupted">Mengapa file rusak?</string>
+    <string name="faq_a_file_corrupted">
+• Unduhan mungkin terputus.
+• Hapus mod dan unduh ulang.
+• Periksa koneksi internet Anda.
+    </string>
+
+    <string name="faq_q_install_mod">Bagaimana cara memasang mod?</string>
+    <string name="faq_a_install_mod">
+• Buka halaman mod.
+• Tekan Unduh.
+• Tunggu hingga selesai.
+• Tekan Pasang.
+• Buka mod di Minecraft.
+    </string>
+
+    <string name="faq_q_install_texture">Bagaimana cara memasang texture pack atau skin?</string>
+    <string name="faq_a_install_texture">
+Prosesnya sama seperti mod.
+Setelah itu aktifkan di pengaturan Minecraft.
+    </string>
+
+    <string name="faq_q_need_internet">Apakah internet diperlukan?</string>
+    <string name="faq_a_need_internet">
+Internet hanya diperlukan untuk mengunduh mod.
+Mod yang sudah terpasang bisa digunakan offline.
+    </string>
+
+    <string name="faq_q_new_mods">Apakah akan ada mod baru?</string>
+    <string name="faq_a_new_mods">Ya. Kami rutin menambahkan mod baru.</string>
+
+    <string name="faq_q_not_working">Di mana melaporkan masalah?</string>
+    <string name="faq_a_not_working">
+Di layar mod, tekan “Tidak berfungsi”
+dan jelaskan masalahnya.
+    </string>
+
+    <string name="faq_q_share_mod">Saya punya mod sendiri. Bagaimana cara membagikannya?</string>
+    <string name="faq_a_share_mod">
+Anda bisa mengajukan mod langsung di aplikasi.
+Tekan tombol di bawah.
+    </string>
+
+    <string name="faq_btn_submit_mod">Ajukan mod</string>
+
+    <string name="faq_q_multiplayer">Bisakah bermain multiplayer dengan mod?</string>
+    <string name="faq_a_multiplayer">
+Tergantung server.
+Biasanya server harus mendukung mod yang sama.
+    </string>
+
+    <string name="faq_q_safe">Apakah mod aman?</string>
+    <string name="faq_a_safe">
+Ya. Semua mod diperiksa.
+Kami tidak mempublikasikan file berbahaya.
+    </string>
+
+    <string name="faq_q_lag">Mengapa mod terasa lag?</string>
+    <string name="faq_a_lag">
+• Beberapa mod membebani perangkat.
+• Tutup aplikasi lain.
+• Turunkan pengaturan grafis Minecraft.
+    </string>
+
+    <string name="faq_q_ads">Mengapa ada iklan di aplikasi?</string>
+    <string name="faq_a_ads">
+Iklan membantu kami mengembangkan aplikasi.
+Kami berusaha agar iklan tidak mengganggu.
+    </string>
+</resources>

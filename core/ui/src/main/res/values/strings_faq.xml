@@ -1,0 +1,93 @@
+<resources>
+    <string name="faq_q_install_error">Why doesn’t the mod install or shows an import error?</string>
+    <string name="faq_a_install_error">
+• Make sure the mod version matches your Minecraft version.
+• Supported versions are listed at the bottom of the mod page.
+• Make sure you have enough free storage.
+• Try restarting Minecraft and the app.
+    </string>
+
+    <string name="faq_q_not_visible">Why is the mod not showing in the game?</string>
+    <string name="faq_a_not_visible">
+• Open world settings and enable the mod manually.
+• Make sure Experimental Features are enabled.
+• Try creating a new world with this mod.
+    </string>
+
+    <string name="faq_q_no_internet">The app says there is no internet, but I have connection</string>
+    <string name="faq_a_no_internet">
+If you have internet but the app still shows an error, we are probably already aware of the issue.
+There may be technical work on the server.
+Please try again later.
+    </string>
+
+    <string name="faq_q_file_corrupted">Why does it say the file is corrupted?</string>
+    <string name="faq_a_file_corrupted">
+• The download may have been interrupted.
+• Delete the mod and download it again.
+• Check your internet connection.
+    </string>
+
+    <string name="faq_q_install_mod">How to install a mod?</string>
+    <string name="faq_a_install_mod">
+• Open the mod page.
+• Tap Download.
+• Wait until download finishes.
+• Tap Install.
+• Open the mod in Minecraft.
+    </string>
+
+    <string name="faq_q_install_texture">How to install a texture pack or skin?</string>
+    <string name="faq_a_install_texture">
+The process is the same as for mods.
+After installation, enable it in Minecraft settings.
+    </string>
+
+    <string name="faq_q_need_internet">Do I need internet to use the app?</string>
+    <string name="faq_a_need_internet">
+Internet is required to download mods.
+Installed mods work offline.
+    </string>
+
+    <string name="faq_q_new_mods">Will there be new mods?</string>
+    <string name="faq_a_new_mods">Yes. We regularly add new mods and updates.</string>
+
+    <string name="faq_q_not_working">Where to report if something doesn’t work?</string>
+    <string name="faq_a_not_working">
+On the mod screen, tap the “Not working” button.
+Describe the problem in detail and we will try to help as soon as possible.
+    </string>
+
+    <string name="faq_q_share_mod">I have my own mod. How can I share it?</string>
+    <string name="faq_a_share_mod">
+You can suggest your mod directly in the app.
+Tap the button below to open the submission screen.
+    </string>
+
+    <string name="faq_btn_submit_mod">Submit a mod</string>
+
+    <string name="faq_q_multiplayer">Can I play with mods in multiplayer?</string>
+    <string name="faq_a_multiplayer">
+It depends on the server.
+Usually the server must support the same mod.
+    </string>
+
+    <string name="faq_q_safe">Are mods safe?</string>
+    <string name="faq_a_safe">
+Yes. All mods are checked.
+We do not publish viruses or malicious files.
+    </string>
+
+    <string name="faq_q_lag">Why does the mod lag?</string>
+    <string name="faq_a_lag">
+• Some mods are heavy for the device.
+• Close other apps.
+• Try lowering graphics settings in Minecraft.
+    </string>
+
+    <string name="faq_q_ads">Why does the app contain ads?</string>
+    <string name="faq_a_ads">
+Ads help us support and develop the app and keep mods updated.
+We tried to make ads as unobtrusive as possible.
+    </string>
+</resources>

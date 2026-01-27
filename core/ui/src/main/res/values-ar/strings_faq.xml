@@ -1,0 +1,93 @@
+<resources>
+    <string name="faq_q_install_error">لماذا لا يتم تثبيت المود أو يظهر خطأ؟</string>
+    <string name="faq_a_install_error">
+• تأكد من أن إصدار المود متوافق مع إصدار Minecraft.
+• الإصدارات المدعومة مذكورة أسفل صفحة المود.
+• تأكد من وجود مساحة تخزين كافية.
+• أعد تشغيل Minecraft والتطبيق.
+    </string>
+
+    <string name="faq_q_not_visible">لماذا لا يظهر المود داخل اللعبة؟</string>
+    <string name="faq_a_not_visible">
+• ادخل إلى إعدادات العالم وقم بتفعيل المود يدويًا.
+• تأكد من تفعيل الإعدادات التجريبية.
+• جرّب إنشاء عالم جديد.
+    </string>
+
+    <string name="faq_q_no_internet">التطبيق يعرض عدم وجود اتصال بالإنترنت</string>
+    <string name="faq_a_no_internet">
+إذا كان لديك إنترنت ولكن الخطأ مستمر،
+فقد تكون هناك صيانة على الخادم.
+يرجى المحاولة لاحقًا.
+    </string>
+
+    <string name="faq_q_file_corrupted">لماذا يظهر أن الملف تالف؟</string>
+    <string name="faq_a_file_corrupted">
+• ربما تم انقطاع التنزيل.
+• احذف المود وقم بتنزيله مرة أخرى.
+• تحقق من استقرار اتصال الإنترنت.
+    </string>
+
+    <string name="faq_q_install_mod">كيف أقوم بتثبيت مود؟</string>
+    <string name="faq_a_install_mod">
+• افتح صفحة المود.
+• اضغط على تنزيل.
+• انتظر حتى يكتمل التنزيل.
+• اضغط على تثبيت.
+• افتح المود في Minecraft.
+    </string>
+
+    <string name="faq_q_install_texture">كيف أقوم بتثبيت حزمة قوام أو سكن؟</string>
+    <string name="faq_a_install_texture">
+الطريقة نفسها مثل تثبيت المودات.
+بعد التثبيت فعّله من إعدادات Minecraft.
+    </string>
+
+    <string name="faq_q_need_internet">هل أحتاج إلى الإنترنت؟</string>
+    <string name="faq_a_need_internet">
+الإنترنت مطلوب فقط لتنزيل المودات.
+المودات المثبتة تعمل بدون إنترنت.
+    </string>
+
+    <string name="faq_q_new_mods">هل ستتم إضافة مودات جديدة؟</string>
+    <string name="faq_a_new_mods">نعم، نضيف مودات وتحديثات بشكل منتظم.</string>
+
+    <string name="faq_q_not_working">أين يمكنني الإبلاغ عن مشكلة؟</string>
+    <string name="faq_a_not_working">
+في صفحة المود، اضغط على "لا يعمل"
+واشرح المشكلة بالتفصيل.
+    </string>
+
+    <string name="faq_q_share_mod">لدي مود خاص بي، كيف أشاركه؟</string>
+    <string name="faq_a_share_mod">
+يمكنك اقتراح مودك مباشرة من داخل التطبيق.
+اضغط على الزر أدناه.
+    </string>
+
+    <string name="faq_btn_submit_mod">اقتراح مود</string>
+
+    <string name="faq_q_multiplayer">هل يمكن اللعب بالمودات في وضع اللعب الجماعي؟</string>
+    <string name="faq_a_multiplayer">
+يعتمد ذلك على الخادم.
+غالبًا يجب أن يدعم الخادم نفس المود.
+    </string>
+
+    <string name="faq_q_safe">هل المودات آمنة؟</string>
+    <string name="faq_a_safe">
+نعم. يتم فحص جميع المودات.
+نحن لا ننشر ملفات ضارة.
+    </string>
+
+    <string name="faq_q_lag">لماذا المود يسبب بطء؟</string>
+    <string name="faq_a_lag">
+• بعض المودات تستهلك موارد الجهاز.
+• أغلق التطبيقات الأخرى.
+• قلل إعدادات الرسومات في Minecraft.
+    </string>
+
+    <string name="faq_q_ads">لماذا يحتوي التطبيق على إعلانات؟</string>
+    <string name="faq_a_ads">
+الإعلانات تساعدنا على دعم وتطوير التطبيق.
+نحاول جعلها غير مزعجة قدر الإمكان.
+    </string>
+</resources>

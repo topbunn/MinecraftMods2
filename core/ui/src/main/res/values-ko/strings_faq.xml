@@ -1,0 +1,93 @@
+<resources>
+    <string name="faq_q_install_error">모드가 설치되지 않거나 오류가 발생하는 이유는 무엇인가요?</string>
+    <string name="faq_a_install_error">
+• 모드 버전이 Minecraft 버전과 호환되는지 확인하세요.
+• 지원되는 버전은 모드 페이지 하단에 표시되어 있습니다.
+• 기기에 충분한 저장 공간이 있는지 확인하세요.
+• Minecraft와 앱을 다시 시작하세요.
+    </string>
+
+    <string name="faq_q_not_visible">모드가 게임에 표시되지 않는 이유는 무엇인가요?</string>
+    <string name="faq_a_not_visible">
+• 월드 설정에서 모드를 수동으로 활성화하세요.
+• 실험적 기능이 활성화되어 있는지 확인하세요.
+• 새 월드를 만들어 보세요.
+    </string>
+
+    <string name="faq_q_no_internet">인터넷이 없다고 표시됩니다</string>
+    <string name="faq_a_no_internet">
+인터넷이 있는데도 오류가 발생한다면
+서버 점검 중일 수 있습니다.
+나중에 다시 시도하세요.
+    </string>
+
+    <string name="faq_q_file_corrupted">파일이 손상되었다고 표시되는 이유는 무엇인가요?</string>
+    <string name="faq_a_file_corrupted">
+• 다운로드가 중단되었을 수 있습니다.
+• 모드를 삭제하고 다시 다운로드하세요.
+• 인터넷 연결 상태를 확인하세요.
+    </string>
+
+    <string name="faq_q_install_mod">모드를 설치하는 방법은?</string>
+    <string name="faq_a_install_mod">
+• 모드 페이지를 엽니다.
+• 다운로드를 누릅니다.
+• 다운로드가 끝날 때까지 기다립니다.
+• 설치를 누릅니다.
+• Minecraft에서 모드를 엽니다.
+    </string>
+
+    <string name="faq_q_install_texture">텍스처 팩 또는 스킨은 어떻게 설치하나요?</string>
+    <string name="faq_a_install_texture">
+모드와 동일한 과정입니다.
+설치 후 Minecraft 설정에서 활성화하세요.
+    </string>
+
+    <string name="faq_q_need_internet">인터넷이 필요한가요?</string>
+    <string name="faq_a_need_internet">
+모드를 다운로드할 때만 인터넷이 필요합니다.
+설치된 모드는 오프라인에서도 작동합니다.
+    </string>
+
+    <string name="faq_q_new_mods">새로운 모드가 추가되나요?</string>
+    <string name="faq_a_new_mods">네, 정기적으로 새로운 모드를 추가합니다.</string>
+
+    <string name="faq_q_not_working">문제가 있으면 어디에 신고하나요?</string>
+    <string name="faq_a_not_working">
+모드 화면에서 “작동하지 않음”을 누르고
+문제를 자세히 설명하세요.
+    </string>
+
+    <string name="faq_q_share_mod">내 모드를 공유할 수 있나요?</string>
+    <string name="faq_a_share_mod">
+앱에서 직접 모드를 제안할 수 있습니다.
+아래 버튼을 누르세요.
+    </string>
+
+    <string name="faq_btn_submit_mod">모드 제안</string>
+
+    <string name="faq_q_multiplayer">멀티플레이에서 모드를 사용할 수 있나요?</string>
+    <string name="faq_a_multiplayer">
+서버에 따라 다릅니다.
+보통 같은 모드를 지원해야 합니다.
+    </string>
+
+    <string name="faq_q_safe">모드는 안전한가요?</string>
+    <string name="faq_a_safe">
+네. 모든 모드는 검토됩니다.
+악성 파일은 게시하지 않습니다.
+    </string>
+
+    <string name="faq_q_lag">모드가 느린 이유는 무엇인가요?</string>
+    <string name="faq_a_lag">
+• 일부 모드는 기기에 부담을 줍니다.
+• 다른 앱을 종료하세요.
+• Minecraft 그래픽 설정을 낮추세요.
+    </string>
+
+    <string name="faq_q_ads">왜 광고가 있나요?</string>
+    <string name="faq_a_ads">
+광고는 앱 유지 및 개발에 도움이 됩니다.
+최대한 방해되지 않도록 노력하고 있습니다.
+    </string>
+</resources>

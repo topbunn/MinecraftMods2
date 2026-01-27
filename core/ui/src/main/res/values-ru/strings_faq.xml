@@ -1,0 +1,93 @@
+<resources>
+    <string name="faq_q_install_error">Почему мод не устанавливается или появляется ошибка?</string>
+    <string name="faq_a_install_error">
+• Убедитесь, что версия мода подходит к версии Minecraft.
+• Поддерживаемые версии указаны внизу страницы мода.
+• Проверьте, достаточно ли свободной памяти.
+• Перезапустите Minecraft и приложение.
+    </string>
+
+    <string name="faq_q_not_visible">Почему мод не отображается в игре?</string>
+    <string name="faq_a_not_visible">
+• Зайдите в настройки мира и включите мод вручную.
+• Проверьте, включены ли экспериментальные настройки.
+• Попробуйте создать новый мир.
+    </string>
+
+    <string name="faq_q_no_internet">Приложение пишет, что нет интернета</string>
+    <string name="faq_a_no_internet">
+Если интернет есть, но ошибка остаётся, мы уже знаем о проблеме.
+Возможно, на сервере идут технические работы.
+Попробуйте позже.
+    </string>
+
+    <string name="faq_q_file_corrupted">Почему файл повреждён?</string>
+    <string name="faq_a_file_corrupted">
+• Загрузка могла прерваться.
+• Удалите мод и скачайте заново.
+• Проверьте интернет-соединение.
+    </string>
+
+    <string name="faq_q_install_mod">Как установить мод?</string>
+    <string name="faq_a_install_mod">
+• Выберите мод.
+• Нажмите Скачать.
+• Дождитесь загрузки.
+• Нажмите Установить.
+• Откройте мод в Minecraft.
+    </string>
+
+    <string name="faq_q_install_texture">Как установить текстур-пак или скин?</string>
+    <string name="faq_a_install_texture">
+Процесс такой же, как и у модов.
+После установки включите его в настройках Minecraft.
+    </string>
+
+    <string name="faq_q_need_internet">Нужен ли интернет?</string>
+    <string name="faq_a_need_internet">
+Интернет нужен только для загрузки.
+Установленные моды работают без интернета.
+    </string>
+
+    <string name="faq_q_new_mods">Будут ли новые моды?</string>
+    <string name="faq_a_new_mods">Да, мы регулярно добавляем новые моды.</string>
+
+    <string name="faq_q_not_working">Куда писать, если что-то не работает?</string>
+    <string name="faq_a_not_working">
+На странице мода нажмите кнопку «Не работает».
+Опишите проблему, и мы постараемся помочь.
+    </string>
+
+    <string name="faq_q_share_mod">Как поделиться своим модом?</string>
+    <string name="faq_a_share_mod">
+Вы можете предложить свой мод прямо в приложении.
+Нажмите кнопку ниже.
+    </string>
+
+    <string name="faq_btn_submit_mod">Предложить мод</string>
+
+    <string name="faq_q_multiplayer">Можно ли играть в мультиплеере?</string>
+    <string name="faq_a_multiplayer">
+Зависит от сервера.
+Обычно сервер должен поддерживать этот мод.
+    </string>
+
+    <string name="faq_q_safe">Безопасны ли моды?</string>
+    <string name="faq_a_safe">
+Да. Все моды проходят проверку.
+Мы не публикуем вредоносные файлы.
+    </string>
+
+    <string name="faq_q_lag">Почему мод лагает?</string>
+    <string name="faq_a_lag">
+• Некоторые моды нагружают устройство.
+• Закройте другие приложения.
+• Снизьте настройки графики.
+    </string>
+
+    <string name="faq_q_ads">Почему в приложении есть реклама?</string>
+    <string name="faq_a_ads">
+Реклама помогает развивать приложение и обновлять моды.
+Мы сделали её максимально ненавязчивой.
+    </string>
+</resources>
