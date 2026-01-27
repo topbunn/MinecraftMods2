@@ -3,6 +3,8 @@ package com.hamit.home
 import androidx.compose.foundation.lazy.LazyListState
 import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.domain.entity.AddonListStatusUi
+import com.hamit.ui.entity.AddonSortTypeUi
+import com.hamit.ui.entity.AddonTypeUi
 
 internal data class HomeState(
     val addons: List<AddonEntity> = emptyList(),

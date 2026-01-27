@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="addon_files_count">
+        <item quantity="other">%d 파일</item>
+    </plurals>
+
+</resources>

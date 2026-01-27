@@ -1,4 +1,4 @@
-package com.hamit.home
+package com.hamit.ui.entity
 
 import com.hamit.domain.entity.addon.AddonSortType
 import com.hamit.ui.R

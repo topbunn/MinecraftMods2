@@ -1,4 +1,4 @@
-package com.hamit.home
+package com.hamit.ui.entity
 
 import com.hamit.domain.entity.addon.AddonType
 import com.hamit.ui.R
@@ -17,6 +17,14 @@ enum class AddonTypeUi(val titleStringRes: Int) {
         AddonTypeUi.MAPS -> AddonType.WORLD
         AddonTypeUi.TEXTURE -> AddonType.TEXTURE_PACK
         AddonTypeUi.SKINS -> AddonType.SKIN_PACK
+    }
+    companion object{
+        fun fromAddonType(type: AddonType) = when(type){
+            AddonType.WORLD -> AddonTypeUi.ADDON
+            AddonType.ADDON -> AddonTypeUi.MAPS
+            AddonType.TEXTURE_PACK -> AddonTypeUi.TEXTURE
+            AddonType.SKIN_PACK -> AddonTypeUi.SKINS
+        }
     }
 
 }

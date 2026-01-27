@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,13 +28,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hamit.domain.entity.addon.AddonEntity
+import com.hamit.ui.R
+import com.hamit.ui.entity.AddonTypeUi
+import com.hamit.ui.theme.AppFonts
 import com.hamit.ui.theme.AppTypo
 import com.hamit.ui.theme.LocalAppColors
 import com.hamit.ui.utils.appDropShadow
@@ -52,11 +64,29 @@ fun AddonItem(addon: AddonEntity, onClick: (id: Int) -> Unit) {
     ) {
         AddonPreview(addon)
         Spacer(Modifier.height(10.dp))
-        AddonTitle(addon)
-        Spacer(Modifier.height(4.dp))
-        AddonDesc(addon)
-        Spacer(Modifier.height(10.dp))
-        AddonVersionList(addon.versions)
+        Row(
+            modifier = Modifier.padding(horizontal = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            val colors = LocalAppColors.current
+            AddonTitle(addon)
+            Text(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(colors.primaryContainer)
+                    .padding(horizontal = 10.dp, vertical = 2.dp),
+                text = stringResource(AddonTypeUi.fromAddonType(addon.type).titleStringRes),
+                fontSize = 14.sp,
+                color = colors.primary,
+                fontFamily = AppFonts.CORE,
+                fontWeight = FontWeight.Bold,
+            )
+        }
+//        Spacer(Modifier.height(4.dp))
+//        AddonDesc(addon)
+//        Spacer(Modifier.height(10.dp))
+//        AddonVersionList(addon.versions)
     }
 }
 
@@ -89,14 +119,28 @@ private fun AddonDesc(addon: AddonEntity, ) {
 }
 
 @Composable
-private fun AddonTitle(addon: AddonEntity, ) {
+private fun RowScope.AddonTitle(addon: AddonEntity, ) {
     val colors = LocalAppColors.current
+    val filesCount = addon.files.count()
     Text(
-        modifier = Modifier.padding(horizontal = 12.dp),
-        text = addon.name,
+        text = buildAnnotatedString {
+            append(addon.name)
+            withStyle(style = SpanStyle(color = colors.primary)) {
+                append(" (")
+                append(
+                    pluralStringResource(
+                        id = R.plurals.addon_files_count,
+                        count = filesCount,
+                        filesCount
+                    )
+                )
+                append(")")
+            }
+        },
+        modifier = Modifier.weight(1f),
         style = AppTypo.H3,
         color = colors.title,
-        maxLines = 2,
+        maxLines = 4,
         overflow = TextOverflow.Ellipsis,
     )
 }
