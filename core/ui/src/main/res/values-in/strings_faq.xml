@@ -1,16 +1,16 @@
 <resources>
     <string name="faq_q_install_error">Mengapa mod tidak bisa dipasang atau muncul error?</string>
     <string name="faq_a_install_error">
-• Pastikan versi mod sesuai dengan versi Minecraft.
-• Versi yang didukung tercantum di bagian bawah halaman mod.
-• Pastikan ruang penyimpanan cukup.
+• Pastikan versi mod sesuai dengan versi Minecraft.\n
+• Versi yang didukung tercantum di bagian bawah halaman mod.\n
+• Pastikan ruang penyimpanan cukup.\n
 • Coba restart Minecraft dan aplikasi.
     </string>
 
     <string name="faq_q_not_visible">Mengapa mod tidak muncul di dalam game?</string>
     <string name="faq_a_not_visible">
-• Buka pengaturan dunia dan aktifkan mod secara manual.
-• Pastikan pengaturan Eksperimental aktif.
+• Buka pengaturan dunia dan aktifkan mod secara manual.\n
+• Pastikan pengaturan Eksperimental aktif.\n
 • Coba buat dunia baru.
     </string>
 
@@ -23,17 +23,17 @@ Silakan coba lagi nanti.
 
     <string name="faq_q_file_corrupted">Mengapa file rusak?</string>
     <string name="faq_a_file_corrupted">
-• Unduhan mungkin terputus.
-• Hapus mod dan unduh ulang.
+• Unduhan mungkin terputus.\n
+• Hapus mod dan unduh ulang.\n
 • Periksa koneksi internet Anda.
     </string>
 
     <string name="faq_q_install_mod">Bagaimana cara memasang mod?</string>
     <string name="faq_a_install_mod">
-• Buka halaman mod.
-• Tekan Unduh.
-• Tunggu hingga selesai.
-• Tekan Pasang.
+• Buka halaman mod.\n
+• Tekan Unduh.\n
+• Tunggu hingga selesai.\n
+• Tekan Pasang.\n
 • Buka mod di Minecraft.
     </string>
 
@@ -80,8 +80,8 @@ Kami tidak mempublikasikan file berbahaya.
 
     <string name="faq_q_lag">Mengapa mod terasa lag?</string>
     <string name="faq_a_lag">
-• Beberapa mod membebani perangkat.
-• Tutup aplikasi lain.
+• Beberapa mod membebani perangkat.\n
+• Tutup aplikasi lain.\n
 • Turunkan pengaturan grafis Minecraft.
     </string>
 

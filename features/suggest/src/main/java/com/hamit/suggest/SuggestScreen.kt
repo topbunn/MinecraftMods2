@@ -20,13 +20,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
@@ -205,7 +203,7 @@ object SuggestScreen : Tab, Screen {
                 LINK -> R.drawable.ic_hint_link
                 DESC -> R.drawable.ic_hint_desc
             },
-            required = true,
+            required = type != SuggestState.FieldType.LINK,
             tipContent = if (type == DESC) { { TipDesc() } } else null,
             onTextChange = onChangeText
         )

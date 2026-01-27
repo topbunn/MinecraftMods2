@@ -1,16 +1,16 @@
 <resources>
     <string name="faq_q_install_error">なぜMODがインストールできない、またはエラーが表示されますか？</string>
     <string name="faq_a_install_error">
-• MODのバージョンがMinecraftのバージョンと一致しているか確認してください。
-• 対応バージョンはMODページの下部に記載されています。
-• 端末の空き容量を確認してください。
+• MODのバージョンがMinecraftのバージョンと一致しているか確認してください。\n
+• 対応バージョンはMODページの下部に記載されています。\n
+• 端末の空き容量を確認してください。\n
 • Minecraftとアプリを再起動してください。
     </string>
 
     <string name="faq_q_not_visible">MODがゲーム内に表示されないのはなぜですか？</string>
     <string name="faq_a_not_visible">
-• ワールド設定でMODを手動で有効にしてください。
-• 実験的機能が有効になっているか確認してください。
+• ワールド設定でMODを手動で有効にしてください。\n
+• 実験的機能が有効になっているか確認してください。\n
 • 新しいワールドを作成してみてください。
     </string>
 
@@ -23,17 +23,17 @@
 
     <string name="faq_q_file_corrupted">ファイルが破損していると表示されるのはなぜですか？</string>
     <string name="faq_a_file_corrupted">
-• ダウンロードが中断された可能性があります。
-• MODを削除して再度ダウンロードしてください。
+• ダウンロードが中断された可能性があります。\n
+• MODを削除して再度ダウンロードしてください。\n
 • インターネット接続を確認してください。
     </string>
 
     <string name="faq_q_install_mod">MODのインストール方法は？</string>
     <string name="faq_a_install_mod">
-• MODページを開きます。
-• ダウンロードをタップします。
-• ダウンロード完了まで待ちます。
-• インストールをタップします。
+• MODページを開きます。\n
+• ダウンロードをタップします。\n
+• ダウンロード完了まで待ちます。\n
+• インストールをタップします。\n
 • MinecraftでMODを開きます。
     </string>
 
@@ -80,8 +80,8 @@ MOD画面で「動作しない」をタップし、
 
     <string name="faq_q_lag">MODが重いのはなぜですか？</string>
     <string name="faq_a_lag">
-• 一部のMODは端末に負荷をかけます。
-• 他のアプリを閉じてください。
+• 一部のMODは端末に負荷をかけます。\n
+• 他のアプリを閉じてください。\n
 • Minecraftのグラフィック設定を下げてください。
     </string>
 

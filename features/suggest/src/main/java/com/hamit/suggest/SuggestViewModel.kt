@@ -32,7 +32,7 @@ internal class SuggestViewModel(
 
     fun handleChangeState() {
         _state
-            .map { listOf(it.email, it.link, it.desc) }
+            .map { listOf(it.email, it.desc) }
             .distinctUntilChanged()
             .drop(1)
             .onEach {
@@ -68,6 +68,6 @@ internal class SuggestViewModel(
     }
 
     private fun checkSubmitValid() = with(_state.value){
-        email.isEmail() && link.isNotBlank() && desc.length >= 40
+        email.isEmail() && desc.length >= 40
     }
 }

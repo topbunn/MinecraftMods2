@@ -62,9 +62,11 @@ object DashboardScreen : Screen {
                 ) {
                     val likeScreen = rememberScreen(Destination.LikeScreen) as Tab
                     val suggestScreen = rememberScreen(Destination.SuggestScreen) as Tab
+                    val faqScreen = rememberScreen(Destination.FaqScreen) as Tab
                     BottomNavBar(homeScreen)
                     BottomNavBar(likeScreen)
                     BottomNavBar(suggestScreen)
+                    BottomNavBar(faqScreen)
                 }
             }
         }

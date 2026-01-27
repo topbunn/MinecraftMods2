@@ -1,16 +1,16 @@
 <resources>
     <string name="faq_q_install_error">Warum lässt sich der Mod nicht installieren oder zeigt einen Fehler?</string>
     <string name="faq_a_install_error">
-• Stelle sicher, dass die Mod-Version zu deiner Minecraft-Version passt.
-• Unterstützte Versionen stehen unten auf der Mod-Seite.
-• Prüfe, ob genügend Speicherplatz vorhanden ist.
+• Stelle sicher, dass die Mod-Version zu deiner Minecraft-Version passt.\n
+• Unterstützte Versionen stehen unten auf der Mod-Seite.\n
+• Prüfe, ob genügend Speicherplatz vorhanden ist.\n
 • Starte Minecraft und die App neu.
     </string>
 
     <string name="faq_q_not_visible">Warum wird der Mod im Spiel nicht angezeigt?</string>
     <string name="faq_a_not_visible">
-• Öffne die Welt-Einstellungen und aktiviere den Mod manuell.
-• Stelle sicher, dass experimentelle Funktionen aktiviert sind.
+• Öffne die Welt-Einstellungen und aktiviere den Mod manuell.\n
+• Stelle sicher, dass experimentelle Funktionen aktiviert sind.\n
 • Erstelle eine neue Welt mit diesem Mod.
     </string>
 
@@ -23,17 +23,17 @@ Bitte versuche es später erneut.
 
     <string name="faq_q_file_corrupted">Warum ist die Datei beschädigt?</string>
     <string name="faq_a_file_corrupted">
-• Der Download wurde möglicherweise unterbrochen.
-• Lösche den Mod und lade ihn erneut herunter.
+• Der Download wurde möglicherweise unterbrochen.\n
+• Lösche den Mod und lade ihn erneut herunter.\n
 • Überprüfe deine Internetverbindung.
     </string>
 
     <string name="faq_q_install_mod">Wie installiert man einen Mod?</string>
     <string name="faq_a_install_mod">
-• Öffne die Mod-Seite.
-• Tippe auf Download.
-• Warte, bis der Download abgeschlossen ist.
-• Tippe auf Installieren.
+• Öffne die Mod-Seite.\n
+• Tippe auf Download.\n
+• Warte, bis der Download abgeschlossen ist.\n
+• Tippe auf Installieren.\n
 • Öffne den Mod in Minecraft.
     </string>
 
@@ -80,8 +80,8 @@ Wir veröffentlichen keine schädlichen Dateien.
 
     <string name="faq_q_lag">Warum ruckelt der Mod?</string>
     <string name="faq_a_lag">
-• Einige Mods belasten das Gerät stark.
-• Schließe andere Apps.
+• Einige Mods belasten das Gerät stark.\n
+• Schließe andere Apps.\n
 • Reduziere die Grafikeinstellungen in Minecraft.
     </string>
 

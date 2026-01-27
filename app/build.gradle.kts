@@ -118,6 +118,7 @@ dependencies {
     implementation(project(":features:home"))
     implementation(project(":features:like"))
     implementation(project(":features:ad"))
+    implementation(project(":features:faq"))
     implementation(project(":features:suggest"))
     implementation(project(":features:guide"))
     implementation(project(":features:addon"))

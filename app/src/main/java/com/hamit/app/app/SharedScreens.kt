@@ -5,6 +5,7 @@ import com.hamit.ad.AdScreen
 import com.hamit.addon.AddonScreen
 import com.hamit.dashboard.DashboardScreen
 import com.hamit.download.DownloadScreen
+import com.hamit.faq.FaqScreen
 import com.hamit.guide.GuideScreen
 import com.hamit.home.HomeScreen
 import com.hamit.like.LikeScreen
@@ -31,6 +32,9 @@ fun setupSharedScreens() {
         }
         register<Destination.GuideScreen> {
             GuideScreen
+        }
+        register<Destination.FaqScreen> {
+            FaqScreen
         }
         register<Destination.AdScreen> { provider ->
             AdScreen(provider.nextDestination)

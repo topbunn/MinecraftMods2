@@ -23,6 +23,7 @@
     <string name="tabs_favorite">Favoriten</string>
     <string name="tabs_suggest">Vorschlagen</string>
     <string name="tabs_apps">Andere Mods</string>
+    <string name="tabs_faq">FAQ</string>
 
     <string name="contact_us">Kontaktieren Sie uns</string>
     <string name="any_question">Fragen or Vorschläge?</string>
@@ -77,6 +78,7 @@
     <string name="describe_your_problem">Beschreibe dein Problem</string>
     <string name="suggest">Vorschlagen</string>
     <string name="suggest_desc">Hast du online einen tollen Mod gefunden? Teile ihn mit uns! Wir sind immer auf der Suche nach großartigen Projekten für unsere Sammlung. Das Thema des Mods spielt keine Rolle, wir freuen uns über jeden. Dein vorgeschlagener Mod könnte zu dieser App hinzugefügt oder in eine unserer zukünftigen Apps aufgenommen werden.</string>
+    <string name="faq_desc">Hier haben wir Antworten auf die am häufigsten gestellten Fragen zusammengestellt. Wenn Sie die benötigten Informationen nicht gefunden haben, kontaktieren Sie uns bitte, wir helfen Ihnen gerne weiter.</string>
     <string name="submit">Absenden</string>
     <string name="send">Senden</string>
     <string name="suggest_submitted">Vorschlag eingereicht</string>

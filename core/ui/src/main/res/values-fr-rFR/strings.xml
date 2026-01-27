@@ -24,6 +24,7 @@
     <string name="tabs_suggest">Suggérer</string>
     <string name="tabs_apps">Autres mods</string>
 
+    <string name="tabs_faq">FAQ</string>
     <string name="contact_us">Contactez-nous</string>
     <string name="any_question">Des questions ou suggestions ?</string>
 
@@ -79,6 +80,7 @@
     <string name="describe_your_problem">Décrivez votre problème</string>
     <string name="suggest">Suggérer</string>
     <string name="suggest_desc">Vous avez trouvé un mod génial en ligne ? Partagez-le avec nous ! Nous sommes toujours à la recherche de superbes projets à ajouter à notre collection. Le thème du mod n\'importe peu, nous accueillons tout le monde. Votre mod suggéré pourra être ajouté à cette application ou inclus dans l\'une de nos futures applications.</string>
+    <string name="faq_desc">Nous avons rassemblé ici les réponses aux questions les plus fréquentes. Si vous n\'avez pas trouvé l\'information dont vous avez besoin, contactez-nous, nous serons ravis de vous aider.</string>
     <string name="submit">Soumettre</string>
     <string name="send">Envoyer</string>
     <string name="suggest_submitted">Suggestion soumise</string>

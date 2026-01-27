@@ -1,16 +1,16 @@
 <resources>
     <string name="faq_q_install_error">Why doesn’t the mod install or shows an import error?</string>
     <string name="faq_a_install_error">
-• Make sure the mod version matches your Minecraft version.
-• Supported versions are listed at the bottom of the mod page.
-• Make sure you have enough free storage.
+• Make sure the mod version matches your Minecraft version.\n
+• Supported versions are listed at the bottom of the mod page.\n
+• Make sure you have enough free storage.\n
 • Try restarting Minecraft and the app.
     </string>
 
     <string name="faq_q_not_visible">Why is the mod not showing in the game?</string>
     <string name="faq_a_not_visible">
-• Open world settings and enable the mod manually.
-• Make sure Experimental Features are enabled.
+• Open world settings and enable the mod manually.\n
+• Make sure Experimental Features are enabled.\n
 • Try creating a new world with this mod.
     </string>
 
@@ -23,17 +23,18 @@ Please try again later.
 
     <string name="faq_q_file_corrupted">Why does it say the file is corrupted?</string>
     <string name="faq_a_file_corrupted">
-• The download may have been interrupted.
-• Delete the mod and download it again.
+• The download may have been interrupted.\n
+• Delete the mod and download it again.\n
 • Check your internet connection.
     </string>
 
     <string name="faq_q_install_mod">How to install a mod?</string>
     <string name="faq_a_install_mod">
-• Open the mod page.
-• Tap Download.
-• Wait until download finishes.
-• Tap Install.
+• Open the mod page.\n
+• Click on the file.\n
+• Tap Download.\n
+• Wait until download finishes.\n
+• Tap Install.\n
 • Open the mod in Minecraft.
     </string>
 
@@ -80,8 +81,8 @@ We do not publish viruses or malicious files.
 
     <string name="faq_q_lag">Why does the mod lag?</string>
     <string name="faq_a_lag">
-• Some mods are heavy for the device.
-• Close other apps.
+• Some mods are heavy for the device.\n
+• Close other apps.\n
 • Try lowering graphics settings in Minecraft.
     </string>
 
@@ -90,4 +91,5 @@ We do not publish viruses or malicious files.
 Ads help us support and develop the app and keep mods updated.
 We tried to make ads as unobtrusive as possible.
     </string>
+
 </resources>

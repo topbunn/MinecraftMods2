@@ -1,16 +1,16 @@
 <resources>
     <string name="faq_q_install_error">¿Por qué el mod no se instala o aparece un error?</string>
     <string name="faq_a_install_error">
-• Asegúrate de que la versión del mod sea compatible con tu versión de Minecraft.
-• Las versiones compatibles están indicadas al final de la página del mod.
-• Comprueba que tienes suficiente espacio libre.
+• Asegúrate de que la versión del mod sea compatible con tu versión de Minecraft.\n
+• Las versiones compatibles están indicadas al final de la página del mod.\n
+• Comprueba que tienes suficiente espacio libre.\n
 • Reinicia Minecraft y la aplicación.
     </string>
 
     <string name="faq_q_not_visible">¿Por qué el mod no aparece en el juego?</string>
     <string name="faq_a_not_visible">
-• Ve a la configuración del mundo y activa el mod manualmente.
-• Asegúrate de que las funciones experimentales estén activadas.
+• Ve a la configuración del mundo y activa el mod manualmente.\n
+• Asegúrate de que las funciones experimentales estén activadas.\n
 • Crea un nuevo mundo con este mod.
     </string>
 
@@ -23,17 +23,17 @@ Inténtalo más tarde.
 
     <string name="faq_q_file_corrupted">¿Por qué el archivo está dañado?</string>
     <string name="faq_a_file_corrupted">
-• La descarga pudo haberse interrumpido.
-• Elimina el mod y descárgalo de nuevo.
+• La descarga pudo haberse interrumpido.\n
+• Elimina el mod y descárgalo de nuevo.\n
 • Comprueba la estabilidad de tu conexión.
     </string>
 
     <string name="faq_q_install_mod">¿Cómo instalar un mod?</string>
     <string name="faq_a_install_mod">
-• Abre la página del mod.
-• Pulsa Descargar.
-• Espera a que finalice la descarga.
-• Pulsa Instalar.
+• Abre la página del mod.\n
+• Pulsa Descargar.\n
+• Espera a que finalice la descarga.\n
+• Pulsa Instalar.\n
 • Abre el mod en Minecraft.
     </string>
 
@@ -80,8 +80,8 @@ No publicamos archivos maliciosos.
 
     <string name="faq_q_lag">¿Por qué el mod va lento?</string>
     <string name="faq_a_lag">
-• Algunos mods consumen muchos recursos.
-• Cierra otras aplicaciones.
+• Algunos mods consumen muchos recursos.\n
+• Cierra otras aplicaciones.\n
 • Reduce los gráficos en Minecraft.
     </string>
 

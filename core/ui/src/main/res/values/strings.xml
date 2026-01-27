@@ -22,6 +22,7 @@
     <string name="tabs_favorite">Favorites</string>
     <string name="tabs_suggest">Suggest</string>
     <string name="tabs_apps">Other mods</string>
+    <string name="tabs_faq">FAQ</string>
 
     <string name="contact_us">Contact Us</string>
     <string name="any_question">Any questions or suggestions?</string>
@@ -75,6 +76,7 @@
     <string name="minecraft_is_not_installed">Minecraft is not installed or the version is outdated.</string>
     <string name="suggest">Suggest</string>
     <string name="suggest_desc">Found an awesome mod online? Share it with us! We are always looking for great projects to add to our collection. The theme of the mod doesn\'t matter, we welcome any and all. Your suggested mod may be added to this app or included in one of our future apps.</string>
+    <string name="faq_desc">Here we have collected answers to the most common questions. If you didn\'t find the information you need, please contact us, we\'ll be happy to help.</string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
     <string name="suggest_submitted">Suggestion submitted</string>

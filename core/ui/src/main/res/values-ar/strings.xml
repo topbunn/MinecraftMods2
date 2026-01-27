@@ -23,6 +23,7 @@
     <string name="tabs_favorite">المفضلة</string>
     <string name="tabs_suggest">اقتراح</string>
     <string name="tabs_apps">تعديلات أخرى</string>
+    <string name="tabs_faq">FAQ</string>
 
     <string name="contact_us">اتصل بنا</string>
     <string name="any_question">هل لديك سؤال أو اقتراح؟</string>
@@ -75,6 +76,7 @@
     <string name="describe_your_problem">صف مشكلتك</string>
     <string name="suggest">اقتراح</string>
     <string name="suggest_desc">هل وجدت موداً رائعاً على الإنترنت؟ شاركه معنا! نحن نبحث دائماً عن مشاريع رائعة لإضافتها إلى مجموعتنا. لا يهم موضوع المود، فنحن نرحب بالجميع. قد تتم إضافة المود الذي اقترحته إلى هذا التطبيق أو تضمينه في أحد تطبيقاتنا المستقبلية.</string>
+    <string name="faq_desc">لقد جمعنا هنا إجابات على الأسئلة الأكثر شيوعًا. إذا لم تجد المعلومات التي تحتاجها، فيرجى الاتصال بنا، وسنكون سعداء بمساعدتك.</string>
     <string name="submit">تقديم</string>
     <string name="send">إرسال</string>
     <string name="suggest_submitted">تم ارسال الاقتراح</string>

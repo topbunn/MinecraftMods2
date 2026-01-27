@@ -23,6 +23,7 @@
     <string name="tabs_favorite">Favoritos</string>
     <string name="tabs_suggest">Sugerir</string>
     <string name="tabs_apps">Otros mods</string>
+    <string name="tabs_faq">FAQ</string>
 
     <string name="contact_us">Contáctanos</string>
     <string name="any_question">¿Tienes alguna pregunta o sugerencia?</string>
@@ -75,10 +76,11 @@
     <string name="download">Descargar</string>
     <string name="to_install_in_game_click_the_install">Para instalar en el juego, pulса “Instalar”</string>
     <string name="install">Instalar</string>
-    <string name="minecraft_is_not_installed">Minecraft не установлен или версия устарела</string>
+    <string name="minecraft_is_not_installed">Minecraft no instalado o versión anticuada</string>
     <string name="describe_your_problem">Describe tu problema</string>
     <string name="suggest">Sugerir</string>
     <string name="suggest_desc">¿Has encontrado un mod genial en Internet? ¡Compártelo con nosotros! Siempre estamos buscando proyectos estupendos para añadir a nuestra colección. El tema del mod no importa, todos son bienvenidos. El mod sugerido puede añadirse a esta aplicación o incluirse en una de nuestras futuras aplicaciones.</string>
+    <string name="faq_desc">Aquí hemos recopilado respuestas a las preguntas más frecuentes. Si no encontró la información que necesita, contáctenos, estaremos encantados de ayudarle.</string>
     <string name="submit">Enviar</string>
     <string name="send">Enviar</string>
     <string name="suggest_submitted">Sugerencia enviada</string>

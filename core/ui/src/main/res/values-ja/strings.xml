@@ -24,6 +24,7 @@
     <string name="tabs_suggest">提案</string>
     <string name="tabs_apps">その他のMOD</string>
 
+    <string name="tabs_faq">FAQ</string>
     <string name="contact_us">お問い合わせ</string>
     <string name="any_question">質問やご意見はありますか？</string>
 
@@ -79,6 +80,7 @@
     <string name="describe_your_problem">問題を説明してください</string>
     <string name="suggest">提案</string>
     <string name="suggest_desc">オンラインで素晴らしいModを見つけましたか？私たちと共有してください！私たちは常にコレクションに追加する素晴らしいプロジェクトを探しています。Modのテーマは問いません、どなたでも大歓迎です。提案されたModはこのアプリに追加されるか、将来のアプリの1つに含まれる可能性があります。</string>
+    <string name="faq_desc">ここでは、最もよくある質問への回答をまとめました。必要な情報が見つからない場合は、お気軽にお問い合わせください。喜んでお手伝いさせていただきます。</string>
     <string name="submit">送信</string>
     <string name="send">送信</string>
     <string name="suggest_submitted">提案が送信されました</string>

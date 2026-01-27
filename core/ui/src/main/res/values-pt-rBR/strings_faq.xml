@@ -1,16 +1,16 @@
 <resources>
     <string name="faq_q_install_error">Por que o mod não instala ou mostra erro?</string>
     <string name="faq_a_install_error">
-• Verifique se a versão do mod é compatível com sua versão do Minecraft.
-• As versões compatíveis estão no final da página do mod.
-• Certifique-se de ter espaço de armazenamento suficiente.
+• Verifique se a versão do mod é compatível com sua versão do Minecraft.\n
+• As versões compatíveis estão no final da página do mod.\n
+• Certifique-se de ter espaço de armazenamento suficiente.\n
 • Reinicie o Minecraft e o aplicativo.
     </string>
 
     <string name="faq_q_not_visible">Por que o mod não aparece no jogo?</string>
     <string name="faq_a_not_visible">
-• Vá nas configurações do mundo e ative o mod manualmente.
-• Verifique se as configurações experimentais estão ativadas.
+• Vá nas configurações do mundo e ative o mod manualmente.\n
+• Verifique se as configurações experimentais estão ativadas.\n
 • Tente criar um novo mundo.
     </string>
 
@@ -23,17 +23,17 @@ Tente novamente mais tarde.
 
     <string name="faq_q_file_corrupted">Por que o arquivo está corrompido?</string>
     <string name="faq_a_file_corrupted">
-• O download pode ter sido interrompido.
-• Apague o mod e baixe novamente.
+• O download pode ter sido interrompido.\n
+• Apague o mod e baixe novamente.\n
 • Verifique sua conexão com a internet.
     </string>
 
     <string name="faq_q_install_mod">Como instalar um mod?</string>
     <string name="faq_a_install_mod">
-• Abra a página do mod.
-• Toque em Baixar.
-• Aguarde o download terminar.
-• Toque em Instalar.
+• Abra a página do mod.\n
+• Toque em Baixar.\n
+• Aguarde o download terminar.\n
+• Toque em Instalar.\n
 • Abra o mod no Minecraft.
     </string>
 
@@ -80,8 +80,8 @@ Não publicamos arquivos maliciosos.
 
     <string name="faq_q_lag">Por que o mod trava?</string>
     <string name="faq_a_lag">
-• Alguns mods exigem mais do dispositivo.
-• Feche outros aplicativos.
+• Alguns mods exigem mais do dispositivo.\n
+• Feche outros aplicativos.\n
 • Reduza as configurações gráficas do Minecraft.
     </string>
 

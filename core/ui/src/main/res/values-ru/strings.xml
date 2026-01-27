@@ -22,6 +22,7 @@
     <string name="tabs_favorite">Избранное</string>
     <string name="tabs_suggest">Предложить</string>
     <string name="tabs_apps">Другие моды</string>
+    <string name="tabs_faq">FAQ</string>
 
     <string name="contact_us">Связаться с нами</string>
     <string name="any_question">Есть вопросы или предложения?</string>
@@ -78,6 +79,7 @@
     <string name="describe_your_problem">Опишите вашу проблему</string>
     <string name="suggest">Предложить</string>
     <string name="suggest_desc">Нашли классный мод в интернете? Поделитесь им с нами! Мы всегда ищем отличные проекты для пополнения нашей коллекции. Тематика мода не имеет значения, мы приветствуем любые. Ваш предложенный мод может быть добавлен в это приложение или включен в одно из наших будущих приложений.</string>
+    <string name="faq_desc">Здесь мы собрали ответы на самые частые вопросы. Если вы не нашли нужную информацию — свяжитесь с нами, мы с радостью поможем.</string>
     <string name="submit">Отправить</string>
     <string name="send">Отправить</string>
     <string name="suggest_submitted">Предложение отправлено</string>

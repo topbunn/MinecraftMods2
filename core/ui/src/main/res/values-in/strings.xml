@@ -24,6 +24,7 @@
     <string name="tabs_suggest">Sarankan</string>
     <string name="tabs_apps">Mod lain</string>
 
+    <string name="tabs_faq">FAQ</string>
     <string name="contact_us">Hubungi Kami</string>
     <string name="any_question">Ada pertanyaan atau saran?</string>
 
@@ -77,6 +78,7 @@
     <string name="describe_your_problem">Jelaskan masalah Anda</string>
     <string name="suggest">Sarankan</string>
     <string name="suggest_desc">Menemukan mod keren secara online? Bagikan dengan kami! Kami selalu mencari proyek hebat untuk ditambahkan ke koleksi kami. Tema mod tidak masalah, kami menerima semuanya. Mod yang Anda sarankan mungkin ditambahkan ke aplikasi ini atau disertakan dalam salah satu aplikasi masa depan kami.</string>
+    <string name="faq_desc">Di sini kami telah mengumpulkan jawaban untuk pertanyaan yang paling sering diajukan. Jika Anda tidak menemukan informasi yang Anda butuhkan, silakan hubungi kami, kami akan senang membantu.</string>
     <string name="submit">Kirim</string>
     <string name="send">Kirim</string>
     <string name="suggest_submitted">Saran dikirim</string>

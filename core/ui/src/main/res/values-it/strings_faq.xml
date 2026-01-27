@@ -1,16 +1,16 @@
 <resources>
     <string name="faq_q_install_error">Perché il mod non si installa o mostra un errore?</string>
     <string name="faq_a_install_error">
-• Assicurati che la versione del mod sia compatibile con la tua versione di Minecraft.
-• Le versioni supportate sono indicate in fondo alla pagina del mod.
-• Verifica di avere spazio di archiviazione sufficiente.
+• Assicurati che la versione del mod sia compatibile con la tua versione di Minecraft.\n
+• Le versioni supportate sono indicate in fondo alla pagina del mod.\n
+• Verifica di avere spazio di archiviazione sufficiente.\n
 • Riavvia Minecraft e l’app.
     </string>
 
     <string name="faq_q_not_visible">Perché il mod non appare nel gioco?</string>
     <string name="faq_a_not_visible">
-• Apri le impostazioni del mondo e abilita il mod manualmente.
-• Controlla che le funzioni sperimentali siano attive.
+• Apri le impostazioni del mondo e abilita il mod manualmente.\n
+• Controlla che le funzioni sperimentali siano attive.\n
 • Prova a creare un nuovo mondo.
     </string>
 
@@ -23,17 +23,17 @@ Riprova più tardi.
 
     <string name="faq_q_file_corrupted">Perché il file è danneggiato?</string>
     <string name="faq_a_file_corrupted">
-• Il download potrebbe essere stato interrotto.
-• Elimina il mod e scaricalo di nuovo.
+• Il download potrebbe essere stato interrotto.\n
+• Elimina il mod e scaricalo di nuovo.\n
 • Controlla la stabilità della connessione.
     </string>
 
     <string name="faq_q_install_mod">Come installare un mod?</string>
     <string name="faq_a_install_mod">
-• Apri la pagina del mod.
-• Tocca Scarica.
-• Attendi il completamento del download.
-• Tocca Installa.
+• Apri la pagina del mod.\n
+• Tocca Scarica.\n
+• Attendi il completamento del download.\n
+• Tocca Installa.\n
 • Apri il mod in Minecraft.
     </string>
 
@@ -80,8 +80,8 @@ Non pubblichiamo file dannosi.
 
     <string name="faq_q_lag">Perché il mod lagga?</string>
     <string name="faq_a_lag">
-• Alcuni mod richiedono molte risorse.
-• Chiudi altre applicazioni.
+• Alcuni mod richiedono molte risorse.\n
+• Chiudi altre applicazioni.\n
 • Riduci le impostazioni grafiche di Minecraft.
     </string>
 

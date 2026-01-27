@@ -13,6 +13,7 @@ sealed class Destination : ScreenProvider, Parcelable {
     object LikeScreen : Destination()
     object SuggestScreen : Destination()
     object GuideScreen : Destination()
+    object FaqScreen : Destination()
     data class AdScreen(val nextDestination: Destination) : Destination()
     data class DownloadScreen(val addon: AddonEntity) : Destination()
     data class AddonScreen(val addonId: Int) : Destination()

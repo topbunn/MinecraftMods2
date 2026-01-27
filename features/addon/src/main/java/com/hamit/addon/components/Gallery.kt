@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
@@ -75,7 +76,7 @@ internal fun Gallery(addon: AddonEntity) {
         contentPadding = PaddingValues(horizontal = 20.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        itemsIndexed(addon.images, key = { _, it -> it }) { index, image ->
+        itemsIndexed(addon.images) { index, image ->
             SmallGalleryItem(
                 shimmer = shimmer,
                 link = image,
@@ -95,10 +96,10 @@ internal fun Gallery(addon: AddonEntity) {
         contentPadding = PaddingValues(horizontal = 20.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        items(addon.images.size, key = { addon.images[it] }) { index ->
+        items(addon.images) {
             LargeGalleryItem(
                 shimmer = shimmer,
-                link = addon.images[index],
+                link = it,
                 width = itemWidth
             )
         }
