@@ -1,9 +1,9 @@
 package com.hamit.android.ads.open
 
 import android.app.Activity
-import com.hamit.domain.entity.adConfig.AdConfigEntity
 import com.hamit.android.BuildConfig
 import com.hamit.domain.entity.AppLocation
+import com.hamit.domain.entity.adConfig.AdConfigEntity
 
 object OpenCoordinator {
 
@@ -22,7 +22,7 @@ object OpenCoordinator {
 
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
-                config.applovinOpen?.let { OpenApplovinController.init(activity, it) }
+//                config.applovinOpen?.let { OpenApplovinController.init(activity, it) }
                 Network.APPLOVIN
             } else {
                 config.yandexOpen?.let { OpenYandexController.init(activity.application, it) }
@@ -33,7 +33,7 @@ object OpenCoordinator {
     fun show(activity: Activity) {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> OpenApplovinController.show()
+//            Network.APPLOVIN -> OpenApplovinController.show()
             Network.YANDEX -> OpenYandexController.show(activity)
             else -> {}
         }
@@ -43,10 +43,10 @@ object OpenCoordinator {
     fun start(activity: Activity) {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> {
-                OpenApplovinController.resume()
-                OpenApplovinController.show()
-            }
+//            Network.APPLOVIN -> {
+//                OpenApplovinController.resume()
+//                OpenApplovinController.show()
+//            }
 
             Network.YANDEX -> OpenYandexController.show(activity)
             else -> {}
@@ -56,7 +56,7 @@ object OpenCoordinator {
     fun stop() {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> OpenApplovinController.pause()
+//            Network.APPLOVIN -> OpenApplovinController.pause()
             else -> {}
         }
     }
@@ -64,7 +64,7 @@ object OpenCoordinator {
     fun destroy() {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> OpenApplovinController.destroy()
+//            Network.APPLOVIN -> OpenApplovinController.destroy()
             Network.YANDEX -> OpenYandexController.destroy()
             else -> {}
         }

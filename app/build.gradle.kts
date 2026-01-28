@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.gms)
+    alias(libs.plugins.cas)
 }
 
 android {
@@ -19,6 +20,7 @@ android {
             create(mod) {
                 dimension = "mods"
                 applicationId = config.packageName
+                buildConfigField("String", "APPLICATION_ID", "\"${config.packageName}\"")
                 buildConfigField("String", "METRIC_KEY", "\"${config.yandexMetricKey}\"")
                 buildConfigField("String", "APPLOVIN_SDK_KEY", "\"${config.applovinSdkKey}\"")
                 buildConfigField("Integer", "APP_ID", config.appId)
@@ -46,7 +48,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -68,6 +70,35 @@ android {
     }
 }
 
+cas {
+    includeOptimalAds = true
+    adapters {
+        appLovin = true
+        audienceNetwork = true
+        bigoAds = true
+        casExchange = true
+        chartboost = true
+        dtExchange = true
+        googleAds = true
+        hyprMX = true
+        inMobi = true
+        ironSource = true
+        kidoz = true
+        liftoffMonetize = true
+        mintegral = true
+        ogury = true
+        pangle = true
+        prado = true
+        startIO = true
+        unityAds = true
+        yangoAds = true
+        ysoNetwork = true
+        smaato = true
+        verve = true
+        maticoo = true
+    }
+}
+
 dependencies {
 
     implementation(libs.voyager.navigator)
@@ -75,15 +106,8 @@ dependencies {
 
     // Ads
     implementation (libs.mobileads.yandex)
-    implementation(libs.applovin.sdk)
     implementation(libs.analytics)
     implementation(libs.picasso)
-    implementation(libs.google.adapter)
-    implementation(libs.unity.adapter)
-    implementation(libs.inmobi.adapter)
-    implementation(libs.pangle.adapter)
-    implementation(libs.facebook.adapter)
-    implementation(libs.mintegral.adapter)
 
     // Koin
     implementation(project.dependencies.platform(libs.koin.bom))

@@ -40,8 +40,8 @@ object NativeCoordinator {
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
                 config.applovinNative?.let {
-                    NativeApplovinController.init(context, it)
-                    NativeApplovinController.load(context)
+//                    NativeApplovinController.init(context, it)
+//                    NativeApplovinController.load(context)
                 }
                 APPLOVIN
             } else {
@@ -59,7 +59,7 @@ object NativeCoordinator {
         when {
             !initialized -> onPreloaded(PreloadStatus.NONE)
             else -> when (activeNetwork) {
-                APPLOVIN -> NativeApplovinController.setCallback(onPreloaded)
+//                APPLOVIN -> NativeApplovinController.setCallback(onPreloaded)
                 YANDEX -> NativeYandexController.setCallback(onPreloaded)
                 else -> onPreloaded(PreloadStatus.NONE)
             }
@@ -69,7 +69,7 @@ object NativeCoordinator {
     fun hasAd(): Boolean = when{
         !initialized -> false
         else -> when (activeNetwork) {
-            APPLOVIN -> NativeApplovinController.hasAd()
+//            APPLOVIN -> NativeApplovinController.hasAd()
             YANDEX -> NativeYandexController.hasAd()
             else -> false
         }
@@ -78,7 +78,7 @@ object NativeCoordinator {
     fun clearOnPreload() {
         if (initialized) return
         when (activeNetwork) {
-            APPLOVIN -> NativeApplovinController.deleteCallback()
+//            APPLOVIN -> NativeApplovinController.deleteCallback()
             YANDEX -> NativeYandexController.deleteCallback()
             else -> NONE
         }
@@ -91,12 +91,12 @@ object NativeCoordinator {
         if (!initialized) return
         if (AdEnum.NATIVE.isShow()){
             when (activeNetwork) {
-                Network.APPLOVIN -> {
-                    when(type){
-                        Fullscreen -> FullscreenNativeApplovinView()
-                        Native -> NativeApplovinView(modifier = modifier)
-                    }
-                }
+//                Network.APPLOVIN -> {
+//                    when(type){
+//                        Fullscreen -> FullscreenNativeApplovinView()
+//                        Native -> NativeApplovinView(modifier = modifier)
+//                    }
+//                }
                 Network.YANDEX -> {
                     when(type){
                         Fullscreen -> FullscreenNativeYandexView()
@@ -111,7 +111,7 @@ object NativeCoordinator {
     fun destroy() {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> NativeApplovinController.destroy()
+//            Network.APPLOVIN -> NativeApplovinController.destroy()
             Network.YANDEX -> NativeYandexController.destroy()
             else -> {}
         }

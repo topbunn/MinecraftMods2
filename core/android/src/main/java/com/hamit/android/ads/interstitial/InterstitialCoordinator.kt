@@ -28,7 +28,7 @@ object InterstitialCoordinator {
 
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
-                config.applovinInter?.let { InterstitialApplovinController.init(context, it) }
+//                config.applovinInter?.let { InterstitialApplovinController.init(context, it) }
                 Network.APPLOVIN
             } else {
                 config.yandexInter?.let { InterstitialYandexController.init(context, it) }
@@ -42,7 +42,7 @@ object InterstitialCoordinator {
         if (!canShow()) return
 
         when (activeNetwork) {
-            Network.APPLOVIN -> InterstitialApplovinController.show()
+//            Network.APPLOVIN -> InterstitialApplovinController.show()
             Network.YANDEX -> InterstitialYandexController.show(activity)
             else -> return
         }
@@ -59,7 +59,7 @@ object InterstitialCoordinator {
         if (!initialized) return
 
         when (activeNetwork) {
-            Network.APPLOVIN -> InterstitialApplovinController.deleteCallback()
+//            Network.APPLOVIN -> InterstitialApplovinController.deleteCallback()
             Network.YANDEX -> InterstitialYandexController.deleteCallback()
             else -> {}
         }
@@ -69,7 +69,7 @@ object InterstitialCoordinator {
         if (!initialized) return
 
         when (activeNetwork) {
-            Network.APPLOVIN -> InterstitialApplovinController.setCallback(callback)
+//            Network.APPLOVIN -> InterstitialApplovinController.setCallback(callback)
             Network.YANDEX -> InterstitialYandexController.setCallback(callback)
             else -> {}
         }
@@ -78,7 +78,7 @@ object InterstitialCoordinator {
     fun start() {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> InterstitialApplovinController.start()
+//            Network.APPLOVIN -> InterstitialApplovinController.start()
             Network.YANDEX -> InterstitialYandexController.start()
             else -> {}
         }
@@ -87,7 +87,7 @@ object InterstitialCoordinator {
     fun stop() {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> InterstitialApplovinController.stop()
+//            Network.APPLOVIN -> InterstitialApplovinController.stop()
             Network.YANDEX -> InterstitialYandexController.stop()
             else -> {}
         }
@@ -96,7 +96,7 @@ object InterstitialCoordinator {
     fun destroy() {
         if (!initialized) return
         when (activeNetwork) {
-            Network.APPLOVIN -> InterstitialApplovinController.destroy()
+//            Network.APPLOVIN -> InterstitialApplovinController.destroy()
             Network.YANDEX -> InterstitialYandexController.destroy()
             else -> {}
         }
