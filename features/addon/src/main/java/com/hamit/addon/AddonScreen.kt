@@ -1,6 +1,7 @@
 package com.hamit.addon
 
 import android.os.Parcelable
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -43,6 +45,7 @@ import com.hamit.addon.components.Preview
 import com.hamit.addon.components.SupportButtons
 import com.hamit.addon.components.Title
 import com.hamit.addon.components.TopbarButtons
+import com.hamit.android.ads.interstitial.InterstitialCoordinator
 import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.domain.entity.AddonListStatusUi
 import com.hamit.domain.entity.AppExceptionType
@@ -67,9 +70,15 @@ data class AddonScreen(private val addonId: Int) : Screen, Parcelable {
 
     @Composable
     override fun Content() = key(addonId) {
+        val activity = LocalActivity.currentOrThrow
         val viewModel = koinScreenModel<AddonViewModel> { parametersOf(addonId) }
         val state by viewModel.state.collectAsState()
         val navigator = LocalNavigator.currentOrThrow
+
+        LaunchedEffect(Unit) {
+            InterstitialCoordinator.show(activity)
+        }
+
         PullToRefreshBox(
             modifier = Modifier
                 .fillMaxSize()

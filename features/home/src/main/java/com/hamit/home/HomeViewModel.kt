@@ -110,7 +110,7 @@ internal class HomeViewModel(
     fun openAddon(id: Int) = screenModelScope.launch {
         val addon = Destination.AddonScreen(id)
         val destination = if (NativeCoordinator.hasAd()) Destination.AdScreen(addon) else addon
-        _events.send(HomeEvent.OpenMod(destination))
+        _events.send(HomeEvent.OpenMod(id))
     }
 
 }

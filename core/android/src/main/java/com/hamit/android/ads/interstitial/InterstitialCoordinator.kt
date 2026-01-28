@@ -2,16 +2,19 @@ package com.hamit.android.ads.interstitial
 
 import android.app.Activity
 import android.content.Context
-import com.hamit.domain.entity.adConfig.AdConfigEntity
 import com.hamit.android.BuildConfig
-import com.hamit.domain.entity.AppLocation
 import com.hamit.android.utills.isShow
 import com.hamit.domain.entity.AdEnum
+import com.hamit.domain.entity.AppLocation
+import com.hamit.domain.entity.adConfig.AdConfigEntity
 
 object InterstitialCoordinator {
 
     private var initialized = false
     private var activeNetwork: Network = Network.NONE
+
+    private const val SHOW_DELAY_MS = 60_000L
+    private var lastShowTime = 0L
 
     private enum class Network {
         NONE, APPLOVIN, YANDEX
@@ -31,18 +34,25 @@ object InterstitialCoordinator {
                 config.yandexInter?.let { InterstitialYandexController.init(context, it) }
                 Network.YANDEX
             }
-
     }
 
     fun show(activity: Activity) {
         if (!initialized) return
-        if (AdEnum.INTER.isShow()){
-            when (activeNetwork) {
-                Network.APPLOVIN -> InterstitialApplovinController.show()
-                Network.YANDEX -> InterstitialYandexController.show(activity)
-                else -> {}
-            }
+        if (!AdEnum.INTER.isShow()) return
+        if (!canShow()) return
+
+        when (activeNetwork) {
+            Network.APPLOVIN -> InterstitialApplovinController.show()
+            Network.YANDEX -> InterstitialYandexController.show(activity)
+            else -> return
         }
+
+        lastShowTime = System.currentTimeMillis()
+    }
+
+    private fun canShow(): Boolean {
+        val now = System.currentTimeMillis()
+        return now - lastShowTime >= SHOW_DELAY_MS
     }
 
     fun deleteCallback() {

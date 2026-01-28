@@ -11,7 +11,13 @@ import com.yandex.mobile.ads.interstitial.InterstitialAd
 import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
 import com.yandex.mobile.ads.interstitial.InterstitialAdLoadListener
 import com.yandex.mobile.ads.interstitial.InterstitialAdLoader
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.math.pow
 
@@ -29,7 +35,7 @@ object InterstitialYandexController : InterstitialAdLoadListener, InterstitialAd
 
     private var retryAttempt = 0
 
-    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    private var scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     private var retryJob: Job? = null
 
     private var onAdReady: (() -> Unit)? = null
@@ -52,7 +58,7 @@ object InterstitialYandexController : InterstitialAdLoadListener, InterstitialAd
         initialized = true
 
         adUnitId = adId
-        loader = InterstitialAdLoader(context)
+        loader = InterstitialAdLoader(context.applicationContext)
         loader.setAdLoadListener(this)
 
         load()
@@ -182,7 +188,9 @@ object InterstitialYandexController : InterstitialAdLoadListener, InterstitialAd
         interAd?.setAdEventListener(null)
         interAd = null
 
-        scope.coroutineContext.cancelChildren()
+        scope.cancel()
+        scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+        initialized = false
     }
 
     private fun log(msg: () -> String) {

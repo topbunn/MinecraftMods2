@@ -41,6 +41,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.hamit.android.ads.natives.NativeCoordinator
+import com.hamit.navigation.Destination
 import com.hamit.ui.R
 import com.hamit.ui.components.AppTextField
 import com.hamit.ui.components.addon.AddonList
@@ -69,7 +70,7 @@ object HomeScreen : Tab, Screen {
         ObserveAsEvents(viewModel.events) {
             when(it){
                 is HomeEvent.OpenMod -> {
-                    val screen = ScreenRegistry.get(it.destination)
+                    val screen = ScreenRegistry.get(Destination.AddonScreen(it.id))
                     navigator?.push(screen)
                 }
             }

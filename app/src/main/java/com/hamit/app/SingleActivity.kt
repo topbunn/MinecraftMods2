@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
+import com.hamit.android.ads.interstitial.InterstitialCoordinator
 import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.android.ads.open.OpenCoordinator
 import com.hamit.domain.useCases.config.ReceiveConfigUseCase
@@ -25,6 +26,7 @@ class SingleActivity : ComponentActivity() {
         receiveConfigUseCase = getKoin().get()
         receiveRegionUseCase = getKoin().get()
         initialNativeAd()
+        initialInterAd()
         initialAppOpenAd()
         enableEdgeToEdge()
         setContent {
@@ -45,21 +47,28 @@ class SingleActivity : ComponentActivity() {
         NativeCoordinator.init(this@SingleActivity, location, config)
     }
 
+    private fun initialInterAd() = lifecycleScope.launch {
+        val config = receiveConfigUseCase()
+        val location = receiveRegionUseCase()
+        InterstitialCoordinator.init(this@SingleActivity, location, config)
+    }
+
     override fun onStart() {
         super.onStart()
         OpenCoordinator.start(this)
+        InterstitialCoordinator.start()
     }
 
     override fun onStop() {
         super.onStop()
         OpenCoordinator.stop()
+        InterstitialCoordinator.stop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         OpenCoordinator.destroy()
         NativeCoordinator.destroy()
+        InterstitialCoordinator.destroy()
     }
-
-
 }
