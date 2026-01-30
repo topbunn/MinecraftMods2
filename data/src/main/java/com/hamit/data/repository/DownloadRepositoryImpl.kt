@@ -11,13 +11,11 @@ import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.contentLength
 import io.ktor.utils.io.readAvailable
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.flowOn
 import java.io.File
 import kotlin.coroutines.cancellation.CancellationException
-import kotlin.coroutines.coroutineContext
 
 class DownloadRepositoryImpl(
     private val context: Context,
@@ -27,7 +25,7 @@ class DownloadRepositoryImpl(
     override fun download(
         url: String,
         fileName: String
-    ): Flow<DownloadFileStatus> = flow {
+    ): Flow<DownloadFileStatus> = channelFlow {
 
         val dir = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
@@ -39,27 +37,22 @@ class DownloadRepositoryImpl(
 
         try {
             api.client.prepareGet(url).execute { response ->
-
                 val totalBytes = response.contentLength() ?: -1L
                 val channel = response.bodyAsChannel()
-
                 var downloaded = 0L
                 val buffer = ByteArray(8 * 1024)
 
                 context.contentResolver
                     .openOutputStream(Uri.fromFile(file))!!
                     .use { output ->
-
                         while (true) {
-                            coroutineContext.ensureActive()
-
                             val bytesRead = channel.readAvailable(buffer)
                             if (bytesRead == -1) break
 
                             output.write(buffer, 0, bytesRead)
                             downloaded += bytesRead
 
-                            emit(
+                            send(
                                 DownloadFileStatus.Downloading(
                                     bytesDownloaded = downloaded,
                                     totalBytes = totalBytes,
@@ -70,19 +63,15 @@ class DownloadRepositoryImpl(
                             )
                         }
                     }
-
-                emit(DownloadFileStatus.Success)
             }
-
-        } catch (e: CancellationException) {
-            file.delete()
-            throw e
+            send(DownloadFileStatus.Success)
         } catch (e: Exception) {
+            if (e is CancellationException) {
+                file.delete()
+                throw e
+            }
             file.delete()
-            emit(DownloadFileStatus.Error)
+            send(DownloadFileStatus.Error)
         }
     }.flowOn(Dispatchers.IO)
-
-
-
 }

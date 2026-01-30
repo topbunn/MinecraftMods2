@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.hamit.android.BuildConfig
-import com.hamit.android.ads.natives.NativeCoordinator.Network.APPLOVIN
+import com.hamit.android.ads.natives.NativeCoordinator.Network.CAS
 import com.hamit.android.ads.natives.NativeCoordinator.Network.NONE
 import com.hamit.android.ads.natives.NativeCoordinator.Network.YANDEX
 import com.hamit.android.ads.natives.NativeCoordinator.ViewAdType.Fullscreen
@@ -20,7 +20,7 @@ object NativeCoordinator {
     private var activeNetwork: Network = NONE
 
     private enum class Network {
-        NONE, APPLOVIN, YANDEX
+        NONE, CAS, YANDEX
     }
 
     enum class PreloadStatus{
@@ -39,11 +39,11 @@ object NativeCoordinator {
 
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
-                config.applovinNative?.let {
-//                    NativeApplovinController.init(context, it)
-//                    NativeApplovinController.load(context)
-                }
-                APPLOVIN
+//                config.casNative?.let {
+                    NativeCasController.init(context, "TODO")
+                    NativeCasController.load()
+//                }
+                CAS
             } else {
                 config.yandexNative?.let {
                     NativeYandexController.init(context, it)
@@ -59,7 +59,7 @@ object NativeCoordinator {
         when {
             !initialized -> onPreloaded(PreloadStatus.NONE)
             else -> when (activeNetwork) {
-//                APPLOVIN -> NativeApplovinController.setCallback(onPreloaded)
+                CAS -> NativeCasController.setCallback(onPreloaded)
                 YANDEX -> NativeYandexController.setCallback(onPreloaded)
                 else -> onPreloaded(PreloadStatus.NONE)
             }
@@ -69,7 +69,7 @@ object NativeCoordinator {
     fun hasAd(): Boolean = when{
         !initialized -> false
         else -> when (activeNetwork) {
-//            APPLOVIN -> NativeApplovinController.hasAd()
+            CAS -> NativeCasController.hasAd()
             YANDEX -> NativeYandexController.hasAd()
             else -> false
         }
@@ -78,7 +78,7 @@ object NativeCoordinator {
     fun clearOnPreload() {
         if (initialized) return
         when (activeNetwork) {
-//            APPLOVIN -> NativeApplovinController.deleteCallback()
+            CAS -> NativeCasController.deleteCallback()
             YANDEX -> NativeYandexController.deleteCallback()
             else -> NONE
         }
@@ -91,12 +91,12 @@ object NativeCoordinator {
         if (!initialized) return
         if (AdEnum.NATIVE.isShow()){
             when (activeNetwork) {
-//                Network.APPLOVIN -> {
-//                    when(type){
-//                        Fullscreen -> FullscreenNativeApplovinView()
-//                        Native -> NativeApplovinView(modifier = modifier)
-//                    }
-//                }
+                Network.CAS -> {
+                    when(type){
+                        Fullscreen -> FullscreenNativeCasView()
+                        Native -> NativeCasView(modifier = modifier)
+                    }
+                }
                 Network.YANDEX -> {
                     when(type){
                         Fullscreen -> FullscreenNativeYandexView()
@@ -111,7 +111,7 @@ object NativeCoordinator {
     fun destroy() {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.APPLOVIN -> NativeApplovinController.destroy()
+            Network.CAS -> NativeCasController.destroy()
             Network.YANDEX -> NativeYandexController.destroy()
             else -> {}
         }

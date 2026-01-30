@@ -2,7 +2,7 @@ package com.hamit.app.app
 
 
 //fun Context.setupApplovin() {
-//    val initConfig = AppLovinSdkInitializationConfiguration.builder(BuildConfig.APPLOVIN_SDK_KEY)
+//    val initConfig = AppLovinSdkInitializationConfiguration.builder(BuildConfig.CAS_SDK_KEY)
 //        .setMediationProvider(AppLovinMediationProvider.MAX)
 //        .build()
 //

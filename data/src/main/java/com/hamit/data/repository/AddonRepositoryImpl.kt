@@ -35,7 +35,8 @@ class AddonRepositoryImpl(
         Result.success(transformer.toEntity(response.items))
     } catch (e: Exception){
         e.printStackTrace()
-        Result.failure(e.exceptionHandle())
+        val exception = e as? java.util.concurrent.CancellationException ?: e.exceptionHandle()
+        Result.failure(exception)
     }
 
 
@@ -44,6 +45,7 @@ class AddonRepositoryImpl(
         Result.success(transformer.toEntity(addon))
     } catch (e: Exception){
         e.printStackTrace()
+        val exception = e as? java.util.concurrent.CancellationException ?: e.exceptionHandle()
         Result.failure(e.exceptionHandle())
     }
 

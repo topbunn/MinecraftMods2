@@ -11,7 +11,7 @@ object OpenCoordinator {
     private var activeNetwork: Network = Network.NONE
 
     private enum class Network {
-        NONE, APPLOVIN, YANDEX
+        NONE, CAS, YANDEX
     }
 
     fun init(activity: Activity, location: AppLocation, config: AdConfigEntity) {
@@ -23,7 +23,7 @@ object OpenCoordinator {
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
 //                config.applovinOpen?.let { OpenApplovinController.init(activity, it) }
-                Network.APPLOVIN
+                Network.CAS
             } else {
                 config.yandexOpen?.let { OpenYandexController.init(activity.application, it) }
                 Network.YANDEX
@@ -33,7 +33,7 @@ object OpenCoordinator {
     fun show(activity: Activity) {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.APPLOVIN -> OpenApplovinController.show()
+//            Network.CAS -> OpenApplovinController.show()
             Network.YANDEX -> OpenYandexController.show(activity)
             else -> {}
         }
@@ -43,7 +43,7 @@ object OpenCoordinator {
     fun start(activity: Activity) {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.APPLOVIN -> {
+//            Network.CAS -> {
 //                OpenApplovinController.resume()
 //                OpenApplovinController.show()
 //            }
@@ -56,7 +56,7 @@ object OpenCoordinator {
     fun stop() {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.APPLOVIN -> OpenApplovinController.pause()
+//            Network.CAS -> OpenApplovinController.pause()
             else -> {}
         }
     }
@@ -64,7 +64,7 @@ object OpenCoordinator {
     fun destroy() {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.APPLOVIN -> OpenApplovinController.destroy()
+//            Network.CAS -> OpenApplovinController.destroy()
             Network.YANDEX -> OpenYandexController.destroy()
             else -> {}
         }

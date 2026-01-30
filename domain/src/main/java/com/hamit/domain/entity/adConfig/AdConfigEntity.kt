@@ -8,7 +8,7 @@ data class AdConfigEntity(
     val isAdEnabled: Boolean,
     val applovinOpen: String?,
     val applovinInter: String?,
-    val applovinNative: String?,
+    val casNative: String?,
     val yandexOpen: String?,
     val yandexInter: String?,
     val yandexNative: String?,

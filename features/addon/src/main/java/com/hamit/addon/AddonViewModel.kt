@@ -2,6 +2,7 @@ package com.hamit.addon
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import com.hamit.domain.entity.AddonListStatusUi
 import com.hamit.domain.entity.AppExceptionType
 import com.hamit.domain.entity.Maintenance
 import com.hamit.domain.entity.NoInternet
@@ -10,7 +11,6 @@ import com.hamit.domain.entity.like.LikeEntity
 import com.hamit.domain.useCases.addon.ReceiveAddonListUseCase
 import com.hamit.domain.useCases.addon.ReceiveAddonUseCase
 import com.hamit.domain.useCases.like.AddLikeUseCase
-import com.hamit.domain.entity.AddonListStatusUi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -45,6 +45,7 @@ class AddonViewModel(
 
                 error.printStackTrace()
 
+                if (error is java.util.concurrent.CancellationException) { return@launch }
                 val type = when (error) {
                     NoInternet -> AppExceptionType.NoInternet
                     Maintenance -> AppExceptionType.Maintenance

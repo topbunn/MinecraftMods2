@@ -2,10 +2,10 @@
 //
 //import android.content.Context
 //import android.util.Log
-//import com.applovin.mediation.MaxAd
-//import com.applovin.mediation.MaxAdListener
-//import com.applovin.mediation.MaxError
-//import com.applovin.mediation.ads.MaxInterstitialAd
+//import com.CAS.mediation.MaxAd
+//import com.CAS.mediation.MaxAdListener
+//import com.CAS.mediation.MaxError
+//import com.CAS.mediation.ads.MaxInterstitialAd
 //import kotlinx.coroutines.CoroutineScope
 //import kotlinx.coroutines.Dispatchers
 //import kotlinx.coroutines.Job

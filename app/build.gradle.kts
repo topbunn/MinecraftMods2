@@ -1,4 +1,4 @@
-import ru.topbun.buildSrc.PropertiesController
+import com.hamit.buildSrc.PropertiesController
 
 plugins {
     alias(libs.plugins.android.application)
@@ -22,11 +22,12 @@ android {
                 applicationId = config.packageName
                 buildConfigField("String", "APPLICATION_ID", "\"${config.packageName}\"")
                 buildConfigField("String", "METRIC_KEY", "\"${config.yandexMetricKey}\"")
-                buildConfigField("String", "APPLOVIN_SDK_KEY", "\"${config.applovinSdkKey}\"")
+                buildConfigField("String", "CAS_SDK_KEY", "\"${config.casSdkKey}\"")
                 buildConfigField("Integer", "APP_ID", config.appId)
                 buildConfigField("Integer", "PRIMARY_COLOR", config.appColor)
                 buildConfigField("Integer", "PERCENT_SHOW_NATIVE_AD", config.percentNative)
                 buildConfigField("Integer", "PERCENT_SHOW_INTER_AD", config.percentInter)
+
             }
         }
     }
@@ -73,7 +74,7 @@ android {
 cas {
     includeOptimalAds = true
     adapters {
-        appLovin = true
+        applovin = true
         audienceNetwork = true
         bigoAds = true
         casExchange = true

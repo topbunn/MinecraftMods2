@@ -1,7 +1,7 @@
-package ru.topbun.buildSrc
+package com.hamit.buildSrc
 
 data class AddonConfig(
-    val applovinSdkKey: String,
+    val casSdkKey: String,
     val yandexMetricKey: String,
     val packageName: String,
     val appId: String,

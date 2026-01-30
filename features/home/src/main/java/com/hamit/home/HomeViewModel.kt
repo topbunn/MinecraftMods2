@@ -59,6 +59,7 @@ internal class HomeViewModel(
             }.onFailure { error ->
                 error.printStackTrace()
 
+                if (error is java.util.concurrent.CancellationException) { return@launch }
                 val type = when (error) {
                     NoInternet -> AppExceptionType.NoInternet
                     Maintenance -> AppExceptionType.Maintenance

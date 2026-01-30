@@ -2,6 +2,7 @@ package com.hamit.data.source.remote
 
 import com.hamit.data.BuildConfig.BASE_URL
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -16,28 +17,31 @@ import kotlinx.serialization.json.Json
 
 class ApiFactory {
 
-    val client = HttpClient {
+    val client = HttpClient(Android) {
         expectSuccess = true
+
         engine {
-            pipelining = true
+            connectTimeout = 60_000
+            socketTimeout = 60_000
         }
+
         install(HttpTimeout) {
-            requestTimeoutMillis = 60000
-            socketTimeoutMillis = 60000
+            requestTimeoutMillis = 60_000
+            socketTimeoutMillis = 60_000
         }
+
         install(ContentNegotiation) {
-            json(
-                Json { ignoreUnknownKeys = true }
-            )
+            json(Json { ignoreUnknownKeys = true })
         }
 
         defaultRequest {
             contentType(ContentType.Application.Json.withParameter("charset", "utf-8"))
             url(BASE_URL)
         }
+
         install(Logging) {
             logger = Logger.ANDROID
-            level = LogLevel.BODY
+            level = LogLevel.NONE
         }
     }
 

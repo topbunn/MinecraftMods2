@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cleveradssolutions.sdk.nativead.CASNativeView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cas_native_ad_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#14161B">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/cas_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"/>
+
+        <com.cleveradssolutions.sdk.nativead.CASChoicesView
+            android:id="@+id/cas_ad_choices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.cleveradssolutions.sdk.nativead.CASMediaView
+            android:id="@+id/cas_media"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/cas_icon"
+            app:layout_constraintBottom_toTopOf="@id/content_block"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_block"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cas_call_to_action">
+
+            <TextView
+                android:id="@+id/cas_ad_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                android:text="Ad"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/cas_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/semibold"
+                android:textColor="#EAEAEA"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/cas_advertiser"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cas_ad_label"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/cas_advertiser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/regular"
+                android:textColor="#B3B5B7"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/cas_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cas_title"
+                tools:text="example.com" />
+
+            <TextView
+                android:id="@+id/cas_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/medium"
+                android:maxLines="4"
+                android:textColor="#B3B5B7"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cas_title"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/cas_call_to_action"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_button"
+            android:fontFamily="@font/semibold"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#191B21"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Install"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.cleveradssolutions.sdk.nativead.CASNativeView>

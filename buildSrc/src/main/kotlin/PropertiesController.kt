@@ -1,4 +1,4 @@
-package ru.topbun.buildSrc
+package com.hamit.buildSrc
 
 import java.io.File
 import java.util.*
@@ -26,7 +26,7 @@ object PropertiesController {
 
 
         return AddonConfig(
-            applovinSdkKey = getOrThrow(props, "applovin_sdk_key"),
+            casSdkKey = getOrThrow(props, "CAS_SDK_KEY"),
             yandexMetricKey = getOrThrow(props, "metric_key"),
             packageName = getOrThrow(props, "applicationId"),
             appId = getOrThrow(props, "app_id"),

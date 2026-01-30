@@ -38,67 +38,62 @@ class DownloadViewModel(
     private val _events = Channel<DownloadEvent>(capacity = 0, onBufferOverflow = BufferOverflow.DROP_OLDEST)
     val events get() = _events.receiveAsFlow()
 
-    private var downloadJob: Job? = null
+    private val downloadJobs = mutableMapOf<String, Job>()
 
     private fun updateFileState(file: AddonFileUi, newStatus: AddonFileUiStatus) {
-        with(_state.value) {
-            _state.update {
-                val newFiles = files.toMutableList().map {
-                    if (it.name == file.name) {
-                        it.copy(status = newStatus)
-                    } else {
-                        it
-                    }
+        _state.update { currentState ->
+            val newFiles = currentState.files.map {
+                if (it.name == file.name) {
+                    it.copy(status = newStatus)
+                } else {
+                    it
                 }
-                copy(files = newFiles)
             }
+            currentState.copy(files = newFiles)
         }
     }
 
     fun download(file: AddonFileUi) {
-        downloadJob?.cancel()
+        if (downloadJobs.containsKey(file.name)) return
 
-        downloadJob = screenModelScope.launch {
-            val result = downloadFileUseCase(file.link, file.name)
+        val job = screenModelScope.launch {
+            try {
+                val result = downloadFileUseCase(file.link, file.name)
 
-            val status = AddonFileUiStatus.Downloading(
-                bytesDownloaded = 0,
-                totalBytes = 0,
-                progress = 0f
-            )
+                updateFileState(file, AddonFileUiStatus.Downloading(0, 0, 0f))
 
-            updateFileState(file, status)
+                result.collect { downloadFileStatus ->
+                    Log.d("DOWNLOAD_STATE", downloadFileStatus.toString())
+                    val newStatus = when (downloadFileStatus) {
+                        is DownloadFileStatus.Downloading -> {
+                            AddonFileUiStatus.Downloading(
+                                bytesDownloaded = downloadFileStatus.bytesDownloaded,
+                                totalBytes = downloadFileStatus.totalBytes,
+                                progress = downloadFileStatus.progress
+                            )
+                        }
 
-            result.collect { downloadFileStatus ->
-                Log.d("DOWNLOAD_STATE", downloadFileStatus.toString())
-                val newStatus = when (val downloadFileStatus = downloadFileStatus) {
-                    is DownloadFileStatus.Downloading -> {
-                        AddonFileUiStatus.Downloading(
-                            bytesDownloaded = downloadFileStatus.bytesDownloaded,
-                            totalBytes = downloadFileStatus.totalBytes,
-                            progress = downloadFileStatus.progress
-                        )
-                    }
-
-                    DownloadFileStatus.Error -> {
-                        _events.send(DownloadEvent.ShowError)
-                        AddonFileUiStatus.NoSaved
-                    }
-
-                    DownloadFileStatus.Success -> {
-                        val exists = fileExistsUseCase(file.name)
-                        if (exists != null) {
-                            AddonFileUiStatus.Saved(exists)
-                        } else {
+                        DownloadFileStatus.Error -> {
+                            _events.send(DownloadEvent.ShowError)
                             AddonFileUiStatus.NoSaved
                         }
+
+                        DownloadFileStatus.Success -> {
+                            val exists = fileExistsUseCase(file.name)
+                            if (exists != null) {
+                                AddonFileUiStatus.Saved(exists)
+                            } else {
+                                AddonFileUiStatus.NoSaved
+                            }
+                        }
                     }
-
+                    updateFileState(file, newStatus)
                 }
-
-                updateFileState(file, newStatus)
+            } finally {
+                downloadJobs.remove(file.name)
             }
         }
+        downloadJobs[file.name] = job
     }
 
     fun showReview(activity: Activity) {
@@ -165,7 +160,8 @@ class DownloadViewModel(
     }
 
     override fun onDispose() {
-        downloadJob?.cancel()
+        downloadJobs.values.forEach { it.cancel() }
+        downloadJobs.clear()
     }
 
 }

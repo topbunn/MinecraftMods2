@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+
 android {
     namespace = "com.hamit.android"
     compileSdk = 36
@@ -15,7 +16,7 @@ android {
 
         val forRuStore = property("rustore")?.toString() ?: error("not found property with name 'rustore'")
         buildConfigField("Boolean", "RUSTORE", forRuStore)
-        
+
     }
 
     buildTypes {
@@ -51,6 +52,7 @@ dependencies {
 
     // Ads
     implementation (libs.mobileads.yandex)
+    implementation (libs.cas.sdk)
     implementation(libs.picasso)
 
     implementation(libs.androidx.core.ktx)

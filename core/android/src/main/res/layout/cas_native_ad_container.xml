@@ -1,0 +1,108 @@
+<com.cleveradssolutions.sdk.nativead.CASNativeView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cas_native_ad_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="300dp"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/cas_ad_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="15dp"
+            android:minHeight="15dp"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="Ad"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.cleveradssolutions.sdk.nativead.CASChoicesView
+            android:id="@+id/cas_ad_choices"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.cleveradssolutions.sdk.nativead.CASMediaView
+            android:id="@+id/cas_media"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:minHeight="120dp"
+            app:layout_constraintDimensionRatio="5:3"
+            app:layout_constraintTop_toBottomOf="@+id/cas_ad_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/cas_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="4dp"
+            app:layout_constraintStart_toStartOf="@id/cas_media"
+            app:layout_constraintTop_toTopOf="@id/cas_media" />
+
+        <TextView
+            android:id="@+id/cas_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/semibold"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/cas_media"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cas_ad_choices"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/cas_advertiser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#DFDFDF"
+            app:layout_constraintTop_toBottomOf="@id/cas_title"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="example.com" />
+
+        <TextView
+            android:id="@+id/cas_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:maxLines="4"
+            android:textSize="14sp"
+            android:textColor="#DFDFDF"
+            app:layout_constraintTop_toBottomOf="@id/cas_advertiser"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Lorem ipsum dolor sit amet..." />
+
+        <Button
+            android:id="@+id/cas_call_to_action"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/semibold"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_button"
+            app:layout_constraintTop_toBottomOf="@id/cas_body"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Install" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.cleveradssolutions.sdk.nativead.CASNativeView>
