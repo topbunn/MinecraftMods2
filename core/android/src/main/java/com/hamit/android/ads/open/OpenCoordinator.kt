@@ -22,7 +22,9 @@ object OpenCoordinator {
 
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
-//                config.applovinOpen?.let { OpenApplovinController.init(activity, it) }
+//                config.applovinOpen?.let {
+                    OpenCasController.init(activity.applicationContext, "TODO")
+//                }
                 Network.CAS
             } else {
                 config.yandexOpen?.let { OpenYandexController.init(activity.application, it) }
@@ -33,7 +35,7 @@ object OpenCoordinator {
     fun show(activity: Activity) {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.CAS -> OpenApplovinController.show()
+            Network.CAS -> OpenCasController.show(activity)
             Network.YANDEX -> OpenYandexController.show(activity)
             else -> {}
         }
@@ -43,31 +45,25 @@ object OpenCoordinator {
     fun start(activity: Activity) {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.CAS -> {
-//                OpenApplovinController.resume()
-//                OpenApplovinController.show()
-//            }
+            Network.CAS -> {
+                OpenCasController.load(activity.applicationContext)
+                OpenCasController.show(activity)
+            }
 
             Network.YANDEX -> OpenYandexController.show(activity)
             else -> {}
         }
     }
 
-    fun stop() {
-        if (!initialized) return
-        when (activeNetwork) {
-//            Network.CAS -> OpenApplovinController.pause()
-            else -> {}
-        }
-    }
 
     fun destroy() {
         if (!initialized) return
         when (activeNetwork) {
-//            Network.CAS -> OpenApplovinController.destroy()
+            Network.CAS -> OpenCasController.destroy()
             Network.YANDEX -> OpenYandexController.destroy()
             else -> {}
         }
+        initialized = false
     }
 
 

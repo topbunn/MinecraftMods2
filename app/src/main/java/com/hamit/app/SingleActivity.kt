@@ -67,7 +67,6 @@ class SingleActivity : ComponentActivity() {
 
     override fun onStop() {
         super.onStop()
-        OpenCoordinator.stop()
         InterstitialCoordinator.stop()
     }
 
