@@ -7,7 +7,6 @@ import com.hamit.domain.entity.suggest.SuggestEntity
 import com.hamit.domain.useCases.suggest.SubmitSuggestUseCase
 import com.hamit.suggest.SuggestState.FieldType.DESC
 import com.hamit.suggest.SuggestState.FieldType.EMAIL
-import com.hamit.suggest.SuggestState.FieldType.LINK
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,7 +21,7 @@ import kotlinx.coroutines.launch
 
 internal class SuggestViewModel(
     private val submitSuggestUseCase: SubmitSuggestUseCase
-): ScreenModel {
+) : ScreenModel {
 
     private val _state = MutableStateFlow(SuggestState())
     val state = _state.asStateFlow()
@@ -40,11 +39,10 @@ internal class SuggestViewModel(
             }.launchIn(screenModelScope)
     }
 
-    fun changeFieldValue(value: String, type: SuggestState.FieldType){
+    fun changeFieldValue(value: String, type: SuggestState.FieldType) {
         _state.update {
-            when(type){
+            when (type) {
                 EMAIL -> if (value.length <= 64) it.copy(email = value) else it
-                LINK -> if (value.length <= 256) it.copy(link = value) else it
                 DESC -> if (value.length <= 2000) it.copy(desc = value) else it
             }
         }
@@ -55,7 +53,6 @@ internal class SuggestViewModel(
         _state.update { it.copy(isLoading = true) }
         val suggest = SuggestEntity(
             email = state.value.email,
-            link = state.value.link,
             desc = state.value.desc
         )
         submitSuggestUseCase(suggest).onSuccess {
@@ -67,7 +64,7 @@ internal class SuggestViewModel(
         _state.update { it.copy(isLoading = false) }
     }
 
-    private fun checkSubmitValid() = with(_state.value){
+    private fun checkSubmitValid() = with(_state.value) {
         email.isEmail() && desc.length >= 40
     }
 }

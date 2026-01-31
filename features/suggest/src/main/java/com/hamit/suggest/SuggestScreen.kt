@@ -35,7 +35,6 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.suggest.SuggestState.FieldType.DESC
 import com.hamit.suggest.SuggestState.FieldType.EMAIL
-import com.hamit.suggest.SuggestState.FieldType.LINK
 import com.hamit.suggest.SuggestState.FieldType.entries
 import com.hamit.ui.R
 import com.hamit.ui.components.AppButton
@@ -118,7 +117,6 @@ object SuggestScreen : Tab, Screen {
         ) {
             CardFields(
                 email = state.email,
-                link = state.link,
                 desc = state.desc,
                 onChangeText = viewModel::changeFieldValue
             )
@@ -152,7 +150,6 @@ object SuggestScreen : Tab, Screen {
     @Composable
     private fun CardFields(
         email: String,
-        link: String,
         desc: String,
         onChangeText: (String, SuggestState.FieldType) -> Unit,
     ) {
@@ -161,7 +158,6 @@ object SuggestScreen : Tab, Screen {
                 type = type,
                 value = when (type) {
                     EMAIL -> email
-                    LINK -> link
                     DESC -> desc
                 }
             ){ text ->
@@ -197,23 +193,19 @@ object SuggestScreen : Tab, Screen {
             hint = stringResource(
                 when(type){
                     EMAIL -> R.string.hint_email
-                    LINK -> R.string.hint_link
                     DESC -> R.string.hint_desc
                 }
             ),
             keyboardOptions = KeyboardOptions(
                 keyboardType = when(type){
                     EMAIL -> KeyboardType.Email
-                    LINK -> KeyboardType.Uri
                     DESC -> KeyboardType.Text
                 }
             ),
             leadingIconRes = when(type){
                 EMAIL -> R.drawable.ic_hint_mail
-                LINK -> R.drawable.ic_hint_link
                 DESC -> R.drawable.ic_hint_desc
             },
-            required = type != SuggestState.FieldType.LINK,
             tipContent = if (type == DESC) { { TipDesc() } } else null,
             onTextChange = onChangeText
         )

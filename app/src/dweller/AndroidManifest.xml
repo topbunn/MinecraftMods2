@@ -35,6 +35,14 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/push_notify_icon" />
 
+        <meta-data
+            android:name="com.facebook.sdk.AutoInitEnabled"
+            android:value="true"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled"
+            android:value="true"/>
+
         <activity
             android:name=".SingleActivity"
             android:exported="true"

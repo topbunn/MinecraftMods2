@@ -2,6 +2,7 @@ package com.hamit.app.app
 
 import android.content.Context
 import com.cleversolutions.ads.android.CAS
+import com.facebook.ads.AdSettings
 import com.hamit.app.BuildConfig
 
 fun Context.setupCas() {
@@ -11,5 +12,7 @@ fun Context.setupCas() {
         .withCompletionListener { config ->
 
         }
+
+    AdSettings.setDataProcessingOptions(arrayOf())
     builder.build(this)
 }
