@@ -26,7 +26,6 @@ object PropertiesController {
 
 
         return AddonConfig(
-            casSdkKey = getOrThrow(props, "CAS_SDK_KEY"),
             yandexMetricKey = getOrThrow(props, "metric_key"),
             packageName = getOrThrow(props, "applicationId"),
             appId = getOrThrow(props, "app_id"),

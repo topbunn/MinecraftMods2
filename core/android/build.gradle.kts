@@ -62,7 +62,6 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
 
-
     implementation(project(":domain"))
     implementation(project(":core:ui"))
     implementation(libs.play.services.location)

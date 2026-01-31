@@ -1,5 +1,6 @@
 package com.hamit.download
 
 sealed interface DownloadEvent{
-    data object ShowError: DownloadEvent
+    data object ShowDownloadError: DownloadEvent
+    data object ShowInstallError: DownloadEvent
 }

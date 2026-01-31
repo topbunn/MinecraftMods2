@@ -22,7 +22,6 @@ android {
                 applicationId = config.packageName
                 buildConfigField("String", "APPLICATION_ID", "\"${config.packageName}\"")
                 buildConfigField("String", "METRIC_KEY", "\"${config.yandexMetricKey}\"")
-                buildConfigField("String", "CAS_SDK_KEY", "\"${config.casSdkKey}\"")
                 buildConfigField("Integer", "APP_ID", config.appId)
                 buildConfigField("Integer", "PRIMARY_COLOR", config.appColor)
                 buildConfigField("Integer", "PERCENT_SHOW_NATIVE_AD", config.percentNative)
@@ -74,28 +73,31 @@ android {
 cas {
     includeOptimalAds = true
     adapters {
-        applovin = true
-        audienceNetwork = true
-        bigoAds = true
-        casExchange = true
-        chartboost = true
-        dtExchange = true
-        googleAds = true
-        hyprMX = true
-        inMobi = true
         ironSource = true
+        googleAds = true
+        unityAds = true
         kidoz = true
         liftoffMonetize = true
+        inMobi = true
+        inmobi = true
+        chartboost = true
+        dtExchange = true
         mintegral = true
-        ogury = true
+        appLovin = true
+        applovin = true
+        audienceNetwork = true
         pangle = true
-        prado = true
-        startIO = true
-        unityAds = true
         yangoAds = true
+        bigoAds = true
+        casExchange = true
+        startIO = true
+        hyprMX = true
         ysoNetwork = true
-        smaato = true
+        ogury = true
+        prado = true
+        superAwesome = true
         verve = true
+        smaato = true
         maticoo = true
     }
 }
@@ -120,6 +122,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.messaging)
 
+    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

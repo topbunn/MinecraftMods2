@@ -110,5 +110,5 @@
     <string name="not_working">작동하지 않나요?</string>
     <string name="feedback">피드백</string>
     <string name="file_saved_to_storage">파일이 저장소에 저장되었습니다</string>
-
+    <string name="file_not_found">파일을 찾을 수 없습니다</string>
 </resources>

@@ -12,6 +12,7 @@ import com.hamit.android.utills.getModNameFromUrl
 import com.hamit.domain.entity.DownloadFileStatus
 import com.hamit.domain.entity.addon.AddonEntity
 import com.hamit.domain.useCases.download.DownloadFileUseCase
+import com.hamit.domain.useCases.file.DeleteFileUseCase
 import com.hamit.domain.useCases.file.FileExistsUseCase
 import com.hamit.domain.useCases.file.OpenFileUseCase
 import com.hamit.download.AddonFileUi.AddonFileUiStatus
@@ -30,6 +31,7 @@ class DownloadViewModel(
     private val fileExistsUseCase: FileExistsUseCase,
     private val downloadFileUseCase: DownloadFileUseCase,
     private val openFileUseCase: OpenFileUseCase,
+    private val deleteFileUseCase: DeleteFileUseCase,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(DownloadState())
@@ -74,7 +76,7 @@ class DownloadViewModel(
                         }
 
                         DownloadFileStatus.Error -> {
-                            _events.send(DownloadEvent.ShowError)
+                            _events.send(DownloadEvent.ShowDownloadError)
                             AddonFileUiStatus.NoSaved
                         }
 
@@ -132,7 +134,12 @@ class DownloadViewModel(
     }
 
     fun openFile(file: AddonFileUi) = screenModelScope.launch {
-        openFileUseCase(file.name)
+        openFileUseCase(file.name).onFailure {
+            it.printStackTrace()
+            _events.send(DownloadEvent.ShowInstallError)
+            deleteFileUseCase(file.name)
+            updateFileState(file, AddonFileUiStatus.NoSaved)
+        }
     }
 
     private fun loadFiles() = screenModelScope.launch {

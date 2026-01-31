@@ -42,15 +42,21 @@ object OpenCoordinator {
 
     }
 
-    fun start(activity: Activity) {
+    fun start(activity: Activity, canShow: Boolean) {
         if (!initialized) return
         when (activeNetwork) {
             Network.CAS -> {
                 OpenCasController.load(activity.applicationContext)
-                OpenCasController.show(activity)
+                if (canShow){
+                    OpenCasController.show(activity)
+                }
             }
 
-            Network.YANDEX -> OpenYandexController.show(activity)
+            Network.YANDEX -> {
+                if (canShow) {
+                    OpenYandexController.show(activity)
+                }
+            }
             else -> {}
         }
     }

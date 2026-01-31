@@ -1,6 +1,7 @@
 package com.hamit.download
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.os.Parcelable
 import android.widget.Toast
 import androidx.activity.compose.LocalActivity
@@ -67,6 +68,7 @@ class DownloadScreen(
 ): Screen, Parcelable {
 
 
+    @SuppressLint("LocalContextGetResourceValueCall")
     @Composable
     override fun Content() {
         val activity = LocalActivity.current
@@ -75,12 +77,13 @@ class DownloadScreen(
         val navigator = LocalNavigator.currentOrThrow
         val viewModel = koinScreenModel<DownloadViewModel>{ parametersOf(addon) }
         val state by viewModel.state.collectAsState()
-
-        val errorMessage = stringResource(R.string.error_download_mod)
         ObserveAsEvents(viewModel.events) {
             when(it){
-                is DownloadEvent.ShowError -> {
-                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                is DownloadEvent.ShowDownloadError -> {
+                    Toast.makeText(context,  context.getString(R.string.error_download_mod), Toast.LENGTH_SHORT).show()
+                }
+                is DownloadEvent.ShowInstallError -> {
+                    Toast.makeText(context, context.getString(R.string.file_not_found), Toast.LENGTH_SHORT).show()
                 }
             }
         }

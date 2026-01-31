@@ -110,5 +110,5 @@
     <string name="not_working">¿No funciona?</string>
     <string name="feedback">Comentarios</string>
     <string name="file_saved_to_storage">Archivo guardado en el almacenamiento</string>
-
+    <string name="file_not_found">Archivo no encontrado</string>
 </resources>

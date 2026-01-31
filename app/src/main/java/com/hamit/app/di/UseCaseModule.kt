@@ -5,6 +5,7 @@ import com.hamit.domain.useCases.addon.ReceiveAddonUseCase
 import com.hamit.domain.useCases.config.ReceiveConfigUseCase
 import com.hamit.domain.useCases.download.DownloadFileUseCase
 import com.hamit.domain.useCases.file.CreateFileUseCase
+import com.hamit.domain.useCases.file.DeleteFileUseCase
 import com.hamit.domain.useCases.file.FileExistsUseCase
 import com.hamit.domain.useCases.file.OpenFileUseCase
 import com.hamit.domain.useCases.like.AddLikeUseCase
@@ -29,4 +30,5 @@ val useCaseModule = module {
     single { CreateFileUseCase(get()) }
     single { FileExistsUseCase(get()) }
     single { OpenFileUseCase(get()) }
+    single { DeleteFileUseCase(get()) }
 }

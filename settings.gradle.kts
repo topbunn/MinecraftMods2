@@ -26,6 +26,7 @@ dependencyResolutionManagement {
         maven("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
         maven("https://artifactory-external.vkpartner.ru/artifactory/maven")
         maven("https://artifact.bytedance.com/repository/pangle")
+        maven("https://aa-sdk.s3-eu-west-1.amazonaws.com/android_repo")
         maven {
             name = "MintegralAdsRepo"
             url = uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")

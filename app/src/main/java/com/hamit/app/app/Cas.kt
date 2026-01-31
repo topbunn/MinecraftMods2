@@ -6,7 +6,7 @@ import com.hamit.app.BuildConfig
 
 fun Context.setupCas() {
     val builder = CAS.buildManager()
-        .withCasId(BuildConfig.CAS_SDK_KEY)
+        .withCasId(BuildConfig.APPLICATION_ID)
         .withTestAdMode(BuildConfig.DEBUG)
         .withCompletionListener { config ->
 

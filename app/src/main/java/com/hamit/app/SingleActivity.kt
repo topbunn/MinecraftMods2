@@ -11,7 +11,6 @@ import com.hamit.android.ads.natives.NativeCoordinator
 import com.hamit.android.ads.open.OpenCoordinator
 import com.hamit.domain.useCases.config.ReceiveConfigUseCase
 import com.hamit.domain.useCases.region.ReceiveRegionUseCase
-import com.hamit.ui.Root
 import com.hamit.ui.utils.permissions
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.getKoin
@@ -61,7 +60,6 @@ class SingleActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-        OpenCoordinator.start(this)
         InterstitialCoordinator.start()
     }
 

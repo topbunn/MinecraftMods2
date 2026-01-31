@@ -48,7 +48,7 @@
         <item>اختر Minecraft من النافذة التي تظهر.</item>
         <item>انتظر رسالة الاستيراد الناجح.</item>
         <item>افتح Minecraft وأنشئ عالماً جديداً أو عدّل عالماً موجوداً.</item>
-        <item>انتقل إلى «حزم الموارد» وقم بتفعيل الحزمة.</item>
+        <item>انتقل إلى «حزم המوارد» وقم بتفعيل الحزمة.</item>
     </string-array>
 
     <string-array name="guide_map_array">
@@ -112,5 +112,5 @@
     <string name="not_working">لا يعمل؟</string>
     <string name="feedback">ملاحظات</string>
     <string name="file_saved_to_storage">تم حفظ الملف في وحدة التخزين</string>
-
+    <string name="file_not_found">لم يتم العثور على الملف</string>
 </resources>
