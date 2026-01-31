@@ -60,7 +60,7 @@ class SingleActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-        InterstitialCoordinator.start()
+        InterstitialCoordinator.start(applicationContext)
     }
 
     override fun onStop() {

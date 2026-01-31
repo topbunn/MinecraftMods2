@@ -40,7 +40,7 @@ object OpenCasController {
 
         appOpenAd = CASAppOpen(casId).apply {
             contentCallback = this@OpenCasController.contentCallback
-            isAutoloadEnabled = false
+            isAutoloadEnabled = true
             isAutoshowEnabled = false
         }
         load(context)
