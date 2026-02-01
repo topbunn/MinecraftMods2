@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.dashboard"
+    namespace = "com.l13devstudio.dashboard"
     compileSdk = 36
 
     defaultConfig {

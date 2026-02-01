@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.faq"
+    namespace = "com.l13devstudio.faq"
     compileSdk {
         version = release(36)
     }

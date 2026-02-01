@@ -36,7 +36,7 @@
             android:resource="@color/push_notify_icon" />
 
         <activity
-            android:name="com.hamit.app.SingleActivity"
+            android:name="com.l13devstudio.app.SingleActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MinecraftModsPE">

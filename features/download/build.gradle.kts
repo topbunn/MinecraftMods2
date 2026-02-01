@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.download"
+    namespace = "com.l13devstudio.download"
     compileSdk {
         version = release(36)
     }

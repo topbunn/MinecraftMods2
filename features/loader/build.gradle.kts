@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.loader"
+    namespace = "com.l13devstudio.loader"
     compileSdk = 36
 
     defaultConfig {

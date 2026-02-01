@@ -1,4 +1,4 @@
-package com.hamit.buildSrc
+package com.l13devstudio.buildSrc
 
 import java.io.File
 import java.util.*

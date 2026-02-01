@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.navigation"
+    namespace = "com.l13devstudio.navigation"
     compileSdk = 36
 
     defaultConfig {

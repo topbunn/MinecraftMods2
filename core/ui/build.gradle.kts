@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.ui"
+    namespace = "com.l13devstudio.ui"
     compileSdk = 36
 
     defaultConfig {

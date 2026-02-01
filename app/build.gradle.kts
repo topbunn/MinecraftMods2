@@ -1,4 +1,4 @@
-import com.hamit.buildSrc.PropertiesController
+import com.l13devstudio.buildSrc.PropertiesController
 
 plugins {
     alias(libs.plugins.android.application)
@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.app"
+    namespace = "com.l13devstudio.app"
     compileSdk = 36
 
     flavorDimensions += "mods"

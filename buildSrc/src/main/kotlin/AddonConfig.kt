@@ -1,4 +1,4 @@
-package com.hamit.buildSrc
+package com.l13devstudio.buildSrc
 
 data class AddonConfig(
     val yandexMetricKey: String,

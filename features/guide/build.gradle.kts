@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamit.guide"
+    namespace = "com.l13devstudio.guide"
     compileSdk = 36
 
     defaultConfig {
