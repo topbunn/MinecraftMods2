@@ -8,11 +8,7 @@ import com.l13devstudio.app.BuildConfig
 fun Context.setupCas() {
     val builder = CAS.buildManager()
         .withCasId(BuildConfig.APPLICATION_ID)
-        .withTestAdMode(BuildConfig.DEBUG)
-        .withCompletionListener { config ->
-
-        }
-
+        .withCompletionListener {}
     AdSettings.setDataProcessingOptions(arrayOf())
     builder.build(this)
 }

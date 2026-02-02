@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.gms)
+//    alias(libs.plugins.gms)
     alias(libs.plugins.cas)
 }
 
@@ -21,7 +21,6 @@ android {
                 dimension = "mods"
                 applicationId = config.packageName
                 buildConfigField("String", "APPLICATION_ID", "\"${config.packageName}\"")
-                buildConfigField("String", "METRIC_KEY", "\"${config.yandexMetricKey}\"")
                 buildConfigField("Integer", "APP_ID", config.appId)
                 buildConfigField("Integer", "PRIMARY_COLOR", config.appColor)
                 buildConfigField("Integer", "PERCENT_SHOW_NATIVE_AD", config.percentNative)
@@ -109,7 +108,7 @@ dependencies {
 
     // Ads
     implementation (libs.mobileads.yandex)
-    implementation(libs.analytics)
+//    implementation(libs.analytics)
     implementation(libs.picasso)
 
     // Koin
@@ -118,9 +117,9 @@ dependencies {
     implementation(libs.koin.android)
 
     // Push Notifications
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation(libs.firebase.messaging)
+//    implementation(platform(libs.firebase.bom))
+//    implementation(libs.firebase.analytics)
+//    implementation(libs.firebase.messaging)
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.core.ktx)

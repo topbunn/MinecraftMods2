@@ -23,17 +23,22 @@
         android:theme="@style/Theme.MinecraftModsPE"
         tools:targetApi="31">
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5767517982919494~2715627430"/>
+<!--        <meta-data-->
+<!--            android:name="com.google.firebase.messaging.default_notification_icon"-->
+<!--            android:resource="@drawable/ic_like_filled" />-->
+
+<!--        <meta-data-->
+<!--            android:name="com.google.firebase.messaging.default_notification_color"-->
+<!--            android:resource="@color/push_notify_icon" />-->
+
 
         <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_like_filled" />
+            android:name="com.facebook.sdk.AutoInitEnabled"
+            android:value="true"/>
 
         <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/push_notify_icon" />
+            android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled"
+            android:value="true"/>
 
         <activity
             android:name=".SingleActivity"
@@ -48,7 +53,7 @@
         </activity>
 
         <provider
-            android:name="androidx.SF.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">

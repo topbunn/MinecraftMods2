@@ -39,10 +39,10 @@ object NativeCoordinator {
 
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
-//                config.casNative?.let {
-                    NativeCasController.init(context, "TODO")
+                config.casNative?.let {
+                    NativeCasController.init(context, it)
                     NativeCasController.load()
-//                }
+                }
                 CAS
             } else {
                 config.yandexNative?.let {

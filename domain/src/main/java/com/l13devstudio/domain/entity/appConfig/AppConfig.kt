@@ -1,7 +1,6 @@
 package com.l13devstudio.domain.entity.appConfig
 
 data class AppConfig(
-    val metricKey: String,
     val applicationId: String,
     val appId: Int,
     val primaryColor: Int,

@@ -22,9 +22,9 @@ object OpenCoordinator {
 
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
-//                config.applovinOpen?.let {
-                    OpenCasController.init(activity.applicationContext, "TODO")
-//                }
+                config.applovinOpen?.let {
+                    OpenCasController.init(activity.applicationContext, it)
+                }
                 Network.CAS
             } else {
                 config.yandexOpen?.let { OpenYandexController.init(activity.application, it) }

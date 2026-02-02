@@ -28,9 +28,9 @@ object InterstitialCoordinator {
 
         activeNetwork =
             if (!BuildConfig.RUSTORE && location == AppLocation.OTHER) {
-//              config.applovinInter?.let {
-                    InterstitialCasController.init(context, "TODO")
-//              }
+              config.applovinInter?.let {
+                    InterstitialCasController.init(context, it)
+              }
                 Network.CAS
             } else {
                 config.yandexInter?.let { InterstitialYandexController.init(context, it) }

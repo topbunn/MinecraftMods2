@@ -26,7 +26,6 @@ object PropertiesController {
 
 
         return AddonConfig(
-            yandexMetricKey = getOrThrow(props, "metric_key"),
             packageName = getOrThrow(props, "applicationId"),
             appId = getOrThrow(props, "app_id"),
             appColor = getOrThrow(props, "primary_color"),
