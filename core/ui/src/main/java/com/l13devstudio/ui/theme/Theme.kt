@@ -9,10 +9,10 @@ import androidx.compose.runtime.CompositionLocalProvider
 
 @Composable
 fun AppTheme(
+    isDarkTheme: Boolean,
     content: @Composable () -> Unit
 ) {
-    val darkTheme = isSystemInDarkTheme()
-    val appColors = if (darkTheme) DarkThemeColors else LightThemeColors
+    val appColors = if (isDarkTheme) DarkThemeColors else LightThemeColors
 
     val customTextSelectionColors = TextSelectionColors(
         handleColor = AppColors.PRIMARY,

@@ -20,12 +20,12 @@ class ConfigRepositoryImpl(
             val info = configApi.loadConfiguration(configProvider.getConfig().appId).body<AdConfigResponse>()
             info.sdk?.let {
                 dataStore.save(StorageKeys.AD_IS_ENABLED, it.isAdEnabled.toString())
-                dataStore.save(StorageKeys.APPLOVIN_OPEN, it.applovinOpen)
-                dataStore.save(StorageKeys.APPLOVIN_INTER, it.applovinInter)
-                dataStore.save(StorageKeys.APPLOVIN_NATIVE, it.applovinNative)
-                dataStore.save(StorageKeys.YANDEX_OPEN, it.yandexOpen)
-                dataStore.save(StorageKeys.YANDEX_INTER, it.yandexInter)
-                dataStore.save(StorageKeys.YANDEX_NATIVE, it.yandexNative)
+                dataStore.save(StorageKeys.APPLOVIN_OPEN, it.applovinOpen ?: "")
+                dataStore.save(StorageKeys.APPLOVIN_INTER, it.applovinInter ?: "")
+                dataStore.save(StorageKeys.APPLOVIN_NATIVE, it.applovinNative ?: "")
+                dataStore.save(StorageKeys.YANDEX_OPEN, it.yandexOpen ?: "")
+                dataStore.save(StorageKeys.YANDEX_INTER, it.yandexInter ?: "")
+                dataStore.save(StorageKeys.YANDEX_NATIVE, it.yandexNative ?: "")
             }
         } catch (e: Exception) {
             e.printStackTrace()

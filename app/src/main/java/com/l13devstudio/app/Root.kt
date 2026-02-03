@@ -1,20 +1,15 @@
 package com.l13devstudio.app
 
-import android.app.Activity
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
@@ -29,11 +24,12 @@ import com.l13devstudio.ui.theme.LocalAppColors
 
 @Composable
 fun Root() {
-    AppTheme{
+    val isDarkTheme = BuildConfig.DARK_THEME
+    AppTheme(isDarkTheme){
         val colors = LocalAppColors.current
         val firstScreen = rememberScreen(Destination.LoaderScreen)
         val systemUi = rememberSystemUiController()
-        systemUi.setStatusBarColor(Color.Transparent, !isSystemInDarkTheme())
+        systemUi.setStatusBarColor(Color.Transparent, !isDarkTheme)
         Box(
             Modifier.fillMaxSize().background(colors.background)
         ){

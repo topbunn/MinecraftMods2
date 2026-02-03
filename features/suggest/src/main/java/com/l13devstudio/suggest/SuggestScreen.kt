@@ -34,7 +34,6 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.l13devstudio.android.ads.natives.NativeCoordinator
 import com.l13devstudio.suggest.SuggestState.FieldType.DESC
-import com.l13devstudio.suggest.SuggestState.FieldType.EMAIL
 import com.l13devstudio.suggest.SuggestState.FieldType.entries
 import com.l13devstudio.ui.R
 import com.l13devstudio.ui.components.AppButton
@@ -157,7 +156,7 @@ object SuggestScreen : Tab, Screen {
             Field(
                 type = type,
                 value = when (type) {
-                    EMAIL -> email
+//                    EMAIL -> email
                     DESC -> desc
                 }
             ){ text ->
@@ -192,18 +191,18 @@ object SuggestScreen : Tab, Screen {
             singleLine = type != DESC,
             hint = stringResource(
                 when(type){
-                    EMAIL -> R.string.hint_email
+//                    EMAIL -> R.string.hint_email
                     DESC -> R.string.hint_desc
                 }
             ),
             keyboardOptions = KeyboardOptions(
                 keyboardType = when(type){
-                    EMAIL -> KeyboardType.Email
+//                    EMAIL -> KeyboardType.Email
                     DESC -> KeyboardType.Text
                 }
             ),
             leadingIconRes = when(type){
-                EMAIL -> R.drawable.ic_hint_mail
+//                EMAIL -> R.drawable.ic_hint_mail
                 DESC -> R.drawable.ic_hint_desc
             },
             tipContent = if (type == DESC) { { TipDesc() } } else null,

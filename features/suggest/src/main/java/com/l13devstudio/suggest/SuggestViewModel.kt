@@ -6,7 +6,7 @@ import com.l13devstudio.android.utills.isEmail
 import com.l13devstudio.domain.entity.suggest.SuggestEntity
 import com.l13devstudio.domain.useCases.suggest.SubmitSuggestUseCase
 import com.l13devstudio.suggest.SuggestState.FieldType.DESC
-import com.l13devstudio.suggest.SuggestState.FieldType.EMAIL
+//import com.l13devstudio.suggest.SuggestState.FieldType.EMAIL
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -42,7 +42,7 @@ internal class SuggestViewModel(
     fun changeFieldValue(value: String, type: SuggestState.FieldType) {
         _state.update {
             when (type) {
-                EMAIL -> if (value.length <= 64) it.copy(email = value) else it
+//                EMAIL -> if (value.length <= 64) it.copy(email = value) else it
                 DESC -> if (value.length <= 2000) it.copy(desc = value) else it
             }
         }

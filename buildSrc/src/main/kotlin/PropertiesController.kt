@@ -26,6 +26,7 @@ object PropertiesController {
 
 
         return AddonConfig(
+            darkTheme = getOrThrow(props, "dark_theme"),
             packageName = getOrThrow(props, "applicationId"),
             appId = getOrThrow(props, "app_id"),
             appColor = getOrThrow(props, "primary_color"),

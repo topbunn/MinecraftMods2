@@ -92,18 +92,18 @@ fun Screen.IssueDialog(
                 lineHeight = 16.sp
             )
             Spacer(modifier = Modifier.height(16.dp))
-            AppTextField(
-                text = state.email,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp),
-                singleLine = true,
-                hint = stringResource(R.string.hint_email),
-                leadingIconRes = R.drawable.ic_hint_mail,
-                required = true,
-                onTextChange = { viewModel.changeFieldValue(it, IssueState.FieldType.EMAIL) }
-            )
-            Spacer(modifier = Modifier.height(10.dp))
+//            AppTextField(
+//                text = state.email,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(48.dp),
+//                singleLine = true,
+//                hint = stringResource(R.string.hint_email),
+//                leadingIconRes = R.drawable.ic_hint_mail,
+//                required = true,
+//                onTextChange = { viewModel.changeFieldValue(it, IssueState.FieldType.EMAIL) }
+//            )
+//            Spacer(modifier = Modifier.height(10.dp))
             AppTextField(
                 text = state.desc,
                 modifier = Modifier

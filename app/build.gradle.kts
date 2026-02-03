@@ -21,6 +21,7 @@ android {
                 dimension = "mods"
                 applicationId = config.packageName
                 buildConfigField("String", "APPLICATION_ID", "\"${config.packageName}\"")
+                buildConfigField("Boolean", "DARK_THEME", config.darkTheme)
                 buildConfigField("Integer", "APP_ID", config.appId)
                 buildConfigField("Integer", "PRIMARY_COLOR", config.appColor)
                 buildConfigField("Integer", "PERCENT_SHOW_NATIVE_AD", config.percentNative)
